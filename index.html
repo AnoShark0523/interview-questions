@@ -607,6 +607,33 @@ pre{font-size:12px!important}
 <a href="#q533" class="toc-h4">值传递、引用传递、指针传递的区别？</a>
 <a href="#q534" class="toc-h4">全局/局部/静态全局/静态局部变量区别？</a>
 <a href="#q535" class="toc-h4">函数传参用引用的作用？</a>
+<a href="#q566" class="toc-h4">为什么有了 class 还保留 struct？</a>
+<a href="#q567" class="toc-h4">struct 和 union 的区别？</a>
+<a href="#q568" class="toc-h4">C 和 C++ static 的区别？</a>
+<a href="#q569" class="toc-h4">C++ static 作用是什么？（三种用法）</a>
+<a href="#q570" class="toc-h4">static 在类中的注意事项？</a>
+<a href="#q571" class="toc-h4">static 全局变量和普通全局变量异同？</a>
+<a href="#q572" class="toc-h4">静态变量使用场景？未初始化的呢？</a>
+<a href="#q573" class="toc-h4">const 作用及用法？</a>
+<a href="#q574" class="toc-h4">define 和 const 的区别？</a>
+<a href="#q575" class="toc-h4">define 和 typedef 的区别？</a>
+<a href="#q576" class="toc-h4">volatile 的作用？有原子性吗？</a>
+<a href="#q577" class="toc-h4">什么情况必须用 volatile？能和 const 一起？</a>
+<a href="#q578" class="toc-h4">什么是内联函数？</a>
+<a href="#q579" class="toc-h4">宏定义和内联函数的区别？</a>
+<a href="#q580" class="toc-h4">内联函数有什么缺点？</a>
+<a href="#q581" class="toc-h4">include "" 和 <> 的区别？</a>
+<a href="#q582" class="toc-h4">void* 是什么？</a>
+<a href="#q583" class="toc-h4">sizeof 和 strlen 的区别？</a>
+<a href="#q584" class="toc-h4">explicit 的作用？</a>
+<a href="#q585" class="toc-h4">memcpy 底层原理？</a>
+<a href="#q586" class="toc-h4">strcpy 函数有什么缺陷？</a>
+<a href="#q587" class="toc-h4">重载、重写、隐藏的区别？</a>
+<a href="#q588" class="toc-h4">class 中缺省的函数？</a>
+<a href="#q589" class="toc-h4">C++ 空类的大小？</a>
+<a href="#q590" class="toc-h4">只含虚函数的类的大小？</a>
+<a href="#q591" class="toc-h4">只含 int 的空 class 和 struct 各占多大？</a>
+<a href="#q592" class="toc-h4">如何判断结构体相等？能用 memcmp 吗？</a>
 <a href="#q536" class="toc-h3">面向对象（小林coding）</a>
 <a href="#q537" class="toc-h4">面向对象三大特性？</a>
 <a href="#q538" class="toc-h4">多态的实现机制？静态多态vs动态多态？</a>
@@ -629,6 +656,26 @@ pre{font-size:12px!important}
 <a href="#q555" class="toc-h4">deque 底层实现？</a>
 <a href="#q556" class="toc-h4">仿函数和普通函数的区别？</a>
 <a href="#q557" class="toc-h4">allocator 分配器做了什么？</a>
+<a href="#q593" class="toc-h4">C++ map 是线程安全的吗？</a>
+<a href="#q594" class="toc-h4">容器可以一边遍历一边插入吗？</a>
+<a href="#q595" class="toc-h4">使用迭代器怎么删除元素？</a>
+<a href="#q596" class="toc-h4">priority_queue 底层原理？</a>
+<a href="#q597" class="toc-h4">std::sort 底层实现？</a>
+<a href="#q598" class="toc-h4">移动语义介绍</a>
+<a href="#q599" class="toc-h4">右值引用有什么作用？</a>
+<a href="#q600" class="toc-h4">std::move() 实现原理？</a>
+<a href="#q601" class="toc-h4">什么是模板？如何实现？</a>
+<a href="#q602" class="toc-h4">函数调用压栈过程？</a>
+<a href="#q603" class="toc-h4">堆和栈的区别？</a>
+<a href="#q604" class="toc-h4">new 在内存哪块分配？</a>
+<a href="#q605" class="toc-h4">new 内存失败了会怎么样？</a>
+<a href="#q606" class="toc-h4">new 和 malloc 如何判断是否申请到？</a>
+<a href="#q607" class="toc-h4">delete 和 free 的区别？</a>
+<a href="#q608" class="toc-h4">delete 和 delete[] 的区别？</a>
+<a href="#q609" class="toc-h4">malloc 原理？brk 和 mmap？</a>
+<a href="#q610" class="toc-h4">malloc 1KB 和 1MB 有什么区别？</a>
+<a href="#q611" class="toc-h4">分页内存管理说一下</a>
+<a href="#q612" class="toc-h4">delete 函数和 default 函数的区别？</a>
 <a href="#q558" class="toc-h3">C++11 新特性（小林coding）</a>
 <a href="#q559" class="toc-h4">auto 类型推导规则？</a>
 <a href="#q560" class="toc-h4">nullptr 和 NULL 的区别？</a>
@@ -4355,6 +4402,244 @@ vec.emplace_back(1, 2);         // 直接在容器原地构造</code></pre>
 <li>如果不修改，加 <code>const</code>：<code>void foo(const string&amp; s)</code>，既避免拷贝又防止修改</li>
 </ul>
 
+<a id="q566"></a>
+<h4>为什么有了 class 还保留 struct？</h4>
+<p>历史兼容 + 语义区分。C++ 要兼容 C，struct 必须保留。而且有了语义分工：</p>
+<ul>
+<li><strong>struct</strong>：默认 public，适合纯数据聚合体（POD），如坐标点、配置项</li>
+<li><strong>class</strong>：默认 private，适合有封装逻辑的对象</li>
+</ul>
+<p>用 struct 表示"一堆数据的集合"，用 class 表示"有行为有封装的对象"，代码更清晰。</p>
+
+<a id="q567"></a>
+<h4>struct 和 union 的区别？</h4>
+<ul>
+<li><strong>struct</strong>：所有成员同时存在，各占独立内存，总大小 = 各成员之和（加对齐）</li>
+<li><strong>union</strong>：所有成员共享同一段内存，同一时刻只有一个成员有效，大小 = 最大成员</li>
+</ul>
+<p>union 节省内存，但修改一个成员会影响其他成员。常用于：类型转换、硬件寄存器映射、变体数据。</p>
+
+<a id="q568"></a>
+<h4>C 和 C++ static 的区别？</h4>
+<p>C 的 static 只有两种用法：修饰局部变量（延长生命周期）和修饰全局变量/函数（限制文件作用域）。</p>
+<p>C++ 除了上述两种，还多了<strong>类中的 static</strong>：</p>
+<ul>
+<li>静态成员变量：所有对象共享一份数据，属于类不属于对象</li>
+<li>静态成员函数：没有 this 指针，只能访问静态成员，可以通过类名直接调用</li>
+</ul>
+
+<a id="q569"></a>
+<h4>C++ static 作用是什么？（三种用法）</h4>
+<ol>
+<li><strong>修饰局部变量</strong>：改变存储位置（从栈到静态区），延长生命周期到程序结束，但作用域不变。只初始化一次</li>
+<li><strong>修饰全局变量/函数</strong>：限制作用域为当前文件（内部链接），防止其他文件 extern 访问</li>
+<li><strong>修饰类成员</strong>：静态成员变量属于类，所有对象共享；静态成员函数没有 this，只能访问静态成员</li>
+</ol>
+<p>口诀：局部改生命周期，全局改作用域，类成员改归属。</p>
+
+<a id="q570"></a>
+<h4>static 在类中的注意事项？</h4>
+<ul>
+<li>静态成员变量<strong>类内声明，类外定义</strong>：<code>int A::count = 0;</code>（C++17 支持 inline 内联初始化）</li>
+<li>静态成员函数没有 this 指针，不能访问非静态成员变量和函数</li>
+<li>静态成员函数不能是 virtual、不能是 const（const 修饰的是 this 指向的对象）</li>
+<li>静态成员变量可以作为默认参数（非静态不行，因为依赖 this）</li>
+</ul>
+
+<a id="q571"></a>
+<h4>static 全局变量和普通全局变量异同？</h4>
+<p><strong>相同</strong>：都存在静态存储区，生命周期都是程序开始到结束。</p>
+<p><strong>不同</strong>：</p>
+<ul>
+<li>普通全局变量：作用域整个程序，其他文件用 extern 可以访问</li>
+<li>static 全局变量：作用域仅当前文件（内部链接），其他文件 extern 也访问不了</li>
+</ul>
+<p>static 全局变量避免了命名冲突，适合只在文件内部用的全局变量。</p>
+
+<a id="q572"></a>
+<h4>静态变量使用场景？未初始化的呢？</h4>
+<p><strong>使用场景</strong>：① 函数内计数器/缓存（只初始化一次）；② 单例模式（局部静态变量实现线程安全的懒加载）；③ 类的共享配置（所有对象共享一份）。</p>
+<p><strong>未初始化的全局静态变量</strong>：存在 BSS 段（Block Started by Symbol），自动初始化为 0。BSS 段不占可执行文件空间（只记录大小），运行时由 OS 清零。已初始化的静态变量在 .data 段。</p>
+
+<a id="q573"></a>
+<h4>const 作用及用法？</h4>
+<ol>
+<li><strong>修饰变量</strong>：值不可修改。<code>const int x = 10;</code></li>
+<li><strong>修饰指针</strong>：常量指针（指向的值不能改）和指针常量（指向不能改）</li>
+<li><strong>修饰引用</strong>：<code>const int&amp; r = x;</code> 常引用，不能通过 r 修改 x。常用于函数参数避免拷贝</li>
+<li><strong>修饰成员函数</strong>：<code>void func() const;</code> 表示不修改对象状态（this 变成 const ClassName*）</li>
+<li><strong>修饰返回值</strong>：防止返回值被修改 <code>const int&amp; get()</code></li>
+<li><strong>修饰类成员变量</strong>：必须在构造函数初始化列表中初始化</li>
+</ol>
+
+<a id="q574"></a>
+<h4>define 和 const 的区别？</h4>
+<table>
+<tr><th>特性</th><th>#define</th><th>const</th></tr>
+<tr><td>阶段</td><td>预处理阶段替换</td><td>编译阶段处理</td></tr>
+<tr><td>类型检查</td><td>无（纯文本替换）</td><td>有类型检查</td></tr>
+<tr><td>作用域</td><td>全局（文件级）</td><td>遵循作用域规则</td></tr>
+<tr><td>调试</td><td>不可见（已替换）</td><td>可见（有符号名）</td></tr>
+<tr><td>存储</td><td>不占内存（代码替换）</td><td>占内存（可能有优化）</td></tr>
+</table>
+<p>能用 const 就用 const，define 只用于条件编译和头文件保护。</p>
+
+<a id="q575"></a>
+<h4>define 和 typedef 的区别？</h4>
+<ul>
+<li><strong>#define</strong>：预处理指令，纯文本替换，无类型检查。<code>#define UINT unsigned int</code></li>
+<li><strong>typedef</strong>：编译期处理，有类型检查。<code>typedef unsigned int UINT;</code></li>
+<li>typedef 更安全，支持更复杂的类型（如函数指针），受作用域限制</li>
+<li>C++11 后推荐用 <code>using</code>：<code>using UINT = unsigned int;</code>，比 typedef 更清晰</li>
+</ul>
+
+<a id="q576"></a>
+<h4>volatile 的作用？有原子性吗？</h4>
+<p><strong>volatile</strong> 告诉编译器：这个变量可能被外部（其他线程、硬件、信号处理）改变，<strong>不要优化放到寄存器缓存</strong>，每次都从内存读。</p>
+<p><strong>不具有原子性</strong>：volatile 只防止编译器优化，不防止 CPU 乱序、不保证原子操作。<code>volatile int x = 0; x++;</code> 仍然不是线程安全的。</p>
+<p>多线程同步要用 <code>std::atomic</code> 或互斥锁，volatile 用于硬件寄存器、信号处理、memory-mapped I/O。</p>
+
+<a id="q577"></a>
+<h4>什么情况必须用 volatile？能和 const 一起？</h4>
+<p><strong>必须用的场景</strong>：① 硬件寄存器映射（地址内容可能随时变化）；② 信号处理函数中修改的变量；③ 多线程共享的标志位（但原子性要用 atomic）。</p>
+<p><strong>能和 const 一起用</strong>：<code>const volatile int* p</code> 表示"程序不能改（const）但外部可能改（volatile）"——典型场景是只读硬件寄存器。</p>
+
+<a id="q578"></a>
+<h4>什么是内联函数？</h4>
+<p><strong>内联函数</strong>：用 <code>inline</code> 修饰的函数，编译时在调用处直接展开函数体，省去函数调用开销（压栈、跳转、返回）。</p>
+<ul>
+<li>适合短小、频繁调用的函数</li>
+<li>类内定义的函数隐式 inline</li>
+<li>inline 只是对编译器的<strong>建议</strong>，编译器可能不展开（递归、循环、太长的函数）</li>
+<li>现代编译器会自动内联，即使没写 inline</li>
+</ul>
+
+<a id="q579"></a>
+<h4>宏定义和内联函数的区别？</h4>
+<table>
+<tr><th>特性</th><th>#define 宏</th><th>inline 函数</th></tr>
+<tr><td>处理阶段</td><td>预处理（文本替换）</td><td>编译</td></tr>
+<tr><td>类型检查</td><td>无</td><td>有</td></tr>
+<tr><td>作用域</td><td>文件级</td><td>遵循作用域</td></tr>
+<tr><td>调试</td><td>不可见</td><td>可见</td></tr>
+<tr><td>副作用</td><td>有（<code>#define SQ(x) x*x</code>, SQ(1+2)=1+2*1+2=5）</td><td>无</td></tr>
+</table>
+<p>inline 宏的坑：参数被多次展开。inline 函数没有这个问题。</p>
+
+<a id="q580"></a>
+<h4>内联函数有什么缺点？</h4>
+<ul>
+<li><strong>代码膨胀</strong>：每个调用处都展开，可执行文件变大</li>
+<li><strong>修改需重编译</strong>：内联函数改了，所有调用它的文件都要重新编译</li>
+<li><strong>不一定生效</strong>：编译器有权拒绝 inline（递归、太长、虚函数等）</li>
+<li><strong>构造析构慎用</strong>：看似空的构造函数可能隐含基类和成员的构造析构调用，展开后代码很长</li>
+</ul>
+
+<a id="q581"></a>
+<h4>include "" 和 <> 的区别？</h4>
+<ul>
+<li><code>#include &lt;header&gt;</code>：从<strong>系统目录</strong>搜索，用于标准库和第三方库。如 <code>&lt;iostream&gt;</code>、<code>&lt;vector&gt;</code></li>
+<li><code>#include "header"</code>：先从<strong>当前目录</strong>搜索，找不到再搜索系统目录。用于自定义头文件</li>
+</ul>
+<p>搜索顺序：<code>""</code> 先当前目录再系统目录；<code>&lt;&gt;</code> 直接系统目录。</p>
+
+<a id="q582"></a>
+<h4>void* 是什么？</h4>
+<p><code>void*</code> 是<strong>无类型指针</strong>，可以指向任何类型的数据，但<strong>不能直接解引用</strong>（不知道该读几个字节）。使用前必须先转型。</p>
+<ul>
+<li>malloc 返回 void*，需要强转：<code>int* p = (int*)malloc(4);</code></li>
+<li>void* 不能做指针运算（<code>p+1</code> 不合法，因为不知道步长）</li>
+<li>void* 可以和任何指针类型互相赋值</li>
+<li>C++ 中推荐用模板或类型安全的方式替代 void*</li>
+</ul>
+
+<a id="q583"></a>
+<h4>sizeof 和 strlen 的区别？</h4>
+<table>
+<tr><th>特性</th><th>sizeof</th><th>strlen</th></tr>
+<tr><td>性质</td><td>运算符</td><td>库函数</td></tr>
+<tr><td>阶段</td><td>编译期计算</td><td>运行期计算</td></tr>
+<tr><td>参数</td><td>类型/变量/表达式</td><td>字符串（const char*）</td></tr>
+<tr><td>结果</td><td>占用的总字节数（含\0）</td><td>字符串长度（不含\0）</td></tr>
+<tr><td>数组</td><td>sizeof(arr)=整个数组大小</td><td>strlen 到第一个\0</td></tr>
+</table>
+<pre><code>char s[] = "hello";  // 6字节（h-e-l-l-o-\0）
+sizeof(s);   // 6
+strlen(s);    // 5</code></pre>
+
+<a id="q584"></a>
+<h4>explicit 的作用？</h4>
+<p><code>explicit</code> 防止构造函数的<strong>隐式类型转换</strong>，只允许显式构造。</p>
+<pre><code>class String {
+    explicit String(int n);  // 不加 explicit 时 String s = 10; 会隐式调用
+};
+String s1 = 10;   // 编译错误：不允许隐式转换
+String s2(10);    // OK：显式构造
+String s3 = String(10); // OK：显式构造</code></pre>
+<p>好处：避免意外的隐式转换导致难以发现的 bug。单参数构造函数建议都加 explicit。</p>
+
+<a id="q585"></a>
+<h4>memcpy 底层原理？</h4>
+<p><code>memcpy(dst, src, n)</code> 从 src 拷贝 n 字节到 dst。<strong>不处理重叠区域</strong>（src 和 dst 有重叠时行为未定义）。</p>
+<p>底层优化：① 按字（word）批量拷贝而非逐字节；② 用 SIMD（SSE/AVX）并行拷贝；③ 对齐优化（地址对齐时用更快的指令）。</p>
+<p>重叠区域用 <code>memmove</code>，它判断方向后选择从前向后或从后向前拷贝。</p>
+
+<a id="q586"></a>
+<h4>strcpy 函数有什么缺陷？</h4>
+<ul>
+<li><strong>不检查缓冲区大小</strong>：源字符串比目标缓冲区大时溢出，导致缓冲区溢出漏洞</li>
+<li><strong>不处理重叠</strong>：src 和 dst 重叠时行为未定义</li>
+<li><strong>返回值</strong>：返回 dst 指针，容易被忽略</li>
+</ul>
+<p>安全替代：<code>strncpy(dst, src, n)</code>（指定最大长度）或 <code>strlcpy</code>（非标准但更安全）。C++ 中直接用 <code>std::string</code>。</p>
+
+<a id="q587"></a>
+<h4>重载、重写、隐藏的区别？</h4>
+<table>
+<tr><th>概念</th><th>范围</th><th>关键字</th><th>特征</th></tr>
+<tr><td>重载(Overload)</td><td>同类中</td><td>无</td><td>函数名同、参数不同（个数/类型/顺序）</td></tr>
+<tr><td>重写(Override)</td><td>父子类间</td><td>virtual</td><td>函数签名完全相同，虚函数重新实现</td></tr>
+<tr><td>隐藏(Hide)</td><td>父子类间</td><td>无</td><td>子类同名函数隐藏父类同名函数（不管参数是否相同）</td></tr>
+</table>
+<p>隐藏的坑：子类定义了 <code>func(int)</code>，父类的 <code>func()</code> 和 <code>func(double)</code> 都被隐藏。用 <code>using Base::func;</code> 恢复。</p>
+
+<a id="q588"></a>
+<h4>class 中缺省的函数？</h4>
+<p>如果你不写，编译器会自动生成以下 6 个（C++11 后还有移动构造和移动赋值，共 8 个）：</p>
+<ol>
+<li>默认构造函数</li>
+<li>析构函数</li>
+<li>拷贝构造函数</li>
+<li>拷贝赋值运算符</li>
+<li>移动构造函数（C++11）</li>
+<li>移动赋值运算符（C++11）</li>
+</ol>
+<p><strong>Rule of Zero</strong>：如果类管理资源，自定义析构 + 拷贝/移动。不管理资源就全用默认。用 <code>= default</code> 显式要求生成，用 <code>= delete</code> 禁止生成。</p>
+
+<a id="q589"></a>
+<h4>C++ 空类的大小？</h4>
+<p>空类大小为 <strong>1 字节</strong>。原因：每个对象需要唯一地址，如果大小为 0，同一类的多个对象地址会相同（C++ 标准不允许）。</p>
+<p>但如果空类中有虚函数，大小为<strong>指针大小</strong>（8 字节，64 位），因为要存 vptr。</p>
+
+<a id="q590"></a>
+<h4>只含虚函数的类的大小？</h4>
+<p>只有虚函数没有成员变量的类，大小 = <strong>一个指针的大小</strong>（64 位系统 8 字节）。这个空间存的是 vptr（虚表指针）。</p>
+<p>虚函数本身不占对象空间，它们在虚函数表中（类级别共享，不在对象内）。</p>
+
+<a id="q591"></a>
+<h4>只含 int 的空 class 和 struct 各占多大？</h4>
+<p>都是 <strong>4 字节</strong>（int 的大小）。class 和 struct 在内存布局上完全相同，区别只在默认访问权限。空 class/struct 是 1 字节（为了唯一地址），加了 int 成员后就是 int 的 4 字节。</p>
+
+<a id="q592"></a>
+<h4>如何判断结构体相等？能用 memcmp 吗？</h4>
+<p><strong>不建议用 memcmp</strong>，原因：</p>
+<ul>
+<li>结构体有<strong>内存对齐填充</strong>（padding），padding 中的值是垃圾值，两个相同结构体的 padding 可能不同</li>
+<li>如果有浮点数，memcmp 不能判断 0.0 和 -0.0 相等（内存不同但值相同）</li>
+<li>如果有指针成员，memcmp 比的是地址不是内容</li>
+</ul>
+<p><strong>正确做法</strong>：逐个成员比较，或重载 <code>operator==</code>。C 飘可用 <code>memcmp</code> 但需先 <code>memset(&amp;s, 0, sizeof(s))</code> 清零 padding。</p>
+
 <a id="q536"></a>
 <h3>面向对象（小林coding）</h3>
 
@@ -4531,6 +4816,190 @@ Add add; cout << add(1, 2);  // 像函数调用</code></pre>
 <li><code>deallocate()</code>：释放内存（operator delete）</li>
 </ul>
 <p>好处：容器可以预分配内存，按需构造/析构对象，减少频繁分配开销。SGI STL 的二级分配器用内存池优化小块内存。</p>
+
+<a id="q593"></a>
+<h4>C++ map 是线程安全的吗？</h4>
+<p><strong>不是</strong>。STL 容器都不是线程安全的。多线程同时读 map 是安全的，但只要有一个线程在写（插入/删除），就必须加锁。</p>
+<p>不加锁的后果：红黑树结构被破坏、迭代器失效、数据竞争导致未定义行为。</p>
+<p>多线程方案：① 用 <code>std::mutex</code> 包裹；② 用 <code>concurrent_map</code>（Intel TBB）；③ 读写锁（多读少写场景）。</p>
+
+<a id="q594"></a>
+<h4>容器可以一边遍历一边插入吗？</h4>
+<p><strong>取决于容器和操作</strong>：</p>
+<ul>
+<li><strong>vector</strong>：插入可能导致扩容，所有迭代器失效。不安全</li>
+<li><strong>list</strong>：插入不影响其他迭代器，安全。但删除会导致被删的迭代器失效</li>
+<li><strong>map/set</strong>：插入不影响已有迭代器，安全。删除只影响被删的</li>
+<li><strong>unordered_map</strong>：插入可能触发 rehash，所有迭代器失效。不安全</li>
+</ul>
+<p>安全做法：先收集要插入的数据，遍历完再统一插入。或用 <code>it = container.insert(it, val)</code>。</p>
+
+<a id="q595"></a>
+<h4>使用迭代器怎么删除元素？</h4>
+<pre><code>// vector/list: erase 返回下一个有效迭代器
+for (auto it = vec.begin(); it != vec.end(); ) {
+    if (*it == target)
+        it = vec.erase(it);  // 不能 it++，erase 后 it 已失效
+    else
+        ++it;
+}
+
+// map/set: C++11 前 erase 返回 void
+for (auto it = m.begin(); it != m.end(); ) {
+    if (condition)
+        m.erase(it++);  // 先保存再后移，C++11 可用 it = m.erase(it)
+    else
+        ++it;
+}</code></pre>
+
+<a id="q596"></a>
+<h4>priority_queue 底层原理？</h4>
+<p>priority_queue 底层用 <strong>vector + 堆算法</strong>（默认大顶堆）。</p>
+<ul>
+<li>push：插入末尾，<code>push_heap</code> 上浮调整 O(log n)</li>
+<li>pop：堆顶和末尾交换，<code>pop_heap</code> 下沉调整 O(log n)，再 pop_back</li>
+<li>top：返回 front() O(1)</li>
+<li>默认 <code>less&lt;T&gt;</code> 实现大顶堆；改用 <code>greater&lt;T&gt;</code> 变小顶堆</li>
+</ul>
+<pre><code>priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; minHeap;</code></pre>
+
+<a id="q597"></a>
+<h4>std::sort 底层实现？</h4>
+<p>std::sort 混合使用三种排序算法：</p>
+<ol>
+<li><strong>introsort（内省排序）</strong>：快排 + 堆排 + 插入排序</li>
+<li>正常用快排（平均 O(n log n)），递归深度超过 2log(n) 时切换堆排（保证最坏 O(n log n)）</li>
+<li>区间小于 16 时用插入排序（小数据量常数因子更小）</li>
+</ol>
+<p>不是稳定排序（相同元素相对顺序可能改变），需要稳定用 <code>stable_sort</code>（归并排序）。</p>
+
+<a id="q598"></a>
+<h4>移动语义介绍</h4>
+<p><strong>移动语义</strong>：通过<strong>右值引用</strong>（<code>T&amp;&amp;</code>）窃取资源，避免深拷贝。</p>
+<ul>
+<li>移动构造：<code>A(A&amp;&amp; other) : ptr(other.ptr) { other.ptr = nullptr; }</code></li>
+<li>把源对象的资源"偷"过来，源对象变为空壳</li>
+<li>比拷贝构造快得多：只改指针，不复制数据</li>
+<li>STL 容器全面支持移动：vector 扩容时优先移动而非拷贝</li>
+</ul>
+
+<a id="q599"></a>
+<h4>右值引用有什么作用？</h4>
+<p>右值引用 <code>T&amp;&amp;</code> 只能绑定到右值（临时对象、将要销毁的对象），作用：</p>
+<ol>
+<li><strong>实现移动语义</strong>：避免不必要的深拷贝，提高性能</li>
+<li><strong>实现完美转发</strong>：配合 <code>std::forward</code> 保持参数的左右值属性</li>
+<li>延长临时对象生命周期：<code>string&amp;&amp; r = "hello"</code> 绑定后临时对象生命周期延长</li>
+</ol>
+
+<a id="q600"></a>
+<h4>std::move() 实现原理？</h4>
+<p>std::move 本质是<strong>类型转换</strong>，不做任何移动操作，只是把左值强转为右值引用：</p>
+<pre><code>template&lt;typename T&gt;
+typename remove_reference&lt;T&gt;::type&amp;&amp;
+move(T&amp;&amp; t) noexcept {
+    return static_cast&lt;typename remove_reference&lt;T&gt;::type&amp;&amp;&gt;(t);
+}</code></pre>
+<p>move 后的对象处于<strong>有效但未指定</strong>状态（可以析构或赋值，但值不确定）。实际移动发生在移动构造/赋值函数中。</p>
+
+<a id="q601"></a>
+<h4>什么是模板？如何实现？</h4>
+<p>模板是<strong>泛型编程</strong>的基础，用类型参数化实现一份代码处理多种类型。</p>
+<pre><code>template&lt;typename T&gt;
+T max(T a, T b) { return a &gt; b ? a : b; }
+
+template&lt;typename T, int N&gt;
+class Array { T data[N]; };</code></pre>
+<p>编译器对每种使用的类型生成一份特化代码（模板实例化）。模板在头文件中定义（编译器需要看到完整实现才能实例化）。</p>
+
+<a id="q602"></a>
+<h4>函数调用压栈过程？</h4>
+<ol>
+<li>参数从右向左压栈（cdecl 调用约定）</li>
+<li>压入返回地址（call 指令自动完成）</li>
+<li>保存调用者的基址指针（push rbp）</li>
+<li>移动栈指针分配局部变量空间（mov rbp, rsp; sub rsp, n）</li>
+<li>执行函数体</li>
+<li>恢复栈（mov rsp, rbp; pop rbp）— 即 leave 指令</li>
+<li>ret 弹出返回地址并跳转</li>
+</ol>
+<p>栈是从高地址向低地址生长。栈帧包含：参数、返回地址、旧 rbp、局部变量、寄存器保存区。</p>
+
+<a id="q603"></a>
+<h4>堆和栈的区别？</h4>
+<table>
+<tr><th>特性</th><th>栈</th><th>堆</th></tr>
+<tr><td>管理</td><td>编译器自动分配释放</td><td>手动 new/delete</td></tr>
+<tr><td>空间</td><td>小（默认 8MB）</td><td>大（可达 GB 级）</td></tr>
+<tr><td>速度</td><td>快（移动栈指针）</td><td>慢（查找空闲块+合并）</td></tr>
+<tr><td>碎片</td><td>无</td><td>有（频繁分配释放导致）</td></tr>
+<tr><td>生长</td><td>向下（高→低）</td><td>向上（低→高）</td></tr>
+<tr><td>内容</td><td>局部变量、参数、返回地址</td><td>动态分配的对象</td></tr>
+</table>
+
+<a id="q604"></a>
+<h4>new 在内存哪块分配？</h4>
+<p>new 在<strong>堆</strong>上分配内存。底层调用 <code>operator new</code> → <code>malloc</code>。分配小于 128KB 用 brk，大于 128KB 用 mmap。new 会在分配的内存上调用构造函数初始化对象。</p>
+<p>注意：new 的内存不一定是传统意义上的堆（malloc 分配的），也可能是 mmap 映射的区域。但泛指"堆区"。</p>
+
+<a id="q605"></a>
+<h4>new 内存失败了会怎么样？</h4>
+<p>默认抛出 <code>std::bad_alloc</code> 异常。如果不捕获异常，程序调用 <code>std::terminate</code> 终止。</p>
+<p>用 <code>new(nothrow)</code> 可以改为返回 nullptr：<code>int* p = new(std::nothrow) int[1000000];</code></p>
+<p>处理方式：① try/catch 捕获异常；② 用 nothrow 检查 nullptr；③ 提前检查需求大小。</p>
+
+<a id="q606"></a>
+<h4>new 和 malloc 如何判断是否申请到内存？</h4>
+<p><strong>malloc</strong>：返回 void*，失败返回 NULL。检查：<code>if (p == NULL)</code>。</p>
+<p><strong>new</strong>：失败默认抛 bad_alloc 异常。用 nothrow 版本可返回 nullptr：<code>if (p == nullptr)</code>。</p>
+
+<a id="q607"></a>
+<h4>delete 和 free 的区别？</h4>
+<p>delete 会调用析构函数然后释放内存；free 只释放内存不调用析构。</p>
+<p>对基本类型（int 等）效果一样。对有析构函数的类，必须用 delete，否则资源泄漏。</p>
+
+<a id="q608"></a>
+<h4>delete 和 delete[] 的区别？</h4>
+<p><strong>delete</strong>：释放单个对象，只调用一次析构。</p>
+<p><strong>delete[]</strong>：释放数组，对每个元素调用析构。</p>
+<p>用 new 分配的单个对象必须用 delete；用 new[] 分配的数组必须用 delete[]。混用会导致未定义行为（只析构第一个元素或读取错误的数组长度信息）。</p>
+
+<a id="q609"></a>
+<h4>malloc 原理？brk 和 mmap？</h4>
+<p>malloc 根据分配大小选择不同策略：</p>
+<ul>
+<li><strong>≤ 128KB（默认阈值）</strong>：用 <code>brk/sbrk</code> 移动堆顶指针，扩展堆空间。释放后不立即归还 OS，留在空闲链表供下次复用</li>
+<li><strong>&gt; 128KB</strong>：用 <code>mmap</code> 在文件映射区分配大块内存，释放后立即归还 OS</li>
+</ul>
+<p>malloc 维护空闲链表/空闲块树管理已释放的内存，下次分配时优先从空闲块中找合适的。</p>
+
+<a id="q610"></a>
+<h4>malloc 1KB 和 1MB 有什么区别？</h4>
+<ul>
+<li><strong>1KB</strong>：用 brk 扩展堆，分配在堆区。释放后不归还 OS，碎片化但下次分配快</li>
+<li><strong>1MB</strong>：用 mmap 在映射区分配，释放后立即归还 OS。不产生堆碎片</li>
+</ul>
+<p>频繁分配释放小块 → 堆碎片；大块分配 → 直接 mmap，不产生碎片。</p>
+
+<a id="q611"></a>
+<h4>分页内存管理说一下</h4>
+<p>将虚拟内存和物理内存分成固定大小的<strong>页</strong>（通常 4KB），通过<strong>页表</strong>映射。</p>
+<ul>
+<li>虚拟地址 = 页号 + 页内偏移</li>
+<li>页表项：物理页号 + 权限位（读/写/执行、存在位、修改位、访问位）</li>
+<li>多级页表：减少页表占用（4 级页表在 64 位系统）</li>
+<li>TLB（快表）：CPU 内部的页表缓存，加速地址转换</li>
+<li>缺页：访问的页不在物理内存中 → 触发缺页中断 → OS 从磁盘换入</li>
+</ul>
+
+<a id="q612"></a>
+<h4>delete 函数和 default 函数的区别？</h4>
+<p>C++11 引入 <code>= delete</code> 和 <code>= default</code>：</p>
+<ul>
+<li><strong>= default</strong>：显式要求编译器生成默认实现。<code>MyClass() = default;</code></li>
+<li><strong>= delete</strong>：禁止编译器生成该函数。<code>MyClass(const MyClass&amp;) = delete;</code> 禁止拷贝</li>
+</ul>
+<p>用途：=default 用于恢复编译器默认实现（如有自定义构造后恢复默认构造）；=delete 用于禁止拷贝、禁止特定参数类型的函数。</p>
 
 <a id="q558"></a>
 <h3>C++11 新特性（小林coding）</h3>
