@@ -35,7 +35,7 @@ pre code{background:none;color:inherit;padding:0;font-size:15px}
 blockquote{border-left:4px solid var(--accent);background:#f0f4ff;padding:12px 20px;margin:12px 0;border-radius:0 8px 8px 0;color:var(--text2)}
 hr{border:none;border-top:2px dashed var(--border);margin:40px 0}
 a{color:var(--link)}
-a[id]{scroll-margin-top:20px}
+a[id]{scroll-margin-top:140px}
 .back-top{position:fixed;bottom:32px;right:32px;width:48px;height:48px;background:var(--accent);color:#fff;border:none;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:999;display:flex;align-items:center;justify-content:center}
 .back-top:hover{transform:translateY(-4px)}
 table{border-collapse:collapse;width:100%;margin:12px 0;font-size:16px}
@@ -578,6 +578,60 @@ pre{font-size:12px!important}
 <a href="#q391" class="toc-h3">OS 高频（⭐⭐⭐⭐）</a>
 <a href="#q392" class="toc-h3">数据库高频（⭐⭐⭐⭐）</a>
 <a href="#q393" class="toc-h3">设计模式（⭐⭐⭐⭐）</a>
+<a href="#q435" class="toc-h3">C++ 补充（小林coding）</a>
+<a href="#q436" class="toc-h4">函数指针和指针函数的区别？</a>
+<a href="#q437" class="toc-h4">全局变量定义在头文件中有什么问题？</a>
+<a href="#q438" class="toc-h4">extern "C" 的作用是什么？</a>
+<a href="#q439" class="toc-h4">C++ 中 struct 和 class 的区别？</a>
+<a href="#q440" class="toc-h4">指针传递和引用传递的区别？</a>
+<a href="#q441" class="toc-h4">C++ 编译过程是什么？</a>
+<a href="#q442" class="toc-h4">什么是内存对齐？为什么要对齐？</a>
+<a href="#q443" class="toc-h4">深拷贝和浅拷贝的区别？</a>
+<a href="#q444" class="toc-h4">静态链接和动态链接的区别？</a>
+<a href="#q445" class="toc-h3">操作系统（小林coding）</a>
+<a href="#q446" class="toc-h4">用户态和内核态的区别？为什么要分？</a>
+<a href="#q447" class="toc-h4">进程和线程的区别？</a>
+<a href="#q448" class="toc-h4">进程、线程、协程的区别？</a>
+<a href="#q449" class="toc-h4">进程间通信有哪些方式？</a>
+<a href="#q450" class="toc-h4">死锁的四个必要条件？如何避免？</a>
+<a href="#q451" class="toc-h4">银行家算法是什么？</a>
+<a href="#q452" class="toc-h4">虚拟内存的作用？页表是什么？</a>
+<a href="#q453" class="toc-h4">缺页中断是什么？malloc 底层怎么做的？</a>
+<a href="#q454" class="toc-h4">select、poll、epoll 的区别？</a>
+<a href="#q455" class="toc-h4">零拷贝是什么？有哪些实现方式？</a>
+<a href="#q456" class="toc-h4">Write Copy On Write（写时复制）？</a>
+<a href="#q457" class="toc-h4">进程调度算法有哪些？</a>
+<a href="#q458" class="toc-h3">计算机网络补充（小林coding）</a>
+<a href="#q459" class="toc-h4">OSI 七层模型和 TCP/IP 四层模型？</a>
+<a href="#q460" class="toc-h4">HTTP 报文结构？常用状态码？</a>
+<a href="#q461" class="toc-h4">GET 和 POST 的区别？</a>
+<a href="#q462" class="toc-h4">HTTP 和 HTTPS 的区别？HTTPS 握手过程？</a>
+<a href="#q463" class="toc-h4">HTTP 长连接和短连接？Keep-Alive？</a>
+<a href="#q464" class="toc-h4">HTTP 断点续传怎么实现？</a>
+<a href="#q465" class="toc-h4">TCP 拥塞控制（慢启动、拥塞避免、快重传、快恢复）</a>
+<a href="#q466" class="toc-h4">DNS 域名解析过程？</a>
+<a href="#q467" class="toc-h4">浏览器输入 URL 到页面显示的全过程？</a>
+<a href="#q468" class="toc-h3">MySQL 补充（小林coding）</a>
+<a href="#q469" class="toc-h4">MySQL 三大范式是什么？</a>
+<a href="#q470" class="toc-h4">MyISAM 和 InnoDB 的区别？</a>
+<a href="#q471" class="toc-h4">B+ 树的结构？为什么 MySQL 用 B+ 树不用 B 树？</a>
+<a href="#q472" class="toc-h4">聚簇索引和非聚簇索引的区别？</a>
+<a href="#q473" class="toc-h4">联合索引的最左匹配原则？索引失效场景？</a>
+<a href="#q474" class="toc-h4">事务的四大特性（ACID）？四种隔离级别？</a>
+<a href="#q475" class="toc-h4">MVCC 是什么？怎么实现可重复读？</a>
+<a href="#q476" class="toc-h4">行锁、间隙锁、临键锁的区别？</a>
+<a href="#q477" class="toc-h4">redo log、undo log、binlog 的作用和区别？</a>
+<a href="#q478" class="toc-h4">MySQL 主从复制原理？</a>
+<a href="#q479" class="toc-h3">Linux 命令（小林coding）</a>
+<a href="#q480" class="toc-h4">Linux 常用命令了解过哪些？</a>
+<a href="#q481" class="toc-h4">ps 命令里有哪些选项？</a>
+<a href="#q482" class="toc-h4">已知进程名如何杀掉进程？</a>
+<a href="#q483" class="toc-h4">如何查看端口被哪个进程占用？</a>
+<a href="#q484" class="toc-h4">sed 和 awk 有什么区别？</a>
+<a href="#q485" class="toc-h4">CPU 跑到 100% 排查思路？</a>
+<a href="#q486" class="toc-h4">如何查看系统负载情况？</a>
+<a href="#q487" class="toc-h4">top 和 free 查看内存有什么区别？</a>
+<a href="#q488" class="toc-h4">如何查看网络连接情况？</a>
 <a href="#q394" class="toc-h2">六、各公司笔试题</a>
 <a href="#q395" class="toc-h3">BIGO 音视频 SDK 笔试+面试题</a>
 <a href="#q396" class="toc-h4">笔试题（引擎&SDK方向）</a>
@@ -3981,6 +4035,428 @@ void backtrack(路径, 选择列表) {
 <a id="q391"></a>
 <a id="q392"></a>
 <a id="q393"></a>
+
+<a id="q435"></a>
+<h3>C++ 补充（小林coding）</h3>
+
+<a id="q436"></a>
+<h4>函数指针和指针函数的区别？</h4>
+<p><strong>函数指针</strong>是一个指针，指向一个函数：<code>int (*func)(int, int)</code>，核心是指针。</p>
+<p><strong>指针函数</strong>是一个函数，返回值是指针：<code>int* func(int, int)</code>，核心是函数。</p>
+<p>关键看最后两字：函数指针→指针，指针函数→函数。</p>
+
+<a id="q437"></a>
+<h4>全局变量定义在头文件中有什么问题？</h4>
+<p>当头文件被多个源文件 include 时，全局变量会被定义多次，导致重复定义链接错误。应将声明放在头文件（用 extern），定义放在源文件中。</p>
+
+<a id="q438"></a>
+<h4>extern "C" 的作用是什么？</h4>
+<p>C++ 支持函数重载，编译时会修改函数名（name mangling）。而 C 语言不会。当 C++ 需要调用 C 语言编写的函数时，用 <code>extern "C"</code> 告诉编译器按 C 方式链接，防止名字修饰导致找不到符号。</p>
+
+<a id="q439"></a>
+<h4>C++ 中 struct 和 class 的区别？</h4>
+<p>唯一区别是默认访问权限：<strong>struct 默认 public，class 默认 private</strong>。继承时同理：struct 默认 public 继承，class 默认 private 继承。其他功能完全相同，都可以有成员函数、构造析构、虚函数等。</p>
+
+<a id="q440"></a>
+<h4>指针传递和引用传递的区别？</h4>
+<ul>
+<li><strong>指针传递</strong>：形参获得实参指针的副本，是两个不同的指针变量但指向同一对象。可以通过解引用修改原对象，但修改形参指针本身不影响实参。</li>
+<li><strong>引用传递</strong>：形参是实参的别名，不产生独立对象，对形参的修改直接作用于实参。引用必须在定义时绑定且不可改变。</li>
+</ul>
+
+<a id="q441"></a>
+<h4>C++ 编译过程是什么？</h4>
+<p>四个阶段：<strong>预处理 → 编译 → 汇编 → 链接</strong></p>
+<ul>
+<li><strong>预处理</strong>：展开宏、处理 #include、条件编译，生成 .i 文件</li>
+<li><strong>编译</strong>：语法分析、语义分析，生成汇编代码 .s</li>
+<li><strong>汇编</strong>：将汇编转为机器码，生成目标文件 .o</li>
+<li><strong>链接</strong>：合并多个目标文件、解析符号引用、地址重定位，生成可执行文件</li>
+</ul>
+
+<a id="q442"></a>
+<h4>什么是内存对齐？为什么要对齐？</h4>
+<p><strong>内存对齐</strong>：结构体成员的起始地址必须是其大小的整数倍（或对齐数的整数倍）。</p>
+<p><strong>为什么要对齐</strong>：① CPU 访问内存按字（4/8字节）读取，不对齐可能需要两次访问；② 某些硬件平台不支持非对齐访问；③ 提高访问效率，用空间换时间。</p>
+<p><strong>对齐规则</strong>：第一个成员在偏移 0 处，后续成员的偏移 = 对齐数整数倍（对齐数 = min(成员大小, 默认对齐数)），结构体总大小 = 最大对齐数的整数倍。可用 <code>#pragma pack(n)</code> 修改默认对齐数。</p>
+
+<a id="q443"></a>
+<h4>深拷贝和浅拷贝的区别？</h4>
+<p><strong>浅拷贝</strong>：逐字节复制，包括指针成员。两个对象指向同一块堆内存，析构时会导致 double free。</p>
+<p><strong>深拷贝</strong>：不仅复制指针，还为指针指向的内容重新分配内存并复制数据。两个对象各自独立。</p>
+<p><strong>规则</strong>：如果类有指针成员且涉及资源管理，必须自定义拷贝构造函数和赋值运算符（Rule of Three/Five）。</p>
+
+<a id="q444"></a>
+<h4>静态链接和动态链接的区别？</h4>
+<ul>
+<li><strong>静态链接</strong>：链接时将库代码直接复制到可执行文件中。优点：独立运行、无依赖；缺点：文件大、更新需重新编译。</li>
+<li><strong>动态链接</strong>：运行时加载动态库（.dll/.so）。优点：文件小、共享内存、更新方便；缺点：有运行时加载开销、依赖库存在。</li>
+</ul>
+
+<a id="q445"></a>
+<h3>操作系统（小林coding）</h3>
+
+<a id="q446"></a>
+<h4>用户态和内核态的区别？为什么要分？</h4>
+<p><strong>区别</strong>：内核态 CPU 可执行所有指令、访问所有硬件；用户态只能执行受限指令，不能直接访问硬件。</p>
+<p><strong>为什么要分</strong>：<strong>安全性</strong>（防止恶意程序破坏系统）、<strong>稳定性</strong>（用户程序崩溃不影响系统）、<strong>隔离性</strong>（内核与用户程序有明确边界）。</p>
+<p><strong>切换方式</strong>：系统调用、中断、异常。切换时需要保存上下文、切换栈、切换权限。</p>
+
+<a id="q447"></a>
+<h4>进程和线程的区别？</h4>
+<ul>
+<li><strong>资源分配</strong>：进程是资源分配的基本单位，线程是调度的基本单位</li>
+<li><strong>开销</strong>：进程切换开销大（切地址空间），线程切换开销小（共享地址空间）</li>
+<li><strong>稳定性</strong>：进程间隔离，一个崩溃不影响其他；线程崩溃可能导致整个进程崩溃</li>
+<li><strong>通信</strong>：进程间通信需要 IPC（管道、共享内存等），线程间直接共享内存（需同步）</li>
+</ul>
+
+<a id="q448"></a>
+<h4>进程、线程、协程的区别？</h4>
+<ul>
+<li><strong>进程</strong>：独立内存空间，上下文切换开销最大，安全性最高</li>
+<li><strong>线程</strong>：共享进程内存，切换开销小，需要同步机制</li>
+<li><strong>协程</strong>：用户态轻量级线程，调度由程序控制（不需内核参与），切换开销极小，但编程模型复杂</li>
+</ul>
+
+<a id="q449"></a>
+<h4>进程间通信有哪些方式？</h4>
+<ul>
+<li><strong>管道</strong>：匿名管道（父子进程间，单向）、命名管道（任意进程间）</li>
+<li><strong>消息队列</strong>：内核中的消息链表，支持自定义数据类型</li>
+<li><strong>共享内存</strong>：最快的 IPC 方式，直接映射同一物理内存</li>
+<li><strong>信号量</strong>：用于同步和互斥，P/V 操作</li>
+<li><strong>信号</strong>：异步通信，如 SIGKILL、SIGTERM</li>
+<li><strong>Socket</strong>：跨机器通信，也可用于本地</li>
+</ul>
+
+<a id="q450"></a>
+<h4>死锁的四个必要条件？如何避免？</h4>
+<p><strong>四个必要条件</strong>（缺一不可）：</p>
+<ol>
+<li>互斥：资源一次只能被一个进程使用</li>
+<li>占有并等待：持有资源的同时请求新资源</li>
+<li>不可抢占：资源不能被强制剥夺</li>
+<li>循环等待：进程间形成资源等待环路</li>
+</ol>
+<p><strong>避免方法</strong>：破坏任一条件。常用银行家算法（分配前检查是否安全）。实际开发中：加锁顺序一致、使用超时机制、避免嵌套锁。</p>
+
+<a id="q451"></a>
+<h4>银行家算法是什么？</h4>
+<p>一种死锁避免算法。进程请求资源前，系统先计算分配后是否处于安全状态（存在序列使所有进程都能完成）。如果安全则分配，否则让进程等待。需要预先知道每个进程的最大资源需求。</p>
+
+<a id="q452"></a>
+<h4>虚拟内存的作用？页表是什么？</h4>
+<p><strong>虚拟内存</strong>：让每个进程拥有独立的、连续的地址空间，实际物理内存通过页表映射。作用：隔离进程、扩大可用内存（使用磁盘交换）、按需加载。</p>
+<p><strong>页表</strong>：虚拟地址到物理地址的映射表。多级页表减少内存占用，TLB（快表）加速地址转换。每个页表项记录物理页号和权限位（读/写/执行、是否在内存中）。</p>
+
+<a id="q453"></a>
+<h4>缺页中断是什么？malloc 底层怎么做的？</h4>
+<p><strong>缺页中断</strong>：CPU 访问的虚拟页不在物理内存中时触发，OS 从磁盘（swap）调入页面或分配新页。</p>
+<p><strong>malloc 底层</strong>：</p>
+<ul>
+<li>分配小于 128KB：用 <code>brk()</code> 扩展堆顶，内存留在堆区</li>
+<li>分配大于 128KB：用 <code>mmap()</code> 在文件映射区分配</li>
+<li>malloc 只分配虚拟内存，首次访问时才触发缺页中断分配物理内存（延迟分配）</li>
+</ul>
+
+<a id="q454"></a>
+<h4>select、poll、epoll 的区别？</h4>
+<table>
+<tr><th>特性</th><th>select</th><th>poll</th><th>epoll</th></tr>
+<tr><td>最大连接数</td><td>1024（FD_SETSIZE）</td><td>无上限</td><td>无上限</td></tr>
+<tr><td>时间复杂度</td><td>O(n)</td><td>O(n)</td><td>O(1)</td></tr>
+<tr><td>数据传递</td><td>每次拷贝 fd 集合</td><td>每次拷贝</td><td>共享内存（mmap）</td></tr>
+<tr><td>触发方式</td><td>LT</td><td>LT</td><td>LT + ET</td></tr>
+</table>
+<p>epoll 用红黑树管理 fd，就绪列表用双向链表，只在活跃 fd 上回调，性能不会随连接数增加而下降。Redis、Nginx 都用 epoll。</p>
+
+<a id="q455"></a>
+<h4>零拷贝是什么？有哪些实现方式？</h4>
+<p><strong>零拷贝</strong>：减少数据在内核态和用户态之间的拷贝次数。</p>
+<ul>
+<li><strong>mmap</strong>：将文件映射到用户空间内存，减少一次拷贝</li>
+<li><strong>sendfile</strong>：数据直接在内核态从文件到 Socket，不经过用户态</li>
+<li><strong>splice</strong>：在两个文件描述符之间通过管道传输数据</li>
+</ul>
+<p>Kafka 用 sendfile 实现高效消息传输，Nginx 也用 sendfile 零拷贝。</p>
+
+<a id="q456"></a>
+<h4>Copy On Write（写时复制）？</h4>
+<p><strong>写时复制</strong>：fork() 创建子进程时不立即复制父进程的整个地址空间，而是让父子进程共享同一份物理页。当某一方写入时，才复制该页。优点：fork 快、节省内存。Linux 的 fork 就是 COW 实现。</p>
+
+<a id="q457"></a>
+<h4>进程调度算法有哪些？</h4>
+<ul>
+<li><strong>FCFS</strong>（先来先服务）：简单但平均等待时间长</li>
+<li><strong>SJF</strong>（最短作业优先）：最优平均等待时间，但可能饿死长作业</li>
+<li><strong>时间片轮转</strong>：公平，适合交互式系统</li>
+<li><strong>优先级调度</strong>：按优先级调度，可能饿死低优先级</li>
+<li><strong>多级反馈队列</strong>：多个队列不同优先级和时间片，可动态调整，兼顾响应和吞吐</li>
+</ul>
+
+<a id="q458"></a>
+<h3>计算机网络补充（小林coding）</h3>
+
+<a id="q459"></a>
+<h4>OSI 七层模型和 TCP/IP 四层模型？</h4>
+<p><strong>OSI 七层</strong>：应用层 → 表示层 → 会话层 → 传输层 → 网络层 → 数据链路层 → 物理层。理论模型，未广泛实现。</p>
+<p><strong>TCP/IP 四层</strong>：应用层（HTTP/DNS/FTP）→ 传输层（TCP/UDP）→ 网络层（IP/ICMP）→ 网络接口层（以太网）。实际使用的模型。</p>
+<p>TCP 在传输层，IP 在网络层，HTTP 在应用层。</p>
+
+<a id="q460"></a>
+<h4>HTTP 报文结构？常用状态码？</h4>
+<p><strong>请求报文</strong>：请求行（方法 + URL + 版本）→ 请求头 → 空行 → 请求体</p>
+<p><strong>响应报文</strong>：状态行（版本 + 状态码 + 原因）→ 响应头 → 空行 → 响应体</p>
+<p><strong>常用状态码</strong>：</p>
+<ul>
+<li>200 成功 / 301 永久重定向 / 302 临时重定向</li>
+<li>404 未找到 / 403 禁止访问 / 405 方法不允许</li>
+<li>500 服务器内部错误 / 502 网关错误 / 504 网关超时</li>
+</ul>
+<p>502 是网关收到无效响应，504 是网关等待上游超时。</p>
+
+<a id="q461"></a>
+<h4>GET 和 POST 的区别？</h4>
+<ul>
+<li><strong>语义</strong>：GET 获取资源（安全且幂等），POST 提交数据（不安全、不幂等）</li>
+<li><strong>参数位置</strong>：GET 参数在 URL，POST 在 body</li>
+<li><strong>长度限制</strong>：GET 受 URL 长度限制，POST 无限制</li>
+<li><strong>缓存</strong>：GET 可缓存可收藏书签，POST 不可</li>
+</ul>
+
+<a id="q462"></a>
+<h4>HTTP 和 HTTPS 的区别？HTTPS 握手过程？</h4>
+<p><strong>区别</strong>：HTTP 明文传输端口 80；HTTPS = HTTP + SSL/TLS，加密传输端口 443，需要 CA 证书。</p>
+<p><strong>HTTPS 握手（TLS 1.2 RSA）</strong>：</p>
+<ol>
+<li>Client Hello：客户端发送支持的 TLS 版本、加密套件列表、随机数 Client Random</li>
+<li>Server Hello：服务端选择加密套件、发送随机数 Server Random + 服务器证书（含公钥）</li>
+<li>客户端验证证书合法性，生成 Pre-Master Secret，用服务端公钥加密发送</li>
+<li>双方用三个随机数生成会话密钥，后续通信用对称加密</li>
+</ol>
+<p>TLS 1.3 简化为 1-RTT，移除 RSA 密钥交换，只用 (EC)DHE 支持前向安全。</p>
+
+<a id="q463"></a>
+<h4>HTTP 长连接和短连接？Keep-Alive？</h4>
+<p><strong>短连接</strong>：每次请求建立 TCP → 请求 → 响应 → 断开 TCP，开销大。</p>
+<p><strong>长连接</strong>（Keep-Alive）：TCP 连接保持不断，多个 HTTP 请求复用同一连接。HTTP/1.1 默认开启。优点：减少握手开销、降低延迟。</p>
+
+<a id="q464"></a>
+<h4>HTTP 断点续传怎么实现？</h4>
+<p>核心是通过 Range 请求头告诉服务端需要的数据范围：</p>
+<ol>
+<li>服务端返回 <code>Accept-Ranges: bytes</code> 表示支持断点续传</li>
+<li>客户端记录已下载位置，断线后发送 <code>Range: bytes=512000-</code> 表示从 512K 处继续</li>
+<li>服务端返回 <code>206 Partial Content</code> + <code>Content-Range: bytes 512000-/1024000</code></li>
+</ol>
+<p>VA 项目的 HTTP 渐进式流服务器就支持 Range 请求。</p>
+
+<a id="q465"></a>
+<h4>TCP 拥塞控制（慢启动、拥塞避免、快重传、快恢复）</h4>
+<p><strong>慢启动</strong>：cwnd 从 1 开始，每收到一个 ACK 翻倍（指数增长）。</p>
+<p><strong>拥塞避免</strong>：cwnd 达到 ssthresh 后，每 RTT 加 1（线性增长）。</p>
+<p><strong>快重传</strong>：连续收到 3 个重复 ACK，立即重传丢失的包，不等超时。</p>
+<p><strong>快恢复</strong>：ssthresh = cwnd/2，cwnd = ssthresh（不回到 1），进入拥塞避免。</p>
+<p>超时则 ssthresh = cwnd/2，cwnd = 1，重新慢启动。</p>
+
+<a id="q466"></a>
+<h4>DNS 域名解析过程？</h4>
+<ol>
+<li>浏览器先查本地 DNS 缓存</li>
+<li>查操作系统 DNS 缓存</li>
+<li>查询本地 DNS 服务器（递归查询）</li>
+<li>本地 DNS 依次查询根域名服务器 → 顶级域名服务器 → 权威域名服务器（迭代查询）</li>
+<li>返回 IP 地址，各级缓存</li>
+</ol>
+<p>DNS 默认使用 UDP 端口 53（快），超过 512 字节或区域传输用 TCP。</p>
+
+<a id="q467"></a>
+<h4>浏览器输入 URL 到页面显示的全过程？</h4>
+<ol>
+<li><strong>DNS 解析</strong>：域名 → IP 地址</li>
+<li><strong>TCP 三次握手</strong>：建立连接</li>
+<li><strong>TLS 握手</strong>：如果是 HTTPS</li>
+<li><strong>发送 HTTP 请求</strong></li>
+<li><strong>服务器处理</strong>：接收请求 → 路由 → 查数据库 → 生成响应</li>
+<li><strong>接收响应</strong>：浏览器接收 HTML</li>
+<li><strong>渲染</strong>：解析 HTML → 构建 DOM → 解析 CSS → 构建 CSSOM → 布局 → 绘制 → 合成</li>
+</ol>
+
+<a id="q468"></a>
+<h3>MySQL 补充（小林coding）</h3>
+
+<a id="q469"></a>
+<h4>MySQL 三大范式是什么？</h4>
+<ul>
+<li><strong>1NF</strong>：每列不可再分（原子性）</li>
+<li><strong>2NF</strong>：非主属性完全依赖主键（消除部分依赖，针对联合主键）</li>
+<li><strong>3NF</strong>：非主属性不传递依赖主键（消除传递依赖）</li>
+</ul>
+<p>实际开发中为了性能会适当反范式（冗余字段减少 JOIN）。</p>
+
+<a id="q470"></a>
+<h4>MyISAM 和 InnoDB 的区别？</h4>
+<table>
+<tr><th>特性</th><th>MyISAM</th><th>InnoDB</th></tr>
+<tr><td>事务</td><td>不支持</td><td>支持</td></tr>
+<tr><td>锁粒度</td><td>表锁</td><td>行锁</td></tr>
+<tr><td>外键</td><td>不支持</td><td>支持</td></tr>
+<tr><td>索引结构</td><td>非聚簇索引</td><td>聚簇索引</td></tr>
+<tr><td>崩溃恢复</td><td>不支持</td><td>支持（redo log）</td></tr>
+</table>
+<p>MySQL 5.5 后默认 InnoDB。VA 项目使用 SQLite，但概念相通。</p>
+
+<a id="q471"></a>
+<h4>B+ 树的结构？为什么 MySQL 用 B+ 树不用 B 树？</h4>
+<p><strong>B+ 树</strong>：非叶节点只存索引（不存数据），所有数据在叶子节点，叶子节点用双向链表连接。</p>
+<p><strong>为什么不用 B 树</strong>：</p>
+<ul>
+<li>B+ 树非叶节点不存数据，单页能存更多索引，树更矮，磁盘 IO 更少</li>
+<li>范围查询高效：叶子链表直接遍历，B 树要中序遍历</li>
+<li>查询性能稳定：每次都要到叶子节点，不会像 B 树有时在非叶节点就命中</li>
+</ul>
+
+<a id="q472"></a>
+<h4>聚簇索引和非聚簇索引的区别？</h4>
+<p><strong>聚簇索引</strong>：叶子节点存储完整数据行，索引和数据存放在一起。一张表只能有一个（通常是主键）。InnoDB 的主键索引就是聚簇索引。</p>
+<p><strong>非聚簇索引（二级索引）</strong>：叶子节点存储主键值，需要回表查询才能获得完整数据。可以有多个。</p>
+<p><strong>覆盖索引</strong>：查询字段都在索引中，不需要回表，性能最优。</p>
+
+<a id="q473"></a>
+<h4>联合索引的最左匹配原则？索引失效场景？</h4>
+<p><strong>最左匹配</strong>：联合索引 (a, b, c) 只有从 a 开始才能使用索引。a → ab → abc 可以，b → bc → c 不行。</p>
+<p><strong>索引失效场景</strong>：</p>
+<ul>
+<li>对索引列做函数/计算：<code>WHERE YEAR(date) = 2024</code></li>
+<li>隐式类型转换：字符串列用数字查询</li>
+<li>LIKE 左模糊：<code>LIKE '%abc'</code></li>
+<li>OR 条件中有非索引列</li>
+<li>不满足最左匹配</li>
+</ul>
+
+<a id="q474"></a>
+<h4>事务的四大特性（ACID）？四种隔离级别？</h4>
+<p><strong>ACID</strong>：原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）、持久性（Durability）</p>
+<table>
+<tr><th>隔离级别</th><th>脏读</th><th>不可重复读</th><th>幻读</th></tr>
+<tr><td>读未提交</td><td>有</td><td>有</td><td>有</td></tr>
+<tr><td>读已提交（RC）</td><td>无</td><td>有</td><td>有</td></tr>
+<tr><td>可重复读（RR）</td><td>无</td><td>无</td><td>有</td></tr>
+<tr><td>串行化</td><td>无</td><td>无</td><td>无</td></tr>
+</table>
+<p>MySQL InnoDB 默认 RR，通过 MVCC + 间隙锁解决了幻读。RC 通过 Read View 每次生成新快照。</p>
+
+<a id="q475"></a>
+<h4>MVCC 是什么？怎么实现可重复读？</h4>
+<p><strong>MVCC</strong>（多版本并发控制）：通过在每行记录后加两个隐藏列（创建版本号 trx_id、删除版本号）来实现。</p>
+<p><strong>实现</strong>：</p>
+<ul>
+<li>事务开始时生成 Read View（包含当前活跃事务列表）</li>
+<li>查询时比较行的 trx_id 与 Read View：如果 trx_id 在活跃列表中，则不可见</li>
+<li>RR 级别：Read View 在事务第一次查询时生成，之后不变（所以可重复读）</li>
+<li>RC 级别：每次查询都生成新 Read View（所以不可重复读）</li>
+</ul>
+
+<a id="q476"></a>
+<h4>行锁、间隙锁、临键锁的区别？</h4>
+<ul>
+<li><strong>记录锁（Record Lock）</strong>：锁住单行索引记录</li>
+<li><strong>间隙锁（Gap Lock）</strong>：锁住索引记录之间的间隙（不包含记录本身），防止插入</li>
+<li><strong>临键锁（Next-Key Lock）</strong>：记录锁 + 间隙锁，锁住一个左开右闭区间</li>
+</ul>
+<p>InnoDB 在 RR 级别下用临键锁解决幻读。当查询使用唯一索引等值匹配且记录存在时，退化为记录锁。</p>
+
+<a id="q477"></a>
+<h4>redo log、undo log、binlog 的作用和区别？</h4>
+<table>
+<tr><th>日志</th><th>作用</th><th>层级</th><th>写入时机</th></tr>
+<tr><td>redo log</td><td>崩溃恢复（持久性）</td><td>InnoDB 引擎层</td><td>事务执行中</td></tr>
+<tr><td>undo log</td><td>回滚 + MVCC（原子性）</td><td>InnoDB 引擎层</td><td>修改前</td></tr>
+<tr><td>binlog</td><td>复制 + 恢复</td><td>Server 层</td><td>事务提交时</td></tr>
+</table>
+<p><strong>两阶段提交</strong>：redo log 先 prepare → binlog 写入 → redo log commit，保证 redo log 和 binlog 一致。</p>
+
+<a id="q478"></a>
+<h4>MySQL 主从复制原理？</h4>
+<ol>
+<li>主库将数据变更写入 binlog</li>
+<li>从库 IO 线程连接主库，请求 binlog</li>
+<li>主库发送 binlog，从库写入 relay log（中继日志）</li>
+<li>从库 SQL 线程读取 relay log，重放 SQL，完成同步</li>
+</ol>
+<p>复制方式：异步复制（默认）、半同步复制、组复制（MGR）。</p>
+
+<a id="q479"></a>
+<h3>Linux 命令（小林coding）</h3>
+
+<a id="q480"></a>
+<h4>Linux 常用命令了解过哪些？</h4>
+<ul>
+<li><strong>文件</strong>：mv, mkdir, cd, ls, cp, rm, find, grep</li>
+<li><strong>进程</strong>：ps, top, kill, pkill, jobs, bg, fg</li>
+<li><strong>权限</strong>：chmod, chown, useradd, groupadd, sudo</li>
+<li><strong>网络</strong>：netstat, ip addr, ping, telnet, curl, ss</li>
+<li><strong>系统</strong>：free, df, du, uname, uptime, vmstat</li>
+</ul>
+
+<a id="q481"></a>
+<h4>ps 命令里有哪些选项？</h4>
+<p>常用选项：<code>-e</code> 显示所有进程，<code>-f</code> 显示详细信息，<code>-u</code> 按用户，<code>-aux</code> 组合查看全部。</p>
+<p>展示内容：PID、PPID、USER、%CPU、%MEM、VSZ（虚拟内存）、RSS（物理内存）、STAT（状态）、COMMAND。</p>
+<p>常用：<code>ps -ef | grep nginx</code> 或 <code>ps -aux</code>。</p>
+
+<a id="q482"></a>
+<h4>已知进程名如何杀掉进程？</h4>
+<pre><code>ps -ef | grep 进程名    # 先找 PID
+kill PID              # 优雅终止（SIGTERM）
+kill -9 PID           # 强制终止（SIGKILL）
+pkill 进程名           # 直接按名杀（推荐）
+killall 进程名         # 精确匹配杀所有同名进程</code></pre>
+<p>优先用 kill（SIGTERM）让进程清理后退出，卡死时才用 kill -9。</p>
+
+<a id="q483"></a>
+<h4>如何查看端口被哪个进程占用？</h4>
+<pre><code>lsof -i :80           # 查看哪个进程占用 80 端口
+netstat -napt | grep ':80 '  # 用 netstat 查
+ss -lntp sport = :80  # 用 ss 查</code></pre>
+<p>注意：<code>grep 80</code> 会误匹配 8080 等，用 <code>grep ':80 '</code>（冒号+空格）精确匹配。</p>
+
+<a id="q484"></a>
+<h4>sed 和 awk 有什么区别？</h4>
+<ul>
+<li><strong>sed</strong>：流编辑器，适合简单的文本替换、删除、插入。逐行处理：<code>sed -i 's/old/new/g' file</code></li>
+<li><strong>awk</strong>：更强大的文本处理工具，支持字段操作、条件判断、循环。适合结构化数据：<code>awk '{print $3}' file</code></li>
+</ul>
+<p>简单替换用 sed，复杂分析用 awk。</p>
+
+<a id="q485"></a>
+<h4>CPU 跑到 100% 排查思路？</h4>
+<ol>
+<li><code>top</code> 找到占用 CPU 高的进程 PID</li>
+<li><code>top -H -p PID</code> 或 <code>ps -T -p PID</code> 找到高 CPU 线程 TID</li>
+<li>查看线程调用栈：Java 用 <code>jstack</code>（TID 转十六进制），C/C++ 用 <code>perf top</code> 或 <code>gdb</code></li>
+<li>根据堆栈定位代码，排查死循环、热点计算或频繁系统调用</li>
+</ol>
+
+<a id="q486"></a>
+<h4>如何查看系统负载情况？</h4>
+<p><code>top</code> 或 <code>uptime</code> 查看 Load Average（1/5/15分钟平均负载）。</p>
+<p>负载值不应超过 CPU 核数的 1-1.5 倍。三个数字递增说明负载在下降，递减说明在上升。</p>
+<p>平均负载 = 运行中 + 等待 CPU + 等待 I/O 的进程数。用 <code>mpstat -P ALL 1</code> 区分是 CPU 密集还是 I/O 密集。</p>
+
+<a id="q487"></a>
+<h4>top 和 free 查看内存有什么区别？</h4>
+<p><strong>free</strong>：只显示内存概览（total/used/free/buff/cache/available + swap）。</p>
+<p><strong>top</strong>：除了内存还显示进程列表、CPU、任务数等全面信息。适合实时监控。</p>
+<p>关注 <code>available</code> 而非 <code>free</code>，因为 buff/cache 可被快速释放。</p>
+
+<a id="q488"></a>
+<h4>如何查看网络连接情况？</h4>
+<pre><code>netstat -napt    # 查看所有 TCP 连接和端口
+ss -tnp          # 更快的 netstat 替代品
+lsof -i          # 查看进程的网络连接</code></pre>
+<p>可以观察每个 TCP 连接的状态（LISTEN/ESTABLISHED/TIME_WAIT 等）和四元组信息。</p>
 
 <a id="q394"></a>
 <h2 class="section-title">六、各公司笔试题</h2>
