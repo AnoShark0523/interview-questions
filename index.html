@@ -59,6 +59,45 @@ tr:nth-child(even){background:#f8f9ff}
 .search-result mark{background:#ffd54f;color:#000;padding:0 2px;border-radius:2px}
 .search-empty{padding:20px;text-align:center;color:var(--text2);font-size:16px}
 .search-count{font-size:14px;color:var(--text2);padding:8px 20px;background:#f8f9fa;border-bottom:1px solid var(--border)}
+.edit-toolbar{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.edit-toggle-btn,.edit-add-btn,.edit-save-btn,.edit-import-btn,.edit-reset-btn{padding:8px 18px;font-size:15px;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-weight:600;transition:all .2s}
+.edit-toggle-btn{background:linear-gradient(135deg,#4a6fa5,#6a8db5);color:#fff}
+.edit-toggle-btn.active{background:linear-gradient(135deg,#e53935,#f44336)}
+.edit-add-btn{background:#43a047;color:#fff}
+.edit-save-btn{background:#7b1fa2;color:#fff}
+.edit-import-btn{background:#f57c00;color:#fff}
+.edit-reset-btn{background:#757575;color:#fff}
+.edit-toggle-btn:hover,.edit-add-btn:hover,.edit-save-btn:hover,.edit-import-btn:hover,.edit-reset-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.save-status{font-size:13px;color:var(--text2);margin-left:4px}
+.save-status.saved{color:#43a047}
+.save-status.saving{color:#f57c00}
+body.edit-mode h2,body.edit-mode h3,body.edit-mode h4,body.edit-mode h5{outline:2px dashed transparent;outline-offset:2px;transition:outline-color .15s;border-radius:6px}
+body.edit-mode h2:hover,body.edit-mode h3:hover,body.edit-mode h4:hover,body.edit-mode h5:hover{outline-color:#ff9800}
+body.edit-mode [contenteditable="true"]:focus{outline:2px solid #4a6fa5;background:rgba(74,111,165,.03);border-radius:4px}
+body.edit-mode p,body.edit-mode li,body.edit-mode td,body.edit-mode th,body.edit-mode blockquote,body.edit-mode pre{outline:1px dashed transparent;outline-offset:1px;transition:outline-color .15s}
+body.edit-mode p:hover,body.edit-mode li:hover,body.edit-mode td:hover,body.edit-mode th:hover,body.edit-mode blockquote:hover{outline-color:#bbb}
+.block-controls{display:none;gap:6px;align-items:center;margin:4px 0;flex-wrap:wrap}
+body.edit-mode .block-controls{display:flex}
+.block-btn{padding:4px 10px;font-size:13px;border:1.5px solid var(--border);border-radius:6px;background:#fff;cursor:pointer;transition:all .15s;font-family:inherit;user-select:none}
+.block-btn:hover{border-color:var(--accent);background:#f0f4ff}
+.block-btn.del-block{border-color:#ffcdd2;color:#e53935}
+.block-btn.del-block:hover{background:#ffebee;border-color:#e53935}
+.block-btn.del-block.confirming{position:relative;overflow:hidden;border-color:#e53935;background:#ffebee}
+.block-btn.del-block.confirming::after{content:'';position:absolute;left:0;top:0;height:100%;width:0;background:rgba(229,57,53,.25);animation:delProgress 3s linear forwards}
+@keyframes delProgress{from{width:0}to{width:100%}}
+.add-dialog-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.4);z-index:2000;display:none;align-items:center;justify-content:center}
+.add-dialog-overlay.show{display:flex}
+.add-dialog{background:#fff;border-radius:16px;padding:28px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.add-dialog h3{font-size:20px;color:var(--accent);margin:0 0 16px;padding:0;background:none;border:none}
+.add-dialog label{display:block;font-size:15px;font-weight:600;color:var(--text);margin:12px 0 6px}
+.add-dialog select,.add-dialog input,.add-dialog textarea{width:100%;padding:10px 14px;font-size:15px;border:2px solid var(--border);border-radius:8px;outline:none;font-family:inherit;transition:border-color .2s}
+.add-dialog select:focus,.add-dialog input:focus,.add-dialog textarea:focus{border-color:var(--accent)}
+.add-dialog textarea{min-height:150px;resize:vertical;line-height:1.7}
+.add-dialog .dialog-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}
+.add-dialog .dialog-actions button{padding:10px 22px;font-size:15px;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-weight:600}
+.add-dialog .btn-cancel{background:#e0e0e0;color:var(--text)}
+.add-dialog .btn-confirm{background:var(--accent);color:#fff}
+.section-select optgroup{font-weight:700;color:var(--accent)}
 @media(max-width:768px){
 :root{--text2:#666}
 body{font-size:16px;line-height:1.75}
@@ -69,6 +108,14 @@ body{font-size:16px;line-height:1.75}
 .search-bar{padding:10px 16px;position:sticky;top:0;z-index:1000}
 .search-input{font-size:16px;padding:10px 14px}
 .mic-btn{width:42px;height:42px;font-size:20px}
+.edit-toolbar{gap:6px;margin-top:8px}
+.edit-toggle-btn,.edit-add-btn,.edit-save-btn,.edit-import-btn,.edit-reset-btn{padding:6px 12px;font-size:13px}
+.block-controls{flex-wrap:wrap;gap:4px}
+.block-btn{padding:4px 8px;font-size:12px}
+.add-dialog{padding:20px;max-width:92%}
+.add-dialog h3{font-size:18px}
+.add-dialog label{font-size:14px}
+.add-dialog select,.add-dialog input,.add-dialog textarea{font-size:14px;padding:8px 12px}
 .search-results{max-height:60vh}
 .search-result{padding:8px 16px}
 .search-result .result-title{font-size:15px;line-height:1.3}
@@ -126,6 +173,13 @@ pre{font-size:12px!important}
 <button class="mic-btn" id="micBtn" title="点击语音搜索">🎤</button>
 </div>
 <div class="search-results" id="searchResults"></div>
+<div class="edit-toolbar">
+<button class="edit-toggle-btn" id="editToggleBtn">✏️ 编辑模式</button>
+<button class="edit-add-btn" id="editAddBtn" style="display:none">➕ 添加题目</button>
+<button class="edit-save-btn" id="editSaveBtn" style="display:none">💾 导出数据</button>
+<button class="edit-import-btn" id="editImportBtn" style="display:none">📥 导入数据</button>
+<button class="edit-reset-btn" id="editResetBtn" style="display:none">🔄 重置数据</button>
+<span class="save-status" id="saveStatus"></span>
 </div>
 <div class="toc-card">
 <h2>📋 目录索引</h2>
@@ -3890,6 +3944,21 @@ void backtrack(路径, 选择列表) {
 </div>
 </div>
 <button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div class="add-dialog-overlay" id="addDialogOverlay">
+<div class="add-dialog">
+<h3>➕ 添加新题目</h3>
+<label>选择分类</label>
+<select class="section-select" id="addSectionSelect"></select>
+<label>标题（问题）</label>
+<input type="text" id="addTitleInput" placeholder="例如：TCP 三次握手的过程？">
+<label>答案（支持简单 Markdown）</label>
+<textarea id="addAnswerInput" placeholder="输入答案内容..."></textarea>
+<div class="dialog-actions">
+<button class="btn-cancel" id="addCancelBtn">取消</button>
+<button class="btn-confirm" id="addConfirmBtn">添加</button>
+</div>
+</div>
+</div>
 <script>
 (function(){
   // Build search index from all anchors and their following content
@@ -4011,6 +4080,11 @@ void backtrack(路径, 选择列表) {
     }
   }
 
+  function doSearch(txt){
+    input.value=txt;
+    search(txt);
+  }
+
   // Debounce for fast response
   var debounceTimer=null;
   input.addEventListener('input',function(){
@@ -4067,6 +4141,39 @@ void backtrack(路径, 选择列表) {
 
   console.log('Search index loaded: '+index.length+' questions');
 
+  // Rebuild index when content changes (edit mode)
+  function rebuildIndex(){
+    index=[];
+    var anchors=document.querySelectorAll('a[id^="q"]');
+    for(var i=0;i<anchors.length;i++){
+      var a=anchors[i];
+      var id=a.getAttribute('id');
+      var el=a.nextElementSibling;
+      while(el && !(el.tagName && el.tagName.match(/^H[2-5]$/))){el=el.nextElementSibling}
+      var title='';
+      var level=0;
+      if(el && el.tagName && el.tagName.match(/^H[2-5]$/)){
+        title=el.textContent.trim();
+        level=parseInt(el.tagName.charAt(1));
+      }
+      var body='';
+      var node=el?el.nextElementSibling:null;
+      var count=0;
+      while(node && count<20){
+        if(node.tagName==='A' && node.getAttribute('id') && node.getAttribute('id').indexOf('q')===0){break}
+        if(node.tagName==='H2' || node.tagName==='H3' || node.tagName==='H4' || node.tagName==='H5'){break}
+        var t=node.textContent.trim();
+        if(t){body+=t+' '}
+        count++;
+        node=node.nextElementSibling;
+      }
+      index.push({id:id,title:title,body:body.substring(0,300),level:level});
+    }
+    console.log('Search index rebuilt: '+index.length+' questions');
+  }
+
+  window.addEventListener('rebuildSearchIndex',rebuildIndex);
+
   // === Voice Search (Web Speech API) ===
   var micBtn=document.getElementById('micBtn');
   var recognition=null;
@@ -4122,6 +4229,492 @@ void backtrack(路径, 选择列表) {
     });
     micBtn.style.opacity='0.5';
     micBtn.title='当前浏览器不支持语音搜索';
+  }
+})();
+
+// === Edit Mode ===
+(function(){
+  var editMode=false;
+  var STORAGE_KEY='interview_edit_data';
+  var saveTimer=null;
+
+  var editToggleBtn=document.getElementById('editToggleBtn');
+  var editAddBtn=document.getElementById('editAddBtn');
+  var editSaveBtn=document.getElementById('editSaveBtn');
+  var editImportBtn=document.getElementById('editImportBtn');
+  var editResetBtn=document.getElementById('editResetBtn');
+  var saveStatus=document.getElementById('saveStatus');
+  var addDialogOverlay=document.getElementById('addDialogOverlay');
+  var addSectionSelect=document.getElementById('addSectionSelect');
+  var addTitleInput=document.getElementById('addTitleInput');
+  var addAnswerInput=document.getElementById('addAnswerInput');
+  var addCancelBtn=document.getElementById('addCancelBtn');
+  var addConfirmBtn=document.getElementById('addConfirmBtn');
+
+  // --- Section detection ---
+  function getSections(){
+    var sections=[];
+    var anchors=document.querySelectorAll('a[id^="q"]');
+    for(var i=0;i<anchors.length;i++){
+      var a=anchors[i];
+      var el=a.nextElementSibling;
+      while(el && el.tagName!=='H2'){el=el.nextElementSibling}
+      if(el && el.tagName==='H2'){
+        sections.push({id:a.getAttribute('id'),title:el.textContent.trim(),anchor:a});
+      }
+    }
+    return sections;
+  }
+
+  // --- Block detection ---
+  function getBlocks(){
+    var anchors=document.querySelectorAll('a[id^="q"]');
+    var blocks=[];
+    for(var i=0;i<anchors.length;i++){
+      var a=anchors[i];
+      var id=a.getAttribute('id');
+      var el=a.nextElementSibling;
+      while(el && !(el.tagName && el.tagName.match(/^H[2-5]$/))){
+        el=el.nextElementSibling;
+      }
+      if(!el) continue;
+      blocks.push({anchor:a,id:id,heading:el,level:parseInt(el.tagName.charAt(1))});
+    }
+    return blocks;
+  }
+
+  // --- Add block controls ---
+  function injectBlockControls(){
+    var existing=document.querySelectorAll('.block-controls');
+    for(var i=0;i<existing.length;i++){existing[i].parentNode.removeChild(existing[i]);}
+
+    var blocks=getBlocks();
+    for(var i=0;i<blocks.length;i++){
+      (function(block){
+        var heading=block.heading;
+        var controls=document.createElement('div');
+        controls.className='block-controls';
+        controls.innerHTML='<span style="font-size:12px;color:#999">'+block.id+'</span>'+
+          '<button class="block-btn add-after" data-id="'+block.id+'">➕ 在下方添加</button>'+
+          '<button class="block-btn del-block" data-id="'+block.id+'">🗑️ 删除此题</button>';
+        heading.parentNode.insertBefore(controls,heading);
+
+        // Add after
+        var addBtn=controls.querySelector('.add-after');
+        addBtn.addEventListener('click',function(){
+          var select=document.getElementById('addSectionSelect');
+          populateSectionSelect();
+          select.value=block.id;
+          addTitleInput.value='';
+          addAnswerInput.value='';
+          addDialogOverlay.classList.add('show');
+          addDialogOverlay._insertAfterId=block.id;
+          addTitleInput.focus();
+        });
+
+        // Delete with long-press
+        var delBtn=controls.querySelector('.del-block');
+        var delTimer=null;
+        var delConfirming=false;
+        function startDelete(){
+          if(delConfirming)return;
+          delConfirming=true;
+          delBtn.classList.add('confirming');
+          delBtn.textContent='🗑️ 确认删除...';
+          delTimer=setTimeout(function(){
+            deleteBlock(block.id);
+            delConfirming=false;
+          },3000);
+        }
+        function cancelDelete(){
+          if(delTimer){clearTimeout(delTimer);delTimer=null;}
+          if(delConfirming){
+            delConfirming=false;
+            delBtn.classList.remove('confirming');
+            delBtn.textContent='🗑️ 删除此题';
+          }
+        }
+        delBtn.addEventListener('mousedown',startDelete);
+        delBtn.addEventListener('touchstart',function(e){e.preventDefault();startDelete();});
+        delBtn.addEventListener('mouseup',cancelDelete);
+        delBtn.addEventListener('mouseleave',cancelDelete);
+        delBtn.addEventListener('touchend',cancelDelete);
+      })(blocks[i]);
+    }
+  }
+
+  // --- Delete block ---
+  function deleteBlock(id){
+    var anchor=document.getElementById(id);
+    if(!anchor)return;
+    var nextAnchor=null;
+    var allAnchors=document.querySelectorAll('a[id^="q"]');
+    for(var i=0;i<allAnchors.length;i++){
+      if(allAnchors[i].getAttribute('id')===id && i+1<allAnchors.length){
+        nextAnchor=allAnchors[i+1];
+        break;
+      }
+    }
+    var node=anchor;
+    while(node && node!==nextAnchor){
+      var next=node.nextSibling;
+      node.parentNode.removeChild(node);
+      node=next;
+    }
+    // Also remove the controls
+    saveToStorage();
+    rebuildSearchIndex();
+    injectBlockControls();
+    showStatus('已删除 '+id,'saved');
+  }
+
+  // --- Add block ---
+  function addBlock(afterId,title,answer,level){
+    var anchor=document.getElementById(afterId);
+    var newId='q'+Date.now();
+    if(!anchor){
+      var content=document.querySelector('.content')||document.querySelector('.container');
+      var newAnchor=document.createElement('a');
+      newAnchor.setAttribute('id',newId);
+      var h=document.createElement('h4');
+      h.textContent=title;
+      content.appendChild(newAnchor);
+      content.appendChild(h);
+      if(answer){
+        var p=document.createElement('p');
+        p.innerHTML=convertMarkdown(answer);
+        content.appendChild(p);
+      }
+    }else{
+      var allAnchors=document.querySelectorAll('a[id^="q"]');
+      var nextAnchor=null;
+      for(var j=0;j<allAnchors.length;j++){
+        if(allAnchors[j].getAttribute('id')===afterId && j+1<allAnchors.length){
+          nextAnchor=allAnchors[j+1];
+          break;
+        }
+      }
+      var newAnchor=document.createElement('a');
+      newAnchor.setAttribute('id',newId);
+      var h=document.createElement(level?'h'+level:'h4');
+      h.textContent=title;
+      if(nextAnchor){
+        nextAnchor.parentNode.insertBefore(newAnchor,nextAnchor);
+        newAnchor.parentNode.insertBefore(h,newAnchor.nextSibling);
+      }else{
+        var content=document.querySelector('.content')||document.querySelector('.container');
+        content.appendChild(newAnchor);
+        content.appendChild(h);
+      }
+      if(answer){
+        var p=document.createElement('p');
+        p.innerHTML=convertMarkdown(answer);
+        h.parentNode.insertBefore(p,h.nextSibling);
+      }
+    }
+    saveToStorage();
+    rebuildSearchIndex();
+    injectBlockControls();
+    showStatus('已添加新题目','saved');
+    var newEl=document.getElementById(newId);
+    if(newEl)newEl.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  // --- Simple Markdown to HTML ---
+  function convertMarkdown(text){
+    var html=text;
+    html=html.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    html=html.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+    html=html.replace(/`(.+?)`/g,'<code>$1</code>');
+    html=html.replace(/^### (.+)$/gm,'<h5>$1</h5>');
+    html=html.replace(/^## (.+)$/gm,'<h4>$1</h4>');
+    var lines=html.split('\n');
+    var result=[];
+    var inList=false;
+    for(var i=0;i<lines.length;i++){
+      var line=lines[i].trim();
+      if(line.match(/^- /)){
+        if(!inList){result.push('<ul>');inList=true;}
+        result.push('<li>'+line.replace(/^- /,'')+'</li>');
+      }else if(line.match(/^\d+\. /)){
+        result.push('<p>'+line+'</p>');
+      }else if(line===''){
+        if(inList){result.push('</ul>');inList=false;}
+      }else if(line.match(/^<h[45]>/)){
+        if(inList){result.push('</ul>');inList=false;}
+        result.push(line);
+      }else{
+        if(inList){result.push('</ul>');inList=false;}
+        result.push('<p>'+line+'</p>');
+      }
+    }
+    if(inList)result.push('</ul>');
+    return result.join('\n');
+  }
+
+  // --- Populate section select ---
+  function populateSectionSelect(){
+    var sections=getSections();
+    addSectionSelect.innerHTML='';
+    for(var i=0;i<sections.length;i++){
+      var opt=document.createElement('option');
+      opt.value=sections[i].id;
+      opt.textContent=sections[i].title;
+      addSectionSelect.appendChild(opt);
+    }
+  }
+
+  // --- Toggle edit mode ---
+  editToggleBtn.addEventListener('click',function(){
+    editMode=!editMode;
+    document.body.classList.toggle('edit-mode',editMode);
+    editToggleBtn.textContent=editMode?'👁️ 退出编辑':'✏️ 编辑模式';
+    editToggleBtn.classList.toggle('active',editMode);
+    editAddBtn.style.display=editMode?'inline-block':'none';
+    editSaveBtn.style.display=editMode?'inline-block':'none';
+    editImportBtn.style.display=editMode?'inline-block':'none';
+    editResetBtn.style.display=editMode?'inline-block':'none';
+
+    var contentElements=document.querySelectorAll('h2,h3,h4,h5,p,li,blockquote,pre,td,th');
+    for(var i=0;i<contentElements.length;i++){
+      contentElements[i].setAttribute('contenteditable',editMode?'true':'false');
+    }
+
+    if(editMode){
+      injectBlockControls();
+      showStatus('编辑模式已开启','saved');
+    }else{
+      var controls=document.querySelectorAll('.block-controls');
+      for(var j=0;j<controls.length;j++){controls[j].parentNode.removeChild(controls[j]);}
+      saveToStorage();
+      showStatus('已保存','saved');
+    }
+  });
+
+  // --- Add button ---
+  editAddBtn.addEventListener('click',function(){
+    populateSectionSelect();
+    addDialogOverlay._insertAfterId=null;
+    addTitleInput.value='';
+    addAnswerInput.value='';
+    addDialogOverlay.classList.add('show');
+    addTitleInput.focus();
+  });
+
+  // --- Dialog buttons ---
+  addCancelBtn.addEventListener('click',function(){
+    addDialogOverlay.classList.remove('show');
+  });
+  addDialogOverlay.addEventListener('click',function(e){
+    if(e.target===addDialogOverlay)addDialogOverlay.classList.remove('show');
+  });
+  addConfirmBtn.addEventListener('click',function(){
+    var title=addTitleInput.value.trim();
+    var answer=addAnswerInput.value.trim();
+    if(!title){
+      addTitleInput.focus();
+      addTitleInput.style.borderColor='#e53935';
+      setTimeout(function(){addTitleInput.style.borderColor='';},2000);
+      return;
+    }
+    var afterId=addDialogOverlay._insertAfterId||addSectionSelect.value;
+    addBlock(afterId,title,answer,4);
+    addDialogOverlay.classList.remove('show');
+  });
+
+  // --- Export ---
+  editSaveBtn.addEventListener('click',function(){
+    var blocks=getBlocks();
+    var data=[];
+    for(var i=0;i<blocks.length;i++){
+      var content=[];
+      var el=blocks[i].heading;
+      var nextBlock=blocks[i+1];
+      while(el){
+        if(nextBlock && el===nextBlock.anchor)break;
+        if(el.tagName==='A' && el.getAttribute('id') && el.getAttribute('id').indexOf('q')===0 && el!==blocks[i].anchor)break;
+        if(el.tagName && el.tagName.match(/^H[2-5]$/)){
+          if(el!==blocks[i].heading)break;
+        }
+        content.push(el.outerHTML);
+        el=el.nextSibling;
+        if(!el)break;
+      }
+      data.push({id:blocks[i].id,title:blocks[i].heading.textContent.trim(),level:blocks[i].level,html:content.join('\n')});
+    }
+    var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='interview_questions_'+new Date().toISOString().slice(0,10)+'.json';
+    a.click();
+    showStatus('已导出 '+data.length+' 条题目','saved');
+  });
+
+  // --- Import ---
+  editImportBtn.addEventListener('click',function(){
+    var input=document.createElement('input');
+    input.type='file';
+    input.accept='.json';
+    input.onchange=function(e){
+      var file=e.target.files[0];
+      if(!file)return;
+      var reader=new FileReader();
+      reader.onload=function(ev){
+        try{
+          var data=JSON.parse(ev.target.result);
+          if(!Array.isArray(data)){alert('文件格式错误');return;}
+          var content=document.querySelector('.content')||document.querySelector('.container');
+          content.innerHTML='';
+          for(var i=0;i<data.length;i++){
+            var item=data[i];
+            var anchor=document.createElement('a');
+            anchor.setAttribute('id',item.id||('q_imp_'+i));
+            content.appendChild(anchor);
+            var h=document.createElement('h'+(item.level||4));
+            h.textContent=item.title;
+            content.appendChild(h);
+            if(item.html){
+              var temp=document.createElement('div');
+              temp.innerHTML=item.html;
+              var first=true;
+              while(temp.firstChild){
+                var child=temp.firstChild;
+                if(first && child.tagName && child.tagName.match(/^H[2-5]$/)){
+                  temp.removeChild(child);
+                  first=false;
+                }else{
+                  if(first)first=false;
+                  content.appendChild(child);
+                }
+              }
+            }
+          }
+          saveToStorage();
+          rebuildSearchIndex();
+          if(editMode)injectBlockControls();
+          showStatus('已导入 '+data.length+' 条题目','saved');
+        }catch(err){
+          alert('导入失败：'+err.message);
+        }
+      };
+      reader.readAsText(file);
+    };
+    input.click();
+  });
+
+  // --- Reset ---
+  editResetBtn.addEventListener('click',function(){
+    if(confirm('确定要重置所有编辑数据吗？\n这将清除所有修改，恢复到原始题目内容。')){
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    }
+  });
+  function saveToStorage(){
+    if(saveTimer)clearTimeout(saveTimer);
+    showStatus('保存中...','saving');
+    saveTimer=setTimeout(function(){
+      try{
+        var blocks=getBlocks();
+        var data=[];
+        for(var i=0;i<blocks.length;i++){
+          var node=blocks[i].anchor;
+          var content=[];
+          var el=blocks[i].heading;
+          var nextBlock=blocks[i+1];
+          while(el){
+            if(nextBlock && el===nextBlock.anchor)break;
+            if(el.tagName==='A' && el.getAttribute('id') && el.getAttribute('id').indexOf('q')===0 && el!==blocks[i].anchor)break;
+            if(el.tagName && el.tagName.match(/^H[2-5]$/)){
+              if(el!==blocks[i].heading)break;
+            }
+            content.push(el.outerHTML);
+            el=el.nextSibling;
+            if(!el)break;
+          }
+          data.push({id:blocks[i].id,title:blocks[i].heading.textContent.trim(),level:blocks[i].level,html:content.join('\n')});
+        }
+        localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+        showStatus('已自动保存 ✓','saved');
+      }catch(e){
+        showStatus('保存失败：'+e.message,'');
+      }
+    },500);
+  }
+
+  // --- Restore from localStorage ---
+  function restoreFromStorage(){
+    try{
+      var raw=localStorage.getItem(STORAGE_KEY);
+      if(!raw)return false;
+      var data=JSON.parse(raw);
+      if(!Array.isArray(data)||data.length===0)return false;
+      var content=document.querySelector('.content')||document.querySelector('.container');
+      content.innerHTML='';
+      for(var i=0;i<data.length;i++){
+        var item=data[i];
+        var anchor=document.createElement('a');
+        anchor.setAttribute('id',item.id||('q_rest_'+i));
+        content.appendChild(anchor);
+        var h=document.createElement('h'+(item.level||4));
+        h.textContent=item.title;
+        content.appendChild(h);
+        if(item.html){
+          var temp=document.createElement('div');
+          temp.innerHTML=item.html;
+          var first=true;
+          while(temp.firstChild){
+            var child=temp.firstChild;
+            if(first && child.tagName && child.tagName.match(/^H[2-5]$/)){
+              temp.removeChild(child);
+              first=false;
+            }else{
+              if(first)first=false;
+              content.appendChild(child);
+            }
+          }
+        }
+      }
+      return true;
+    }catch(e){
+      console.error('Restore failed:',e);
+      return false;
+    }
+  }
+
+  // --- Auto-save on edits ---
+  var editSaveTimer=null;
+  document.addEventListener('input',function(e){
+    if(!editMode)return;
+    if(e.target.getAttribute('contenteditable')==='true'){
+      if(editSaveTimer)clearTimeout(editSaveTimer);
+      editSaveTimer=setTimeout(function(){
+        saveToStorage();
+      },1000);
+    }
+  });
+
+  // --- Status display ---
+  function showStatus(msg,cls){
+    saveStatus.textContent=msg;
+    saveStatus.className='save-status'+(cls?' '+cls:'');
+    if(cls==='saved'){
+      setTimeout(function(){
+        if(saveStatus.textContent===msg)saveStatus.textContent='';
+      },3000);
+    }
+  }
+
+  // --- Rebuild search index ---
+  function rebuildSearchIndex(){
+    // Re-call the search index builder
+    // The original search function rebuilds index on page load, so we need to expose it
+    // We'll dispatch a custom event that the search code listens to
+    window.dispatchEvent(new CustomEvent('rebuildSearchIndex'));
+  }
+
+  // --- Initialize: restore from storage ---
+  if(restoreFromStorage()){
+    showStatus('已从上次编辑恢复','saved');
   }
 })();
 </script>
