@@ -600,6 +600,43 @@ pre{font-size:12px!important}
 <a href="#q498" class="toc-h4">Lambda 表达式的本质？捕获列表原理？</a>
 <a href="#q499" class="toc-h4">完美转发是什么？std::forward 的作用？</a>
 <a href="#q500" class="toc-h4">emplace 和 push_back 的区别？</a>
+<a href="#q529" class="toc-h4">什么是指针？指针的大小？</a>
+<a href="#q530" class="toc-h4">常量指针和指针常量区别？（口诀）</a>
+<a href="#q531" class="toc-h4">sizeof(1==1) 在 C 和 C++ 中结果？</a>
+<a href="#q532" class="toc-h4">C 和 C++ struct 的区别？</a>
+<a href="#q533" class="toc-h4">值传递、引用传递、指针传递的区别？</a>
+<a href="#q534" class="toc-h4">全局/局部/静态全局/静态局部变量区别？</a>
+<a href="#q535" class="toc-h4">函数传参用引用的作用？</a>
+<a href="#q536" class="toc-h3">面向对象（小林coding）</a>
+<a href="#q537" class="toc-h4">面向对象三大特性？</a>
+<a href="#q538" class="toc-h4">多态的实现机制？静态多态vs动态多态？</a>
+<a href="#q539" class="toc-h4">虚函数的实现原理？虚函数表是什么？</a>
+<a href="#q540" class="toc-h4">纯虚函数和抽象类？</a>
+<a href="#q541" class="toc-h4">析构函数为什么要是虚函数？</a>
+<a href="#q542" class="toc-h4">构造函数能是虚函数吗？为什么？</a>
+<a href="#q543" class="toc-h4">多继承下虚函数表的结构？</a>
+<a href="#q544" class="toc-h4">菱形继承是什么？怎么解决？</a>
+<a href="#q545" class="toc-h4">拷贝构造函数什么时候调用？</a>
+<a href="#q546" class="toc-h4">C++ 内存分哪几个区？</a>
+<a href="#q547" class="toc-h4">内存泄漏怎么检测和避免？</a>
+<a href="#q548" class="toc-h4">shared_ptr 引用计数原理？</a>
+<a href="#q549" class="toc-h4">shared_ptr 循环引用怎么解决？</a>
+<a href="#q550" class="toc-h4">unique_ptr 为什么比 auto_ptr 好？</a>
+<a href="#q551" class="toc-h3">STL（小林coding）</a>
+<a href="#q552" class="toc-h4">STL 六大组件？</a>
+<a href="#q553" class="toc-h4">vector 底层实现？</a>
+<a href="#q554" class="toc-h4">list 底层实现？</a>
+<a href="#q555" class="toc-h4">deque 底层实现？</a>
+<a href="#q556" class="toc-h4">仿函数和普通函数的区别？</a>
+<a href="#q557" class="toc-h4">allocator 分配器做了什么？</a>
+<a href="#q558" class="toc-h3">C++11 新特性（小林coding）</a>
+<a href="#q559" class="toc-h4">auto 类型推导规则？</a>
+<a href="#q560" class="toc-h4">nullptr 和 NULL 的区别？</a>
+<a href="#q561" class="toc-h4">constexpr 和 const 的区别？</a>
+<a href="#q562" class="toc-h4">初始化列表 {} 的好处？</a>
+<a href="#q563" class="toc-h4">可变参数模板是什么？</a>
+<a href="#q564" class="toc-h4">override 和 final 的作用？</a>
+<a href="#q565" class="toc-h4">std::bind 和 lambda 的区别？</a>
 <a href="#q445" class="toc-h3">操作系统（小林coding）</a>
 <a href="#q446" class="toc-h4">用户态和内核态的区别？为什么要分？</a>
 <a href="#q447" class="toc-h4">进程和线程的区别？</a>
@@ -4261,6 +4298,308 @@ void wrapper(T&amp;&amp; arg) {
 <pre><code>vec.push_back(MyClass(1, 2));  // 构造临时对象 → 移动到容器
 vec.emplace_back(1, 2);         // 直接在容器原地构造</code></pre>
 <p>emplace 更高效，尤其是不可移动或拷贝代价大的类型。对于简单类型（int 等）两者无差异。</p>
+
+<a id="q529"></a>
+<h4>什么是指针？指针的大小？</h4>
+<p>指针是保存变量地址的复合类型。不管指向什么类型，指针大小只跟机器位数有关：<strong>32 位机器上 4 字节，64 位机器上 8 字节</strong>。<code>int*</code>、<code>char*</code>、<code>double*</code> 大小都一样。</p>
+
+<a id="q530"></a>
+<h4>常量指针和指针常量区别？（口诀）</h4>
+<p><strong>口诀：左定值右定向</strong>（const 在 * 左边定值，右边定向）</p>
+<ul>
+<li><code>const int* p</code>（const 在 * 左边）→ 常量指针：指向的值不能改，但指针的指向可以改</li>
+<li><code>int* const p</code>（const 在 * 右边）→ 指针常量：指针的指向不能改，但指向的值可以改</li>
+<li><code>const int* const p</code>：都不能改</li>
+</ul>
+
+<a id="q531"></a>
+<h4>sizeof(1==1) 在 C 和 C++ 中结果？</h4>
+<p>C 语言中 <code>1==1</code> 的类型是 <code>int</code>，所以 <code>sizeof(1==1) = 4</code>。</p>
+<p>C++ 中 <code>1==1</code> 的类型是 <code>bool</code>，所以 <code>sizeof(1==1) = 1</code>。</p>
+<p>因为 C 没有 bool 类型（C99 才加了 _Bool），比较运算结果用 int 表示；C++ 有原生 bool。</p>
+
+<a id="q532"></a>
+<h4>C 和 C++ struct 的区别？</h4>
+<ul>
+<li>C 的 struct 只是变量的集合，不能有成员函数、没有访问权限控制；C++ 的 struct 和 class 几乎一样，可以有成员函数、构造析构、虚函数</li>
+<li>C 定义 struct 变量要写 <code>struct A var</code>，C++ 直接 <code>A var</code></li>
+<li>C 的 struct 不能继承，C++ 的 struct 可以继承</li>
+</ul>
+
+<a id="q533"></a>
+<h4>值传递、引用传递、指针传递的区别？</h4>
+<ul>
+<li><strong>值传递</strong>：形参是实参的拷贝，改形参不影响实参。函数内地址和实参不同</li>
+<li><strong>指针传递</strong>：本质也是值传递（拷贝的是指针值），但通过解引用可以改原对象。形参和实参地址不同，但指向同一对象</li>
+<li><strong>引用传递</strong>：形参是实参的别名，不产生拷贝。形参和实参地址相同，直接操作原对象</li>
+</ul>
+<p>一句话：值传递改不了原对象，指针和引用都能改，但引用更直接、更安全（不能为空）。</p>
+
+<a id="q534"></a>
+<h4>全局/局部/静态全局/静态局部变量区别？</h4>
+<table>
+<tr><th>类型</th><th>作用域</th><th>存储位置</th><th>生命周期</th></tr>
+<tr><td>全局变量</td><td>整个程序（extern 可跨文件）</td><td>静态存储区</td><td>程序开始到结束</td></tr>
+<tr><td>静态全局变量</td><td>当前文件（static 限制）</td><td>静态存储区</td><td>程序开始到结束</td></tr>
+<tr><td>局部变量</td><td>当前函数</td><td>栈</td><td>函数调用期间</td></tr>
+<tr><td>静态局部变量</td><td>当前函数</td><td>静态存储区</td><td>首次初始化到程序结束</td></tr>
+</table>
+<p>口诀：static 限制作用域、延长生命周期。静态的都在静态区，非静态局部在栈上。</p>
+
+<a id="q535"></a>
+<h4>函数传参用引用的作用？</h4>
+<ul>
+<li><strong>避免拷贝</strong>：传大对象（如 vector、string）时避免拷贝构造，提高性能</li>
+<li><strong>修改原对象</strong>：通过引用可以直接修改实参</li>
+<li><strong>避免空指针</strong>：引用不能为空，比指针更安全</li>
+<li>如果不修改，加 <code>const</code>：<code>void foo(const string&amp; s)</code>，既避免拷贝又防止修改</li>
+</ul>
+
+<a id="q536"></a>
+<h3>面向对象（小林coding）</h3>
+
+<a id="q537"></a>
+<h4>面向对象三大特性？</h4>
+<ol>
+<li><strong>封装</strong>：把数据和操作数据的方法绑定在一起，隐藏内部实现细节，只暴露接口。用 private/protected/public 控制</li>
+<li><strong>继承</strong>：子类继承父类的属性和方法，实现代码复用。is-a 关系</li>
+<li><strong>多态</strong>：同一接口不同实现。父类指针调用子类方法，运行时绑定</li>
+</ol>
+
+<a id="q538"></a>
+<h4>多态的实现机制？静态多态 vs 动态多态？</h4>
+<p><strong>静态多态</strong>（编译期）：函数重载、模板。编译器根据参数类型/个数决定调用哪个函数。</p>
+<p><strong>动态多态</strong>（运行期）：虚函数 + 父类指针/引用。运行时通过虚函数表找到实际调用的函数。</p>
+<p>动态多态三个条件：① 有继承关系；② 父类有虚函数；③ 子类重写虚函数；④ 父类指针/引用调用。</p>
+
+<a id="q539"></a>
+<h4>虚函数的实现原理？虚函数表是什么？</h4>
+<p>每个有虚函数的类都有一个<strong>虚函数表（vtable）</strong>，是一个函数指针数组，存放所有虚函数的地址。每个对象首部有一个<strong>虚表指针（vptr）</strong>指向所属类的 vtable。</p>
+<p>调用虚函数时：通过对象的 vptr 找到 vtable → 根据偏移找到函数地址 → 间接调用。这就是"动态绑定"。</p>
+<p>构造函数中设置 vptr 指向当前类的 vtable。所以构造函数调用虚函数是静态绑定的（还没设好子类 vptr）。</p>
+
+<a id="q540"></a>
+<h4>纯虚函数和抽象类？</h4>
+<p><strong>纯虚函数</strong>：<code>virtual void func() = 0;</code>，只有声明没有定义（或者说要求子类必须实现）。</p>
+<p><strong>抽象类</strong>：含至少一个纯虚函数的类，不能实例化（不能创建对象），只能作为接口被继承。子类必须实现所有纯虚函数才能实例化。</p>
+<p>作用：定义接口规范，强制子类实现特定功能。如设计模式中的工厂方法、策略模式。</p>
+
+<a id="q541"></a>
+<h4>析构函数为什么要是虚函数？</h4>
+<p>如果用父类指针 delete 子类对象，<strong>析构函数不是虚函数</strong>时只调用父类析构，子类析构不执行 → 子类资源泄漏。</p>
+<p>设为虚函数后，通过虚表找到实际子类的析构函数，先调用子类析构再调用父类析构，资源正确释放。</p>
+<p><strong>规则</strong>：只要类有可能被继承且通过父类指针删除，析构函数就必须是虚函数。</p>
+
+<a id="q542"></a>
+<h4>构造函数能是虚函数吗？为什么？</h4>
+<p><strong>不能</strong>。原因：</p>
+<ol>
+<li>虚函数调用依赖 vptr，而 vptr 在构造函数中初始化。构造函数还没执行，对象还没 vptr，没法走虚表</li>
+<li>构造函数是创建对象时调用的，此时对象类型是确定的，不需要动态绑定</li>
+<li>从语义上，构造函数负责初始化当前类，不该由子类替代</li>
+</ol>
+
+<a id="q543"></a>
+<h4>多继承下虚函数表的结构？</h4>
+<p>多继承时，每个基类有各自的 vtable，子类对象包含多个 vptr（每个基类一个）。</p>
+<ul>
+<li>子类新增的虚函数放在第一个基类的 vtable 末尾</li>
+<li>子类重写的虚函数在所有相关基类的 vtable 中都要更新</li>
+<li>this 指针可能需要调整（thunk 技术）来正确访问不同基类的成员</li>
+</ul>
+
+<a id="q544"></a>
+<h4>菱形继承是什么？怎么解决？</h4>
+<p><strong>菱形继承</strong>：D 继承 B 和 C，B 和 C 都继承 A。D 中有两份 A 的数据，存在二义性。</p>
+<p><strong>解决方案：虚继承</strong>。B 和 C 虚继承 A：<code>class B : virtual public A</code>。虚继承后 D 中只有一份 A 子对象，通过虚基类指针（vbptr）定位。</p>
+
+<a id="q545"></a>
+<h4>拷贝构造函数什么时候调用？</h4>
+<p>三种情况：</p>
+<ol>
+<li>用已存在的对象初始化新对象：<code>Person p2(p1);</code></li>
+<li>值传递：函数参数是值类型 <code>void foo(Person p)</code>，实参拷贝给形参</li>
+<li>值返回：函数返回值是值类型 <code>Person create() { return Person(); }</code>（可能有 RVO 优化省略）</li>
+</ol>
+<p>如果类有指针成员管理资源，必须自定义拷贝构造（深拷贝），否则默认浅拷贝会导致 double free。</p>
+
+<a id="q546"></a>
+<h4>C++ 内存分哪几个区？</h4>
+<ul>
+<li><strong>栈</strong>：局部变量、函数参数、返回地址。自动管理，向下生长，速度快但空间小（默认 8MB）</li>
+<li><strong>堆</strong>：new/malloc 分配的内存。手动管理，向上生长，空间大但可能碎片化</li>
+<li><strong>全局/静态区</strong>：全局变量、静态变量。分初始化段(.data)和未初始化段(.bss)</li>
+<li><strong>常量区</strong>：字符串字面量、const 全局变量。只读</li>
+<li><strong>代码区</strong>：编译后的机器指令。只读</li>
+</ul>
+
+<a id="q547"></a>
+<h4>内存泄漏怎么检测和避免？</h4>
+<p><strong>避免</strong>：① 用智能指针代替裸指针；② 用 RAII 管理资源；③ new 和 delete 配对使用；④ 构造函数中分配，析构函数中释放。</p>
+<p><strong>检测工具</strong>：</p>
+<ul>
+<li>Linux：<code>valgrind --leak-check=full ./program</code></li>
+<li>编译期：AddressSanitizer（ASan），<code>-fsanitize=address</code></li>
+<li>Windows：Visual Studio 的 CRT 调试堆，<code>_CrtDumpMemoryLeaks()</code></li>
+</ul>
+
+<a id="q548"></a>
+<h4>shared_ptr 引用计数原理？</h4>
+<p>shared_ptr 内部维护两个指针：指向对象的指针 + 指向控制块的指针。控制块包含：</p>
+<ul>
+<li><strong>强引用计数</strong>（use_count）：有多少个 shared_ptr 共享对象</li>
+<li><strong>弱引用计数</strong>（weak_count）：有多少个 weak_ptr 观察对象</li>
+</ul>
+<p>拷贝 shared_ptr → 强引用+1；销毁 → 强引用-1；强引用归 0 → 删除对象；弱引用也归 0 → 删除控制块。</p>
+<p>引用计数的操作是原子的（CAS），所以拷贝 shared_ptr 是线程安全的，但对象本身的访问不是。</p>
+
+<a id="q549"></a>
+<h4>shared_ptr 循环引用怎么解决？</h4>
+<p><strong>问题</strong>：A 中有 shared_ptr 指向 B，B 中有 shared_ptr 指向 A。两者引用计数都不为 0，永远不会析构 → 内存泄漏。</p>
+<p><strong>解决</strong>：把其中一个改为 <code>weak_ptr</code>。weak_ptr 不增加强引用计数，不会阻止对象析构。使用时调用 <code>lock()</code> 提升为 shared_ptr。</p>
+<pre><code>class B;
+class A { shared_ptr&lt;B&gt; b_ptr; };
+class B { weak_ptr&lt;A&gt; a_ptr; };  // 用 weak 打破循环</code></pre>
+
+<a id="q550"></a>
+<h4>unique_ptr 为什么比 auto_ptr 好？</h4>
+<p><strong>auto_ptr 的问题</strong>：拷贝时会转移所有权，原指针变为 nullptr，但语法上是拷贝操作，容易误用（如在容器中拷贝后原元素为空）。</p>
+<p><strong>unique_ptr</strong>：独占所有权，<strong>不能拷贝</strong>，只能移动。<code>unique_ptr&lt;T&gt; p2 = std::move(p1)</code>。语义清晰：移动 = 转移所有权，拷贝 = 编译错误。支持自定义删除器、数组特化。</p>
+<p>C++11 后 auto_ptr 已废弃（C++17 移除），全部用 unique_ptr。</p>
+
+<a id="q551"></a>
+<h3>STL（小林coding）</h3>
+
+<a id="q552"></a>
+<h4>STL 六大组件？</h4>
+<ol>
+<li><strong>容器</strong>：vector、list、deque、map、set、unordered_map 等</li>
+<li><strong>算法</strong>：sort、find、copy、accumulate 等（&lt;algorithm&gt;）</li>
+<li><strong>迭代器</strong>：连接容器和算法的桥梁，5 种类别（输入/输出/前向/双向/随机）</li>
+<li><strong>仿函数</strong>：重载 operator() 的类，如 less、greater</li>
+<li><strong>适配器</strong>：stack、queue、priority_queue（容器适配器）；bind（函数适配器）</li>
+<li><strong>分配器</strong>：allocator，管理内存分配和释放</li>
+</ol>
+
+<a id="q553"></a>
+<h4>vector 底层实现？</h4>
+<p>vector 底层是<strong>动态数组</strong>，用三个指针维护：start（起始）、finish（已用末尾）、end_of_storage（容量末尾）。</p>
+<ul>
+<li><code>size()</code> = finish - start</li>
+<li><code>capacity()</code> = end_of_storage - start</li>
+<li>空间不够时扩容：申请新空间（1.5 倍或 2 倍）→ 移动旧元素 → 释放旧空间</li>
+<li>支持下标随机访问 O(1)，尾部增删 O(1)（均摊），中间增删 O(n)</li>
+</ul>
+
+<a id="q554"></a>
+<h4>list 底层实现？</h4>
+<p>list 底层是<strong>双向链表</strong>，每个节点包含 data、prev 指针、next 指针。</p>
+<ul>
+<li>插入/删除 O(1)（已知位置），不支持随机访问</li>
+<li>不会有扩容问题，按需分配节点</li>
+<li>迭代器失效：只有被删除的节点迭代器失效，其他不受影响</li>
+<li>比 vector 更适合频繁中间插入删除的场景</li>
+</ul>
+<p>forward_list 是单链表，更省内存但只能向前遍历。</p>
+
+<a id="q555"></a>
+<h4>deque 底层实现？</h4>
+<p>deque（双端队列）底层是<strong>分段连续空间</strong>，用中控数组（map）管理多个固定大小的 buffer。</p>
+<ul>
+<li>对外看起来连续，实际是多个数组段拼接</li>
+<li>头尾插入/删除 O(1)，中间 O(n) 但比 vector 快（只需移动部分段）</li>
+<li>支持随机访问 O(1)（通过中控数组计算段和偏移）</li>
+<li>stack 和 queue 默认用 deque 作底层容器</li>
+</ul>
+
+<a id="q556"></a>
+<h4>仿函数和普通函数的区别？</h4>
+<p><strong>仿函数</strong>（Functor）：重载了 <code>operator()</code> 的类对象，可以像函数一样调用。</p>
+<pre><code>struct Add {
+    int operator()(int a, int b) { return a + b; }
+};
+Add add; cout << add(1, 2);  // 像函数调用</code></pre>
+<p><strong>优势</strong>：① 可以有状态（成员变量保存数据）；② 可以被 STL 算法使用；③ 编译器可以内联优化；④ 可以通过类型传递策略。</p>
+
+<a id="q557"></a>
+<h4>allocator 分配器做了什么？</h4>
+<p>allocator 负责 STL 容器的内存分配和释放，将<strong>内存分配</strong>和<strong>对象构造</strong>分离：</p>
+<ul>
+<li><code>allocate()</code>：分配原始内存（operator new）</li>
+<li><code>construct()</code>：在内存上构造对象（placement new）</li>
+<li><code>destroy()</code>：调用析构函数</li>
+<li><code>deallocate()</code>：释放内存（operator delete）</li>
+</ul>
+<p>好处：容器可以预分配内存，按需构造/析构对象，减少频繁分配开销。SGI STL 的二级分配器用内存池优化小块内存。</p>
+
+<a id="q558"></a>
+<h3>C++11 新特性（小林coding）</h3>
+
+<a id="q559"></a>
+<h4>auto 类型推导规则？</h4>
+<p>auto 根据初始化表达式自动推导变量类型。规则：</p>
+<ul>
+<li>忽略顶层 const：<code>const int ci = 1; auto a = ci;</code> → a 是 int（顶层 const 被忽略）</li>
+<li>引用会被剥离：<code>int&amp; r = x; auto a = r;</code> → a 是 int</li>
+<li>想保留 const/引用：用 <code>const auto&amp;</code></li>
+<li>auto&amp; 推导为引用：<code>auto&amp; r = ci;</code> → r 是 const int&amp;</li>
+<li>decltype 保留 const 和引用：用于返回类型推导</li>
+</ul>
+
+<a id="q560"></a>
+<h4>nullptr 和 NULL 的区别？</h4>
+<p><strong>NULL</strong>：在 C 中是 <code>(void*)0</code>，在 C++ 中是 <code>0</code>（整数 0）。</p>
+<p><strong>nullptr</strong>：C++11 引入，类型是 <code>nullptr_t</code>，可以隐式转换为任何指针类型，但不能转换为整数。</p>
+<p><strong>NULL 的问题</strong>：函数重载时 <code>f(NULL)</code> 可能匹配 <code>f(int)</code> 而非 <code>f(char*)</code>，因为 NULL 是 0。nullptr 不会有歧义。</p>
+
+<a id="q561"></a>
+<h4>constexpr 和 const 的区别？</h4>
+<p><strong>const</strong>：表示只读（运行期不可修改），但值不一定在编译期确定。<code>const int x = getValue();</code> 合法但不是编译期常量。</p>
+<p><strong>constexpr</strong>：表示编译期常量，值必须在编译期确定。<code>constexpr int x = 5;</code>。可用于修饰函数：函数返回值在编译期可计算。</p>
+<pre><code>constexpr int factorial(int n) {
+    return n &lt;= 1 ? 1 : n * factorial(n - 1);
+}
+constexpr int x = factorial(5); // 编译期计算 = 120</code></pre>
+
+<a id="q562"></a>
+<h4>初始化列表 {} 的好处？</h4>
+<ul>
+<li><strong>统一初始化</strong>：数组和对象都可以用 {}，语法统一</li>
+<li><strong>防止窄化转换</strong>：<code>int x{3.14}</code> 编译错误，<code>int x = 3.14</code> 会截断</li>
+<li><strong>防止最令人苦恼的解析</strong>：<code>Widget w();</code> 是函数声明，<code>Widget w{};</code> 是对象构造</li>
+<li><strong>STL 初始化</strong>：<code>vector&lt;int&gt; v{1, 2, 3};</code> 更简洁</li>
+</ul>
+
+<a id="q563"></a>
+<h4>可变参数模板是什么？</h4>
+<p>C++11 允许模板参数个数可变，用<strong>参数包</strong>表示：</p>
+<pre><code>template&lt;typename... Args&gt;
+void print(Args... args) {
+    // sizeof...(args) 获取参数个数
+    // 用递归或折叠表达式展开参数包
+}</code></pre>
+<p>展开方式：① 递归模板展开（经典做法）；② 折叠表达式（C++17）。tuple 就是可变参数模板的应用。</p>
+
+<a id="q564"></a>
+<h4>override 和 final 的作用？</h4>
+<p><strong>override</strong>：显式标记子类重写了父类虚函数。如果父类没有同名虚函数，编译报错。防止手误（函数签名不一致导致变成重载而非重写）。</p>
+<p><strong>final</strong>：① 修饰类：不能被继承；② 修饰虚函数：子类不能再重写。用于阻止继承链。</p>
+<pre><code>class Base { virtual void f(); };
+class Derived : public Base {
+    void f() override;  // 确保是重写
+};
+class Final final : Derived {};  // 编译错误：Final 不可继承</code></pre>
+
+<a id="q565"></a>
+<h4>std::bind 和 lambda 的区别？</h4>
+<p>std::bind 是 C++11 之前生成函数对象的方式，lambda 是 C++11 引入的更简洁的匿名函数。</p>
+<ul>
+<li>lambda 更简洁、可读性更好、可定义在调用处</li>
+<li>std::bind 语法繁琐，需要占位符 <code>_1, _2</code>，类型推导不友好</li>
+<li>lambda 可以捕获变量，std::bind 用 <code>std::ref/cref</code> 传引用</li>
+<li>性能相当，lambda 可能更好（编译器更容易内联）</li>
+</ul>
+<p><strong>建议</strong>：新代码用 lambda，维护旧代码才用 bind。</p>
 
 <a id="q445"></a>
 <h3>操作系统（小林coding）</h3>
