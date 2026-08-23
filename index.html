@@ -71,7 +71,7 @@ tr:nth-child(even){background:#f8f9ff}
 .save-status{font-size:13px;color:var(--text2);margin-left:4px}
 .save-status.saved{color:#43a047}
 .save-status.saving{color:#f57c00}
-.side-toolbar{position:fixed;right:16px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:998}
+.side-toolbar{position:fixed;right:16px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:1001}
 .side-toolbar button{width:52px;height:52px;border:none;border-radius:14px;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.18);transition:all .2s;font-family:inherit;position:relative}
 .side-toolbar button:hover{transform:scale(1.08)}
 .side-toolbar .edit-toggle-btn{background:linear-gradient(135deg,#4a6fa5,#6a8db5);color:#fff}
@@ -187,6 +187,7 @@ pre{font-size:12px!important}
 <button class="mic-btn" id="micBtn" title="点击语音搜索">🎤</button>
 </div>
 <div class="search-results" id="searchResults"></div>
+</div>
 <div class="toc-card">
 <h2>📋 目录索引</h2>
 <div class="toc-hint">点击题目跳转到对应位置</div>
@@ -5718,6 +5719,14 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
 </div>
 </div>
 </div>
+<div class="side-toolbar" id="sideToolbar">
+<button class="edit-toggle-btn" id="editToggleBtn" title="切换编辑模式"><span class="btn-label">编辑模式</span>✏️</button>
+<button class="edit-add-btn" id="editAddBtn" style="display:none" title="添加题目"><span class="btn-label">添加题目</span>➕</button>
+<button class="edit-save-btn" id="editSaveBtn" style="display:none" title="导出数据"><span class="btn-label">导出数据</span>💾</button>
+<button class="edit-import-btn" id="editImportBtn" style="display:none" title="导入数据"><span class="btn-label">导入数据</span>📥</button>
+<button class="edit-reset-btn" id="editResetBtn" style="display:none" title="重置数据"><span class="btn-label">重置数据</span>🔄</button>
+<span class="save-status" id="saveStatus"></span>
+</div>
 <script>
 (function(){
   // Build search index from all anchors and their following content
@@ -5994,7 +6003,9 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
 // === Edit Mode ===
 (function(){
   var editMode=false;
-  var STORAGE_KEY='interview_edit_data';
+  var HTML_VERSION='v20260823';
+  var STORAGE_KEY='interview_edit_data_'+HTML_VERSION;
+  var OLD_KEY='interview_edit_data';
   var saveTimer=null;
 
   var editToggleBtn=document.getElementById('editToggleBtn');
@@ -6227,7 +6238,14 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   editToggleBtn.addEventListener('click',function(){
     editMode=!editMode;
     document.body.classList.toggle('edit-mode',editMode);
-    editToggleBtn.textContent=editMode?'👁️ 退出编辑':'✏️ 编辑模式';
+    var label=editToggleBtn.querySelector('.btn-label');
+    if(label){
+      label.textContent=editMode?'退出编辑':'编辑模式';
+      editToggleBtn.firstChild?null:null;
+      editToggleBtn.lastChild.textContent=editMode?'👁️':'✏️';
+    }else{
+      editToggleBtn.textContent=editMode?'👁️ 退出编辑':'✏️ 编辑模式';
+    }
     editToggleBtn.classList.toggle('active',editMode);
     editAddBtn.style.display=editMode?'inline-block':'none';
     editSaveBtn.style.display=editMode?'inline-block':'none';
@@ -6365,6 +6383,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   editResetBtn.addEventListener('click',function(){
     if(confirm('确定要重置所有编辑数据吗？\n这将清除所有修改，恢复到原始题目内容。')){
       localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(OLD_KEY);
       location.reload();
     }
   });
@@ -6404,7 +6423,13 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   function restoreFromStorage(){
     try{
       var raw=localStorage.getItem(STORAGE_KEY);
-      if(!raw)return false;
+      if(!raw){
+        var oldRaw=localStorage.getItem(OLD_KEY);
+        if(oldRaw){
+          showStatus('页面已更新，之前编辑的内容可通过导入恢复。请点击📥导入按钮选择之前导出的文件。','');
+        }
+        return false;
+      }
       var data=JSON.parse(raw);
       if(!Array.isArray(data)||data.length===0)return false;
       var content=document.querySelector('.content')||document.querySelector('.container');
@@ -6477,12 +6502,4 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   }
 })();
 </script>
-<div class="side-toolbar" id="sideToolbar">
-<button class="edit-toggle-btn" id="editToggleBtn" title="切换编辑模式"><span class="btn-label">编辑模式</span>✏️</button>
-<button class="edit-add-btn" id="editAddBtn" style="display:none" title="添加题目"><span class="btn-label">添加题目</span>➕</button>
-<button class="edit-save-btn" id="editSaveBtn" style="display:none" title="导出数据"><span class="btn-label">导出数据</span>💾</button>
-<button class="edit-import-btn" id="editImportBtn" style="display:none" title="导入数据"><span class="btn-label">导入数据</span>📥</button>
-<button class="edit-reset-btn" id="editResetBtn" style="display:none" title="重置数据"><span class="btn-label">重置数据</span>🔄</button>
-<span class="save-status" id="saveStatus"></span>
-</div>
 </body></html>
