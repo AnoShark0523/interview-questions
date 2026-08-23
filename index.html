@@ -36,7 +36,7 @@ blockquote{border-left:4px solid var(--accent);background:#f0f4ff;padding:12px 2
 hr{border:none;border-top:2px dashed var(--border);margin:40px 0}
 a{color:var(--link)}
 a[id]{scroll-margin-top:140px}
-.back-top{position:fixed;bottom:32px;right:32px;width:48px;height:48px;background:var(--accent);color:#fff;border:none;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:999;display:flex;align-items:center;justify-content:center}
+.back-top{position:fixed;bottom:32px;right:84px;width:48px;height:48px;background:var(--accent);color:#fff;border:none;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:999;display:flex;align-items:center;justify-content:center}
 .back-top:hover{transform:translateY(-4px)}
 table{border-collapse:collapse;width:100%;margin:12px 0;font-size:16px}
 th,td{border:1px solid var(--border);padding:8px 12px;text-align:left}
@@ -71,6 +71,18 @@ tr:nth-child(even){background:#f8f9ff}
 .save-status{font-size:13px;color:var(--text2);margin-left:4px}
 .save-status.saved{color:#43a047}
 .save-status.saving{color:#f57c00}
+.side-toolbar{position:fixed;right:16px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:998}
+.side-toolbar button{width:52px;height:52px;border:none;border-radius:14px;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.18);transition:all .2s;font-family:inherit;position:relative}
+.side-toolbar button:hover{transform:scale(1.08)}
+.side-toolbar .edit-toggle-btn{background:linear-gradient(135deg,#4a6fa5,#6a8db5);color:#fff}
+.side-toolbar .edit-toggle-btn.active{background:linear-gradient(135deg,#e53935,#f44336)}
+.side-toolbar .edit-add-btn{background:#43a047;color:#fff}
+.side-toolbar .edit-save-btn{background:#7b1fa2;color:#fff}
+.side-toolbar .edit-import-btn{background:#f57c00;color:#fff}
+.side-toolbar .edit-reset-btn{background:#757575;color:#fff}
+.side-toolbar .save-status{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:11px;white-space:nowrap}
+.side-toolbar .btn-label{position:absolute;right:60px;top:50%;transform:translateY(-50%);background:#333;color:#fff;padding:4px 10px;border-radius:6px;font-size:13px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;font-weight:600}
+.side-toolbar button:hover .btn-label{opacity:1}
 body.edit-mode h2,body.edit-mode h3,body.edit-mode h4,body.edit-mode h5{outline:2px dashed transparent;outline-offset:2px;transition:outline-color .15s;border-radius:6px}
 body.edit-mode h2:hover,body.edit-mode h3:hover,body.edit-mode h4:hover,body.edit-mode h5:hover{outline-color:#ff9800}
 body.edit-mode [contenteditable="true"]:focus{outline:2px solid #4a6fa5;background:rgba(74,111,165,.03);border-radius:4px}
@@ -108,8 +120,6 @@ body{font-size:16px;line-height:1.75}
 .search-bar{padding:10px 16px;position:sticky;top:0;z-index:1000}
 .search-input{font-size:16px;padding:10px 14px}
 .mic-btn{width:42px;height:42px;font-size:20px}
-.edit-toolbar{gap:6px;margin-top:8px}
-.edit-toggle-btn,.edit-add-btn,.edit-save-btn,.edit-import-btn,.edit-reset-btn{padding:6px 12px;font-size:13px}
 .block-controls{flex-wrap:wrap;gap:4px}
 .block-btn{padding:4px 8px;font-size:12px}
 .add-dialog{padding:20px;max-width:92%}
@@ -118,6 +128,10 @@ body{font-size:16px;line-height:1.75}
 .add-dialog select,.add-dialog input,.add-dialog textarea{font-size:14px;padding:8px 12px}
 .search-results{max-height:60vh}
 .search-result{padding:8px 16px}
+.side-toolbar{right:10px;gap:8px}
+.side-toolbar button{width:44px;height:44px;font-size:18px;border-radius:12px}
+.side-toolbar .btn-label{display:none}
+.back-top{bottom:20px;right:74px;width:42px;height:42px;font-size:18px}
 .search-result .result-title{font-size:15px;line-height:1.3}
 .search-count{font-size:13px;padding:6px 16px}
 .toc-card{padding:16px;margin-bottom:24px}
@@ -173,14 +187,6 @@ pre{font-size:12px!important}
 <button class="mic-btn" id="micBtn" title="点击语音搜索">🎤</button>
 </div>
 <div class="search-results" id="searchResults"></div>
-<div class="edit-toolbar">
-<button class="edit-toggle-btn" id="editToggleBtn">✏️ 编辑模式</button>
-<button class="edit-add-btn" id="editAddBtn" style="display:none">➕ 添加题目</button>
-<button class="edit-save-btn" id="editSaveBtn" style="display:none">💾 导出数据</button>
-<button class="edit-import-btn" id="editImportBtn" style="display:none">📥 导入数据</button>
-<button class="edit-reset-btn" id="editResetBtn" style="display:none">🔄 重置数据</button>
-<span class="save-status" id="saveStatus"></span>
-</div>
 <div class="toc-card">
 <h2>📋 目录索引</h2>
 <div class="toc-hint">点击题目跳转到对应位置</div>
@@ -756,46 +762,6 @@ pre{font-size:12px!important}
 <a href="#q526" class="toc-h4">cron 定时任务怎么配置？</a>
 <a href="#q527" class="toc-h4">/proc 文件系统是什么？</a>
 <a href="#q528" class="toc-h4">strace 命令的作用？</a>
-<a href="#q394" class="toc-h2">六、各公司笔试题</a>
-<a href="#q395" class="toc-h3">BIGO 音视频 SDK 笔试+面试题</a>
-<a href="#q396" class="toc-h4">笔试题（引擎&SDK方向）</a>
-<a href="#q397" class="toc-h4">Q1 方阵可逆的充分必要条件？</a>
-<a href="#q398" class="toc-h4">Q2 Phong 和 Blinn-Phong 局部光照模型公式及优缺点？</a>
-<a href="#q399" class="toc-h4">Q3 判断数组是否是二叉排序树的后序遍历？</a>
-<a href="#q400" class="toc-h3">BIGO 一面（C++音视频方向）</a>
-<a href="#q401" class="toc-h4">Q4 C++和C语言最大的区别是什么？</a>
-<a href="#q402" class="toc-h4">Q5 菱形继承是什么？虚表里存了什么？</a>
-<a href="#q403" class="toc-h4">Q6 含虚函数类的sizeof计算</a>
-<a href="#q404" class="toc-h4">Q7 const在*左和右的区别？const修饰成员函数？</a>
-<a href="#q405" class="toc-h4">Q8 volatile的作用？多线程寄存器是否共享？</a>
-<a href="#q406" class="toc-h4">Q9 构造函数和析构函数哪个可以是虚函数？</a>
-<a href="#q407" class="toc-h4">Q10 如何使对象只在堆上生成而不在栈上？</a>
-<a href="#q408" class="toc-h4">Q11 智能指针是线程安全的吗？</a>
-<a href="#q409" class="toc-h4">Q12 左值、右值、左值引用和右值引用？</a>
-<a href="#q410" class="toc-h4">Q13 设计一个线程安全的单例模式</a>
-<a href="#q411" class="toc-h3">BIGO 一面（通用C++方向）</a>
-<a href="#q412" class="toc-h4">Q14 int a[10]; &a+1 和 &a[0]+1 分别表示什么？</a>
-<a href="#q413" class="toc-h4">Q15 成员函数后面加const的含义和作用？</a>
-<a href="#q414" class="toc-h4">Q16 求链表倒数第k个节点</a>
-<a href="#q415" class="toc-h4">Q17 x & (x-1) 的作用是什么？</a>
-<a href="#q416" class="toc-h4">Q18 大数相加（手撕代码）</a>
-<a href="#q417" class="toc-h4">Q19 100万个数字找出最大的10个</a>
-<a href="#q418" class="toc-h4">Q20 抽奖公平性如何保证？</a>
-<a href="#q419" class="toc-h3">BIGO 二面</a>
-<a href="#q420" class="toc-h4">Q21 有父类、组合类时构造函数调用顺序？</a>
-<a href="#q421" class="toc-h4">Q22 判断大小端并实现字节序转换函数</a>
-<a href="#q422" class="toc-h4">Q23 判断long型数是否是2^n，要求O(1)</a>
-<a href="#q423" class="toc-h4">Q24 单例模式有哪几种写法？双锁机制有什么问题？</a>
-<a href="#q425" class="toc-h4">Q25 为什么用_beginthreadex而不用CreateThread？</a>
-<a href="#q426" class="toc-h3">BIGO 三面</a>
-<a href="#q427" class="toc-h4">Q26 信号量和互斥锁的区别？设计一个信号量类</a>
-<a href="#q428" class="toc-h4">Q27 设计模式六大原则</a>
-<a href="#q429" class="toc-h4">Q28 如何把多媒体播放器做成边下边播？</a>
-<a href="#q430" class="toc-h4">Q29 FFmpeg解码时音视频不同步怎么解决？</a>
-<a href="#q431" class="toc-h4">Q30 TCP为什么是三次握手？两次行不行？</a>
-<a href="#q432" class="toc-h3">BIGO 四面</a>
-<a href="#q433" class="toc-h4">Q31 手写memcpy函数（注意地址重叠）</a>
-<a href="#q434" class="toc-h4">Q32 判断两棵二叉树是否相似（可左右旋转得到）</a>
 </div></div>
 <div class="content">
 
@@ -5734,406 +5700,6 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
 <p>常见场景：程序卡住时用 strace 看它在等什么（read 阻塞？connect 超时？）、程序 crash 前做了什么。</p>
 <p><strong>ltrace</strong> 类似但跟踪库函数调用。<strong>perf</strong> 用于性能分析。</p>
 
-<a id="q394"></a>
-<h2 class="section-title">六、各公司笔试题</h2>
-
-<a id="q395"></a>
-<h3>BIGO 音视频 SDK 笔试+面试题</h3>
-
-<p><strong>数据来源</strong>：牛客网 BIGO 面经 + CSDN BIGO C++ 传输工程面经 + BIGO 笔试讨论帖。BIGO 笔试针对引擎&SDK方向，29题单选+1题多选+4道简答。四面技术面，每轮都有手撕代码。</p>
-
-<a id="q396"></a>
-<h4>笔试题（引擎&SDK方向）</h4>
-
-<p><strong>笔试结构</strong>：29题单选（机器学习、Lua、C++、数据结构以树为主、STL、图形学）+ 1题多选（方阵可逆充要条件）+ 4道简答（数学积分/线性代数/光照模型/算法）</p>
-
-<a id="q397"></a>
-<h4>Q1 方阵可逆的充分必要条件？</h4>
-
-<p>方阵 <code>A</code> 可逆的充要条件是 <code>det(A) != 0</code>（行列式不为零），即 <code>A</code> 是非奇异矩阵。</p>
-
-<p>等价条件包括：① <code>A</code> 的行列式不为零；② <code>A</code> 是满秩矩阵（rank = n）；③ <code>A</code> 的行向量组和列向量组均线性无关；④ <code>AX=0</code> 只有零解；⑤ <code>A</code> 的特征值均不为零；⑥ <code>A</code> 可表示为若干初等矩阵的乘积。</p>
-
-<a id="q398"></a>
-<h4>Q2 Phong 和 Blinn-Phong 局部光照模型公式及优缺点？</h4>
-
-<p><strong>Phong 模型</strong>：光照 = 环境光(Ambient) + 漫反射(Diffuse) + 镜面反射(Specular)</p>
-<pre><code>I = I_ambient + k_d * (N·L) * I_light + k_s * (R·V)^n * I_light</code></pre>
-<p>其中 <code>R</code> 是光线反射向量，<code>V</code> 是视线方向，<code>N</code> 是法线，<code>L</code> 是光线方向，<code>n</code> 是高光指数。</p>
-
-<p><strong>Blinn-Phong 模型</strong>：将 <code>R·V</code> 替换为 <code>N·H</code>，其中 <code>H = normalize(L + V)</code> 是半程向量。</p>
-<pre><code>I = I_ambient + k_d * (N·L) * I_light + k_s * (N·H)^n * I_light</code></pre>
-
-<p><strong>优缺点对比</strong>：</p>
-<ul>
-<li><strong>Phong 优点</strong>：物理含义直观，反射向量容易理解</li>
-<li><strong>Phong 缺点</strong>：在低光泽度时高光边缘有锯齿，计算反射向量 R 需要额外开销</li>
-<li><strong>Blinn-Phong 优点</strong>：计算更高效（无需算反射向量），高光更圆润自然，在某些角度下更符合物理规律</li>
-<li><strong>Blinn-Phong 缺点</strong>：高光区域通常比 Phong 略大，需要调整指数 n（通常 Blinn-Phong 的 n 设为 Phong 的 2-4 倍以获得类似效果）</li>
-</ul>
-
-<a id="q399"></a>
-<h4>Q3 判断数组是否是二叉排序树的后序遍历？</h4>
-
-<p><strong>思路</strong>：后序遍历的最后一个元素是根节点。数组前半部分是左子树（都小于根），后半部分是右子树（都大于根），递归判断。</p>
-<pre><code>bool verifyPostorder(int* seq, int len) {
-    if (len &lt;= 1) return true;
-    int root = seq[len - 1];
-    int i = 0;
-    while (i &lt; len - 1 &amp;&amp; seq[i] &lt; root) i++; // 左子树
-    for (int j = i; j &lt; len - 1; j++) {
-        if (seq[j] &lt; root) return false; // 右子树不能有小于根的
-    }
-    return verifyPostorder(seq, i) &amp;&amp;
-           verifyPostorder(seq + i, len - 1 - i);
-}</code></pre>
-
-<a id="q400"></a>
-<h3>BIGO 一面（C++音视频方向）</h3>
-
-<a id="q401"></a>
-<h4>Q4 C++和C语言最大的区别是什么？</h4>
-
-<p>C++ 是 C 的超集，主要区别：</p>
-<ul>
-<li><strong>编程范式</strong>：C 是面向过程，C++ 支持面向对象（封装、继承、多态）和泛型编程（模板）</li>
-<li><strong>类型系统</strong>：C++ 类型检查更严格，函数原型必须匹配；C 允许隐式声明</li>
-<li><strong>关键特性</strong>：C++ 有类、虚函数、模板、异常处理、命名空间、引用、运算符重载、STL</li>
-<li><strong>内存管理</strong>：C 用 malloc/free，C++ 用 new/delete（调用构造/析构函数）</li>
-<li><strong>const</strong>：C 中 const 只是只读变量，C++ 中 const 是真正的常量</li>
-</ul>
-
-<a id="q402"></a>
-<h4>Q5 菱形继承是什么？虚表里存了什么？</h4>
-
-<p><strong>菱形继承</strong>：D 继承 B 和 C，B 和 C 都继承 A，形成菱形结构。导致 A 的成员在 D 中有两份副本，存在二义性。</p>
-<p><strong>解决</strong>：虚继承。B 和 C 虚继承 A，共享同一个 A 子对象。</p>
-<p><strong>虚表内容</strong>：虚继承时，虚表存储的是虚基类指针（vbptr），指向虚基类表（vbtable），表中记录虚基类相对于当前位置的偏移量。普通虚函数表（vtable）存储的是虚函数指针。两者是不同的表。</p>
-
-<a id="q403"></a>
-<h4>Q6 含虚函数类的sizeof计算</h4>
-
-<p>类中有 <code>int a, long b, void func(), virtual void func2()</code>：</p>
-<ul>
-<li>需要存储 <code>a</code>（4字节）和 <code>b</code>（8字节，64位下），加上虚函数表指针 <code>vptr</code>（8字节）</li>
-<li>普通成员函数不占空间，虚函数通过 vptr 指向虚表</li>
-<li>考虑内存对齐：vptr(8) + a(4) + padding(4) + b(8) = 24字节（64位）</li>
-<li>如果是子类继承两个父类，会有两个 vptr，大小更大</li>
-</ul>
-
-<a id="q404"></a>
-<h4>Q7 const在*左和右的区别？const修饰成员函数？</h4>
-
-<ul>
-<li><code>const int* p</code>（const在*左边）：指针指向的内容是常量，不能通过 p 修改值</li>
-<li><code>int* const p</code>（const在*右边）：指针本身是常量，不能修改 p 的指向</li>
-<li><code>const int* const p</code>：两者都是常量</li>
-<li>成员函数后加 <code>const</code>：表示该函数不能修改对象的成员变量（this指针变为 const Type*）。如需修改某个成员，可用 <code>mutable</code> 修饰该变量</li>
-</ul>
-
-<a id="q405"></a>
-<h4>Q8 volatile的作用？多线程寄存器是否共享？</h4>
-
-<p><strong>volatile</strong>：告诉编译器不要对变量做优化（如缓存到寄存器），每次都从内存读取。适用于硬件寄存器映射、信号处理等场景。</p>
-<p><strong>多线程寄存器</strong>：每个线程有自己独立的寄存器组（CPU 切换线程时保存/恢复上下文），寄存器不共享。但主内存是共享的，volatile 不能保证原子性和可见性（在 C++ 中需要用 std::atomic）。</p>
-
-<a id="q406"></a>
-<h4>Q9 构造函数和析构函数哪个可以是虚函数？</h4>
-
-<p><strong>析构函数可以是虚函数</strong>（推荐在基类中声明虚析构函数），因为多态删除基类指针时能正确调用派生类析构函数，防止内存泄漏。</p>
-<p><strong>构造函数不能是虚函数</strong>：虚函数调用依赖虚函数表指针 vptr，而 vptr 在构造函数中初始化。构造函数执行前对象还没创建，没有 vptr 可用，所以构造函数不能是虚函数。</p>
-
-<a id="q407"></a>
-<h4>Q10 如何使对象只在堆上生成而不在栈上？</h4>
-
-<p>将析构函数设为 <code>private</code> 或 <code>protected</code>，这样栈上对象无法自动调用析构函数（编译报错），只能通过 new 在堆上创建。然后提供一个 public 的 destroy() 方法手动释放：</p>
-<pre><code>class HeapOnly {
-private:
-    ~HeapOnly() {}
-public:
-    static HeapOnly* create() { return new HeapOnly(); }
-    void destroy() { delete this; }
-};</code></pre>
-
-<a id="q408"></a>
-<h4>Q11 智能指针是线程安全的吗？</h4>
-
-<p><strong>shared_ptr</strong>：引用计数本身是原子的（线程安全），但 <strong>读写同一个 shared_ptr 对象不是线程安全的</strong>。多个线程同时读同一个 shared_ptr 是安全的，但一个线程写（reset/operator=）另一个线程读是数据竞争。</p>
-<p><strong>unique_ptr</strong>：独占所有权，不涉及引用计数，但移动操作不是线程安全的。</p>
-<p><strong>weak_ptr</strong>：lock() 返回一个 shared_ptr，操作是原子的。</p>
-<p>如果需要多线程安全访问，应加锁或使用 <code>std::atomic&lt;shared_ptr&gt;</code>（C++20）。</p>
-
-<a id="q409"></a>
-<h4>Q12 左值、右值、左值引用和右值引用？</h4>
-
-<ul>
-<li><strong>左值</strong>：有地址、有名字，可以取地址的表达式。如变量名、解引用</li>
-<li><strong>右值</strong>：没有持久地址的临时值。如字面量、函数返回值、表达式结果</li>
-<li><strong>左值引用</strong>：<code>T&amp;</code>，绑定到左值</li>
-<li><strong>右值引用</strong>：<code>T&amp;&amp;</code>，绑定到右值，用于移动语义和完美转发</li>
-<li><strong>std::move</strong>：将左值强制转换为右值引用，实际上只是类型转换，不移动任何东西</li>
-<li><strong>移动构造函数</strong>：接收右值引用，窃取资源而非拷贝，提高性能</li>
-</ul>
-
-<a id="q410"></a>
-<h4>Q13 设计一个线程安全的单例模式</h4>
-
-<p><strong>Meyers' Singleton（C++11 起线程安全）</strong>：</p>
-<pre><code>class Singleton {
-private:
-    Singleton() = default;
-public:
-    static Singleton&amp; getInstance() {
-        static Singleton instance; // C++11保证局部static初始化线程安全
-        return instance;
-    }
-    Singleton(const Singleton&amp;) = delete;
-    Singleton&amp; operator=(const Singleton&amp;) = delete;
-};</code></pre>
-<p>这是最推荐的写法。双锁机制（DCLP）在 C++11 之前使用，但存在内存序问题，C++11 后用 <code>std::call_once</code> 或 Meyers' Singleton 更安全。</p>
-
-<a id="q411"></a>
-<h3>BIGO 一面（通用C++方向）</h3>
-
-<a id="q412"></a>
-<h4>Q14 int a[10]; &a+1 和 &a[0]+1 分别表示什么？</h4>
-
-<p><code>&amp;a</code> 的类型是 <code>int(*)[10]</code>（指向整个数组的指针），<code>&amp;a+1</code> 跨过整个数组，地址增加 <code>10 * sizeof(int) = 40</code> 字节。</p>
-<p><code>&amp;a[0]</code> 的类型是 <code>int*</code>（指向第一个元素的指针），<code>&amp;a[0]+1</code> 只移动一个元素，地址增加 <code>sizeof(int) = 4</code> 字节。</p>
-
-<a id="q413"></a>
-<h4>Q15 成员函数后面加const的含义和作用？</h4>
-
-<p>表示该函数不会修改对象的状态（const 成员函数）。<code>this</code> 指针类型变为 <code>const ClassName*</code>，函数内不能修改非 <code>mutable</code> 的成员变量。const 对象只能调用 const 成员函数。作用是增强代码安全性，防止意外修改。</p>
-
-<a id="q414"></a>
-<h4>Q16 求链表倒数第k个节点</h4>
-
-<p><strong>快慢指针法</strong>：快指针先走 k 步，然后快慢指针同时走，快指针到末尾时慢指针即为倒数第 k 个。</p>
-<pre><code>ListNode* findKthFromEnd(ListNode* head, int k) {
-    ListNode *fast = head, *slow = head;
-    for (int i = 0; i &lt; k; i++) {
-        if (!fast) return nullptr;
-        fast = fast-&gt;next;
-    }
-    while (fast) {
-        fast = fast-&gt;next;
-        slow = slow-&gt;next;
-    }
-    return slow;
-}</code></pre>
-
-<a id="q415"></a>
-<h4>Q17 x & (x-1) 的作用是什么？</h4>
-
-<p><code>x &amp; (x-1)</code> 会消除 x 二进制表示中最低位的 1。循环执行直到 x 为 0，执行次数就是 x 中 1 的个数。</p>
-<pre><code>int count = 0, x = 981;
-while (x) {
-    count++;
-    x = x &amp; (x - 1);
-}
-// count = x 二进制中 1 的个数</code></pre>
-
-<a id="q416"></a>
-<h4>Q18 大数相加（手撕代码）</h4>
-
-<p>用字符串模拟大数加法，从低位到高位逐位相加，处理进位：</p>
-<pre><code>string addStrings(string a, string b) {
-    int i = a.size() - 1, j = b.size() - 1, carry = 0;
-    string result;
-    while (i &gt;= 0 || j &gt;= 0 || carry) {
-        int sum = carry;
-        if (i &gt;= 0) sum += a[i--] - '0';
-        if (j &gt;= 0) sum += b[j--] - '0';
-        carry = sum / 10;
-        result = char(sum % 10 + '0') + result;
-    }
-    return result;
-}</code></pre>
-
-<a id="q417"></a>
-<h4>Q19 100万个数字找出最大的10个</h4>
-
-<p><strong>最小堆（优先队列）</strong>：维护一个大小为 10 的最小堆。遍历每个数字，如果比堆顶大则替换。时间复杂度 O(N·logK)，K=10。</p>
-<pre><code>priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; pq; // 最小堆
-for (int num : nums) {
-    if (pq.size() &lt; 10) pq.push(num);
-    else if (num &gt; pq.top()) { pq.pop(); pq.push(num); }
-}</code></pre>
-<p>也可用快速选择法（partition），平均 O(N)，但会修改原数组。</p>
-
-<a id="q418"></a>
-<h4>Q20 抽奖公平性如何保证？</h4>
-
-<p><strong>方法1：洗牌算法（Fisher-Yates）</strong>：对参与者数组随机洗牌，取第一个为中奖者。每个位置等概率，O(n)。</p>
-<pre><code>for (int i = n - 1; i &gt; 0; i--) {
-    int j = rand() % (i + 1);
-    swap(arr[i], arr[j]);
-}</code></pre>
-<p><strong>方法2：蓄水池抽样</strong>：当总人数未知（流式数据）时，第 i 个人以 K/i 的概率替换蓄水池中的元素，保证每个人被选中的概率相等。适合在线抽奖场景。</p>
-
-<a id="q419"></a>
-<h3>BIGO 二面</h3>
-
-<a id="q420"></a>
-<h4>Q21 有父类、组合类时构造函数调用顺序？</h4>
-
-<p>构造顺序：<strong>基类 → 成员对象 → 自身</strong>。</p>
-<ol>
-<li>先调用基类的构造函数（按继承声明顺序）</li>
-<li>再调用成员对象的构造函数（按成员声明顺序）</li>
-<li>最后执行自身构造函数体</li>
-</ol>
-<p>析构顺序完全相反：自身 → 成员对象 → 基类。</p>
-
-<a id="q421"></a>
-<h4>Q22 判断大小端并实现字节序转换函数</h4>
-
-<p><strong>判断方法</strong>：将 int 的地址转为 char*，读取第一个字节。值为低字节则为小端。</p>
-<pre><code>bool isLittleEndian() {
-    int x = 1;
-    return *(char*)&amp;x == 1;
-}</code></pre>
-<p><strong>大端转本机字节序（类似 ntohl）</strong>：</p>
-<pre><code>uint32_t bigToHost(uint32_t val) {
-    return ((val &gt;&gt; 24) &amp; 0xFF) |
-           ((val &gt;&gt; 8) &amp; 0xFF00) |
-           ((val &lt;&lt; 8) &amp; 0xFF0000) |
-           ((val &lt;&lt; 24) &amp; 0xFF000000);
-}</code></pre>
-
-<a id="q422"></a>
-<h4>Q23 判断long型数是否是2^n，要求O(1)</h4>
-
-<p>2 的幂的二进制只有一个 1，用 <code>x &gt; 0 &amp;&amp; (x &amp; (x-1)) == 0</code> 即可判断：</p>
-<pre><code>bool isPowerOfTwo(long n) {
-    return n &gt; 0 &amp;&amp; (n &amp; (n - 1)) == 0;
-}</code></pre>
-
-<a id="q423"></a>
-<h4>Q24 单例模式有哪几种写法？双锁机制有什么问题？</h4>
-
-<p>常见写法：① 饿汉式（类加载即初始化）；② 懒汉式（延迟初始化）；③ Meyers'（局部静态变量，C++11 线程安全）；④ 双锁机制（DCLP）。</p>
-<p><strong>双锁机制的问题</strong>：</p>
-<ul>
-<li>在 C++11 之前，DCLP 存在内存序问题：分配内存和构造对象的顺序可能被编译器重排，导致其他线程读到未完全构造的对象</li>
-<li>需要用内存栅栏或 <code>std::atomic</code> 来保证正确性</li>
-<li>C++11 后推荐使用 Meyers' Singleton（局部 static 变量），标准保证线程安全且无锁</li>
-</ul>
-
-<a id="q424"></a>
-<h4>Q25 为什么用_beginthreadex而不用CreateThread？</h4>
-
-<p>Windows 下 <code>CreateThread</code> 创建的线程中，如果使用了 C 运行时库（如 malloc、printf、errno 等），会导致内存泄漏或状态不一致。因为 CRT 需要通过 <code>_beginthreadex</code> 初始化线程的 <code>tiddata</code> 结构（用于管理 per-thread 的 CRT 状态）。<code>_beginthreadex</code> 内部调用 <code>CreateThread</code>，但额外做了 CRT 初始化。</p>
-
-<a id="q426"></a>
-<h3>BIGO 三面</h3>
-
-<a id="q427"></a>
-<h4>Q26 信号量和互斥锁的区别？设计一个信号量类</h4>
-
-<p><strong>互斥锁</strong>：二元信号量，只有 0 和 1，用于互斥访问。加锁的线程必须解锁。</p>
-<p><strong>信号量</strong>：计数器，允许多个线程同时访问资源。可以由其他线程唤醒。</p>
-<p>信号量实现：</p>
-<pre><code>class Semaphore {
-    int count;
-    mutex mtx;
-    condition_variable cv;
-public:
-    Semaphore(int n = 0) : count(n) {}
-    void wait() {
-        unique_lock&lt;mutex&gt; lk(mtx);
-        cv.wait(lk, [this]{ return count &gt; 0; });
-        count--;
-    }
-    void signal() {
-        unique_lock&lt;mutex&gt; lk(mtx);
-        count++;
-        cv.notify_one();
-    }
-};</code></pre>
-
-<a id="q428"></a>
-<h4>Q27 设计模式六大原则</h4>
-
-<ul>
-<li><strong>单一职责原则（SRP）</strong>：一个类只负责一个职责</li>
-<li><strong>开闭原则（OCP）</strong>：对扩展开放，对修改关闭</li>
-<li><strong>里氏替换原则（LSP）</strong>：子类必须能替换父类</li>
-<li><strong>依赖倒置原则（DIP）</strong>：依赖抽象而非具体</li>
-<li><strong>接口隔离原则（ISP）</strong>：客户端不应依赖不需要的接口</li>
-<li><strong>迪米特法则（LoD）</strong>：最少知道原则，一个对象应尽可能少了解其他对象</li>
-</ul>
-
-<a id="q429"></a>
-<h4>Q28 如何把多媒体播放器做成边下边播？</h4>
-
-<p><strong>核心思路</strong>：将播放和下载解耦，用环形缓冲区管理数据：</p>
-<ul>
-<li><strong>下载线程</strong>：持续从网络读取数据写入环形缓冲区，当缓冲区满时等待</li>
-<li><strong>播放线程</strong>：从缓冲区读取数据进行解码播放，当缓冲区不足时等待</li>
-<li><strong>同步机制</strong>：用条件变量 + 互斥锁控制缓冲区读写，避免空读和满写</li>
-<li><strong>预缓冲</strong>：开始播放前先缓冲一定数据（如 1-2 秒），后续边播边下</li>
-<li><strong>码率自适应</strong>：根据下载速度动态调整视频质量，避免缓冲区耗尽</li>
-</ul>
-<p>在 VA 项目中，HTTP 渐进式流服务器支持 Range 请求，客户端可以边下载边播放，PacketQueue 作为缓冲区。</p>
-
-<a id="q430"></a>
-<h4>Q29 FFmpeg解码时音视频不同步怎么解决？</h4>
-
-<p><strong>音视频同步方案</strong>：</p>
-<ul>
-<li><strong>以音频时钟为主时钟</strong>：音频用 SDL 回调按采样率播放，天然匀速</li>
-<li><strong>视频追赶音频</strong>：每帧视频显示前比较当前 pts 与音频时钟，视频快则延迟显示，视频慢则丢帧（跳过非关键帧）</li>
-<li><strong>pts/dts</strong>：利用 FFmpeg 的 packet.pts 和 frame.pts 作为时间戳，换算到同一时间基</li>
-<li><strong>具体实现</strong>：音频回调中更新 audio_clock，视频线程用 av_diff = video_pts - audio_clock 判断同步状态，diff &gt; 阈值则等待，diff &lt; -阈值则丢帧</li>
-</ul>
-<p>在 VA 项目中，以音频为基准时钟，视频帧通过比较 pts 与音频时钟决定显示时机或丢帧。</p>
-
-<a id="q431"></a>
-<h4>Q30 TCP为什么是三次握手？两次行不行？</h4>
-
-<p><strong>三次握手的原因</strong>：双方都需要确认对方的收发能力正常。</p>
-<ul>
-<li>第一次：客户端→服务端 SYN，服务端确认客户端发送正常</li>
-<li>第二次：服务端→客户端 SYN+ACK，客户端确认服务端收发正常</li>
-<li>第三次：客户端→服务端 ACK，服务端确认客户端接收正常</li>
-</ul>
-<p><strong>两次不行</strong>：如果只有两次，服务端发送 SYN+ACK 后就认为连接建立，但无法确认客户端是否收到了自己的 SYN+ACK。如果客户端之前的 SYN 延迟到达，服务端会误建连接浪费资源。三次握手可以防止历史失效连接初始化。</p>
-
-<a id="q432"></a>
-<h3>BIGO 四面</h3>
-
-<a id="q433"></a>
-<h4>Q31 手写memcpy函数（注意地址重叠）</h4>
-
-<p>地址重叠时需要从后向前拷贝（当 src &lt; dst），避免覆盖未读数据：</p>
-<pre><code>void* myMemcpy(void* dst, const void* src, size_t n) {
-    char* d = (char*)dst;
-    const char* s = (const char*)src;
-    if (d &lt; s) {
-        for (size_t i = 0; i &lt; n; i++)
-            d[i] = s[i];
-    } else {
-        for (size_t i = n; i &gt; 0; i--)
-            d[i - 1] = s[i - 1];
-    }
-    return dst;
-}</code></pre>
-
-<a id="q434"></a>
-<h4>Q32 判断两棵二叉树是否相似（可左右旋转得到）</h4>
-
-<p>两棵树相似：通过交换任意节点的左右子树能变得相同。递归判断：要么两棵树相同，要么交换一棵的左右子树后相同。</p>
-<pre><code>bool isSimilar(TreeNode* a, TreeNode* b) {
-    if (!a &amp;&amp; !b) return true;
-    if (!a || !b) return false;
-    if (a-&gt;val != b-&gt;val) return false;
-    return (isSimilar(a-&gt;left, b-&gt;left) &amp;&amp;
-            isSimilar(a-&gt;right, b-&gt;right)) ||
-           (isSimilar(a-&gt;left, b-&gt;right) &amp;&amp;
-            isSimilar(a-&gt;right, b-&gt;left));
-}</code></pre>
 </div>
 </div>
 <button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
@@ -6911,4 +6477,12 @@ public:
   }
 })();
 </script>
+<div class="side-toolbar" id="sideToolbar">
+<button class="edit-toggle-btn" id="editToggleBtn" title="切换编辑模式"><span class="btn-label">编辑模式</span>✏️</button>
+<button class="edit-add-btn" id="editAddBtn" style="display:none" title="添加题目"><span class="btn-label">添加题目</span>➕</button>
+<button class="edit-save-btn" id="editSaveBtn" style="display:none" title="导出数据"><span class="btn-label">导出数据</span>💾</button>
+<button class="edit-import-btn" id="editImportBtn" style="display:none" title="导入数据"><span class="btn-label">导入数据</span>📥</button>
+<button class="edit-reset-btn" id="editResetBtn" style="display:none" title="重置数据"><span class="btn-label">重置数据</span>🔄</button>
+<span class="save-status" id="saveStatus"></span>
+</div>
 </body></html>
