@@ -821,33 +821,43 @@ pre{font-size:12px!important}
 <a id="q8"></a>
 <h5>② 整体功能</h5>
 
-| <strong>功能模块</strong> | <strong>说明</strong> |
-|---|---|
-| 用户注册/登录 | 账号体系，密码 MD5 哈希存储 |
-| 视频上传 | 链式传输：视频文件 → 封面文件 → 元数据，串行执行 |
-| 视频播放 | 本地/网络播放，支持音视频同步、倍速播放、硬件解码 |
-| HTTP 流媒体 | 8081 端口 HTTP 渐进式流，支持 Range 请求断点续传 |
-| 视频搜索 | 全局模糊搜索，匹配视频名/作者/标签 |
-| 收藏与历史 | 用户收藏视频、自动记录播放历史 |
-| 视频录制 | FFmpeg 编码管线，H.264+AAC → FLV |
-| 四级播放策略 | 本地路径 → 本地缓存 → 服务器下载 → 文件选择对话框 |
-| AI 视频内容理解（开发中） | FFmpeg 抽关键帧，画面+音频双路并行送入大模型生成摘要 |
-| AI 智能推荐（开发中） | Agent 驱动 + 向量检索做个性化推荐 |
+<table>
+<thead>
+<tr><th><strong>功能模块</strong></th><th><strong>说明</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>用户注册/登录</td><td>账号体系，密码 MD5 哈希存储</td></tr>
+<tr><td>视频上传</td><td>链式传输：视频文件 → 封面文件 → 元数据，串行执行</td></tr>
+<tr><td>视频播放</td><td>本地/网络播放，支持音视频同步、倍速播放、硬件解码</td></tr>
+<tr><td>HTTP 流媒体</td><td>8081 端口 HTTP 渐进式流，支持 Range 请求断点续传</td></tr>
+<tr><td>视频搜索</td><td>全局模糊搜索，匹配视频名/作者/标签</td></tr>
+<tr><td>收藏与历史</td><td>用户收藏视频、自动记录播放历史</td></tr>
+<tr><td>视频录制</td><td>FFmpeg 编码管线，H.264+AAC → FLV</td></tr>
+<tr><td>四级播放策略</td><td>本地路径 → 本地缓存 → 服务器下载 → 文件选择对话框</td></tr>
+<tr><td>AI 视频内容理解（开发中）</td><td>FFmpeg 抽关键帧，画面+音频双路并行送入大模型生成摘要</td></tr>
+<tr><td>AI 智能推荐（开发中）</td><td>Agent 驱动 + 向量检索做个性化推荐</td></tr>
+</tbody>
+</table>
 
 <a id="q9"></a>
 <h5>③ 技术栈</h5>
 
-| <strong>层面</strong> | <strong>技术</strong> | <strong>用途</strong> |
-|---|---|---|
-| 客户端框架 | C++ + Qt | UI 界面、事件循环、信号槽通信 |
-| 视频编解码 | FFmpeg | 解封装、解码、编码 |
-| 音频播放 | SDL2 | 音频设备管理、回调驱动播放 |
-| GPU 渲染 | OpenGL | 纹理映射、YUV 转 RGB、硬件加速渲染 |
-| 网络通信 | WinSock + TCP Socket | 客户端与服务端可靠通信 |
-| 通信协议 | JSON | 请求/响应数据序列化 |
-| 流媒体 | HTTP 渐进式流 | 8081 端口视频在线播放 |
-| 数据存储 | SQLite | 用户信息、视频元数据、收藏历史 |
-| 硬件解码 | DXVA2 | GPU 硬件加速解码 |
+<table>
+<thead>
+<tr><th><strong>层面</strong></th><th><strong>技术</strong></th><th><strong>用途</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>客户端框架</td><td>C++ + Qt</td><td>UI 界面、事件循环、信号槽通信</td></tr>
+<tr><td>视频编解码</td><td>FFmpeg</td><td>解封装、解码、编码</td></tr>
+<tr><td>音频播放</td><td>SDL2</td><td>音频设备管理、回调驱动播放</td></tr>
+<tr><td>GPU 渲染</td><td>OpenGL</td><td>纹理映射、YUV 转 RGB、硬件加速渲染</td></tr>
+<tr><td>网络通信</td><td>WinSock + TCP Socket</td><td>客户端与服务端可靠通信</td></tr>
+<tr><td>通信协议</td><td>JSON</td><td>请求/响应数据序列化</td></tr>
+<tr><td>流媒体</td><td>HTTP 渐进式流</td><td>8081 端口视频在线播放</td></tr>
+<tr><td>数据存储</td><td>SQLite</td><td>用户信息、视频元数据、收藏历史</td></tr>
+<tr><td>硬件解码</td><td>DXVA2</td><td>GPU 硬件加速解码</td></tr>
+</tbody>
+</table>
 
 <a id="q10"></a>
 <h5>④ 技术栈实现流程与原理</h5>
@@ -869,14 +879,19 @@ pre{font-size:12px!important}
 <a id="q11"></a>
 <h5>⑤ 难点与解决</h5>
 
-| <strong>难点</strong> | <strong>解决方案</strong> |
-|---|---|
-| SDL 视频模块与 Qt 事件循环冲突，窗口抢占导致崩溃 | 放弃 SDL 视频渲染，改用 OpenGL 纹理映射，SDL 只负责音频 |
-| 音视频同步困难，画面和声音对不上 | 以音频 PTS 为主时钟，视频帧对比 PTS：快了延迟显示，慢了丢帧追赶 |
-| 硬件解码兼容性差，不同 GPU 支持格式不同 | 初始化时检测硬件解码能力，失败自动回退 FFmpeg 软解码，对用户透明 |
-| TCP 粘包问题，消息边界不清晰 | 设计长度头协议：先发 4 字节消息长度，再发消息体，接收端按长度读取 |
-| 多线程解码数据竞争 | 三线程模型 + PacketQueue 阻塞队列（条件变量同步），生产者-消费者模式 |
-| 网络播放卡顿 | 四级播放缓存策略 + HTTP Range 请求断点续传 + FFmpeg 边下边播 |
+<table>
+<thead>
+<tr><th><strong>难点</strong></th><th><strong>解决方案</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>SDL 视频模块与 Qt 事件循环冲突，窗口抢占导致崩溃</td><td>放弃 SDL 视频渲染，改用 OpenGL 纹理映射，SDL 只负责音频</td></tr>
+<tr><td>音视频同步困难，画面和声音对不上</td><td>以音频 PTS 为主时钟，视频帧对比 PTS：快了延迟显示，慢了丢帧追赶</td></tr>
+<tr><td>硬件解码兼容性差，不同 GPU 支持格式不同</td><td>初始化时检测硬件解码能力，失败自动回退 FFmpeg 软解码，对用户透明</td></tr>
+<tr><td>TCP 粘包问题，消息边界不清晰</td><td>设计长度头协议：先发 4 字节消息长度，再发消息体，接收端按长度读取</td></tr>
+<tr><td>多线程解码数据竞争</td><td>三线程模型 + PacketQueue 阻塞队列（条件变量同步），生产者-消费者模式</td></tr>
+<tr><td>网络播放卡顿</td><td>四级播放缓存策略 + HTTP Range 请求断点续传 + FFmpeg 边下边播</td></tr>
+</tbody>
+</table>
 
 <a id="q12"></a>
 <h4>项目二：简历生成器</h4>
@@ -889,43 +904,58 @@ pre{font-size:12px!important}
 <a id="q14"></a>
 <h5>② 整体功能</h5>
 
-| <strong>功能模块</strong> | <strong>说明</strong> |
-|---|---|
-| 模板系统 | 50 套模板，11 种布局 × 配色 × 装饰特征三维解耦 |
-| 实时预览编辑 | 左侧编辑 + 右侧实时预览，所见即所得 |
-| PDF 导出 | html2canvas 截图 + jsPDF 生成，保证单页 A4 不截断 |
-| PDF 导入 | 三种模式：PDF.js 文本提取 + Tesseract.js OCR + AI 智能解析 |
-| AI 智能导入 | 调用大模型将 PDF 文本解析为结构化 JSON |
-| AI 智能导出 | STAR 法则优化简历文案 + 自动生成 PDF |
-| 导入导出无损恢复 | EmbeddedFile 嵌入简历 JSON，导出再导入数据不丢失 |
-| 自动保存 | localStorage + 500ms 防抖，无需手动保存 |
-| 数据管理 | 增删改查 + 排序 + 复制 + Markdown/JSON 导入导出 |
+<table>
+<thead>
+<tr><th><strong>功能模块</strong></th><th><strong>说明</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>模板系统</td><td>50 套模板，11 种布局 × 配色 × 装饰特征三维解耦</td></tr>
+<tr><td>实时预览编辑</td><td>左侧编辑 + 右侧实时预览，所见即所得</td></tr>
+<tr><td>PDF 导出</td><td>html2canvas 截图 + jsPDF 生成，保证单页 A4 不截断</td></tr>
+<tr><td>PDF 导入</td><td>三种模式：PDF.js 文本提取 + Tesseract.js OCR + AI 智能解析</td></tr>
+<tr><td>AI 智能导入</td><td>调用大模型将 PDF 文本解析为结构化 JSON</td></tr>
+<tr><td>AI 智能导出</td><td>STAR 法则优化简历文案 + 自动生成 PDF</td></tr>
+<tr><td>导入导出无损恢复</td><td>EmbeddedFile 嵌入简历 JSON，导出再导入数据不丢失</td></tr>
+<tr><td>自动保存</td><td>localStorage + 500ms 防抖，无需手动保存</td></tr>
+<tr><td>数据管理</td><td>增删改查 + 排序 + 复制 + Markdown/JSON 导入导出</td></tr>
+</tbody>
+</table>
 
 <a id="q15"></a>
 <h5>③ 技术栈</h5>
 
-| <strong>层面</strong> | <strong>技术</strong> | <strong>用途</strong> |
-|---|---|---|
-| 前端框架 | Vue 3 + TypeScript | 组合式 API、响应式数据、类型安全 |
-| 构建工具 | Vite | 开发热更新、生产打包 |
-| PDF 导出 | html2canvas + jsPDF + pdf-lib | 截图生成 PDF、数据嵌入 |
-| PDF 导入 | PDF.js + Tesseract.js | 文本提取、OCR 识别 |
-| 模板配色 | CSS 变量 | 6 个颜色变量驱动 50 套配色 |
-| 本地存储 | localStorage | 自动保存、数据持久化 |
-| AI 功能 | 大模型 API | 智能导入解析、STAR 法则文案优化 |
-| 开发方式 | AI 辅助开发 | 需求拆解 + Prompt 驱动 + 代码审查整合 |
+<table>
+<thead>
+<tr><th><strong>层面</strong></th><th><strong>技术</strong></th><th><strong>用途</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>前端框架</td><td>Vue 3 + TypeScript</td><td>组合式 API、响应式数据、类型安全</td></tr>
+<tr><td>构建工具</td><td>Vite</td><td>开发热更新、生产打包</td></tr>
+<tr><td>PDF 导出</td><td>html2canvas + jsPDF + pdf-lib</td><td>截图生成 PDF、数据嵌入</td></tr>
+<tr><td>PDF 导入</td><td>PDF.js + Tesseract.js</td><td>文本提取、OCR 识别</td></tr>
+<tr><td>模板配色</td><td>CSS 变量</td><td>6 个颜色变量驱动 50 套配色</td></tr>
+<tr><td>本地存储</td><td>localStorage</td><td>自动保存、数据持久化</td></tr>
+<tr><td>AI 功能</td><td>大模型 API</td><td>智能导入解析、STAR 法则文案优化</td></tr>
+<tr><td>开发方式</td><td>AI 辅助开发</td><td>需求拆解 + Prompt 驱动 + 代码审查整合</td></tr>
+</tbody>
+</table>
 
 <a id="q16"></a>
 <h5>④ 难点与解决</h5>
 
-| <strong>难点</strong> | <strong>解决方案</strong> |
-|---|---|
-| PDF 导出内容被截断，跨页时文字断裂 | 清除预览区 scale 变换 → 按 A4 比例（297/210）计算截图高度 → 保证宽高比 = A4 比例，单页铺满 |
-| 导入导出无法无损恢复，PDF 导出后再导入数据丢失 | 用 pdf-lib 的 EmbeddedFile 把完整简历 JSON 作为标准附件嵌入 PDF → 导入时先提取附件 → JSON 反序列化恢复全部数据 |
-| 50 套模板代码维护困难，新增模板需写大量代码 | 三维解耦设计：布局(11种) × 配色(3组变量) × 特征(数组) → 纯数据配置，新增模板只需选布局+设配色+挑特征 |
-| html2canvas 对部分 CSS 兼容性差（如 box-shadow、filter） | 降级处理：截图前临时移除不兼容样式 → 截图后恢复 → 保证截图质量 |
-| OCR 识别精度低，扫描版简历识别率差 | 预处理优化：灰度化 → 对比度增强 → Otsu 二值化 → 再送入 Tesseract.js 识别 |
-| 用户编辑后忘记保存导致数据丢失 | watch 监听 + 500ms 防抖自动保存到 localStorage → 无需手动操作 |
+<table>
+<thead>
+<tr><th><strong>难点</strong></th><th><strong>解决方案</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>PDF 导出内容被截断，跨页时文字断裂</td><td>清除预览区 scale 变换 → 按 A4 比例（297/210）计算截图高度 → 保证宽高比 = A4 比例，单页铺满</td></tr>
+<tr><td>导入导出无法无损恢复，PDF 导出后再导入数据丢失</td><td>用 pdf-lib 的 EmbeddedFile 把完整简历 JSON 作为标准附件嵌入 PDF → 导入时先提取附件 → JSON 反序列化恢复全部数据</td></tr>
+<tr><td>50 套模板代码维护困难，新增模板需写大量代码</td><td>三维解耦设计：布局(11种) × 配色(3组变量) × 特征(数组) → 纯数据配置，新增模板只需选布局+设配色+挑特征</td></tr>
+<tr><td>html2canvas 对部分 CSS 兼容性差（如 box-shadow、filter）</td><td>降级处理：截图前临时移除不兼容样式 → 截图后恢复 → 保证截图质量</td></tr>
+<tr><td>OCR 识别精度低，扫描版简历识别率差</td><td>预处理优化：灰度化 → 对比度增强 → Otsu 二值化 → 再送入 Tesseract.js 识别</td></tr>
+<tr><td>用户编辑后忘记保存导致数据丢失</td><td>watch 监听 + 500ms 防抖自动保存到 localStorage → 无需手动操作</td></tr>
+</tbody>
+</table>
 
 <a id="q17"></a>
 <h3>VA项目 - 音视频播放核心</h3>
@@ -1034,11 +1064,16 @@ pre{font-size:12px!important}
 <a id="q28"></a>
 <h4>Q11 编码和解码的 API 对应关系？</h4>
 
-| <strong>方向</strong> | <strong>解码</strong> | <strong>编码</strong> |
-|---|---|---|
-| 输入 | 压缩包 | 原始帧 |
-| 输出 | 原始帧 | 压缩包 |
-| API | 送压缩包 → 取原始帧 | 送原始帧 → 取压缩包 |
+<table>
+<thead>
+<tr><th><strong>方向</strong></th><th><strong>解码</strong></th><th><strong>编码</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>输入</td><td>压缩包</td><td>原始帧</td></tr>
+<tr><td>输出</td><td>原始帧</td><td>压缩包</td></tr>
+<tr><td>API</td><td>送压缩包 → 取原始帧</td><td>送原始帧 → 取压缩包</td></tr>
+</tbody>
+</table>
 
 <p>两者正好对称反过来。项目里解码用于播放视频，编码用于录制视频。</p>
 
@@ -1306,12 +1341,17 @@ pre{font-size:12px!important}
 <a id="q54"></a>
 <h4>Q35 你的项目和 B站/抖音有什么区别？</h4>
 
-| <strong>对比项</strong> | <strong>我的项目</strong> | <strong>B站/抖音</strong> |
-|---|---|---|
-| 架构 | 桌面客户端(C/S) | Web端(B/S) + 分布式 |
-| 技术栈 | Qt C++ + FFmpeg + SQLite | React + Go/Java |
-| 播放器 | 自研 FFmpeg+SDL+OpenGL | Web播放器 |
-| 优势 | 桌面原生性能好，可控性强 | 用户规模大，支持高并发 |
+<table>
+<thead>
+<tr><th><strong>对比项</strong></th><th><strong>我的项目</strong></th><th><strong>B站/抖音</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>架构</td><td>桌面客户端(C/S)</td><td>Web端(B/S) + 分布式</td></tr>
+<tr><td>技术栈</td><td>Qt C++ + FFmpeg + SQLite</td><td>React + Go/Java</td></tr>
+<tr><td>播放器</td><td>自研 FFmpeg+SDL+OpenGL</td><td>Web播放器</td></tr>
+<tr><td>优势</td><td>桌面原生性能好，可控性强</td><td>用户规模大，支持高并发</td></tr>
+</tbody>
+</table>
 
 <a id="q55"></a>
 <h4>Q36 项目中建了哪些数据库表？</h4>
@@ -1454,11 +1494,16 @@ pre{font-size:12px!important}
 <a id="q72"></a>
 <h4>Q51 OpenCV 和 FFmpeg 有什么区别？</h4>
 
-| <strong>特性</strong> | <strong>OpenCV</strong> | <strong>FFmpeg</strong> |
-|---|---|---|
-| 定位 | 计算机视觉/图像处理 | 音视频编解码/封装 |
-| 核心能力 | 图像识别、特征检测、滤波 | 编解码、封装解封装、转码 |
-| 处理粒度 | 逐像素图像处理 | 帧级别编解码 |
+<table>
+<thead>
+<tr><th><strong>特性</strong></th><th><strong>OpenCV</strong></th><th><strong>FFmpeg</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>定位</td><td>计算机视觉/图像处理</td><td>音视频编解码/封装</td></tr>
+<tr><td>核心能力</td><td>图像识别、特征检测、滤波</td><td>编解码、封装解封装、转码</td></tr>
+<tr><td>处理粒度</td><td>逐像素图像处理</td><td>帧级别编解码</td></tr>
+</tbody>
+</table>
 
 <p>项目中 FFmpeg 负责编解码和封装解封装，OpenCV 可用于视频帧的图像处理。</p>
 
@@ -1650,23 +1695,33 @@ pre{font-size:12px!important}
 <a id="q89"></a>
 <h4>Q67 C/S 和 B/S 架构的区别？</h4>
 
-| <strong>特性</strong> | <strong>C/S 架构</strong> | <strong>B/S 架构</strong> |
-|---|---|---|
-| 客户端 | 需要安装桌面客户端 | 浏览器即可访问 |
-| 部署 | 客户端需单独安装更新 | 服务端更新即可 |
-| 性能 | 桌面原生性能更好 | 受浏览器限制 |
-| 跨平台 | 需要适配不同系统 | 浏览器天然跨平台 |
+<table>
+<thead>
+<tr><th><strong>特性</strong></th><th><strong>C/S 架构</strong></th><th><strong>B/S 架构</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>客户端</td><td>需要安装桌面客户端</td><td>浏览器即可访问</td></tr>
+<tr><td>部署</td><td>客户端需单独安装更新</td><td>服务端更新即可</td></tr>
+<tr><td>性能</td><td>桌面原生性能更好</td><td>受浏览器限制</td></tr>
+<tr><td>跨平台</td><td>需要适配不同系统</td><td>浏览器天然跨平台</td></tr>
+</tbody>
+</table>
 
 <p>音视频平台是 C/S 架构，简历生成器是 B/S 架构。</p>
 
 <a id="q90"></a>
 <h4>Q68 SVG 和 Canvas 的区别？项目怎么选？</h4>
 
-| <strong>特性</strong> | <strong>SVG</strong> | <strong>Canvas</strong> |
-|---|---|---|
-| 类型 | 矢量图形 | 位图 |
-| DOM | 每个图形是 DOM 元素 | 整个画布一个 DOM 元素 |
-| 缩放 | 无损缩放 | 放大会模糊 |
+<table>
+<thead>
+<tr><th><strong>特性</strong></th><th><strong>SVG</strong></th><th><strong>Canvas</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>类型</td><td>矢量图形</td><td>位图</td></tr>
+<tr><td>DOM</td><td>每个图形是 DOM 元素</td><td>整个画布一个 DOM 元素</td></tr>
+<tr><td>缩放</td><td>无损缩放</td><td>放大会模糊</td></tr>
+</tbody>
+</table>
 
 <p>项目应用：简历生成器用 SVG + CSS 手写布局和装饰元素，保持轻量和矢量缩放。</p>
 
@@ -1926,20 +1981,30 @@ pre{font-size:12px!important}
 
 <p>重采样输出的是 <strong>PCM 裸音频数据</strong>，格式为 SDL 音频设备所期望的参数：</p>
 
-| <strong>参数</strong> | <strong>典型值</strong> |
-|---|---|
-| 采样格式 | AUDIO_S16SYS（有符号 16 位整数） |
-| 采样率 | 44100 Hz 或 48000 Hz |
-| 声道数 | 2（立体声） |
+<table>
+<thead>
+<tr><th><strong>参数</strong></th><th><strong>典型值</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>采样格式</td><td>AUDIO_S16SYS（有符号 16 位整数）</td></tr>
+<tr><td>采样率</td><td>44100 Hz 或 48000 Hz</td></tr>
+<tr><td>声道数</td><td>2（立体声）</td></tr>
+</tbody>
+</table>
 
 
 <a id="q126"></a>
 <h4>Q100 视频和音频的原始格式和压缩方法分别是什么？</h4>
 
-| <strong>类型</strong> | <strong>原始格式</strong> | <strong>压缩编码</strong> |
-|---|---|---|
-| 视频 | YUV（亮度+色度） | H.264 |
-| 音频 | PCM（裸音频数据） | AAC |
+<table>
+<thead>
+<tr><th><strong>类型</strong></th><th><strong>原始格式</strong></th><th><strong>压缩编码</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>视频</td><td>YUV（亮度+色度）</td><td>H.264</td></tr>
+<tr><td>音频</td><td>PCM（裸音频数据）</td><td>AAC</td></tr>
+</tbody>
+</table>
 
 <p><strong>完整数据链路</strong>：</p>
 <p>- <strong>视频</strong>：原始 YUV 帧 → H.264 编码 → 传输/存储 → H.264 解码 → YUV 帧 → 转 RGB → 渲染</p>
@@ -1952,11 +2017,16 @@ pre{font-size:12px!important}
 <p>2. <strong>与 FFmpeg 完美兼容</strong>：H.264 是 FFmpeg 支持最成熟的编码格式</p>
 <p>3. <strong>兼容性最好</strong>：几乎所有设备和播放器都支持 H.264 解码，包括硬件解码</p>
 
-| <strong>编码</strong> | <strong>压缩率</strong> | <strong>CPU 占用</strong> | <strong>兼容性</strong> |
-|---|---|---|---|
-| H.264 | 中等 | 中等 | 最好 |
-| H.265/HEVC | 更高 | 更高 | 较差 |
-| VP8/VP9 | 较高 | 较高 | 一般 |
+<table>
+<thead>
+<tr><th><strong>编码</strong></th><th><strong>压缩率</strong></th><th><strong>CPU 占用</strong></th><th><strong>兼容性</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>H.264</td><td>中等</td><td>中等</td><td>最好</td></tr>
+<tr><td>H.265/HEVC</td><td>更高</td><td>更高</td><td>较差</td></tr>
+<tr><td>VP8/VP9</td><td>较高</td><td>较高</td><td>一般</td></tr>
+</tbody>
+</table>
 
 <a id="q128"></a>
 <h3>互测复盘 - 李佳琪问的项目题（8.12）</h3>
@@ -1986,21 +2056,31 @@ pre{font-size:12px!important}
 <a id="q131"></a>
 <h4>Q104 堆和栈的区别</h4>
 
-| <strong>维度</strong> | <strong>栈</strong> | <strong>堆</strong> |
-|---|---|---|
-| 管理方式 | 编译器自动分配释放 | 程序员手动申请释放（new/malloc） |
-| 大小 | 几 MB，很小 | 受物理/虚拟内存限制，空间大 |
-| 效率 | 移动栈指针，速度快 | OS 内存管理算法分配，慢 |
-| 碎片 | 无碎片（LIFO） | 频繁申请释放产生碎片 |
+<table>
+<thead>
+<tr><th><strong>维度</strong></th><th><strong>栈</strong></th><th><strong>堆</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>管理方式</td><td>编译器自动分配释放</td><td>程序员手动申请释放（new/malloc）</td></tr>
+<tr><td>大小</td><td>几 MB，很小</td><td>受物理/虚拟内存限制，空间大</td></tr>
+<tr><td>效率</td><td>移动栈指针，速度快</td><td>OS 内存管理算法分配，慢</td></tr>
+<tr><td>碎片</td><td>无碎片（LIFO）</td><td>频繁申请释放产生碎片</td></tr>
+</tbody>
+</table>
 
 <a id="q132"></a>
 <h4>Q105 互斥锁、读写锁、自旋锁的适用场景</h4>
 
-| <strong>锁类型</strong> | <strong>适用场景</strong> |
-|---|---|
-| <strong>互斥锁</strong> | 读写操作混杂，读写频率接近 |
-| <strong>读写锁</strong> | 读多写少，读频繁写极少 |
-| <strong>自旋锁</strong> | 多核 CPU，临界区极短，不允许睡眠 |
+<table>
+<thead>
+<tr><th><strong>锁类型</strong></th><th><strong>适用场景</strong></th></tr>
+</thead>
+<tbody>
+<tr><td><strong>互斥锁</strong></td><td>读写操作混杂，读写频率接近</td></tr>
+<tr><td><strong>读写锁</strong></td><td>读多写少，读频繁写极少</td></tr>
+<tr><td><strong>自旋锁</strong></td><td>多核 CPU，临界区极短，不允许睡眠</td></tr>
+</tbody>
+</table>
 
 <a id="q133"></a>
 <h4>Q106 QT事件循环机制是什么？</h4>
@@ -2014,11 +2094,16 @@ pre{font-size:12px!important}
 <a id="q134"></a>
 <h4>Q107 三种智能指针的区别</h4>
 
-| <strong>智能指针</strong> | <strong>所有权</strong> | <strong>引用计数</strong> | <strong>适用场景</strong> |
-|---|---|---|---|
-| <strong>unique_ptr</strong> | 独占，禁止拷贝只允许移动 | 无，性能接近裸指针 | 资源只需一个管理者 |
-| <strong>shared_ptr</strong> | 共享，多个指针指向同一资源 | 有，归零释放 | 多处共用同一资源 |
-| <strong>weak_ptr</strong> | 不持有所有权，观察者 | 不增加计数 | 解决 shared_ptr 循环引用 |
+<table>
+<thead>
+<tr><th><strong>智能指针</strong></th><th><strong>所有权</strong></th><th><strong>引用计数</strong></th><th><strong>适用场景</strong></th></tr>
+</thead>
+<tbody>
+<tr><td><strong>unique_ptr</strong></td><td>独占，禁止拷贝只允许移动</td><td>无，性能接近裸指针</td><td>资源只需一个管理者</td></tr>
+<tr><td><strong>shared_ptr</strong></td><td>共享，多个指针指向同一资源</td><td>有，归零释放</td><td>多处共用同一资源</td></tr>
+<tr><td><strong>weak_ptr</strong></td><td>不持有所有权，观察者</td><td>不增加计数</td><td>解决 shared_ptr 循环引用</td></tr>
+</tbody>
+</table>
 
 <a id="q135"></a>
 <h4>Q108 大量TIME_WAIT的原因</h4>
@@ -2032,11 +2117,16 @@ pre{font-size:12px!important}
 <a id="q136"></a>
 <h4>Q109 既能查询快又能有序的数据结构</h4>
 
-| <strong>方案</strong> | <strong>查询复杂度</strong> | <strong>有序</strong> | <strong>代表应用</strong> |
-|---|---|---|---|
-| <strong>跳表</strong> | O(logN) | ✅ | Redis ZSET |
-| <strong>B+树</strong> | O(logN) | ✅ | MySQL 索引 |
-| <strong>红黑树</strong> | O(logN) | ✅ | C++ std::set/map |
+<table>
+<thead>
+<tr><th><strong>方案</strong></th><th><strong>查询复杂度</strong></th><th><strong>有序</strong></th><th><strong>代表应用</strong></th></tr>
+</thead>
+<tbody>
+<tr><td><strong>跳表</strong></td><td>O(logN)</td><td>✅</td><td>Redis ZSET</td></tr>
+<tr><td><strong>B+树</strong></td><td>O(logN)</td><td>✅</td><td>MySQL 索引</td></tr>
+<tr><td><strong>红黑树</strong></td><td>O(logN)</td><td>✅</td><td>C++ std::set/map</td></tr>
+</tbody>
+</table>
 
 <a id="q137"></a>
 <h4>Q110 多浏览器访问百度服务器区分原理</h4>
@@ -2098,12 +2188,17 @@ pre{font-size:12px!important}
 
 <p><strong>选择原因</strong>：音频设备管理成熟，底层按采样率自动触发回调；跨平台支持好；API 简洁，与 FFmpeg 解码流水线衔接顺畅。</p>
 
-| <strong>技术</strong> | <strong>优点</strong> | <strong>缺点</strong> |
-|---|---|---|
-| <strong>SDL2</strong> | 跨平台、音频回调自动驱动、API 简洁 | 功能偏底层 |
-| <strong>OpenAL</strong> | 3D 空间音效 | 偏游戏场景 |
-| <strong>PortAudio</strong> | 回调灵活、低延迟 | API 偏底层 |
-| <strong>Qt Multimedia</strong> | 与 Qt 集成方便 | 灵活性差 |
+<table>
+<thead>
+<tr><th><strong>技术</strong></th><th><strong>优点</strong></th><th><strong>缺点</strong></th></tr>
+</thead>
+<tbody>
+<tr><td><strong>SDL2</strong></td><td>跨平台、音频回调自动驱动、API 简洁</td><td>功能偏底层</td></tr>
+<tr><td><strong>OpenAL</strong></td><td>3D 空间音效</td><td>偏游戏场景</td></tr>
+<tr><td><strong>PortAudio</strong></td><td>回调灵活、低延迟</td><td>API 偏底层</td></tr>
+<tr><td><strong>Qt Multimedia</strong></td><td>与 Qt 集成方便</td><td>灵活性差</td></tr>
+</tbody>
+</table>
 
 <a id="q145"></a>
 <h4>Q117 服务端采用LT还是ET？</h4>
@@ -2112,11 +2207,16 @@ pre{font-size:12px!important}
 
 <p><strong>原因</strong>：不会漏读、代码简单容错率高、业务型服务追求稳定性</p>
 
-| <strong>对比</strong> | <strong>LT</strong> | <strong>ET</strong> |
-|---|---|---|
-| 触发条件 | 缓冲区有数据就持续通知 | 仅新数据到达时通知一次 |
-| 读取方式 | 不需要一次读完 | 必须一次性读完 |
-| 适用场景 | 业务型，追求稳定 | 高并发、高吞吐 |
+<table>
+<thead>
+<tr><th><strong>对比</strong></th><th><strong>LT</strong></th><th><strong>ET</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>触发条件</td><td>缓冲区有数据就持续通知</td><td>仅新数据到达时通知一次</td></tr>
+<tr><td>读取方式</td><td>不需要一次读完</td><td>必须一次性读完</td></tr>
+<tr><td>适用场景</td><td>业务型，追求稳定</td><td>高并发、高吞吐</td></tr>
+</tbody>
+</table>
 
 <a id="q146"></a>
 <h4>Q118 为什么选用零后端架构？</h4>
@@ -2130,11 +2230,16 @@ pre{font-size:12px!important}
 
 <p><strong>三级降级</strong>：</p>
 
-| <strong>级别</strong> | <strong>方案</strong> | <strong>数据完整度</strong> |
-|---|---|---|
-| 第一级 | AI 智能导入导出（调用 API） | 99%+ |
-| 第二级 | 正常导入导出（格式匹配） | 较高 |
-| 第三级 | OCR 纯文字提取 | 80%+ |
+<table>
+<thead>
+<tr><th><strong>级别</strong></th><th><strong>方案</strong></th><th><strong>数据完整度</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>第一级</td><td>AI 智能导入导出（调用 API）</td><td>99%+</td></tr>
+<tr><td>第二级</td><td>正常导入导出（格式匹配）</td><td>较高</td></tr>
+<tr><td>第三级</td><td>OCR 纯文字提取</td><td>80%+</td></tr>
+</tbody>
+</table>
 
 <a id="q148"></a>
 <h4>Q120 模型幻觉怎么解决？</h4>
@@ -2154,24 +2259,34 @@ pre{font-size:12px!important}
 <a id="q150"></a>
 <h4>Q122 仿函数和普通函数的区别</h4>
 
-| <strong>维度</strong> | <strong>仿函数</strong> | <strong>普通函数</strong> |
-|---|---|---|
-| 类型 | 是一个类型（重载 operator()） | 用函数指针表示 |
-| 模板匹配 | 可被模板精确推导，STL 优先匹配 | 不能被模板精确推导 |
-| 状态 | 可拷贝，每个实例状态独立 | 无状态 |
-| 场景 | 大量用于 STL 算法 | 适合简单无状态逻辑 |
+<table>
+<thead>
+<tr><th><strong>维度</strong></th><th><strong>仿函数</strong></th><th><strong>普通函数</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>类型</td><td>是一个类型（重载 operator()）</td><td>用函数指针表示</td></tr>
+<tr><td>模板匹配</td><td>可被模板精确推导，STL 优先匹配</td><td>不能被模板精确推导</td></tr>
+<tr><td>状态</td><td>可拷贝，每个实例状态独立</td><td>无状态</td></tr>
+<tr><td>场景</td><td>大量用于 STL 算法</td><td>适合简单无状态逻辑</td></tr>
+</tbody>
+</table>
 
 <a id="q151"></a>
 <h4>Q123 STL六大组件</h4>
 
-| <strong>组件</strong> | <strong>作用</strong> | <strong>代表</strong> |
-|---|---|---|
-| <strong>容器</strong> | 数据存储载体 | vector、list、map/set |
-| <strong>算法</strong> | 通用处理逻辑 | sort、find、copy |
-| <strong>迭代器</strong> | 容器和算法之间的桥梁 | 输入/输出/前向/双向/随机访问 |
-| <strong>仿函数</strong> | 作为算法的策略 | less、greater |
-| <strong>适配器</strong> | 包装改进已有组件 | stack、queue、priority_queue |
-| <strong>空间配置器</strong> | 内存申请释放 | allocator |
+<table>
+<thead>
+<tr><th><strong>组件</strong></th><th><strong>作用</strong></th><th><strong>代表</strong></th></tr>
+</thead>
+<tbody>
+<tr><td><strong>容器</strong></td><td>数据存储载体</td><td>vector、list、map/set</td></tr>
+<tr><td><strong>算法</strong></td><td>通用处理逻辑</td><td>sort、find、copy</td></tr>
+<tr><td><strong>迭代器</strong></td><td>容器和算法之间的桥梁</td><td>输入/输出/前向/双向/随机访问</td></tr>
+<tr><td><strong>仿函数</strong></td><td>作为算法的策略</td><td>less、greater</td></tr>
+<tr><td><strong>适配器</strong></td><td>包装改进已有组件</td><td>stack、queue、priority_queue</td></tr>
+<tr><td><strong>空间配置器</strong></td><td>内存申请释放</td><td>allocator</td></tr>
+</tbody>
+</table>
 
 <a id="q152"></a>
 <h3>面试前检查清单</h3>
@@ -2786,10 +2901,12 @@ libavfilter 是 FFmpeg 的滤镜处理库，用 filter graph 描述滤镜链。�
 信号/槽底层原理：Qt 用 moc（Meta-Object Compiler）在预处理阶段生成额外的 C++ 代码，包含信号/槽的元信息。emit 信号时，Qt 根据连接类型决定调用方式——直接调用槽函数（DirectCall）或通过事件队列投递（QueuedCall）。
 
 四种连接类型：
-- <code>Qt::DirectConnection</code>：信号发出时立即在发送者线程执行槽函数（同步调用）。
-- <code>Qt::QueuedConnection</code>：信号发出时把调用封装成事件投递到接收者线程的事件队列，接收者线程的事件循环取出后执行（异步调用）。
-- <code>Qt::BlockingQueuedConnection</code>：类似 Queued 但发送者阻塞等待槽函数执行完（不能同线程用，会死锁）。
-- <code>Qt::AutoConnection</code>（默认）：同线程自动用 Direct，跨线程自动用 Queued。
+<ul>
+<li><code>Qt::DirectConnection</code>：信号发出时立即在发送者线程执行槽函数（同步调用）。</li>
+<li><code>Qt::QueuedConnection</code>：信号发出时把调用封装成事件投递到接收者线程的事件队列，接收者线程的事件循环取出后执行（异步调用）。</li>
+<li><code>Qt::BlockingQueuedConnection</code>：类似 Queued 但发送者阻塞等待槽函数执行完（不能同线程用，会死锁）。</li>
+<li><code>Qt::AutoConnection</code>（默认）：同线程自动用 Direct，跨线程自动用 Queued。</li>
+</ul>
 
 我项目里视频解码线程通过信号把帧数据发给主线程渲染，用的就是 AutoConnection——跨线程时自动走 Queued，安全且不需要手动加锁。
 
@@ -2826,8 +2943,10 @@ Qt 的内存管理基于父子对象树：给 QObject 设置 parent 后，parent
 <strong>答：</strong>
 
 两种方式：
-1. 继承 QThread 重写 run()：在 run() 里执行耗时逻辑。简单直接，但槽函数仍在主线程执行（除非手动切换）。
-2. Worker 对象 + moveToThread：创建 Worker 类继承 QObject，实例化后 moveToThread 到 QThread，通过信号/槽触发工作函数。所有槽函数都在新线程执行。
+<ol>
+<li>继承 QThread 重写 run()：在 run() 里执行耗时逻辑。简单直接，但槽函数仍在主线程执行（除非手动切换）。</li>
+<li>Worker 对象 + moveToThread：创建 Worker 类继承 QObject，实例化后 moveToThread 到 QThread，通过信号/槽触发工作函数。所有槽函数都在新线程执行。</li>
+</ol>
 
 推荐用第二种（moveToThread），因为：更灵活（一个线程可以跑多个 worker）、更安全（槽函数自动在新线程执行）、更好管理（信号/槽驱动，不需要手动控制 run 循环）。
 
@@ -2854,11 +2973,13 @@ Qt 的内存管理基于父子对象树：给 QObject 设置 parent 后，parent
 Qt Model/View 架构：Model 管理数据，View 负责显示，Delegate 负责编辑。三者分离，数据变化时 Model 发信号通知 View 更新。
 
 QAbstractItemModel 关键接口：
-- <code>rowCount()</code>/<code>columnCount()</code>：返回行列数。
-- <code>data(index, role)</code>：返回指定位置的数据（DisplayRole 显示文本、DecorationRole 图标、EditRole 编辑值等）。
-- <code>setData(index, value, role)</code>：修改数据。
-- <code>flags(index)</code>：返回项目标志（可编辑、可选、启用等）。
-- <code>insertRows()</code>/<code>removeRows()</code>：增删行。
+<ul>
+<li><code>rowCount()</code>/<code>columnCount()</code>：返回行列数。</li>
+<li><code>data(index, role)</code>：返回指定位置的数据（DisplayRole 显示文本、DecorationRole 图标、EditRole 编辑值等）。</li>
+<li><code>setData(index, value, role)</code>：修改数据。</li>
+<li><code>flags(index)</code>：返回项目标志（可编辑、可选、启用等）。</li>
+<li><code>insertRows()</code>/<code>removeRows()</code>：增删行。</li>
+</ul>
 
 关键信号：<code>dataChanged()</code>（数据变化）、<code>beginInsertRows()</code>/<code>endInsertRows()</code>（增行前后必须调用，否则 View 不更新）。
 
@@ -2876,9 +2997,9 @@ QAbstractItemModel 关键接口：
 
 大文件优化：多线程并发上传不同块（我项目用 3-4 个线程），失败块自动重试 3 次。秒传：文件 MD5 命中服务端已有记录，直接返回成功不上传。
 
----
+<hr>
 
-## 二、AI 相关项目问题
+<h2>二、AI 相关项目问题</h2>
 
 <h3>⭐⭐⭐⭐⭐ AI 辅助开发的流程是怎样的？</h3>
 
@@ -3268,9 +3389,9 @@ FutureHelios 是纯前端项目，没有后端。技术栈是 Vue 3 + TypeScript
 
 另一个 VA 音视频项目才是前后端分离：后端 C++ WinSock 服务端，前端 C++/Qt 客户端，AI 微服务用 Python FastAPI，通过 HTTP 通信。
 
----
+<hr>
 
-## 三、算法题
+<h2>三、算法题</h2>
 
 <h3>⭐⭐⭐⭐⭐ LRU 缓存设计</h3>
 
@@ -3936,10 +4057,12 @@ Redis 淘汰策略：<code>allkeys-lru</code>（LRU）、<code>allkeys-lfu</code
 
 快排最坏情况 O(n²) 出现在已排序/逆序数组（每次 pivot 是最值）。优化：
 
-1. 随机 pivot：随机选一个元素做 pivot，避免最坏情况。期望 O(n log n)。
-2. 三路快排：把数组分成 &lt; pivot、= pivot、&gt; pivot 三部分，对 &lt; 和 &gt; 部分递归。适合有大量重复元素的数组。
-3. 小数组用插入排序：当子数组长度 &lt; 某阈值（如 16）时用插入排序，减少递归开销。
-4. 尾递归优化：对较长的子数组递归，较短的用循环。
+<ol>
+<li>随机 pivot：随机选一个元素做 pivot，避免最坏情况。期望 O(n log n)。</li>
+<li>三路快排：把数组分成 &lt; pivot、= pivot、&gt; pivot 三部分，对 &lt; 和 &gt; 部分递归。适合有大量重复元素的数组。</li>
+<li>小数组用插入排序：当子数组长度 &lt; 某阈值（如 16）时用插入排序，减少递归开销。</li>
+<li>尾递归优化：对较长的子数组递归，较短的用循环。</li>
+</ol>
 
 </code></pre>
 <pre><code>// 三路快排核心
