@@ -5921,6 +5921,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
 <label>Key:</label>
 <input type="password" id="aiApiKeyInput" placeholder="硅基流动 API Key" style="display:none">
 <button id="aiSettingsToggle" style="font-size:12px;border:1px solid #ddd;border-radius:8px;padding:4px 8px;cursor:pointer;background:#f5f5f5">⚙️设置</button>
+<button id="aiModelToggle" style="font-size:12px;border:1px solid #ddd;border-radius:8px;padding:4px 8px;cursor:pointer;background:#e8f5e9">⚡快速</button>
 <span id="aiRoomStatus" style="font-size:11px;color:#888;display:none">已连接手机 ✓</span>
 </div>
 <div class="ai-input-row">
@@ -6888,45 +6889,12 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
 
   // Project context for AI
   var PROJECT_CONTEXT = [
-    '你是面试题智能助手，服务于一个求职者（丁明阳，哈尔滨理工大学计算机大四）。',
-    '求职者有两个核心项目，请基于以下项目信息回答面试问题：',
-    '',
-    '【项目一：基于 C/S 架构的音视频平台】',
-    '- 服务端：C++ WinSock，8080端口，TCP Socket + JSON 通信，8081端口HTTP渐进式流（支持Range断点续传）',
-    '- 客户端：C++ + Qt框架，信号槽通信',
-    '- 视频编解码：FFmpeg（解封装、解码、编码），DXVA2硬件解码（自动回退软件解码）',
-    '- 音频播放：SDL2（回调驱动）',
-    '- GPU渲染：OpenGL纹理映射（YUV转RGB，GPU加速）',
-    '- 数据存储：SQLite（用户信息、视频元数据、收藏历史）',
-    '- 三线程解码模型：读包线程(QThread, av_read_frame) → 视频解码线程(avcodec_send_packet/receive_frame, YUV→RGB, OpenGL渲染) → 音频回调线程(SDL回调, 缓冲区填充)',
-    '- 音视频同步：以音频PTS为主时钟，视频帧对比PTS，快了延迟显示，慢了丢帧追赶（音频不能变速会变调，视频可以丢帧）',
-    '- 视频上传：链式传输（视频文件→封面文件→元数据），串行执行，上传队列',
-    '- 四级播放策略：本地路径 → 本地缓存 → 服务器下载 → 文件选择对话框',
-    '- 视频录制：FFmpeg编码管线，H.264+AAC → FLV',
-    '- AI视频内容理解（开发中）：FFmpeg抽关键帧，画面送通义千问视觉模型(Qwen3-VL)，音频送语音识别模型(SenseVoice)，融合送大语言模型生成摘要',
-    '- AI智能推荐（开发中）：Agent驱动 + 向量检索(BGE-M3)，推荐管理器从规则引擎改造为微服务',
-    '',
-    '【项目二：简历生成器 FutureHelios】',
-    '- B/S架构，Vue 3 + TypeScript',
-    '- 50套模板，11种布局 × 配色三维解耦，CSS变量驱动配色',
-    '- PDF导入：文本提取 + OCR + AI智能解析三种模式',
-    '- PDF导出：html2canvas截图 + jsPDF生成 + EmbeddedFile无损数据嵌入',
-    '- AI智能导出：调用硅基流动API(DeepSeek-V3)，STAR法则优化简历文案',
-    '- 主要采用AI辅助开发，负责需求拆解、技术方案设计、代码审查整合',
-    '',
-    '【技术栈总结】',
-    '- 熟练：C++、Qt、SQLite、TCP Socket编程',
-    '- 音视频：FFmpeg 4.2.2、SDL2-2.0.10、OpenGL、DXVA2',
-    '- AI：硅基流动API、DeepSeek-V3、通义千问VL、向量检索',
-    '- 前端：Vue3、TypeScript',
-    '',
-    '回答要求：',
-    '1. 用面试回答的口吻，像求职者在面试中回答问题一样',
-    '2. 结合求职者的项目实际技术选型回答，不要泛泛而谈',
-    '3. 回答简洁、顺口、有条理，适合口语表达',
-    '4. 如果问题涉及求职者项目中的具体实现，要结合项目细节回答',
-    '5. 用中文回答',
-  ].join('\n');
+    '你是面试助手，求职者丁明阳（哈理工大四），有两个项目：',
+    '1. C/S音视频平台：C++/Qt客户端，WinSock TCP+JSON(8080端口)，FFmpeg+DXVA2硬解，SDL2音频，OpenGL渲染(YUV→RGB)，SQLite存储。三线程解码(读包/解码/音频回调)，音频PTS主时钟同步(快延迟慢丢帧)，链式上传，HTTP渐进式流(8081端口)。AI视频理解(Qwen3-VL+SenseVoice)和AI推荐(Agent+BGE-M3向量检索)开发中。',
+    '2. 简历生成器FutureHelios：Vue3+TS，50套模板CSS变量配色，PDF导入(提取/OCR/AI解析)，导出(html2canvas+jsPDF)，AI优化(硅基流动DeepSeek-V3)。',
+    '技术栈：C++/Qt/SQLite/TCP/FFmpeg/SDL2/OpenGL/DXVA2/Vue3/TS。',
+    '用面试口吻中文回答，结合项目实际选型，简洁有条理。'
+  ].join('');
 
   // Build question index from TOC + content
   var qIndex=[];
@@ -7008,6 +6976,11 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     return results;
   }
 
+  // Model config: fast mode uses Qwen 7B (fast), quality uses DeepSeek-V3
+  var aiModel='Qwen/Qwen2.5-7B-Instruct';
+  var aiMaxTokens=800;
+  var aiTemperature=0.4;
+
   // Call AI API with streaming
   function callAIStream(query,apiKey,onChunk,onDone,onError){
     fetch('https://api.siliconflow.cn/v1/chat/completions',{
@@ -7017,14 +6990,14 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
         'Authorization':'Bearer '+apiKey
       },
       body:JSON.stringify({
-        model:'deepseek-ai/DeepSeek-V3',
+        model:aiModel,
         messages:[
           {role:'system',content:PROJECT_CONTEXT},
           {role:'user',content:query}
         ],
         stream:true,
-        max_tokens:1500,
-        temperature:0.7
+        max_tokens:aiMaxTokens,
+        temperature:aiTemperature
       })
     }).then(function(res){
       if(!res.ok){
@@ -7133,40 +7106,60 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     processQuestion(query);
   }
 
-  // Process a question: search first, then AI
+  // Process a question: show search results, then AI in parallel
   function processQuestion(query){
-    // Step 1: Search existing questions
+    // Step 1: Search existing questions (always show if found)
     var results=searchQuestions(query);
-    if(results.length>0 && results[0].score>=2){
+    var hasGoodMatch=results.length>0 && results[0].score>=2;
+
+    if(hasGoodMatch){
       var best=results[0].item;
-      var msgDiv=addMsg('','bot','search');
+      var sDiv=addMsg('','bot','search');
       var link=document.createElement('a');
       link.textContent='题目：'+best.title;
       link.href='#'+best.id;
-      msgDiv.appendChild(link);
-      msgDiv.appendChild(document.createElement('br'));
+      sDiv.appendChild(link);
+      sDiv.appendChild(document.createElement('br'));
       var preview=best.answer.substring(0,200);
       if(best.answer.length>200) preview+='...';
-      msgDiv.appendChild(document.createElement('br'));
-      msgDiv.appendChild(document.createTextNode(preview));
+      sDiv.appendChild(document.createElement('br'));
+      sDiv.appendChild(document.createTextNode(preview));
       if(results.length>1){
-        msgDiv.appendChild(document.createElement('br'));
-        msgDiv.appendChild(document.createTextNode('其他相关题目：'));
+        sDiv.appendChild(document.createElement('br'));
+        sDiv.appendChild(document.createTextNode('其他相关题目：'));
         for(var k=1;k<Math.min(results.length,4);k++){
           var r=results[k].item;
-          msgDiv.appendChild(document.createElement('br'));
+          sDiv.appendChild(document.createElement('br'));
           var moreLink=document.createElement('a');
           moreLink.textContent='• '+r.title;
           moreLink.href='#'+r.id;
-          msgDiv.appendChild(moreLink);
+          sDiv.appendChild(moreLink);
         }
       }
-      // Also send to mobile if connected
+      // Send to mobile if connected
       if(roomCode) sendNtfy(roomCode,{type:'answer',text:best.title+' - '+preview,tag:'search'});
+      // If good match found, don't call AI (fast path)
       return;
     }
 
-    // Step 2: Call AI API with streaming
+    // Step 2: Show loosely related questions while AI works
+    if(results.length>0){
+      var relDiv=addMsg('','bot','search');
+      relDiv.appendChild(document.createTextNode('题库中的相关题目：'));
+      for(var m=0;m<Math.min(results.length,3);m++){
+        var ri=results[m].item;
+        relDiv.appendChild(document.createElement('br'));
+        var relLink=document.createElement('a');
+        relLink.textContent='• '+ri.title;
+        relLink.href='#'+ri.id;
+        relDiv.appendChild(relLink);
+      }
+      relDiv.appendChild(document.createElement('br'));
+      relDiv.appendChild(document.createElement('br'));
+      relDiv.appendChild(document.createTextNode('正在让AI生成更详细的答案...'));
+    }
+
+    // Step 3: Call AI API with streaming
     var apiKey=apiKeyInput.value.trim()||localStorage.getItem('sf_api_key');
     if(!apiKey){
       addMsg('未检测到 API Key，请点击⚙️设置输入硅基流动 API Key。获取：https://cloud.siliconflow.cn/ → API密钥','bot');
@@ -7188,9 +7181,13 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     chatBody.scrollTop=chatBody.scrollHeight;
 
     var renderTimer=null;
+    var firstChunk=true;
     callAIStream(query,apiKey,
       function(fullText){
-        loadingDiv.remove();
+        if(firstChunk){
+          loadingDiv.remove();
+          firstChunk=false;
+        }
         // Throttle rendering for performance (max 10fps)
         if(renderTimer) return;
         renderTimer=setTimeout(function(){
@@ -7318,6 +7315,41 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   });
   connectBtn.addEventListener('click',showQrCode);
   qrCloseBtn.addEventListener('click',function(){qrOverlay.style.display='none';});
+
+  // Model toggle: fast vs quality
+  var modelToggle=document.getElementById('aiModelToggle');
+  var isFastMode=true;
+  // Restore preference
+  var savedMode=localStorage.getItem('ai_model_mode');
+  if(savedMode==='quality'){
+    isFastMode=false;
+    aiModel='deepseek-ai/DeepSeek-V3';
+    aiMaxTokens=1000;
+    aiTemperature=0.5;
+    modelToggle.textContent='🌟高质量';
+    modelToggle.style.background='#fff3e0';
+  }
+  modelToggle.addEventListener('click',function(){
+    if(isFastMode){
+      // Switch to quality
+      isFastMode=false;
+      aiModel='deepseek-ai/DeepSeek-V3';
+      aiMaxTokens=1000;
+      aiTemperature=0.5;
+      modelToggle.textContent='🌟高质量';
+      modelToggle.style.background='#fff3e0';
+      localStorage.setItem('ai_model_mode','quality');
+    }else{
+      // Switch to fast
+      isFastMode=true;
+      aiModel='Qwen/Qwen2.5-7B-Instruct';
+      aiMaxTokens=800;
+      aiTemperature=0.4;
+      modelToggle.textContent='⚡快速';
+      modelToggle.style.background='#e8f5e9';
+      localStorage.setItem('ai_model_mode','fast');
+    }
+  });
 
   // === Mobile Mode Init ===
   if(isMobile){
