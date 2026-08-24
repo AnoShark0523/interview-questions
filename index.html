@@ -6954,13 +6954,13 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
       var answer='';
       var node=anchor.nextElementSibling;
       var safety=0;
-      while(node && safety<100){
+      while(node && safety<300){
         if(node.tagName==='A' && node.id && node.id.startsWith('q')) break;
         answer+=node.textContent+' ';
         node=node.nextElementSibling;
         safety++;
       }
-      qIndex.push({id:qid,title:idToTitle[qid],answer:answer.trim().substring(0,500)});
+      qIndex.push({id:qid,title:idToTitle[qid],answer:answer.trim()});
     }
   }
 
@@ -7000,7 +7000,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
 
   // Model config: fast mode uses Qwen 7B (fast), quality uses DeepSeek-V3
   var aiModel='Qwen/Qwen2.5-7B-Instruct';
-  var aiMaxTokens=800;
+  var aiMaxTokens=2048;
   var aiTemperature=0.4;
 
   // Call AI API with streaming
@@ -7151,7 +7151,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
         var contentNodes=[];
         var node=anchor.nextElementSibling;
         var safety=0;
-        while(node && safety<150){
+        while(node && safety<300){
           if(node.tagName==='A' && node.id && node.id.startsWith('q')) break;
           // Skip empty text nodes and whitespace-only paragraphs
           if(node.tagName==='P' && node.textContent.trim()===''){node=node.nextElementSibling;safety++;continue;}
@@ -7191,10 +7191,8 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
         }
         sDiv.appendChild(contentWrapper);
       }else{
-        // Fallback: show text preview
-        var preview=best.answer.substring(0,500);
-        if(best.answer.length>500) preview+='...';
-        sDiv.appendChild(document.createTextNode(preview));
+        // Fallback: show full answer text
+        sDiv.appendChild(document.createTextNode(best.answer));
       }
 
       if(results.length>1){
@@ -7397,7 +7395,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   if(savedMode==='quality'){
     isFastMode=false;
     aiModel='deepseek-ai/DeepSeek-V3';
-    aiMaxTokens=1000;
+    aiMaxTokens=4096;
     aiTemperature=0.5;
     modelToggle.textContent='🌟高质量';
     modelToggle.style.background='#fff3e0';
@@ -7407,7 +7405,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
       // Switch to quality
       isFastMode=false;
       aiModel='deepseek-ai/DeepSeek-V3';
-      aiMaxTokens=1000;
+      aiMaxTokens=4096;
       aiTemperature=0.5;
       modelToggle.textContent='🌟高质量';
       modelToggle.style.background='#fff3e0';
@@ -7416,7 +7414,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
       // Switch to fast
       isFastMode=true;
       aiModel='Qwen/Qwen2.5-7B-Instruct';
-      aiMaxTokens=800;
+      aiMaxTokens=2048;
       aiTemperature=0.4;
       modelToggle.textContent='⚡快速';
       modelToggle.style.background='#e8f5e9';
