@@ -7239,9 +7239,13 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     }
 
     // Step 2: Always call AI with context from related questions
-    var apiKey=apiKeyInput.value.trim()||localStorage.getItem('sf_api_key');
+    var apiKey='';
+    try{
+      if(apiKeyInput && apiKeyInput.value) apiKey=apiKeyInput.value.trim();
+    }catch(e){}
+    if(!apiKey) apiKey=localStorage.getItem('sf_api_key')||'';
     if(!apiKey){
-      addMsg('未检测到 API Key，请点击⚙️设置输入硅基流动 API Key。获取：https://cloud.siliconflow.cn/ → API密钥','bot');
+      addMsg('⚠️ 未检测到 API Key，请点击⚙️设置输入硅基流动 API Key。\n获取地址：https://cloud.siliconflow.cn/ → API密钥','bot');
       return;
     }
     localStorage.setItem('sf_api_key',apiKey);
