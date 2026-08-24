@@ -216,6 +216,8 @@ body:not(.ai-split) .container{transition:margin-left .3s ease}
 .ai-msg.bot .content-wrapper p:empty{display:none}
 .ai-msg.bot .content-wrapper > *:first-child{margin-top:0}
 .ai-msg.bot .content-wrapper > *:last-child{margin-bottom:0}
+/* AI-generated content inside .ai-msg should not use pre-wrap */
+.ai-msg.bot > div{white-space:normal}
 .ai-msg.bot img{max-width:100%;border-radius:8px;margin:6px 0}
 .ai-msg.bot .answer-area{padding:0;margin:0}
 .ai-msg.bot .toggle-btn{display:none}
@@ -6926,19 +6928,38 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     output=output.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
     output=output.replace(/`([^`]+?)`/g,'<code>$1</code>');
 
+    // Clean up malformed output: remove excessive pipe chars from broken tables
+    output=output.replace(/\|{3,}/g,'');
+    // Remove empty bold markers
+    output=output.replace(/\*\*\s*\*\*/g,'');
+
     // Merge consecutive non-tag lines into paragraphs
     var finalOut=[];
     var para=[];
     var parts=output.split('\n');
+    var consecutiveEmpty=0;
     for(var p=0;p<parts.length;p++){
       var part=parts[p].trim();
+      // Count empty lines, but only keep max 1 to avoid huge gaps
       if(part===''||part==='<br>'){
+        consecutiveEmpty++;
         if(para.length>0){
           finalOut.push('<p>'+para.join(' ')+'</p>');
           para=[];
         }
-        if(part==='<br>'&&finalOut.length>0) finalOut.push('<br>');
-      }else if(/^<[^>]+>/.test(part)||/^<\/[^>]+>/.test(part)){
+        // Only add one <br> per block of empty lines
+        if(consecutiveEmpty===1 && finalOut.length>0){
+          // Don't add extra <br> if last element is already a block element
+          var last=finalOut[finalOut.length-1];
+          if(!last.startsWith('<h')&&!last.startsWith('</')&&!last.startsWith('<ul')&&!last.startsWith('<ol')&&!last.startsWith('<table')&&!last.startsWith('<blockquote')&&!last.startsWith('<pre')){
+            // skip extra spacing
+          }
+        }
+        continue;
+      }
+      consecutiveEmpty=0;
+
+      if(/^<[^>]+>/.test(part)||/^<\/[^>]+>/.test(part)){
         if(para.length>0){
           finalOut.push('<p>'+para.join(' ')+'</p>');
           para=[];
@@ -6949,7 +6970,13 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
       }
     }
     if(para.length>0) finalOut.push('<p>'+para.join(' ')+'</p>');
-    return finalOut.join('\n');
+    var html=finalOut.join('');
+    // Final cleanup: remove empty tags and repeated whitespace
+    html=html.replace(/<strong>\s*<\/strong>/g,'');
+    html=html.replace(/<p>\s*<\/p>/g,'');
+    html=html.replace(/<p><br><\/p>/g,'');
+    html=html.replace(/(<br>\s*){2,}/g,'<br>');
+    return html;
   }
 
   // Project context for AI
@@ -7088,9 +7115,11 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   }
 
   // Model config: fast mode uses Qwen 7B (fast), quality uses DeepSeek-V3
-  var aiModel='Qwen/Qwen2.5-7B-Instruct';
-  var aiMaxTokens=2048;
-  var aiTemperature=0.4;
+  // Default to quality mode for reliable synthesis
+  var aiModel='deepseek-ai/DeepSeek-V3';
+  var aiMaxTokens=4096;
+  var aiTemperature=0.5;
+  var aiFrequencyPenalty=0.3; // Reduce repetition
 
   // Call AI API with streaming
   function callAIStream(query,apiKey,onChunk,onDone,onError){
@@ -7108,7 +7137,8 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
         ],
         stream:true,
         max_tokens:aiMaxTokens,
-        temperature:aiTemperature
+        temperature:aiTemperature,
+        frequency_penalty:aiFrequencyPenalty
       })
     }).then(function(res){
       if(!res.ok){
@@ -7500,15 +7530,20 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   qrCloseBtn.addEventListener('click',function(){qrOverlay.style.display='none';});
 
   // Model toggle: fast vs quality
+  // Default to quality mode for reliable synthesis
   var modelToggle=document.getElementById('aiModelToggle');
-  var isFastMode=true;
+  var isFastMode=false;
   // Restore preference
   var savedMode=localStorage.getItem('ai_model_mode');
-  if(savedMode==='quality'){
-    isFastMode=false;
-    aiModel='deepseek-ai/DeepSeek-V3';
-    aiMaxTokens=4096;
-    aiTemperature=0.5;
+  if(savedMode==='fast'){
+    isFastMode=true;
+    aiModel='Qwen/Qwen2.5-7B-Instruct';
+    aiMaxTokens=2048;
+    aiTemperature=0.4;
+    aiFrequencyPenalty=0.2;
+    modelToggle.textContent='⚡快速';
+    modelToggle.style.background='#e8f5e9';
+  }else{
     modelToggle.textContent='🌟高质量';
     modelToggle.style.background='#fff3e0';
   }
@@ -7519,6 +7554,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
       aiModel='deepseek-ai/DeepSeek-V3';
       aiMaxTokens=4096;
       aiTemperature=0.5;
+      aiFrequencyPenalty=0.3;
       modelToggle.textContent='🌟高质量';
       modelToggle.style.background='#fff3e0';
       localStorage.setItem('ai_model_mode','quality');
@@ -7528,6 +7564,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
       aiModel='Qwen/Qwen2.5-7B-Instruct';
       aiMaxTokens=2048;
       aiTemperature=0.4;
+      aiFrequencyPenalty=0.2;
       modelToggle.textContent='⚡快速';
       modelToggle.style.background='#e8f5e9';
       localStorage.setItem('ai_model_mode','fast');
