@@ -7133,12 +7133,64 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     processQuestion(query);
   }
 
-  // Process a question: show search results, then AI in parallel
+  // Helper: clone question DOM content into a wrapper div
+  function cloneQuestionContent(qid){
+    var anchor=document.getElementById(qid);
+    if(!anchor) return null;
+    var contentWrapper=document.createElement('div');
+    contentWrapper.className='content-wrapper';
+    var node=anchor.nextElementSibling;
+    var safety=0;
+    while(node && safety<300){
+      if(node.tagName==='A' && node.id && node.id.startsWith('q')) break;
+      if(node.tagName==='P' && node.textContent.trim()===''){node=node.nextElementSibling;safety++;continue;}
+      var clone=node.cloneNode(true);
+      var anchors=clone.querySelectorAll('a[id^="q"]');
+      for(var ai=0;ai<anchors.length;ai++){anchors[ai].remove();}
+      var blockCtrls=clone.querySelectorAll('.block-controls');
+      for(var bc=0;bc<blockCtrls.length;bc++){blockCtrls[bc].remove();}
+      if(clone.tagName==='TABLE'){
+        var sw=document.createElement('div');
+        sw.className='table-scroll';
+        sw.appendChild(clone);
+        contentWrapper.appendChild(sw);
+      }else if(clone.querySelectorAll){
+        var innerTables=clone.querySelectorAll('table');
+        for(var t=0;t<innerTables.length;t++){
+          var tsw=document.createElement('div');
+          tsw.className='table-scroll';
+          innerTables[t].parentNode.insertBefore(tsw,innerTables[t]);
+          tsw.appendChild(innerTables[t]);
+        }
+        contentWrapper.appendChild(clone);
+      }else{
+        contentWrapper.appendChild(clone);
+      }
+      node=node.nextElementSibling;
+      safety++;
+    }
+    return contentWrapper;
+  }
+
+  // Helper: build context string from top N related questions for AI
+  function buildAIContext(results,maxItems){
+    var ctx='';
+    var count=Math.min(results.length,maxItems||5);
+    for(var i=0;i<count;i++){
+      var item=results[i].item;
+      ctx+='【题目'+(i+1)+'：'+item.title+'】\n';
+      ctx+=item.answer.substring(0,1500)+'\n\n';
+    }
+    return ctx;
+  }
+
+  // Process a question: show best match + AI synthesis with all related context
   function processQuestion(query){
-    // Step 1: Search existing questions (always show if found)
+    // Step 1: Search question bank
     var results=searchQuestions(query);
     var hasGoodMatch=results.length>0 && results[0].score>=2;
 
+    // Show best matching question if found
     if(hasGoodMatch){
       var best=results[0].item;
       var sDiv=addMsg('','bot','search');
@@ -7150,60 +7202,17 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
       sDiv.appendChild(link);
       sDiv.appendChild(document.createElement('hr'));
 
-      // Clone original DOM content for full formatted display
-      var anchor=document.getElementById(best.id);
-      if(anchor){
-        var contentNodes=[];
-        var node=anchor.nextElementSibling;
-        var safety=0;
-        while(node && safety<300){
-          if(node.tagName==='A' && node.id && node.id.startsWith('q')) break;
-          // Skip empty text nodes and whitespace-only paragraphs
-          if(node.tagName==='P' && node.textContent.trim()===''){node=node.nextElementSibling;safety++;continue;}
-          contentNodes.push(node.cloneNode(true));
-          node=node.nextElementSibling;
-          safety++;
-        }
-        var contentWrapper=document.createElement('div');
-        contentWrapper.className='content-wrapper';
-        for(var cn=0;cn<contentNodes.length;cn++){
-          var clone=contentNodes[cn];
-          // Remove anchor links inside cloned content to avoid clutter
-          var anchors=clone.querySelectorAll('a[id^="q"]');
-          for(var ai=0;ai<anchors.length;ai++){anchors[ai].remove();}
-          // Remove block-controls (edit mode buttons)
-          var blockCtrls=clone.querySelectorAll('.block-controls');
-          for(var bc=0;bc<blockCtrls.length;bc++){blockCtrls[bc].remove();}
-          // Wrap tables in scrollable container for narrow chat panel
-          if(clone.tagName==='TABLE'){
-            var scrollWrap=document.createElement('div');
-            scrollWrap.className='table-scroll';
-            scrollWrap.appendChild(clone);
-            contentWrapper.appendChild(scrollWrap);
-          }else if(clone.querySelectorAll){
-            // Also wrap any tables inside this element
-            var innerTables=clone.querySelectorAll('table');
-            for(var t=0;t<innerTables.length;t++){
-              var tsw=document.createElement('div');
-              tsw.className='table-scroll';
-              innerTables[t].parentNode.insertBefore(tsw,innerTables[t]);
-              tsw.appendChild(innerTables[t]);
-            }
-            contentWrapper.appendChild(clone);
-          }else{
-            contentWrapper.appendChild(clone);
-          }
-        }
-        sDiv.appendChild(contentWrapper);
+      var cloned=cloneQuestionContent(best.id);
+      if(cloned){
+        sDiv.appendChild(cloned);
       }else{
-        // Fallback: show full answer text
         sDiv.appendChild(document.createTextNode(best.answer));
       }
 
       if(results.length>1){
         sDiv.appendChild(document.createElement('hr'));
         sDiv.appendChild(document.createTextNode('其他相关题目：'));
-        for(var k=1;k<Math.min(results.length,4);k++){
+        for(var k=1;k<Math.min(results.length,5);k++){
           var r=results[k].item;
           sDiv.appendChild(document.createElement('br'));
           var moreLink=document.createElement('a');
@@ -7212,17 +7221,11 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
           sDiv.appendChild(moreLink);
         }
       }
-      // Send to mobile if connected
       if(roomCode) sendNtfy(roomCode,{type:'answer',text:best.title+'\n\n'+best.answer,tag:'search'});
-      // If good match found, don't call AI (fast path)
-      return;
-    }
-
-    // Step 2: Show loosely related questions while AI works
-    if(results.length>0){
+    }else if(results.length>0){
       var relDiv=addMsg('','bot','search');
       relDiv.appendChild(document.createTextNode('题库中的相关题目：'));
-      for(var m=0;m<Math.min(results.length,3);m++){
+      for(var m=0;m<Math.min(results.length,5);m++){
         var ri=results[m].item;
         relDiv.appendChild(document.createElement('br'));
         var relLink=document.createElement('a');
@@ -7232,10 +7235,10 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
       }
       relDiv.appendChild(document.createElement('br'));
       relDiv.appendChild(document.createElement('br'));
-      relDiv.appendChild(document.createTextNode('正在让AI生成更详细的答案...'));
+      relDiv.appendChild(document.createTextNode('AI正在综合以上内容为你生成答案...'));
     }
 
-    // Step 3: Call AI API with streaming
+    // Step 2: Always call AI with context from related questions
     var apiKey=apiKeyInput.value.trim()||localStorage.getItem('sf_api_key');
     if(!apiKey){
       addMsg('未检测到 API Key，请点击⚙️设置输入硅基流动 API Key。获取：https://cloud.siliconflow.cn/ → API密钥','bot');
@@ -7243,12 +7246,27 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     }
     localStorage.setItem('sf_api_key',apiKey);
 
-    var loadingDiv=addLoading('AI推理中');
+    // Build enhanced prompt with question bank context
+    var contextStr=results.length>0 ? buildAIContext(results,6) : '';
+    var enhancedQuery=query;
+    if(contextStr){
+      enhancedQuery='以下是题库中与问题相关的参考资料（可能是多个相关题目的答案）：\n\n'+contextStr+
+        '请你综合以上所有参考资料，结合项目背景知识，回答以下问题。\n'+
+        '注意：\n1. 如果参考资料中有直接答案，用自己的话组织并补充完善。\n'+
+        '2. 如果参考资料中没有直接答案，根据相关知识和项目背景推理回答。\n'+
+        '3. 回答要有条理，分点说明，用面试口吻。\n'+
+        '4. 如果涉及多个方面（如架构、技术选型、难点等），请全面覆盖。\n\n'+
+        '问题：'+query;
+    }else{
+      enhancedQuery='题库中没有找到直接相关的题目，请根据项目背景知识和你的专业知识回答以下问题，用面试口吻，分点说明：\n\n问题：'+query;
+    }
+
+    var loadingDiv=addLoading('AI综合推理中');
     var msgDiv=document.createElement('div');
     msgDiv.className='ai-msg bot';
     var tagSpan=document.createElement('span');
     tagSpan.className='ai-tag ai-generated';
-    tagSpan.textContent='AI推理';
+    tagSpan.textContent='AI综合回答';
     msgDiv.appendChild(tagSpan);
     msgDiv.appendChild(document.createElement('br'));
     var contentDiv=document.createElement('div');
@@ -7258,13 +7276,12 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
 
     var renderTimer=null;
     var firstChunk=true;
-    callAIStream(query,apiKey,
+    callAIStream(enhancedQuery,apiKey,
       function(fullText){
         if(firstChunk){
           loadingDiv.remove();
           firstChunk=false;
         }
-        // Throttle rendering for performance (max 10fps)
         if(renderTimer) return;
         renderTimer=setTimeout(function(){
           renderTimer=null;
@@ -7273,11 +7290,9 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
         },100);
       },
       function(fullText){
-        // Final render with full formatting
         if(renderTimer) clearTimeout(renderTimer);
         contentDiv.innerHTML=renderMd(fullText);
         chatBody.scrollTop=chatBody.scrollHeight;
-        // Send to mobile if connected
         if(roomCode) sendNtfy(roomCode,{type:'answer',text:fullText,tag:'generated'});
       },
       function(err){
