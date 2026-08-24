@@ -189,8 +189,20 @@ pre{font-size:12px!important}
 .ai-msg.bot .ai-tag.ai-generated{background:#7b1fa2}
 .ai-msg.bot .ai-tag.ai-search{background:#f57c00}
 .ai-msg.bot a{color:#4a6fa5;text-decoration:underline;cursor:pointer}
+.ai-msg.bot p{margin:6px 0;line-height:1.7}
+.ai-msg.bot strong{font-weight:700;color:#333}
+.ai-msg.bot ul,.ai-msg.bot ol{margin:6px 0;padding-left:20px}
+.ai-msg.bot li{margin:3px 0;line-height:1.7}
+.ai-msg.bot code{background:#f0f0f0;padding:1px 5px;border-radius:4px;font-size:13px;color:#c62828;font-family:Consolas,monospace}
+.ai-msg.bot pre{background:#f5f5f5;padding:8px 12px;border-radius:8px;overflow-x:auto;margin:6px 0;font-size:13px}
+.ai-msg.bot pre code{background:none;padding:0;color:#333}
 .ai-msg.bot table{border-collapse:collapse;width:100%;margin:6px 0}
 .ai-msg.bot table th,.ai-msg.bot table td{border:1px solid #ddd;padding:4px 8px;font-size:13px}
+.ai-msg.bot table th{background:#f0f4ff;font-weight:700}
+.ai-msg.bot h3{font-size:15px;margin:8px 0 4px;font-weight:700}
+.ai-msg.bot h4{font-size:14px;margin:6px 0 4px;font-weight:700}
+.ai-msg.bot blockquote{border-left:3px solid #667eea;padding-left:12px;margin:6px 0;color:#666}
+.ai-msg.bot hr{border:none;border-top:1px solid #eee;margin:8px 0}
 .ai-chat-loading{align-self:flex-start;padding:10px 14px;background:#fff;border:1px solid #e0e0e0;border-radius:14px;border-bottom-left-radius:4px;font-size:14px;color:#888;display:flex;align-items:center;gap:4px}
 .ai-chat-loading .dots{display:inline-block;width:20px;text-align:left}
 .ai-chat-loading .dots::after{content:'';animation:aiDots 1.4s steps(1) infinite}
@@ -6705,7 +6717,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
 </script>
 <script>
 (function(){
-  // === AI Chat Agent (Streaming + Cross-Device) ===
+  // === AI Chat Agent (Streaming + Cross-Device + Markdown) ===
   var chatBtn=document.getElementById('aiChatBtn');
   var chatPanel=document.getElementById('aiChatPanel');
   var chatBody=document.getElementById('aiChatBody');
@@ -6725,6 +6737,154 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   var urlParams=new URLSearchParams(location.search);
   var mobileRoom=urlParams.get('room');
   var isMobile=!!mobileRoom && (window.innerWidth<=768 || /Mobi|Android|iPhone/i.test(navigator.userAgent));
+
+  // Lightweight Markdown to HTML converter
+  function renderMd(text){
+    if(!text) return '';
+    // Escape HTML
+    var html=text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    var lines=html.split('\n');
+    var result=[];
+    var inList=false,listType='';
+    var inTable=false,tableRows=[];
+    var inQuote=false;
+    var inCode=false;
+
+    function closeList(){
+      if(inList){result.push('</'+listType+'>');inList=false;}
+    }
+    function closeTable(){
+      if(inTable){
+        var t='<table><thead><tr>';
+        var cells=tableRows[0].split('|').filter(function(c){return c.trim()!=='';});
+        for(var c of cells)t+='<th>'+c.trim()+'</th>';
+        t+='</tr></thead><tbody>';
+        for(var r=1;r<tableRows.length;r++){
+          t+='<tr>';
+          var dcells=tableRows[r].split('|').filter(function(c){return c.trim()!=='';});
+          for(var dc of dcells)t+='<td>'+dc.trim()+'</td>';
+          t+='</tr>';
+        }
+        t+='</tbody></table>';
+        result.push(t);
+        inTable=false;tableRows=[];
+      }
+    }
+    function closeQuote(){
+      if(inQuote){result.push('</blockquote>');inQuote=false;}
+    }
+
+    for(var i=0;i<lines.length;i++){
+      var line=lines[i];
+      var trimmed=line.trim();
+
+      // Code block ```
+      if(trimmed.startsWith('```')){
+        if(inCode){
+          result.push('</code></pre>');
+          inCode=false;
+        }else{
+          closeList();closeTable();closeQuote();
+          result.push('<pre><code>');
+          inCode=true;
+        }
+        continue;
+      }
+      if(inCode){
+        result.push(line);
+        continue;
+      }
+
+      // Table row
+      if(trimmed.startsWith('|')&&trimmed.endsWith('|')){
+        closeList();closeQuote();
+        if(trimmed.match(/^\|[\s\-:]+\|[\s\-:|]*$/)){
+          continue; // separator row
+        }
+        inTable=true;
+        tableRows.push(trimmed);
+        continue;
+      }else{
+        closeTable();
+      }
+
+      // Headers
+      if(/^###\s/.test(trimmed)){
+        closeList();closeQuote();
+        result.push('<h3>'+trimmed.substring(4)+'</h3>');
+        continue;
+      }
+      if(/^##\s/.test(trimmed)){
+        closeList();closeQuote();
+        result.push('<h4>'+trimmed.substring(3)+'</h4>');
+        continue;
+      }
+
+      // Blockquote
+      if(trimmed.startsWith('>')){
+        closeList();
+        if(!inQuote){result.push('<blockquote>');inQuote=true;}
+        result.push(trimmed.substring(1).trim()+'<br>');
+        continue;
+      }else{
+        closeQuote();
+      }
+
+      // Unordered list
+      if(/^[-*]\s/.test(trimmed)){
+        if(!inList||listType!=='ul'){closeList();result.push('<ul>');inList=true;listType='ul';}
+        result.push('<li>'+trimmed.substring(2)+'</li>');
+        continue;
+      }
+      // Ordered list
+      if(/^\d+\.\s/.test(trimmed)){
+        if(!inList||listType!=='ol'){closeList();result.push('<ol>');inList=true;listType='ol';}
+        result.push('<li>'+trimmed.replace(/^\d+\.\s/,'')+'</li>');
+        continue;
+      }
+
+      // Regular text
+      closeList();closeQuote();
+      if(trimmed===''){
+        result.push('<br>');
+      }else{
+        result.push(trimmed);
+      }
+    }
+    closeList();closeTable();closeQuote();
+    if(inCode)result.push('</code></pre>');
+
+    var output=result.join('\n');
+
+    // Inline formatting
+    output=output.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+    output=output.replace(/`([^`]+?)`/g,'<code>$1</code>');
+
+    // Merge consecutive non-tag lines into paragraphs
+    var finalOut=[];
+    var para=[];
+    var parts=output.split('\n');
+    for(var p=0;p<parts.length;p++){
+      var part=parts[p].trim();
+      if(part===''||part==='<br>'){
+        if(para.length>0){
+          finalOut.push('<p>'+para.join(' ')+'</p>');
+          para=[];
+        }
+        if(part==='<br>'&&finalOut.length>0) finalOut.push('<br>');
+      }else if(/^<[^>]+>/.test(part)||/^<\/[^>]+>/.test(part)){
+        if(para.length>0){
+          finalOut.push('<p>'+para.join(' ')+'</p>');
+          para=[];
+        }
+        finalOut.push(part);
+      }else{
+        para.push(part);
+      }
+    }
+    if(para.length>0) finalOut.push('<p>'+para.join(' ')+'</p>');
+    return finalOut.join('\n');
+  }
 
   // Project context for AI
   var PROJECT_CONTEXT = [
@@ -6913,8 +7073,8 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     });
   }
 
-  // Add message to chat
-  function addMsg(text,role,tag){
+  // Add message to chat (supports HTML for bot messages)
+  function addMsg(text,role,tag,isHtml){
     var div=document.createElement('div');
     div.className='ai-msg '+role;
     if(tag){
@@ -6924,7 +7084,13 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
       div.appendChild(tagSpan);
       div.appendChild(document.createElement('br'));
     }
-    div.appendChild(document.createTextNode(text));
+    if(isHtml){
+      var container=document.createElement('div');
+      container.innerHTML=text;
+      div.appendChild(container);
+    }else{
+      div.appendChild(document.createTextNode(text));
+    }
     chatBody.appendChild(div);
     chatBody.scrollTop=chatBody.scrollHeight;
     return div;
@@ -7016,21 +7182,29 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     tagSpan.textContent='AI推理';
     msgDiv.appendChild(tagSpan);
     msgDiv.appendChild(document.createElement('br'));
-    var contentSpan=document.createElement('span');
-    msgDiv.appendChild(contentSpan);
+    var contentDiv=document.createElement('div');
+    msgDiv.appendChild(contentDiv);
     chatBody.appendChild(msgDiv);
     chatBody.scrollTop=chatBody.scrollHeight;
 
-    var lastChunk='';
+    var renderTimer=null;
     callAIStream(query,apiKey,
       function(fullText){
         loadingDiv.remove();
-        contentSpan.textContent=fullText;
-        lastChunk=fullText;
-        chatBody.scrollTop=chatBody.scrollHeight;
+        // Throttle rendering for performance (max 10fps)
+        if(renderTimer) return;
+        renderTimer=setTimeout(function(){
+          renderTimer=null;
+          contentDiv.innerHTML=renderMd(fullText);
+          chatBody.scrollTop=chatBody.scrollHeight;
+        },100);
       },
       function(fullText){
-        // Done - send to mobile if connected
+        // Final render with full formatting
+        if(renderTimer) clearTimeout(renderTimer);
+        contentDiv.innerHTML=renderMd(fullText);
+        chatBody.scrollTop=chatBody.scrollHeight;
+        // Send to mobile if connected
         if(roomCode) sendNtfy(roomCode,{type:'answer',text:fullText,tag:'generated'});
       },
       function(err){
@@ -7071,7 +7245,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
         if(isMobile&&data.type==='answer'){
           removeLoading();
           var tag=data.tag==='search'?'search':'generated';
-          addMsg(data.text,'bot',tag);
+          addMsg(renderMd(data.text),'bot',tag,true);
         }
 
         // PC receives question from mobile
