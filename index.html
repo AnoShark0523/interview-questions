@@ -171,6 +171,48 @@ p,li{font-size:14px!important}
 pre{font-size:12px!important}
 .back-top{width:40px;height:40px;font-size:18px;bottom:12px;right:12px}
 }
+.ai-chat-btn{position:fixed;bottom:24px;left:24px;width:56px;height:56px;border:none;border-radius:50%;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;font-size:26px;cursor:pointer;box-shadow:0 4px 20px rgba(102,126,234,.4);z-index:1001;transition:all .3s;display:flex;align-items:center;justify-content:center}
+.ai-chat-btn:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(102,126,234,.5)}
+.ai-chat-btn .ai-pulse{position:absolute;inset:0;border-radius:50%;border:2px solid #667eea;animation:aiPulse 2s infinite;opacity:0}
+@keyframes aiPulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.4);opacity:0}}
+.ai-chat-panel{position:fixed;bottom:0;left:0;width:420px;max-width:100vw;height:600px;max-height:100vh;background:#fff;border-radius:16px 16px 0 0;box-shadow:0 -4px 40px rgba(0,0,0,.15);z-index:1002;display:none;flex-direction:column;transform:translateY(100%);transition:transform .3s ease}
+.ai-chat-panel.show{display:flex;transform:translateY(0)}
+.ai-chat-header{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:14px 18px;border-radius:16px 16px 0 0;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.ai-chat-header h3{margin:0;font-size:16px;font-weight:700}
+.ai-chat-header .close-btn{background:rgba(255,255,255,.2);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.ai-chat-header .close-btn:hover{background:rgba(255,255,255,.35)}
+.ai-chat-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;background:#f8f9ff}
+.ai-msg{max-width:88%;padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.6;word-break:break-word;white-space:pre-wrap}
+.ai-msg.user{align-self:flex-end;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border-bottom-right-radius:4px}
+.ai-msg.bot{align-self:flex-start;background:#fff;border:1px solid #e0e0e0;border-bottom-left-radius:4px}
+.ai-msg.bot .ai-tag{display:inline-block;font-size:11px;color:#fff;background:#43a047;padding:1px 6px;border-radius:4px;margin-bottom:4px}
+.ai-msg.bot .ai-tag.ai-generated{background:#7b1fa2}
+.ai-msg.bot .ai-tag.ai-search{background:#f57c00}
+.ai-msg.bot a{color:#4a6fa5;text-decoration:underline;cursor:pointer}
+.ai-msg.bot table{border-collapse:collapse;width:100%;margin:6px 0}
+.ai-msg.bot table th,.ai-msg.bot table td{border:1px solid #ddd;padding:4px 8px;font-size:13px}
+.ai-chat-loading{align-self:flex-start;padding:10px 14px;background:#fff;border:1px solid #e0e0e0;border-radius:14px;border-bottom-left-radius:4px;font-size:14px;color:#888;display:flex;align-items:center;gap:4px}
+.ai-chat-loading .dots{display:inline-block;width:20px;text-align:left}
+.ai-chat-loading .dots::after{content:'';animation:aiDots 1.4s steps(1) infinite}
+@keyframes aiDots{0%,20%{content:''}40%{content:'.'}60%{content:'..'}80%,100%{content:'...'}}
+.ai-chat-footer{padding:12px 14px;border-top:1px solid #eee;background:#fff;flex-shrink:0}
+.ai-input-row{display:flex;gap:8px;align-items:center}
+.ai-input-row textarea{flex:1;border:1px solid #ddd;border-radius:10px;padding:8px 12px;font-size:14px;resize:none;height:42px;max-height:80px;font-family:inherit;outline:none;transition:border-color .2s}
+.ai-input-row textarea:focus{border-color:#667eea}
+.ai-send-btn{width:42px;height:42px;border:none;border-radius:10px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;font-size:18px;cursor:pointer;flex-shrink:0;transition:all .2s}
+.ai-send-btn:hover{transform:scale(1.05)}
+.ai-send-btn:disabled{opacity:.5;cursor:not-allowed}
+.ai-settings-row{display:flex;gap:6px;align-items:center;margin-bottom:8px}
+.ai-settings-row input{flex:1;border:1px solid #ddd;border-radius:8px;padding:6px 10px;font-size:12px;outline:none}
+.ai-settings-row input:focus{border-color:#667eea}
+.ai-settings-row label{font-size:12px;color:#888;white-space:nowrap}
+.ai-hint{font-size:11px;color:#aaa;text-align:center;padding:4px}
+@media(max-width:768px){
+.ai-chat-btn{width:48px;height:48px;font-size:22px;bottom:16px;left:16px}
+.ai-chat-panel{width:100vw;height:75vh;border-radius:14px 14px 0 0}
+.ai-chat-header{padding:12px 14px}
+.ai-chat-header h3{font-size:14px}
+}
 </style>
 </head><body><div class="container">
 <div class="doc-header">
@@ -5850,6 +5892,41 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
 <button class="edit-reset-btn" id="editResetBtn" style="display:none" title="重置数据"><span class="btn-label">重置数据</span>🔄</button>
 <span class="save-status" id="saveStatus"></span>
 </div>
+<button class="ai-chat-btn" id="aiChatBtn" title="AI 面试助手"><span class="ai-pulse"></span>🤖</button>
+<div class="ai-chat-panel" id="aiChatPanel">
+<div class="ai-chat-header">
+<h3>🤖 AI 面试智能助手</h3>
+<div style="display:flex;gap:6px;align-items:center">
+<button class="close-btn" id="aiConnectBtn" title="连接手机" style="font-size:16px">📱</button>
+<button class="close-btn" id="aiCloseBtn" title="关闭">✕</button>
+</div>
+</div>
+<div class="ai-chat-body" id="aiChatBody">
+<div class="ai-msg bot">你好！我是 AI 面试智能助手。你可以问我任何面试相关问题，我会先从题库中搜索，找不到则根据你的项目智能生成答案。<br><br>首次使用请先点⚙️设置输入硅基流动 API Key，或点📱连接手机扫码配对。</div>
+</div>
+<div class="ai-chat-footer">
+<div class="ai-settings-row">
+<label>Key:</label>
+<input type="password" id="aiApiKeyInput" placeholder="硅基流动 API Key" style="display:none">
+<button id="aiSettingsToggle" style="font-size:12px;border:1px solid #ddd;border-radius:8px;padding:4px 8px;cursor:pointer;background:#f5f5f5">⚙️设置</button>
+<span id="aiRoomStatus" style="font-size:11px;color:#888;display:none">已连接手机 ✓</span>
+</div>
+<div class="ai-input-row">
+<textarea id="aiInputText" placeholder="输入面试问题，如：音视频同步用什么做主时钟？" rows="1"></textarea>
+<button class="ai-send-btn" id="aiSendBtn">➤</button>
+</div>
+<div class="ai-hint">Enter 发送 / Shift+Enter 换行</div>
+</div>
+</div>
+<div id="aiQrOverlay" style="position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1003;display:none;align-items:center;justify-content:center">
+<div style="background:#fff;border-radius:16px;padding:24px;text-align:center;max-width:340px">
+<h3 style="margin:0 0 8px">📱 扫码连接手机</h3>
+<p style="font-size:13px;color:#666;margin:0 0 16px">用手机扫描下方二维码，在手机上打开后即可远程提问，答案会显示在手机和电脑上。</p>
+<div id="aiQrCode" style="margin:0 auto 16px;width:200px;height:200px"></div>
+<p id="aiRoomCode" style="font-size:12px;color:#aaa;margin:0 0 16px"></p>
+<button id="aiQrClose" style="border:1px solid #ddd;border-radius:10px;padding:8px 24px;cursor:pointer;font-size:14px;background:#f5f5f5">关闭</button>
+</div>
+</div>
 <script>
 (function(){
   // Build search index from all anchors and their following content
@@ -6126,7 +6203,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
 // === Edit Mode ===
 (function(){
   var editMode=false;
-  var HTML_VERSION='v20260823';
+  var HTML_VERSION='v20260824';
   var STORAGE_KEY='interview_edit_data_'+HTML_VERSION;
   var OLD_KEY='interview_edit_data';
   var saveTimer=null;
@@ -6547,9 +6624,10 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     try{
       var raw=localStorage.getItem(STORAGE_KEY);
       if(!raw){
+        var prevRaw=localStorage.getItem('interview_edit_data_v20260823');
         var oldRaw=localStorage.getItem(OLD_KEY);
-        if(oldRaw){
-          showStatus('页面已更新，之前编辑的内容可通过导入恢复。请点击📥导入按钮选择之前导出的文件。','');
+        if(prevRaw||oldRaw){
+          showStatus('页面已更新至新版，之前的编辑数据已保留在浏览器中。如需恢复，请点击📥导入按钮，选择之前导出的JSON文件。','');
         }
         return false;
       }
@@ -6622,6 +6700,484 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   // --- Initialize: restore from storage ---
   if(restoreFromStorage()){
     showStatus('已从上次编辑恢复','saved');
+  }
+})();
+</script>
+<script>
+(function(){
+  // === AI Chat Agent (Streaming + Cross-Device) ===
+  var chatBtn=document.getElementById('aiChatBtn');
+  var chatPanel=document.getElementById('aiChatPanel');
+  var chatBody=document.getElementById('aiChatBody');
+  var closeBtn=document.getElementById('aiCloseBtn');
+  var inputText=document.getElementById('aiInputText');
+  var sendBtn=document.getElementById('aiSendBtn');
+  var apiKeyInput=document.getElementById('aiApiKeyInput');
+  var settingsToggle=document.getElementById('aiSettingsToggle');
+  var connectBtn=document.getElementById('aiConnectBtn');
+  var qrOverlay=document.getElementById('aiQrOverlay');
+  var qrCodeDiv=document.getElementById('aiQrCode');
+  var qrCloseBtn=document.getElementById('aiQrClose');
+  var roomCodeEl=document.getElementById('aiRoomCode');
+  var roomStatus=document.getElementById('aiRoomStatus');
+
+  // Detect mobile mode (?room=XXX in URL)
+  var urlParams=new URLSearchParams(location.search);
+  var mobileRoom=urlParams.get('room');
+  var isMobile=!!mobileRoom && (window.innerWidth<=768 || /Mobi|Android|iPhone/i.test(navigator.userAgent));
+
+  // Project context for AI
+  var PROJECT_CONTEXT = [
+    '你是面试题智能助手，服务于一个求职者（丁明阳，哈尔滨理工大学计算机大四）。',
+    '求职者有两个核心项目，请基于以下项目信息回答面试问题：',
+    '',
+    '【项目一：基于 C/S 架构的音视频平台】',
+    '- 服务端：C++ WinSock，8080端口，TCP Socket + JSON 通信，8081端口HTTP渐进式流（支持Range断点续传）',
+    '- 客户端：C++ + Qt框架，信号槽通信',
+    '- 视频编解码：FFmpeg（解封装、解码、编码），DXVA2硬件解码（自动回退软件解码）',
+    '- 音频播放：SDL2（回调驱动）',
+    '- GPU渲染：OpenGL纹理映射（YUV转RGB，GPU加速）',
+    '- 数据存储：SQLite（用户信息、视频元数据、收藏历史）',
+    '- 三线程解码模型：读包线程(QThread, av_read_frame) → 视频解码线程(avcodec_send_packet/receive_frame, YUV→RGB, OpenGL渲染) → 音频回调线程(SDL回调, 缓冲区填充)',
+    '- 音视频同步：以音频PTS为主时钟，视频帧对比PTS，快了延迟显示，慢了丢帧追赶（音频不能变速会变调，视频可以丢帧）',
+    '- 视频上传：链式传输（视频文件→封面文件→元数据），串行执行，上传队列',
+    '- 四级播放策略：本地路径 → 本地缓存 → 服务器下载 → 文件选择对话框',
+    '- 视频录制：FFmpeg编码管线，H.264+AAC → FLV',
+    '- AI视频内容理解（开发中）：FFmpeg抽关键帧，画面送通义千问视觉模型(Qwen3-VL)，音频送语音识别模型(SenseVoice)，融合送大语言模型生成摘要',
+    '- AI智能推荐（开发中）：Agent驱动 + 向量检索(BGE-M3)，推荐管理器从规则引擎改造为微服务',
+    '',
+    '【项目二：简历生成器 FutureHelios】',
+    '- B/S架构，Vue 3 + TypeScript',
+    '- 50套模板，11种布局 × 配色三维解耦，CSS变量驱动配色',
+    '- PDF导入：文本提取 + OCR + AI智能解析三种模式',
+    '- PDF导出：html2canvas截图 + jsPDF生成 + EmbeddedFile无损数据嵌入',
+    '- AI智能导出：调用硅基流动API(DeepSeek-V3)，STAR法则优化简历文案',
+    '- 主要采用AI辅助开发，负责需求拆解、技术方案设计、代码审查整合',
+    '',
+    '【技术栈总结】',
+    '- 熟练：C++、Qt、SQLite、TCP Socket编程',
+    '- 音视频：FFmpeg 4.2.2、SDL2-2.0.10、OpenGL、DXVA2',
+    '- AI：硅基流动API、DeepSeek-V3、通义千问VL、向量检索',
+    '- 前端：Vue3、TypeScript',
+    '',
+    '回答要求：',
+    '1. 用面试回答的口吻，像求职者在面试中回答问题一样',
+    '2. 结合求职者的项目实际技术选型回答，不要泛泛而谈',
+    '3. 回答简洁、顺口、有条理，适合口语表达',
+    '4. 如果问题涉及求职者项目中的具体实现，要结合项目细节回答',
+    '5. 用中文回答',
+  ].join('\n');
+
+  // Build question index from TOC + content
+  var qIndex=[];
+  function buildQIndex(){
+    qIndex=[];
+    // Method 1: Use TOC entries for titles
+    var tocLinks=document.querySelectorAll('.toc-list a[href^="#q"]');
+    var idToTitle={};
+    for(var i=0;i<tocLinks.length;i++){
+      var href=tocLinks[i].getAttribute('href');
+      if(href&&href.length>2){
+        var id=href.substring(1);
+        idToTitle[id]=tocLinks[i].textContent.replace(/^[⭐\s]+/,'').trim();
+      }
+    }
+    // Method 2: Use content headings as fallback
+    var headings=document.querySelectorAll('.content h2,.content h3,.content h4,.content h5,.content h6');
+    for(var j=0;j<headings.length;j++){
+      // Find nearest preceding anchor
+      var prev=headings[j].previousElementSibling;
+      while(prev && prev.tagName!=='A' && !prev.id){
+        prev=prev.previousElementSibling;
+      }
+      if(prev && prev.id && prev.id.startsWith('q') && !idToTitle[prev.id]){
+        idToTitle[prev.id]=headings[j].textContent.trim();
+      }
+    }
+    // Build index with answer text
+    var keys=Object.keys(idToTitle);
+    for(var k=0;k<keys.length;k++){
+      var qid=keys[k];
+      var anchor=document.getElementById(qid);
+      if(!anchor) continue;
+      // Collect answer text from siblings until next anchor
+      var answer='';
+      var node=anchor.nextElementSibling;
+      var safety=0;
+      while(node && safety<100){
+        if(node.tagName==='A' && node.id && node.id.startsWith('q')) break;
+        answer+=node.textContent+' ';
+        node=node.nextElementSibling;
+        safety++;
+      }
+      qIndex.push({id:qid,title:idToTitle[qid],answer:answer.trim().substring(0,500)});
+    }
+  }
+
+  // Fuzzy search
+  function searchQuestions(query){
+    var results=[];
+    var queryLower=query.toLowerCase();
+    // Split on spaces, punctuation, and Chinese-English boundaries
+    var qWords=queryLower
+      .replace(/([a-zA-Z]+)([\u4e00-\u9fa5])/g,'$1 $2')  // English→Chinese boundary
+      .replace(/([\u4e00-\u9fa5])([a-zA-Z]+)/g,'$1 $2')   // Chinese→English boundary
+      .split(/[\s,，。？?!！、（）()【】\[\]""''']+/)
+      .filter(function(w){return w.length>0;});
+
+    for(var i=0;i<qIndex.length;i++){
+      var item=qIndex[i];
+      var titleLower=item.title.toLowerCase();
+      var answerLower=item.answer.toLowerCase();
+      var score=0;
+      // Check full query as substring
+      if(queryLower.length>=2 && titleLower.indexOf(queryLower)>=0){score+=5;}
+      if(queryLower.length>=2 && answerLower.indexOf(queryLower)>=0){score+=2;}
+      // Check individual words
+      for(var j=0;j<qWords.length;j++){
+        var w=qWords[j];
+        if(w.length<1) continue;
+        if(titleLower.indexOf(w)>=0){score+=3;}
+        if(answerLower.indexOf(w)>=0){score+=1;}
+      }
+      if(score>0){
+        results.push({item:item,score:score});
+      }
+    }
+    results.sort(function(a,b){return b.score-a.score;});
+    return results;
+  }
+
+  // Call AI API with streaming
+  function callAIStream(query,apiKey,onChunk,onDone,onError){
+    fetch('https://api.siliconflow.cn/v1/chat/completions',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'Authorization':'Bearer '+apiKey
+      },
+      body:JSON.stringify({
+        model:'deepseek-ai/DeepSeek-V3',
+        messages:[
+          {role:'system',content:PROJECT_CONTEXT},
+          {role:'user',content:query}
+        ],
+        stream:true,
+        max_tokens:1500,
+        temperature:0.7
+      })
+    }).then(function(res){
+      if(!res.ok){
+        return res.text().then(function(t){
+          throw new Error('API '+res.status+': '+t.substring(0,200));
+        });
+      }
+      var reader=res.body.getReader();
+      var decoder=new TextDecoder();
+      var buffer='';
+      var fullText='';
+      function readChunk(){
+        reader.read().then(function(result){
+          if(result.done){
+            onDone(fullText);
+            return;
+          }
+          buffer+=decoder.decode(result.value,{stream:true});
+          var lines=buffer.split('\n');
+          buffer=lines.pop();
+          for(var i=0;i<lines.length;i++){
+            var line=lines[i].trim();
+            if(line.startsWith('data: ')){
+              var data=line.substring(6);
+              if(data==='[DONE]'){
+                onDone(fullText);
+                return;
+              }
+              try{
+                var json=JSON.parse(data);
+                if(json.choices&&json.choices[0].delta&&json.choices[0].delta.content){
+                  fullText+=json.choices[0].delta.content;
+                  onChunk(fullText);
+                }
+              }catch(e){}
+            }
+          }
+          readChunk();
+        }).catch(function(err){
+          onError(err.message);
+        });
+      }
+      readChunk();
+    }).catch(function(err){
+      onError(err.message||'网络错误');
+    });
+  }
+
+  // Add message to chat
+  function addMsg(text,role,tag){
+    var div=document.createElement('div');
+    div.className='ai-msg '+role;
+    if(tag){
+      var tagSpan=document.createElement('span');
+      tagSpan.className='ai-tag '+(tag==='search'?'ai-search':'ai-generated');
+      tagSpan.textContent=tag==='search'?'题库匹配':'AI推理';
+      div.appendChild(tagSpan);
+      div.appendChild(document.createElement('br'));
+    }
+    div.appendChild(document.createTextNode(text));
+    chatBody.appendChild(div);
+    chatBody.scrollTop=chatBody.scrollHeight;
+    return div;
+  }
+
+  function addLoading(msg){
+    var div=document.createElement('div');
+    div.className='ai-chat-loading';
+    div.id='aiLoadingMsg';
+    div.textContent=msg||'正在';
+    div.appendChild(document.createTextNode(''));
+    var dots=document.createElement('span');
+    dots.className='dots';
+    div.appendChild(dots);
+    chatBody.appendChild(div);
+    chatBody.scrollTop=chatBody.scrollHeight;
+    return div;
+  }
+
+  function removeLoading(){
+    var el=document.getElementById('aiLoadingMsg');
+    if(el) el.remove();
+  }
+
+  // Handle user message (with streaming)
+  function handleSend(){
+    var query=inputText.value.trim();
+    if(!query) return;
+    inputText.value='';
+    inputText.style.height='42px';
+    addMsg(query,'user');
+
+    // If mobile mode, send question via ntfy.sh instead of processing locally
+    if(isMobile&&mobileRoom){
+      sendNtfy(mobileRoom,{type:'question',text:query});
+      addLoading('等待电脑端AI处理');
+      return;
+    }
+
+    processQuestion(query);
+  }
+
+  // Process a question: search first, then AI
+  function processQuestion(query){
+    // Step 1: Search existing questions
+    var results=searchQuestions(query);
+    if(results.length>0 && results[0].score>=2){
+      var best=results[0].item;
+      var msgDiv=addMsg('','bot','search');
+      var link=document.createElement('a');
+      link.textContent='题目：'+best.title;
+      link.href='#'+best.id;
+      msgDiv.appendChild(link);
+      msgDiv.appendChild(document.createElement('br'));
+      var preview=best.answer.substring(0,200);
+      if(best.answer.length>200) preview+='...';
+      msgDiv.appendChild(document.createElement('br'));
+      msgDiv.appendChild(document.createTextNode(preview));
+      if(results.length>1){
+        msgDiv.appendChild(document.createElement('br'));
+        msgDiv.appendChild(document.createTextNode('其他相关题目：'));
+        for(var k=1;k<Math.min(results.length,4);k++){
+          var r=results[k].item;
+          msgDiv.appendChild(document.createElement('br'));
+          var moreLink=document.createElement('a');
+          moreLink.textContent='• '+r.title;
+          moreLink.href='#'+r.id;
+          msgDiv.appendChild(moreLink);
+        }
+      }
+      // Also send to mobile if connected
+      if(roomCode) sendNtfy(roomCode,{type:'answer',text:best.title+' - '+preview,tag:'search'});
+      return;
+    }
+
+    // Step 2: Call AI API with streaming
+    var apiKey=apiKeyInput.value.trim()||localStorage.getItem('sf_api_key');
+    if(!apiKey){
+      addMsg('未检测到 API Key，请点击⚙️设置输入硅基流动 API Key。获取：https://cloud.siliconflow.cn/ → API密钥','bot');
+      return;
+    }
+    localStorage.setItem('sf_api_key',apiKey);
+
+    var loadingDiv=addLoading('AI推理中');
+    var msgDiv=document.createElement('div');
+    msgDiv.className='ai-msg bot';
+    var tagSpan=document.createElement('span');
+    tagSpan.className='ai-tag ai-generated';
+    tagSpan.textContent='AI推理';
+    msgDiv.appendChild(tagSpan);
+    msgDiv.appendChild(document.createElement('br'));
+    var contentSpan=document.createElement('span');
+    msgDiv.appendChild(contentSpan);
+    chatBody.appendChild(msgDiv);
+    chatBody.scrollTop=chatBody.scrollHeight;
+
+    var lastChunk='';
+    callAIStream(query,apiKey,
+      function(fullText){
+        loadingDiv.remove();
+        contentSpan.textContent=fullText;
+        lastChunk=fullText;
+        chatBody.scrollTop=chatBody.scrollHeight;
+      },
+      function(fullText){
+        // Done - send to mobile if connected
+        if(roomCode) sendNtfy(roomCode,{type:'answer',text:fullText,tag:'generated'});
+      },
+      function(err){
+        loadingDiv.remove();
+        msgDiv.remove();
+        addMsg('❌ '+err+'\n\n请检查：1.API Key是否正确 2.网络是否正常 3.是否有余额','bot');
+      }
+    );
+  }
+
+  // === ntfy.sh Cross-Device Communication ===
+  var NTFY='https://ntfy.sh';
+  var roomCode=null;
+  var eventSource=null;
+
+  function genRoom(){
+    return 'iv'+Date.now().toString(36).slice(-4)+Math.random().toString(36).slice(-2,5);
+  }
+
+  function sendNtfy(room,data){
+    fetch(NTFY+'/'+room,{
+      method:'POST',
+      body:JSON.stringify(data),
+      headers:{'Content-Type':'application/json'}
+    }).catch(function(){});
+  }
+
+  function startListen(room){
+    if(eventSource) eventSource.close();
+    eventSource=new EventSource(NTFY+'/'+room+'/sse');
+    eventSource.onmessage=function(event){
+      try{
+        var msg=JSON.parse(event.data);
+        if(!msg.message) return;
+        var data=JSON.parse(msg.message);
+
+        // Mobile receives answer from PC
+        if(isMobile&&data.type==='answer'){
+          removeLoading();
+          var tag=data.tag==='search'?'search':'generated';
+          addMsg(data.text,'bot',tag);
+        }
+
+        // PC receives question from mobile
+        if(!isMobile&&data.type==='question'){
+          addMsg(data.text,'user');
+          addLoading('AI推理中');
+          processQuestion(data.text);
+        }
+
+        // PC receives answer ack from another PC (ignore)
+      }catch(e){}
+    };
+    eventSource.onerror=function(){
+      // Auto-reconnect is built into EventSource
+    };
+  }
+
+  // Show QR code for pairing
+  function showQrCode(){
+    if(!roomCode) roomCode=genRoom();
+    var baseUrl=location.origin+location.pathname;
+    var mobileUrl=baseUrl+'?room='+roomCode;
+    var qrUrl='https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=8&data='+encodeURIComponent(mobileUrl);
+    qrCodeDiv.innerHTML='<img src="'+qrUrl+'" width="200" height="200" alt="扫码连接">';
+    roomCodeEl.textContent='房间号: '+roomCode;
+    qrOverlay.style.display='flex';
+    // Start listening for messages
+    startListen(roomCode);
+    roomStatus.style.display='inline';
+    // Save room for reconnection
+    localStorage.setItem('ai_room',roomCode);
+  }
+
+  // === Event Listeners ===
+  chatBtn.addEventListener('click',function(){
+    chatPanel.classList.add('show');
+    if(qIndex.length===0) buildQIndex();
+    // Reconnect room if exists
+    if(!roomCode){
+      var savedRoom=localStorage.getItem('ai_room');
+      if(savedRoom){
+        roomCode=savedRoom;
+        startListen(roomCode);
+        roomStatus.style.display='inline';
+      }
+    }
+    setTimeout(function(){inputText.focus();},300);
+  });
+  closeBtn.addEventListener('click',function(){chatPanel.classList.remove('show');});
+  sendBtn.addEventListener('click',handleSend);
+  inputText.addEventListener('keydown',function(e){
+    if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();handleSend();}
+  });
+  inputText.addEventListener('input',function(){
+    this.style.height='42px';
+    this.style.height=Math.min(this.scrollHeight,80)+'px';
+  });
+  settingsToggle.addEventListener('click',function(){
+    if(apiKeyInput.style.display==='none'){
+      apiKeyInput.style.display='block';
+      var saved=localStorage.getItem('sf_api_key');
+      if(saved) apiKeyInput.value=saved;
+      apiKeyInput.focus();
+      settingsToggle.textContent='✓保存';
+    }else{
+      apiKeyInput.style.display='none';
+      settingsToggle.textContent='⚙️设置';
+      if(apiKeyInput.value.trim()) localStorage.setItem('sf_api_key',apiKeyInput.value.trim());
+    }
+  });
+  connectBtn.addEventListener('click',showQrCode);
+  qrCloseBtn.addEventListener('click',function(){qrOverlay.style.display='none';});
+
+  // === Mobile Mode Init ===
+  if(isMobile){
+    // Hide main content, show only chat panel
+    var container=document.querySelector('.container');
+    if(container) container.style.display='none';
+    var backTop=document.querySelector('.back-top');
+    if(backTop) backTop.style.display='none';
+    var sideToolbar=document.getElementById('sideToolbar');
+    if(sideToolbar) sideToolbar.style.display='none';
+    chatBtn.style.display='none';
+    chatPanel.classList.add('show');
+    chatPanel.style.position='fixed';
+    chatPanel.style.width='100vw';
+    chatPanel.style.height='100vh';
+    chatPanel.style.maxHeight='100vh';
+    chatPanel.style.borderRadius='0';
+    // Hide connect button on mobile
+    connectBtn.style.display='none';
+    // Start listening for answers from PC
+    startListen(mobileRoom);
+    // Show API key settings by default on mobile
+    apiKeyInput.style.display='block';
+    apiKeyInput.setAttribute('placeholder','硅基流动 API Key（可选）');
+    settingsToggle.textContent='✓保存';
+    // Restore API key
+    var sk=localStorage.getItem('sf_api_key');
+    if(sk) apiKeyInput.value=sk;
+    // Build index for local search (if page content is loaded)
+    setTimeout(function(){buildQIndex();},500);
+  }else{
+    // Desktop: restore API key
+    var savedKey=localStorage.getItem('sf_api_key');
+    if(savedKey) apiKeyInput.value=savedKey;
   }
 })();
 </script>
