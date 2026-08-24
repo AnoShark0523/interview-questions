@@ -6028,15 +6028,53 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
       currentResults=[];
       return;
     }
+    // Split query into words
+    var kwWords=keyword
+      .replace(/([a-zA-Z]+)([\u4e00-\u9fa5])/g,'$1 $2')
+      .replace(/([\u4e00-\u9fa5])([a-zA-Z]+)/g,'$1 $2')
+      .split(/[\s,，。？?!！、（）()【】\[\]""''']+/)
+      .filter(function(w){return w.length>0;});
+
     var matches=[];
     for(var i=0;i<index.length;i++){
       var item=index[i];
-      var titleMatch=item.title.toLowerCase().indexOf(keyword)>=0;
-      if(titleMatch){
-        matches.push({item:item,score:1,titleMatch:true});
+      var titleLow=item.title.toLowerCase();
+      var score=0;
+      // Exact match → highest priority
+      if(titleLow===keyword || titleLow.replace(/\s+/g,'')===keyword.replace(/\s+/g,'')){
+        score=100;
+      }
+      // Full keyword in title
+      else if(titleLow.indexOf(keyword)>=0){
+        score=50;
+      }
+      // Check individual words
+      var allWordsMatch=true;
+      for(var w=0;w<kwWords.length;w++){
+        var word=kwWords[w];
+        var hit=false;
+        var isShortEng=/^[a-zA-Z]+$/.test(word) && word.length<=3;
+        if(isShortEng){
+          var re=new RegExp('(^|[^a-zA-Z])'+word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'([^a-zA-Z]|$)','i');
+          hit=re.test(titleLow);
+        }else{
+          hit=titleLow.indexOf(word)>=0;
+        }
+        if(hit){
+          score+=10;
+        }else{
+          allWordsMatch=false;
+        }
+      }
+      // Bonus for all words matching
+      if(allWordsMatch && kwWords.length>1) score+=20;
+
+      if(score>0){
+        matches.push({item:item,score:score,titleMatch:true});
       }
     }
     matches.sort(function(a,b){
+      if(b.score!==a.score) return b.score-a.score;
       return a.item.level-b.item.level;
     });
     currentResults=matches.slice(0,30);
@@ -6969,14 +7007,26 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     }
   }
 
+  // Check if a short English word appears as a whole word in text
+  function wholeWordMatch(text,word){
+    if(word.length===0) return false;
+    // For English words: use word boundary (not part of a longer word)
+    if(/^[a-zA-Z]+$/.test(word)){
+      var re=new RegExp('(^|[^a-zA-Z])'+word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'([^a-zA-Z]|$)','i');
+      return re.test(text);
+    }
+    // For Chinese words or mixed: just substring match (Chinese doesn't have word boundaries)
+    return text.indexOf(word)>=0;
+  }
+
   // Fuzzy search
   function searchQuestions(query){
     var results=[];
     var queryLower=query.toLowerCase();
     // Split on spaces, punctuation, and Chinese-English boundaries
     var qWords=queryLower
-      .replace(/([a-zA-Z]+)([\u4e00-\u9fa5])/g,'$1 $2')  // English→Chinese boundary
-      .replace(/([\u4e00-\u9fa5])([a-zA-Z]+)/g,'$1 $2')   // Chinese→English boundary
+      .replace(/([a-zA-Z]+)([\u4e00-\u9fa5])/g,'$1 $2')
+      .replace(/([\u4e00-\u9fa5])([a-zA-Z]+)/g,'$1 $2')
       .split(/[\s,，。？?!！、（）()【】\[\]""''']+/)
       .filter(function(w){return w.length>0;});
 
@@ -6985,16 +7035,50 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
       var titleLower=item.title.toLowerCase();
       var answerLower=item.answer.toLowerCase();
       var score=0;
-      // Check full query as substring
-      if(queryLower.length>=2 && titleLower.indexOf(queryLower)>=0){score+=5;}
-      if(queryLower.length>=2 && answerLower.indexOf(queryLower)>=0){score+=2;}
+      var matchedWords=0;
+
+      // Exact title match (full query equals title) → huge boost
+      if(titleLower===queryLower || titleLower.replace(/\s+/g,'')===queryLower.replace(/\s+/g,'')){
+        score+=30;
+      }
+      // Full query in title → big boost
+      else if(queryLower.length>=2 && titleLower.indexOf(queryLower)>=0){
+        score+=15;
+      }
+      // Full query in answer
+      if(queryLower.length>=3 && answerLower.indexOf(queryLower)>=0){
+        score+=5;
+      }
+
       // Check individual words
       for(var j=0;j<qWords.length;j++){
         var w=qWords[j];
         if(w.length<1) continue;
-        if(titleLower.indexOf(w)>=0){score+=3;}
-        if(answerLower.indexOf(w)>=0){score+=1;}
+        var isShortEnglish=/^[a-zA-Z]+$/.test(w) && w.length<=3;
+        var titleHit=false;
+        var answerHit=false;
+
+        if(isShortEnglish){
+          // Short English words (AI, iOS, TCP, etc.) → whole word match only
+          if(wholeWordMatch(titleLower,w)){titleHit=true;score+=4;}
+          if(wholeWordMatch(answerLower,w)){answerHit=true;score+=1;}
+        }else{
+          // Longer words or Chinese → substring match is fine
+          if(titleLower.indexOf(w)>=0){titleHit=true;score+=3;}
+          if(answerLower.indexOf(w)>=0){answerHit=true;score+=1;}
+        }
+        if(titleHit||answerHit) matchedWords++;
       }
+
+      // Bonus: all query words matched in title
+      if(matchedWords===qWords.length && qWords.length>1){
+        score+=8;
+      }
+      // Bonus: most words matched in title
+      if(matchedWords>=qWords.length*0.6 && qWords.length>=2){
+        score+=4;
+      }
+
       if(score>0){
         results.push({item:item,score:score});
       }
@@ -7188,7 +7272,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   function processQuestion(query){
     // Step 1: Search question bank
     var results=searchQuestions(query);
-    var hasGoodMatch=results.length>0 && results[0].score>=2;
+    var hasGoodMatch=results.length>0 && results[0].score>=6;
 
     // Show best matching question if found
     if(hasGoodMatch){
