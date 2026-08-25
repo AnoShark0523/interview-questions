@@ -35,7 +35,8 @@ pre code{background:none;color:inherit;padding:0;font-size:15px}
 blockquote{border-left:4px solid var(--accent);background:#f0f4ff;padding:12px 20px;margin:12px 0;border-radius:0 8px 8px 0;color:var(--text2)}
 hr{border:none;border-top:2px dashed var(--border);margin:40px 0}
 a{color:var(--link)}
-a[id]{scroll-margin-top:140px}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+a[id]{display:block;scroll-margin-top:100px}
 .back-top{position:fixed;bottom:32px;right:84px;width:48px;height:48px;background:var(--accent);color:#fff;border:none;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:999;display:flex;align-items:center;justify-content:center}
 .back-top:hover{transform:translateY(-4px)}
 table{border-collapse:collapse;width:100%;margin:12px 0;font-size:16px}
@@ -6105,7 +6106,12 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
         var id=this.getAttribute('data-id');
         var el=document.getElementById(id);
         if(el){
+          // Use scrollIntoView with scroll-padding-top offset
           el.scrollIntoView({behavior:'smooth',block:'start'});
+          // Adjust for sticky header after browser scroll settles
+          setTimeout(function(){
+            window.scrollBy({top:-100,behavior:'smooth'});
+          },50);
           resultsDiv.classList.remove('show');
           input.blur();
         }
