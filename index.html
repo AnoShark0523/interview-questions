@@ -10649,62 +10649,103 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   }
 
   // --- Add block controls ---
+  var _delTimers={};
+  var _delConfirming={};
   function injectBlockControls(){
     var existing=document.querySelectorAll('.block-controls');
     for(var i=0;i<existing.length;i++){existing[i].parentNode.removeChild(existing[i]);}
 
     var blocks=getBlocks();
     for(var i=0;i<blocks.length;i++){
-      (function(block){
-        var heading=block.heading;
-        var controls=document.createElement('div');
-        controls.className='block-controls';
-        controls.innerHTML='<span style="font-size:12px;color:#999">'+block.id+'</span>'+
-          '<button class="block-btn add-after" data-id="'+block.id+'">➕ 在下方添加</button>'+
-          '<button class="block-btn del-block" data-id="'+block.id+'">🗑️ 删除此题</button>';
-        heading.parentNode.insertBefore(controls,heading);
+      var block=blocks[i];
+      var heading=block.heading;
+      var controls=document.createElement('div');
+      controls.className='block-controls';
+      controls.setAttribute('contenteditable','false');
+      controls.innerHTML='<span style="font-size:12px;color:#999">'+block.id+'</span>'+
+        '<button class="block-btn add-after" data-id="'+block.id+'">➕ 在下方添加</button>'+
+        '<button class="block-btn del-block" data-id="'+block.id+'">🗑️ 删除此题</button>';
+      heading.parentNode.insertBefore(controls,heading);
+    }
 
-        // Add after
-        var addBtn=controls.querySelector('.add-after');
-        addBtn.addEventListener('click',function(){
+    // Event delegation: only set up once
+    var contentDiv=document.querySelector('.content')||document.querySelector('.container');
+    if(contentDiv && !contentDiv.__blockDelegate){
+      contentDiv.__blockDelegate=true;
+      contentDiv.addEventListener('click',function(e){
+        var addBtn=e.target.closest('.add-after');
+        if(addBtn){
+          var id=addBtn.getAttribute('data-id');
           var select=document.getElementById('addSectionSelect');
           populateSectionSelect();
-          select.value=block.id;
+          select.value=id;
           addTitleInput.value='';
           addAnswerInput.value='';
           addDialogOverlay.classList.add('show');
-          addDialogOverlay._insertAfterId=block.id;
+          addDialogOverlay._insertAfterId=id;
           addTitleInput.focus();
-        });
-
-        // Delete with long-press
-        var delBtn=controls.querySelector('.del-block');
-        var delTimer=null;
-        var delConfirming=false;
-        function startDelete(){
-          if(delConfirming)return;
-          delConfirming=true;
-          delBtn.classList.add('confirming');
-          delBtn.textContent='🗑️ 确认删除...';
-          delTimer=setTimeout(function(){
-            deleteBlock(block.id);
-            delConfirming=false;
-          },3000);
         }
-        function cancelDelete(){
-          if(delTimer){clearTimeout(delTimer);delTimer=null;}
-          if(delConfirming){
-            delConfirming=false;
-            delBtn.classList.remove('confirming');
-            delBtn.textContent='🗑️ 删除此题';
-          }
+      });
+      contentDiv.addEventListener('mousedown',function(e){
+        var delBtn=e.target.closest('.del-block');
+        if(!delBtn)return;
+        var id=delBtn.getAttribute('data-id');
+        if(_delConfirming[id])return;
+        _delConfirming[id]=true;
+        delBtn.classList.add('confirming');
+        delBtn.textContent='🗑️ 确认删除...';
+        _delTimers[id]=setTimeout(function(){
+          deleteBlock(id);
+          _delConfirming[id]=false;
+        },3000);
+      });
+      contentDiv.addEventListener('mouseup',function(e){
+        var delBtn=e.target.closest('.del-block');
+        if(!delBtn)return;
+        var id=delBtn.getAttribute('data-id');
+        if(_delTimers[id]){clearTimeout(_delTimers[id]);_delTimers[id]=null;}
+        if(_delConfirming[id]){
+          _delConfirming[id]=false;
+          delBtn.classList.remove('confirming');
+          delBtn.textContent='🗑️ 删除此题';
         }
-        delBtn.addEventListener('mousedown',startDelete);
-        delBtn.addEventListener('touchstart',function(e){e.preventDefault();startDelete();});
-        delBtn.addEventListener('mouseup',cancelDelete);
-        delBtn.addEventListener('mouseleave',cancelDelete);
-        delBtn.addEventListener('touchend',cancelDelete);
-      })(blocks[i]);
+      });
+      contentDiv.addEventListener('mouseout',function(e){
+        var delBtn=e.target.closest('.del-block');
+        if(!delBtn||!delBtn.contains(e.relatedTarget))return;
+        var id=delBtn.getAttribute('data-id');
+        if(_delTimers[id]){clearTimeout(_delTimers[id]);_delTimers[id]=null;}
+        if(_delConfirming[id]){
+          _delConfirming[id]=false;
+          delBtn.classList.remove('confirming');
+          delBtn.textContent='🗑️ 删除此题';
+        }
+      });
+      contentDiv.addEventListener('touchstart',function(e){
+        var delBtn=e.target.closest('.del-block');
+        if(!delBtn)return;
+        e.preventDefault();
+        var id=delBtn.getAttribute('data-id');
+        if(_delConfirming[id])return;
+        _delConfirming[id]=true;
+        delBtn.classList.add('confirming');
+        delBtn.textContent='🗑️ 确认删除...';
+        _delTimers[id]=setTimeout(function(){
+          deleteBlock(id);
+          _delConfirming[id]=false;
+        },3000);
+      },{passive:false});
+      contentDiv.addEventListener('touchend',function(e){
+        var delBtn=e.target.closest('.del-block');
+        if(!delBtn)return;
+        var id=delBtn.getAttribute('data-id');
+        if(_delTimers[id]){clearTimeout(_delTimers[id]);_delTimers[id]=null;}
+        if(_delConfirming[id]){
+          _delConfirming[id]=false;
+          delBtn.classList.remove('confirming');
+          delBtn.textContent='🗑️ 删除此题';
+        }
+      });
     }
   }
 
@@ -10847,9 +10888,9 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     editImportBtn.style.display=editMode?'inline-block':'none';
     editResetBtn.style.display=editMode?'inline-block':'none';
 
-    var contentElements=document.querySelectorAll('h2,h3,h4,h5,p,li,blockquote,pre,td,th');
-    for(var i=0;i<contentElements.length;i++){
-      contentElements[i].setAttribute('contenteditable',editMode?'true':'false');
+    var contentDiv=document.querySelector('.content')||document.querySelector('.container');
+    if(contentDiv){
+      contentDiv.setAttribute('contenteditable',editMode?'true':'false');
     }
 
     if(editMode){
@@ -11339,13 +11380,13 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
       var answer='';
       var node=anchor.nextElementSibling;
       var safety=0;
-      while(node && safety<300){
+      while(node && safety<30){
         if(node.tagName==='A' && node.id && node.id.startsWith('q')) break;
         answer+=node.textContent+' ';
         node=node.nextElementSibling;
         safety++;
       }
-      qIndex.push({id:qid,title:idToTitle[qid],answer:answer.trim()});
+      qIndex.push({id:qid,title:idToTitle[qid],answer:answer.substring(0,500).trim()});
     }
   }
 
