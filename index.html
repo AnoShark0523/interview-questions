@@ -111,6 +111,19 @@ body.edit-mode .block-controls{display:flex}
 .add-dialog .btn-cancel{background:#e0e0e0;color:var(--text)}
 .add-dialog .btn-confirm{background:var(--accent);color:#fff}
 .section-select optgroup{font-weight:700;color:var(--accent)}
+.answer-block{content-visibility:auto;contain-intrinsic-size:auto 80px}
+.content>section{content-visibility:auto;contain-intrinsic-size:auto 600px}
+h3,h4{contain:content}
+.toc-list a{contain:content}
+.floating-toolbar{position:fixed;z-index:1500;display:none;gap:6px;align-items:center;background:#fff;border:1.5px solid var(--accent);border-radius:8px;padding:4px 8px;box-shadow:0 4px 16px rgba(0,0,0,.18)}
+.floating-toolbar.show{display:flex}
+.floating-toolbar .ft-id{font-size:11px;color:#999;padding:0 4px}
+.floating-toolbar .ft-btn{padding:4px 10px;font-size:13px;border:1.5px solid var(--border);border-radius:6px;background:#fff;cursor:pointer;font-family:inherit;user-select:none;white-space:nowrap}
+.floating-toolbar .ft-btn:hover{border-color:var(--accent);background:#f0f4ff}
+.floating-toolbar .ft-btn.del{border-color:#ffcdd2;color:#e53935}
+.floating-toolbar .ft-btn.del:hover{background:#ffebee;border-color:#e53935}
+.floating-toolbar .ft-btn.confirming{border-color:#e53935;background:#ffebee;position:relative;overflow:hidden}
+.floating-toolbar .ft-btn.confirming::after{content:'';position:absolute;left:0;top:0;height:100%;width:0;background:rgba(229,57,53,.25);animation:delProgress 3s linear forwards}
 @media(max-width:768px){
 :root{--text2:#666}
 body{font-size:16px;line-height:1.75}
@@ -13702,105 +13715,134 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     return blocks;
   }
 
-  // --- Add block controls ---
-  var _delTimers={};
-  var _delConfirming={};
-  function injectBlockControls(){
-    var existing=document.querySelectorAll('.block-controls');
-    for(var i=0;i<existing.length;i++){existing[i].parentNode.removeChild(existing[i]);}
+  // --- Add block controls (floating toolbar, no mass DOM creation) ---
+  var _delTimer=null;
+  var _delConfirming=false;
+  var _toolbarEl=null;
+  var _toolbarActiveId=null;
 
-    var blocks=getBlocks();
-    for(var i=0;i<blocks.length;i++){
-      var block=blocks[i];
-      var heading=block.heading;
-      var controls=document.createElement('div');
-      controls.className='block-controls';
-      controls.setAttribute('contenteditable','false');
-      controls.innerHTML='<span style="font-size:12px;color:#999">'+block.id+'</span>'+
-        '<button class="block-btn add-after" data-id="'+block.id+'">➕ 在下方添加</button>'+
-        '<button class="block-btn del-block" data-id="'+block.id+'">🗑️ 删除此题</button>';
-      heading.parentNode.insertBefore(controls,heading);
+  function injectBlockControls(){
+    // Create floating toolbar element once
+    if(!_toolbarEl){
+      _toolbarEl=document.createElement('div');
+      _toolbarEl.className='floating-toolbar';
+      _toolbarEl.innerHTML='<span class="ft-id"></span>'+
+        '<button class="ft-btn add">➕ 在下方添加</button>'+
+        '<button class="ft-btn del">🗑️ 删除此题</button>';
+      document.body.appendChild(_toolbarEl);
+
+      // Add button
+      _toolbarEl.querySelector('.add').addEventListener('click',function(){
+        if(!_toolbarActiveId)return;
+        var select=document.getElementById('addSectionSelect');
+        populateSectionSelect();
+        select.value=_toolbarActiveId;
+        addTitleInput.value='';
+        addAnswerInput.value='';
+        addDialogOverlay.classList.add('show');
+        addDialogOverlay._insertAfterId=_toolbarActiveId;
+        addTitleInput.focus();
+        hideToolbar();
+      });
+
+      // Delete button (3-second long-press confirmation)
+      var delBtn=_toolbarEl.querySelector('.del');
+      delBtn.addEventListener('mousedown',function(){
+        if(_delConfirming)return;
+        _delConfirming=true;
+        delBtn.classList.add('confirming');
+        delBtn.textContent='🗑️ 确认删除...';
+        _delTimer=setTimeout(function(){
+          if(_toolbarActiveId)deleteBlock(_toolbarActiveId);
+          _delConfirming=false;
+          hideToolbar();
+        },3000);
+      });
+      delBtn.addEventListener('mouseup',function(){
+        if(_delTimer){clearTimeout(_delTimer);_delTimer=null;}
+        if(_delConfirming){
+          _delConfirming=false;
+          delBtn.classList.remove('confirming');
+          delBtn.textContent='🗑️ 删除此题';
+        }
+      });
+      delBtn.addEventListener('mouseleave',function(){
+        if(_delTimer){clearTimeout(_delTimer);_delTimer=null;}
+        if(_delConfirming){
+          _delConfirming=false;
+          delBtn.classList.remove('confirming');
+          delBtn.textContent='🗑️ 删除此题';
+        }
+      });
+      delBtn.addEventListener('touchstart',function(e){
+        e.preventDefault();
+        if(_delConfirming)return;
+        _delConfirming=true;
+        delBtn.classList.add('confirming');
+        delBtn.textContent='🗑️ 确认删除...';
+        _delTimer=setTimeout(function(){
+          if(_toolbarActiveId)deleteBlock(_toolbarActiveId);
+          _delConfirming=false;
+          hideToolbar();
+        },3000);
+      },{passive:false});
+      delBtn.addEventListener('touchend',function(e){
+        if(_delTimer){clearTimeout(_delTimer);_delTimer=null;}
+        if(_delConfirming){
+          _delConfirming=false;
+          delBtn.classList.remove('confirming');
+          delBtn.textContent='🗑️ 删除此题';
+        }
+      });
     }
 
-    // Event delegation: only set up once
+    // Set up heading click delegation once
     var contentDiv=document.querySelector('.content')||document.querySelector('.container');
     if(contentDiv && !contentDiv.__blockDelegate){
       contentDiv.__blockDelegate=true;
       contentDiv.addEventListener('click',function(e){
-        var addBtn=e.target.closest('.add-after');
-        if(addBtn){
-          var id=addBtn.getAttribute('data-id');
-          var select=document.getElementById('addSectionSelect');
-          populateSectionSelect();
-          select.value=id;
-          addTitleInput.value='';
-          addAnswerInput.value='';
-          addDialogOverlay.classList.add('show');
-          addDialogOverlay._insertAfterId=id;
-          addTitleInput.focus();
+        if(!editMode)return;
+        var heading=e.target.closest('h2,h3,h4,h5');
+        if(!heading)return;
+        // Find the anchor preceding this heading
+        var prev=heading.previousElementSibling;
+        while(prev && !(prev.tagName==='A' && prev.id && prev.id.startsWith('q'))){
+          prev=prev.previousElementSibling;
+        }
+        if(prev && prev.id && prev.id.startsWith('q')){
+          showToolbar(prev.id,heading);
         }
       });
-      contentDiv.addEventListener('mousedown',function(e){
-        var delBtn=e.target.closest('.del-block');
-        if(!delBtn)return;
-        var id=delBtn.getAttribute('data-id');
-        if(_delConfirming[id])return;
-        _delConfirming[id]=true;
-        delBtn.classList.add('confirming');
-        delBtn.textContent='🗑️ 确认删除...';
-        _delTimers[id]=setTimeout(function(){
-          deleteBlock(id);
-          _delConfirming[id]=false;
-        },3000);
-      });
-      contentDiv.addEventListener('mouseup',function(e){
-        var delBtn=e.target.closest('.del-block');
-        if(!delBtn)return;
-        var id=delBtn.getAttribute('data-id');
-        if(_delTimers[id]){clearTimeout(_delTimers[id]);_delTimers[id]=null;}
-        if(_delConfirming[id]){
-          _delConfirming[id]=false;
-          delBtn.classList.remove('confirming');
-          delBtn.textContent='🗑️ 删除此题';
-        }
-      });
-      contentDiv.addEventListener('mouseout',function(e){
-        var delBtn=e.target.closest('.del-block');
-        if(!delBtn||!delBtn.contains(e.relatedTarget))return;
-        var id=delBtn.getAttribute('data-id');
-        if(_delTimers[id]){clearTimeout(_delTimers[id]);_delTimers[id]=null;}
-        if(_delConfirming[id]){
-          _delConfirming[id]=false;
-          delBtn.classList.remove('confirming');
-          delBtn.textContent='🗑️ 删除此题';
-        }
-      });
-      contentDiv.addEventListener('touchstart',function(e){
-        var delBtn=e.target.closest('.del-block');
-        if(!delBtn)return;
-        e.preventDefault();
-        var id=delBtn.getAttribute('data-id');
-        if(_delConfirming[id])return;
-        _delConfirming[id]=true;
-        delBtn.classList.add('confirming');
-        delBtn.textContent='🗑️ 确认删除...';
-        _delTimers[id]=setTimeout(function(){
-          deleteBlock(id);
-          _delConfirming[id]=false;
-        },3000);
-      },{passive:false});
-      contentDiv.addEventListener('touchend',function(e){
-        var delBtn=e.target.closest('.del-block');
-        if(!delBtn)return;
-        var id=delBtn.getAttribute('data-id');
-        if(_delTimers[id]){clearTimeout(_delTimers[id]);_delTimers[id]=null;}
-        if(_delConfirming[id]){
-          _delConfirming[id]=false;
-          delBtn.classList.remove('confirming');
-          delBtn.textContent='🗑️ 删除此题';
+      // Click outside to hide toolbar
+      document.addEventListener('click',function(e){
+        if(!_toolbarEl||!_toolbarEl.classList.contains('show'))return;
+        if(!_toolbarEl.contains(e.target) && !e.target.closest('h2,h3,h4,h5')){
+          hideToolbar();
         }
       });
     }
+  }
+
+  function showToolbar(id,heading){
+    _toolbarActiveId=id;
+    _toolbarEl.querySelector('.ft-id').textContent=id;
+    var rect=heading.getBoundingClientRect();
+    _toolbarEl.style.top=(rect.top+window.scrollY-6)+'px';
+    _toolbarEl.style.left=(rect.left+window.scrollX+rect.width/2-100)+'px';
+    _toolbarEl.classList.add('show');
+    // Reset delete button state
+    var delBtn=_toolbarEl.querySelector('.del');
+    delBtn.classList.remove('confirming');
+    delBtn.textContent='🗑️ 删除此题';
+    _delConfirming=false;
+    if(_delTimer){clearTimeout(_delTimer);_delTimer=null;}
+  }
+
+  function hideToolbar(){
+    if(_toolbarEl)_toolbarEl.classList.remove('show');
+    _toolbarActiveId=null;
+    _delConfirming=false;
+    if(_delTimer){clearTimeout(_delTimer);_delTimer=null;}
   }
 
   // --- Delete block ---
@@ -13949,10 +13991,9 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
 
     if(editMode){
       injectBlockControls();
-      showStatus('编辑模式已开启','saved');
+      showStatus('编辑模式已开启，点击题目标题可编辑','');
     }else{
-      var controls=document.querySelectorAll('.block-controls');
-      for(var j=0;j<controls.length;j++){controls[j].parentNode.removeChild(controls[j]);}
+      hideToolbar();
       saveToStorage();
       showStatus('已保存','saved');
     }
@@ -14081,32 +14122,38 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     if(saveTimer)clearTimeout(saveTimer);
     showStatus('保存中...','saving');
     saveTimer=setTimeout(function(){
-      try{
-        var blocks=getBlocks();
-        var data=[];
-        for(var i=0;i<blocks.length;i++){
-          var node=blocks[i].anchor;
-          var content=[];
-          var el=blocks[i].heading;
-          var nextBlock=blocks[i+1];
-          while(el){
-            if(nextBlock && el===nextBlock.anchor)break;
-            if(el.tagName==='A' && el.getAttribute('id') && el.getAttribute('id').indexOf('q')===0 && el!==blocks[i].anchor)break;
-            if(el.tagName && el.tagName.match(/^H[2-5]$/)){
-              if(el!==blocks[i].heading)break;
+      var doSave=function(){
+        try{
+          var blocks=getBlocks();
+          var data=[];
+          for(var i=0;i<blocks.length;i++){
+            var content=[];
+            var el=blocks[i].heading;
+            var nextBlock=blocks[i+1];
+            while(el){
+              if(nextBlock && el===nextBlock.anchor)break;
+              if(el.tagName==='A' && el.getAttribute('id') && el.getAttribute('id').indexOf('q')===0 && el!==blocks[i].anchor)break;
+              if(el.tagName && el.tagName.match(/^H[2-5]$/)){
+                if(el!==blocks[i].heading)break;
+              }
+              content.push(el.outerHTML);
+              el=el.nextSibling;
+              if(!el)break;
             }
-            content.push(el.outerHTML);
-            el=el.nextSibling;
-            if(!el)break;
+            data.push({id:blocks[i].id,title:blocks[i].heading.textContent.trim(),level:blocks[i].level,html:content.join('\n')});
           }
-          data.push({id:blocks[i].id,title:blocks[i].heading.textContent.trim(),level:blocks[i].level,html:content.join('\n')});
+          localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+          showStatus('已自动保存 ✓','saved');
+        }catch(e){
+          showStatus('保存失败：'+e.message,'');
         }
-        localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
-        showStatus('已自动保存 ✓','saved');
-      }catch(e){
-        showStatus('保存失败：'+e.message,'');
+      };
+      if(window.requestIdleCallback){
+        window.requestIdleCallback(doSave,{timeout:3000});
+      }else{
+        doSave();
       }
-    },500);
+    },1500);
   }
 
   // --- Restore from localStorage ---
