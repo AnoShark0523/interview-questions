@@ -898,6 +898,48 @@ body.ai-split .container{margin-left:0}
 <a href="#q1642" class="toc-h3">字节跳动   一面（21题）</a>
 <a href="#q1664" class="toc-h3">经纬恒润   一面（14题）</a>
 <a href="#q1679" class="toc-h3">中金所一面（9题）</a>
+
+<a href="#q1689" class="toc-h3">去哪儿网 AI面试 50min（20题）</a>
+<a href="#q1710" class="toc-h3">字节-飞书全栈 1面（7题）</a>
+<a href="#q1718" class="toc-h3">小米 软开 45min（8题）</a>
+<a href="#q1727" class="toc-h3">去哪儿-AI面（15题）</a>
+<a href="#q1743" class="toc-h3">强瑞科技 一面（10题）</a>
+<a href="#q1754" class="toc-h3">北京江湖小栈信息服务：（8题）</a>
+<a href="#q1763" class="toc-h3">达科为（27题）</a>
+<a href="#q1791" class="toc-h3">上海牧哲自动化 c++实习生 35min（29题）</a>
+<a href="#q1821" class="toc-h3">汉朔科技 一面30min（16题）</a>
+<a href="#q1838" class="toc-h3">水滴一面 50min（18题）</a>
+<a href="#q1857" class="toc-h3">苏州异格技术一面 65min（34题）</a>
+<a href="#q1892" class="toc-h3">杭州慕迅 QT软件工程师（6题）</a>
+<a href="#q1899" class="toc-h3">河泊创新 初级软件工程师 20分钟 一面（21题）</a>
+<a href="#q1921" class="toc-h3">深度寻知人工智能一面 30mins（12题）</a>
+<a href="#q1934" class="toc-h3">顺丰 AI全栈开发 30min（12题）</a>
+<a href="#q1947" class="toc-h3">得物 客户端开发一面（23题）</a>
+<a href="#q1971" class="toc-h3">百度 后端一面（22题）</a>
+<a href="#q1994" class="toc-h3">米哈游客户端工具开发 一面（42题）</a>
+<a href="#q2037" class="toc-h3">米哈游三面 1h10min（28题）</a>
+<a href="#q2066" class="toc-h3">米哈游二面 55min（22题）</a>
+<a href="#q2089" class="toc-h3">米哈游一面 1h（81题）</a>
+<a href="#q2171" class="toc-h3">上海交大四川研究院一面 c++系统开发实习生30min（14题）</a>
+<a href="#q2186" class="toc-h3">柠檬微趣 AI面（10题）</a>
+<a href="#q2197" class="toc-h3">艾灵 5G通信 后台服务端开发（18题）</a>
+<a href="#q2216" class="toc-h3">BIGO c++后端开发工程师 1h10min（23题）</a>
+<a href="#q2240" class="toc-h3">豪迈 AI面试 25min（10题）</a>
+<a href="#q2251" class="toc-h3">去哪儿 AI面试（17题）</a>
+<a href="#q2269" class="toc-h3">CVTE—应用软件开发工程师—hr面 20mins（30题）</a>
+<a href="#q2300" class="toc-h3">希迪智驾（11题）</a>
+<a href="#q2312" class="toc-h3">薮猫科技 客户端研发 一面30min（9题）</a>
+<a href="#q2322" class="toc-h3">上海创景c++测试实习生（11题）</a>
+<a href="#q2334" class="toc-h3">汉朔科技 HR面（15题）</a>
+<a href="#q2350" class="toc-h3">中科星图—C++工程师—20mins（13题）</a>
+<a href="#q2364" class="toc-h3">波克城市—客户端开发工程师—30mins（19题）</a>
+<a href="#q2384" class="toc-h3">瑞多思医疗—C++软件工程师—20mins（20题）</a>
+<a href="#q2405" class="toc-h3">Manteia公司一面问题（7题）</a>
+<a href="#q2413" class="toc-h3">米哈游客户端工具开发 一面（14题）</a>
+<a href="#q2428" class="toc-h3">百度一面 后端开发（10题）</a>
+<a href="#q2439" class="toc-h3">得物-客户端开发工程师一面-31min（15题）</a>
+<a href="#q2455" class="toc-h3">Manteia数据科技有限公司 一面（12题）</a>
+<a href="#q2468" class="toc-h3">杭州攀峰K2 Lab 一面 18mins（13题）</a>
 </div></div>
 <div class="content">
 
@@ -10217,6 +10259,3138 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
 <a id="q1688"></a>
 <h4>9. 无重复字符的最长子串</h4>
 <div class="answer-block"><p><span style="color:#888">【算法题·思路】</span> 滑动窗口+哈希表记录字符位置，遇到重复字符移动左指针。O(n)。</p></div>
+
+
+<a id="q1689"></a>
+<h3>去哪儿网 AI面试 50min</h3>
+
+<a id="q1690"></a>
+<h4>1. TCP 断开连接为什么需要四次挥手？能不能改成三次？</h4>
+<div class="answer-block"><p>1.主动方发FIN=1,seq=u→FIN_WAIT_1；2.被动方回ACK=1,ack=u+1→CLOSE_WAIT；3.被动方发FIN=1,seq=v→LAST_ACK；4.主动方回ACK=1,ack=v+1→TIME_WAIT→等待2MSL后CLOSED。</p></div>
+
+<a id="q1691"></a>
+<h4>2. 那 FIN 时可能还有未发完的数据，那客户端在发送完最后一个 ACK 之后为什么还要等待 MSL 的时长才进入关闭状态？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1692"></a>
+<h4>3. 如果服务器端出现大量处于 close wait 状态的 TCP 连接，最常见的诱因是什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1693"></a>
+<h4>4. C 加加面向对象设计中，什么场景下需要使用继承？</h4>
+<div class="answer-block"><p>C++继承使用场景：1.is-a关系（狗是动物）；2.代码复用（派生类复用基类实现）；3.多态基础（基类指针调用虚函数实现动态绑定）。如果只需要复用部分代码而非is-a关系，优先用<strong>组合</strong>（has-a）而非继承，避免继承不需要的成员。</p></div>
+
+<a id="q1694"></a>
+<h4>5. 如果你发现多个子类只需要复用父类的部分代码，继承后反而会继承大量不需要的成员，这种场景下你会优先选择什么设计方式替代继承？</h4>
+<div class="answer-block"><p>C++继承使用场景：1.is-a关系（狗是动物）；2.代码复用（派生类复用基类实现）；3.多态基础（基类指针调用虚函数实现动态绑定）。如果只需要复用部分代码而非is-a关系，优先用<strong>组合</strong>（has-a）而非继承，避免继承不需要的成员。</p></div>
+
+<a id="q1695"></a>
+<h4>6. Swift 的闭包是怎么捕获外部变量的？什么情况下会产生循环引用？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1696"></a>
+<h4>7. 你提到闭包捕获值类型时，默认捕获变量地址，内部可修改外部变量。那如果我在闭包执行前修改了外部值类型变量的值，闭包执行时读到的是修改后的值，还是定义闭包时的初始值？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1697"></a>
+<h4>8. 为什么说 Bridge 是异步、批量还要序列化的？这会带来什么性能问题？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1698"></a>
+<h4>9. 你提到了 Bridge 序列化时会做 JSON 字符串的全量拷贝，那在传递大体积数据，比如长列表原始数据、高清图片 base 64 的时候，这个序列化拷贝过程会直接引发哪些具体的性能表现？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1699"></a>
+<h4>10. iOS 中若要在前两个异步任务都完成后再执行第三个异步任务，应该如何实现？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1700"></a>
+<h4>11. 你提到了用 dispatch group 实现这个需求，那如果这两个异步任务内部还嵌套了其他异步回调，直接用普通的 enter leave 写法会出现什么问题？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1701"></a>
+<h4>12. 对于这个问题还有什么需要补充的吗</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1702"></a>
+<h4>13. UIView 的 frame 和 bounds 有什么区别？什么时候你必须用 bounds 而不能用 frame？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1703"></a>
+<h4>14. 旋转等 transform 变化后 frame 值会不准确，那如果我给一个 UIView 设置了非 identity 的 transform，变化后修改它的 bounds 的 size 会产生什么效果？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1704"></a>
+<h4>15. JPEG、 PNG、 SVG、 WebP 这几种图片格式各有什么特点？在客户端做资源优化时你会怎么选用？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1705"></a>
+<h4>16. 客户端做图片资源优化时要考虑兼容性降级，那除了格式选型和兼容降级之外，你还会采取哪些常见的图片资源优化手段？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1706"></a>
+<h4>17. 请分享一个你做过的最具技术挑战、最值得深入探讨的客户端开发项目。它要解决什么问题？核心难点在哪？你又是如何攻克的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1707"></a>
+<h4>18. 采样解码、子线程解码、缩略图接口、请求合并这些优化手段，那你当时是通过哪些具体指标来判断这些优化到底有没有达到预期效果的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1708"></a>
+<h4>19. 请分享一段你最近半年内主动学习 AI 工具或大模型相关技术，并尝试落地到实际开发场景的真实经历，包括你做了什么，最终落地效果如何？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1709"></a>
+<h4>20. 做这个内部文档问答小工具的时候，为什么选择用 RAG 结合向量检索的方案，而不是直接用传统的关键词搜索，或者直接调用大模型来回答问题？</h4>
+<div class="answer-block"><p>项目RAG架构：<strong>三路混合检索</strong>——FTS5全文索引（关键词精确匹配）+ embedding向量检索（语义相似度）+ 元数据过滤。用户提问后三路并行检索，结果按RRF（Reciprocal Rank Fusion）融合排序，取Top-K拼接为上下文送入大模型生成回答。解决了纯关键词检索漏召回和纯向量检索精度不足的问题。</p></div>
+
+<a id="q1710"></a>
+<h3>字节-飞书全栈 1面</h3>
+
+<a id="q1711"></a>
+<h4>1. 实习拷打30min左右</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1712"></a>
+<h4>2. get和post的区别（还问了get拼接url的上限）</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1713"></a>
+<h4>3. 设计模式-常用的/场景/责任链/状态机</h4>
+<div class="answer-block"><p>常用设计模式：创建型——单例、工厂、建造者；结构型——适配器、代理、装饰器；行为型——观察者、策略、责任链、状态机。项目中用单例（NetworkManager）、策略（编码器选择）、观察者（信号槽）、中介者（服务端消息分发）。</p></div>
+
+<a id="q1714"></a>
+<h4>4. stl的哪些容器是线程安全的</h4>
+<div class="answer-block"><p>多线程访问共享数据时结果正确。实现方式：互斥锁（mutex）、读写锁（读写分离）、自旋锁（忙等待）、原子操作（atomic）、条件变量（同步线程执行顺序）、线程局部存储（thread_local）。</p></div>
+
+<a id="q1715"></a>
+<h4>5. 虚函数的底层实现</h4>
+<div class="answer-block"><p>virtual关键字修饰的成员函数，实现运行期动态绑定。基类指针调用虚函数时，实际执行派生类重写的版本。每个有虚函数的类都有一个虚函数表（vtable），对象内部存有指向vtable的虚表指针（vptr）。</p></div>
+
+<a id="q1716"></a>
+<h4>6. 手撕：三个线程按顺序打印123</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1717"></a>
+<h4>7. 对ai的看法，怎么去约束ai的行为</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1718"></a>
+<h3>小米 软开 45min</h3>
+
+<a id="q1719"></a>
+<h4>1. 自我介绍（主要是实习+项目）</h4>
+<div class="answer-block"><p>面试官您好，我叫XX，哈尔滨理工大学电子信息工程专业。有两个核心项目：1.基于C++/Qt/FFmpeg的音视频直播平台，实现了epoll高并发服务端、OpenGL GPU加速渲染、自定义TCP协议和音视频同步；2.AI辅助开发项目，用Vue3+TS实现RAG知识库检索系统，支持FTS5+embedding混合检索。擅长C++和网络编程，日常深度使用AI辅助开发。</p></div>
+
+<a id="q1720"></a>
+<h4>2. 怎么使用AI</h4>
+<div class="answer-block"><p>日常使用AI：1.代码生成——描述需求让AI写实现；2.代码审查——让AI检查潜在bug；3.文档生成——从代码生成文档；4.测试用例——让AI写单元测试；5.调试辅助——错误信息让AI分析。核心方法论：需求要具体、格式要约束、结果要验证。</p></div>
+
+<a id="q1721"></a>
+<h4>3. 上下文管理怎么做的</h4>
+<div class="answer-block"><p>项目上下文管理策略：1.对话历史按重要性分级（当前轮>近期>历史）；2.超过上下文窗口时自动摘要压缩历史；3.用session隔离不同用户的上下文；4.RAG检索结果只注入相关片段而非全量文档。配合DeepSeek-V3的64K上下文窗口，单轮可处理约5万字。</p></div>
+
+<a id="q1722"></a>
+<h4>4. 用AI的时候最重要的是什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1723"></a>
+<h4>5. 写过skill吗</h4>
+<div class="answer-block"><p>Skill是封装了特定能力提示词+工具调用的可复用模块。项目中用Skill约束AI行为：每个Skill包含SKILL.md（描述和触发条件）、工具定义、输出格式约束。例如"检索Skill"定义了何时触发检索、用什么工具、结果格式。Skill让AI行为可预测、可复现，比直接prompt更可靠。</p></div>
+
+<a id="q1724"></a>
+<h4>6. 音视频同步怎么做的</h4>
+<div class="answer-block"><p>项目以<strong>音频时钟</strong>为同步基准。音频按20ms一帧的固定速率播放，视频帧根据音频时间戳（PTS）对齐：视频PTS超前音频则等待，落后则丢帧追帧。同步阈值设为±40ms，超出范围才调整，避免频繁跳帧。</p></div>
+
+<a id="q1725"></a>
+<h4>7. 为什么要自定义一个TCP协议</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1726"></a>
+<h4>8. 整个项目当中最花时间的是哪一个部分</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1727"></a>
+<h3>去哪儿-AI面</h3>
+
+<a id="q1728"></a>
+<h4>1. CMS 垃圾回收器完整回收过程</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1729"></a>
+<h4>2. 这个阶段如果用户线程修改了对象的引用关系， JVM 是通过什么机制保证最终标记结果的准确性的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1730"></a>
+<h4>3. 现在用 Redis 做 MySQL 的前置缓存，商品详情页查询流量是每秒 5000 次，商品更新频率为分钟级，你怎么保证缓存和数据库的数据一致性？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1731"></a>
+<h4>4. 那如果删除缓存的操作执行失败了，你要怎么处理</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1732"></a>
+<h4>5. 请分别说明 OSI 七层模型和 TCP / IP 四层模型的分层结构，以及各层的典型协议。</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1733"></a>
+<h4>6. TCP 和 UDP 协议，那在浏览器访问 HTTPS 网站的场景中，从传输层开始，数据是如何逐层封装，最终发送到物理介质上的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1734"></a>
+<h4>7. 高并发系统中需要对接口进行限流，防止流量突增打垮服务，你会怎么设计限流方案？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1735"></a>
+<h4>8. 限流可以部署在网关、应用服务层、中间件层这些不同位置，这些位置分别适合承载什么力度的限流规则呢？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1736"></a>
+<h4>9. 怎么实现分布式场景下的令牌桶限流？避免多节点计数不一致的问题。</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1737"></a>
+<h4>10. 请分享一个你做过的最具技术挑战、最值得深入探讨的后端开发项目。它要解决什么问题？核心难点在哪？你又是如何攻克的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1738"></a>
+<h4>11. 你刚才提到一开始用 select 方案不够用，那这个最简单的 select 方案具体在什么场景下出现了什么问题，导致你必须替换它？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1739"></a>
+<h4>12. 端到端的音视频延迟和 CPU 占用分别是多少？和之前 select 方案的对应数据相比有多大提升？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1740"></a>
+<h4>13. 主动学习 AI 工具或大模型相关技术，并尝试落地到实际开发场景的真实经历，包括你做了什么，最终落地效果如何？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1741"></a>
+<h4>14. 为什么选择用大模型结合本地知识库的方案，而不是用传统的全文检索这类 AI 的方案来解决这些问题</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1742"></a>
+<h4>15. 你刚才提到在检索环节做了三路混合检索的设计，那你在实际测试这个检索效果的时候，遇到过最影响回答准确性的检索相关问题是什么？你是怎么调整优化的？</h4>
+<div class="answer-block"><p>三路检索结果融合用RRF算法：score = Σ 1/(k+rank_i)，k取60。FTS5和embedding各取Top-20，RRF融合后取Top-5。融合策略让关键词精确匹配和语义相似匹配互补，提升召回率和准确率。</p></div>
+
+<a id="q1743"></a>
+<h3>强瑞科技 一面</h3>
+
+<a id="q1744"></a>
+<h4>1. STL总共有那些组件，这些组件在整个STL体系中的作用？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1745"></a>
+<h4>2. vector是怎么扩容的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1746"></a>
+<h4>3. 三个指针分别是什么？</h4>
+<div class="answer-block"><p>vector内部三个指针：1.<strong>start</strong>——指向已用内存起始；2.<strong>finish</strong>——指向已用内存末尾（size=end-start）；3.<strong>end_of_storage</strong>——指向总容量末尾（capacity=end_of_storage-start）。push_back时如果finish==end_of_storage则触发扩容。</p></div>
+
+<a id="q1747"></a>
+<h4>4. map和set介绍一下？为什么高效？</h4>
+<div class="answer-block"><p>map和set底层都是红黑树（有序平衡二叉搜索树）。map存储key-value对，set只存key（value=key）。高效的原因：红黑树保证查找/插入/删除都是O(logN)，且自动排序。红黑树通过旋转和变色维持平衡，最长路径不超过最短路径的2倍。</p></div>
+
+<a id="q1748"></a>
+<h4>5. B+树具体用在那些场景呢？</h4>
+<div class="answer-block"><p>B+树主要用于数据库索引和文件系统。相比B树，B+树所有数据只存叶子节点，非叶子节点只存索引。叶子节点用链表连接，适合范围查询。MySQL InnoDB索引就是B+树，一个节点对应一页（16KB），减少磁盘IO。</p></div>
+
+<a id="q1749"></a>
+<h4>6. 自定义map的排序规则？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1750"></a>
+<h4>7. auto 这个关键字怎么自动对这个变量类型进行自动推断？</h4>
+<div class="answer-block"><p>C++11类型推导，让编译器根据初始化表达式自动推导变量类型。auto不能用于数组、函数参数（C++14的lambda除外）。注意auto会丢弃引用和const属性，需用auto&保留。</p></div>
+
+<a id="q1751"></a>
+<h4>8. 多线程通信有哪几种方式以及优劣？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1752"></a>
+<h4>9. 线程池创建以及线程池创建要注意什么？</h4>
+<div class="answer-block"><p>项目线程池设计：核心线程数=CPU核数（4），最大线程数200（IO密集型任务线程数可以远大于CPU核数）。任务队列用mutex+condition_variable实现。线程池复用线程避免频繁创建销毁，配合epoll实现高并发。</p></div>
+
+<a id="q1753"></a>
+<h4>10. SDL很容易在堆上留下一些细碎的小空间，为了避免这种现象我们在堆上或者栈上要怎么处理？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1754"></a>
+<h3>北京江湖小栈信息服务：</h3>
+
+<a id="q1755"></a>
+<h4>1. 自我介绍；</h4>
+<div class="answer-block"><p>面试官您好，我叫XX，哈尔滨理工大学电子信息工程专业。有两个核心项目：1.基于C++/Qt/FFmpeg的音视频直播平台，实现了epoll高并发服务端、OpenGL GPU加速渲染、自定义TCP协议和音视频同步；2.AI辅助开发项目，用Vue3+TS实现RAG知识库检索系统，支持FTS5+embedding混合检索。擅长C++和网络编程，日常深度使用AI辅助开发。</p></div>
+
+<a id="q1756"></a>
+<h4>2. 介绍自己的视频会议项目；</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1757"></a>
+<h4>3. AI项目做了多久？</h4>
+<div class="answer-block"><p>AI项目（简历生成器+智能竞拍）从学习到落地约2-3个月。简历生成器用Vue3+TS，通过AI辅助从原型到部署约3周。智能竞拍系统包括Agent调用、RAG检索、并发处理，约1个月。AI自律打卡助手约2周。</p></div>
+
+<a id="q1758"></a>
+<h4>4. 平常用哪些AI软件？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1759"></a>
+<h4>5. 对比一些AI软件的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1760"></a>
+<h4>6. 怎么实现AI项目的步骤？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1761"></a>
+<h4>7. 还用哪些AI了？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1762"></a>
+<h4>8. 平常自己还做了哪些软件？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1763"></a>
+<h3>达科为</h3>
+
+<a id="q1764"></a>
+<h4>1. 请你做一个简单的自我介绍，大概两三分钟时间。</h4>
+<div class="answer-block"><p>面试官您好，我叫XX，哈尔滨理工大学电子信息工程专业。有两个核心项目：1.基于C++/Qt/FFmpeg的音视频直播平台，实现了epoll高并发服务端、OpenGL GPU加速渲染、自定义TCP协议和音视频同步；2.AI辅助开发项目，用Vue3+TS实现RAG知识库检索系统，支持FTS5+embedding混合检索。擅长C++和网络编程，日常深度使用AI辅助开发。</p></div>
+
+<a id="q1765"></a>
+<h4>2. 你这两个项目，是学校作业还是自己找的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1766"></a>
+<h4>3. 编程协会会给你们什么样的资料？输入文件是什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1767"></a>
+<h4>4. 做完选题之后，你们是什么样的形式？怎么去协作？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1768"></a>
+<h4>5. 这个协会大概有多少人？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1769"></a>
+<h4>6. 题目数量不多，是每个人一个题目，还是会选重复题目？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1770"></a>
+<h4>7. 选完题目之后，还要比赛吗？还是选相同题目的人组成小团队一起开发？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1771"></a>
+<h4>8. 协会会给你们上课吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1772"></a>
+<h4>9. 协会要交钱才能进吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1773"></a>
+<h4>10. 学长学姐大概会教你们一些什么样的东西？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1774"></a>
+<h4>11. 就拿视频会议项目举例，你怎么知道要用QT、Speex、OpenCV这些技术？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1775"></a>
+<h4>12. 这个视频会议项目你大概做了多久？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1776"></a>
+<h4>13. 这个项目大概有多少代码量？是你自己写的，不算第三方库的。</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1777"></a>
+<h4>14. 在这个会议项目里面，你觉得最难的地方在哪里？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1778"></a>
+<h4>15. 视频和音频放在同一个TCP连接里面，为什么就会卡？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1779"></a>
+<h4>16. 听上去好像只是跟网络带宽有关系，那你把音频放到另外一边去发送，就能解决卡顿问题吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1780"></a>
+<h4>17. 数据终究还是要从网卡发出去，分开线程发送就能解决卡顿吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1781"></a>
+<h4>18. 接收到客户端之后，你怎么做音频和视频的同步？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1782"></a>
+<h4>19. 你们电子信息工程专业应该学电路、模电数电，那学JS相关内容吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1783"></a>
+<h4>20. 做AI记账项目为什么会选用JS这种课堂没怎么学过的技术？</h4>
+<div class="answer-block"><p>AI记账项目是全栈Web应用，用Vue3+TS开发。功能：用户输入收支→大模型自动分类和记账→月度报表生成。选择JS/Vue3是因为：1.Web前端生态成熟；2.AI项目前后端分离，前端用Vue3快速开发；3.Vue3+TS类型安全，配合AI生成代码质量更高。</p></div>
+
+<a id="q1784"></a>
+<h4>21. 这个AI记账项目是全部由AI来开发的吗？</h4>
+<div class="answer-block"><p>AI记账项目是全栈Web应用，用Vue3+TS开发。功能：用户输入收支→大模型自动分类和记账→月度报表生成。选择JS/Vue3是因为：1.Web前端生态成熟；2.AI项目前后端分离，前端用Vue3快速开发；3.Vue3+TS类型安全，配合AI生成代码质量更高。</p></div>
+
+<a id="q1785"></a>
+<h4>22. 你是怎么用AI来开发一个项目的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1786"></a>
+<h4>23. 你自己有写代码吗，还是完全AI开发？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1787"></a>
+<h4>24. 你的AI开发工作流是怎么样的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1788"></a>
+<h4>25. 你是用Workbody还是别的工具？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1789"></a>
+<h4>26. 接入的是哪家大模型？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1790"></a>
+<h4>27. 是直接用Workbody自带agent开发，还是用了其他插件？测试是怎么做的？</h4>
+<div class="answer-block"><p>Agent = 大模型 + 工具调用 + 规划能力。大模型只做文本生成，Agent能理解用户意图→拆解任务→调用外部工具（搜索、计算、API）→整合结果生成最终回答。项目中Agent调用FTS5检索、embedding检索、大模型生成三个工具，按预设流程编排。</p></div>
+
+<a id="q1791"></a>
+<h3>上海牧哲自动化 c++实习生 35min</h3>
+
+<a id="q1792"></a>
+<h4>1. 你的项目是简单一对一，还是支持一对多？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1793"></a>
+<h4>2. 自己实际使用下来，项目有没有延时？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1794"></a>
+<h4>3. 出现卡顿，问题可能出在哪？除了你现有的丢帧策略，还有什么其他方式可以优化、提升体验？</h4>
+<div class="answer-block"><p>项目丢帧策略：当视频队列积压超过阈值（如5帧）时，丢弃P帧只保留最近一个I帧后的关键帧，避免队列雪崩。也可以降低编码帧率（从25fps降到15fps）减轻发送压力。音频不丢帧（音频丢帧会明显影响体验），而是用抖动缓冲区平滑。</p></div>
+
+<a id="q1795"></a>
+<h4>4. 计算机网络TCP通讯里有一个针对大数据处理的属性设置，你有没有使用过？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1796"></a>
+<h4>5. 你做界面是用QT Creator做的吗？有没有用过VS、NFC？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1797"></a>
+<h4>6. TCP通讯中会出现半包、粘包（多个包粘在一起）问题，你是怎么解决的？怎么判断数据包什么时候接收完整？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1798"></a>
+<h4>7. 如果接收的数据是半包，下一个数据包过来又和其他数据包混杂在一起，该如何完整提取出数据包？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1799"></a>
+<h4>8. 如果对方程序有bug，发送的协议数据和我方标准协议不一致，如何发现并处理这种非法数据包？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1800"></a>
+<h4>9. 除了TCP通讯，你对HTTP了解多少？是自己手写还是用第三方库？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1801"></a>
+<h4>10. UDP你了解吗？项目有没有实际使用，还是仅做过选型考虑？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1802"></a>
+<h4>11. 如果用UDP实现类似TCP的可靠传输，有什么实现方法？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1803"></a>
+<h4>12. 这个项目前后端是你自己写的，还是AI辅助完成？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1804"></a>
+<h4>13. 你会写Agent吗？</h4>
+<div class="answer-block"><p>Agent = 大模型 + 工具调用 + 规划能力。大模型只做文本生成，Agent能理解用户意图→拆解任务→调用外部工具（搜索、计算、API）→整合结果生成最终回答。项目中Agent调用FTS5检索、embedding检索、大模型生成三个工具，按预设流程编排。</p></div>
+
+<a id="q1805"></a>
+<h4>14. 项目开发中会定义代码规范，你会不会写Markdown文档？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1806"></a>
+<h4>15. 这个项目做了多长时间？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1807"></a>
+<h4>16. 项目是否部署到公网云服务器，还是仅本地运行？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1808"></a>
+<h4>17. 说说你对面向对象编程的理解？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1809"></a>
+<h4>18. 面向对象三大特性（封装、继承、多态），结合你的视频会议项目举实际代码例子。</h4>
+<div class="answer-block"><p>多态分为静态多态（编译期，函数重载、模板）和动态多态（运行期，虚函数+继承）。动态多态原理：基类有虚函数表（vtable），每个对象有虚表指针（vptr）指向所属类的vtable。调用虚函数时通过vptr找到vtable中对应的函数地址，实现运行期绑定。</p></div>
+
+<a id="q1810"></a>
+<h4>19. C++11智能指针和普通指针的区别？</h4>
+<div class="answer-block"><p>C++11引入的三种智能指针：<strong>unique_ptr</strong>（独占所有权，不可拷贝可移动）、<strong>shared_ptr</strong>（共享所有权，引用计数，线程安全的计数操作但对象访问不是线程安全的）、<strong>weak_ptr</strong>（不增加引用计数，解决shared_ptr循环引用）。auto_ptr已被废弃（拷贝后原指针置空导致悬空指针）。</p></div>
+
+<a id="q1811"></a>
+<h4>20. 智能指针底层靠什么机制实现自动资源回收？</h4>
+<div class="answer-block"><p>C++11引入的三种智能指针：<strong>unique_ptr</strong>（独占所有权，不可拷贝可移动）、<strong>shared_ptr</strong>（共享所有权，引用计数，线程安全的计数操作但对象访问不是线程安全的）、<strong>weak_ptr</strong>（不增加引用计数，解决shared_ptr循环引用）。auto_ptr已被废弃（拷贝后原指针置空导致悬空指针）。</p></div>
+
+<a id="q1812"></a>
+<h4>21. 数组、链表、哈希表（map/unordered_map）三者区别？</h4>
+<div class="answer-block"><p>通过哈希函数将key映射到数组下标，实现O(1)查找。冲突处理：链地址法（拉链法）、开放定址法（线性探测/二次探测）。负载因子=元素数/桶数，超过阈值需要扩容。</p></div>
+
+<a id="q1813"></a>
+<h4>22. 分别说说什么场景下使用数组、链表、哈希表？</h4>
+<div class="answer-block"><p>通过哈希函数将key映射到数组下标，实现O(1)查找。冲突处理：链地址法（拉链法）、开放定址法（线性探测/二次探测）。负载因子=元素数/桶数，超过阈值需要扩容。</p></div>
+
+<a id="q1814"></a>
+<h4>23. 你的专业是电子信息工程，为什么想要做软件开发？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1815"></a>
+<h4>24. 你认为自己做软件开发，性格/个人层面有哪些优势？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1816"></a>
+<h4>25. 软件开发这份工作对你最大的吸引力是什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1817"></a>
+<h4>26. 软件开发加班、出差比较多，你是否可以接受？</h4>
+<div class="answer-block"><p>可以接受加班和出差。技术行业加班是常态，在项目开发中经常遇到调试到深夜的情况，已经习惯了。更重要的是能在加班中学到东西、解决问题。</p></div>
+
+<a id="q1818"></a>
+<h4>27. 觉得我这次面试有没有什么不足？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1819"></a>
+<h4>28. 是否了解硬件相关通讯：232、485、Modbus，机械臂、电机伺服、传感器？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1820"></a>
+<h4>29. 你最快什么时候可以到岗报道？</h4>
+<div class="answer-block"><p>可以随时到岗，目前课业不重，能够全职实习。距离方面只要在内地都可以接受，可以自己解决住宿。</p></div>
+
+<a id="q1821"></a>
+<h3>汉朔科技 一面30min</h3>
+
+<a id="q1822"></a>
+<h4>1. 两个项目是独立开发还是多人协作？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1823"></a>
+<h4>2. 两个项目的需求来源是什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1824"></a>
+<h4>3. 第二个项目大概花多长时间完成，项目是否具备实际使用价值，只是个人摸索吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1825"></a>
+<h4>4. 做两个项目过程中遇到什么困难、出现哪些问题，如何解决的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1826"></a>
+<h4>5. 两个项目中数据库做了哪些工作？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1827"></a>
+<h4>6. 第一个项目存储信息不多，为什么选择MySQL，出于什么考虑？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1828"></a>
+<h4>7. 你的项目偏向开发，而岗位是技术支持工程师，为什么投递这个岗位？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1829"></a>
+<h4>8. 项目的服务端/客户端是基于Windows还是Linux平台，对Linux操作是否熟悉？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1830"></a>
+<h4>9. Linux相关知识是学校学习还是自学为主？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1831"></a>
+<h4>10. 是否考虑去浙江工作？家里是否同意？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1832"></a>
+<h4>11. 英语仅四级，是否偏科，英语能力如何？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1833"></a>
+<h4>12. 公司海外业务多，后续发展对英语要求高，怎么看待？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1834"></a>
+<h4>13. 明年毕业，回校盲审+答辩大概需要多久？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1835"></a>
+<h4>14. 如果后续有海外出差、外派机会，个人意愿如何？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1836"></a>
+<h4>15. 1）如果入职，是否需要直接和海外客户英文对接？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1837"></a>
+<h4>16. 2）实习主要做哪些工作？想提升相关能力该从哪些方向入手？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1838"></a>
+<h3>水滴一面 50min</h3>
+
+<a id="q1839"></a>
+<h4>1. 这两个项目都是你独立完成的吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1840"></a>
+<h4>2. 实时会议项目为什么要用epoll？LT和ET有什么区别？</h4>
+<div class="answer-block"><p>Linux下最高效的IO多路复用。epoll_create创建内核eventpoll（含红黑树和就绪链表），epoll_ctl注册/修改/删除fd（红黑树O(logN)），epoll_wait返回就绪链表O(1)。支持ET边缘触发（只通知一次，需非阻塞读）和LT水平触发（持续通知直到处理完）。</p></div>
+
+<a id="q1841"></a>
+<h4>3. 系统里面把控制、音频、视频分成三条独立TCP，这是为什么？能完全解决相互干扰吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1842"></a>
+<h4>4. 会议里面哪些任务是CPU密集型，哪些是IO密集型任务？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1843"></a>
+<h4>5. 采集是PCM，编解码是OPUS，为什么不完全用PCM？OPUS有什么优势？</h4>
+<div class="answer-block"><p>OPUS相比PCM：PCM是无压缩的原始音频，码率高（16kHz×16bit=256kbps）。OPUS是有损压缩，码率可低至6kbps，音质仍接近原始。OPUS专为实时通信设计，算法延迟低（2.5-60ms可调），适合视频会议场景。</p></div>
+
+<a id="q1844"></a>
+<h4>6. 场景：100个房间，每个房间20个人，每个人上传一路1.5兆视频，服务端透明转发，带宽大概多少，怎么算？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1845"></a>
+<h4>7. 智能客服场景出现单通，一边有声一边没声，怎么排查，思路是什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1846"></a>
+<h4>8. 如果需要抓包，你会怎么抓？说下细节、用什么命令、怎么操作？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1847"></a>
+<h4>9. AI机器人声音发送，标准20ms一帧，如果每次19ms、19.5ms发一次，时间长会有什么现象？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1848"></a>
+<h4>10. 音频20毫秒一帧，发送太快，该时间点该收到的帧数提前发了，用户体验是什么现象？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1849"></a>
+<h4>11. 智能竞拍项目，你和AI是如何交互的？互相职责怎么划分？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1850"></a>
+<h4>12. AI说功能完成，但实际有问题，有没有这类失败案例？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1851"></a>
+<h4>13. 给竞拍系统新增管理员撤销非法出价、重新计算第一名功能，你会怎么跟AI沟通产出方案？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1852"></a>
+<h4>14. 撤销出价分是第一名、中间出价等不同场景，你会明确告诉AI，还是直接让它实现撤销？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1853"></a>
+<h4>15. AI修复了并发问题，但生成代码看不懂，要直接上线吗，你会怎么做？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1854"></a>
+<h4>16. 并发问题AI修复后，你会给什么方向让AI去测试，怎么确认并发问题确实修复完成？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1855"></a>
+<h4>17. 高并发压垮服务，你要怎么测试复现、定位、验证性能优化？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1856"></a>
+<h4>18. 如果面试通过后续还有几轮面试？公司主要业务？哪些知识匹配，需要补什么？（反问）</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1857"></a>
+<h3>苏州异格技术一面 65min</h3>
+
+<a id="q1858"></a>
+<h4>1. 自我介绍&科研相关</h4>
+<div class="answer-block"><p>面试官您好，我叫XX，哈尔滨理工大学电子信息工程专业。有两个核心项目：1.基于C++/Qt/FFmpeg的音视频直播平台，实现了epoll高并发服务端、OpenGL GPU加速渲染、自定义TCP协议和音视频同步；2.AI辅助开发项目，用Vue3+TS实现RAG知识库检索系统，支持FTS5+embedding混合检索。擅长C++和网络编程，日常深度使用AI辅助开发。</p></div>
+
+<a id="q1859"></a>
+<h4>2. 做个简单的自我介绍。</h4>
+<div class="answer-block"><p>面试官您好，我叫XX，哈尔滨理工大学电子信息工程专业。有两个核心项目：1.基于C++/Qt/FFmpeg的音视频直播平台，实现了epoll高并发服务端、OpenGL GPU加速渲染、自定义TCP协议和音视频同步；2.AI辅助开发项目，用Vue3+TS实现RAG知识库检索系统，支持FTS5+embedding混合检索。擅长C++和网络编程，日常深度使用AI辅助开发。</p></div>
+
+<a id="q1860"></a>
+<h4>3. 你的研究生课题是自然语言处理，主要做哪一部分？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1861"></a>
+<h4>4. 该方向主要是学术论文研究，还是有实际项目？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1862"></a>
+<h4>5. 论文做实验用什么语言、什么数据集？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1863"></a>
+<h4>6. 是专业硕士还是学术硕士？是否强制要求发论文？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1864"></a>
+<h4>7. 毕业大论文也是这个方向吗，实验也是Python完成吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1865"></a>
+<h4>8. 你做的这两个项目，做项目的出发点、背景是什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1866"></a>
+<h4>9. 多人实时会议软件整体完成度大概多少？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1867"></a>
+<h4>10. select、poll、epoll三者的区别了解吗？</h4>
+<div class="answer-block"><p>Linux下最高效的IO多路复用。epoll_create创建内核eventpoll（含红黑树和就绪链表），epoll_ctl注册/修改/删除fd（红黑树O(logN)），epoll_wait返回就绪链表O(1)。支持ET边缘触发（只通知一次，需非阻塞读）和LT水平触发（持续通知直到处理完）。</p></div>
+
+<a id="q1868"></a>
+<h4>11. 服务端线程池大小设置是多少？</h4>
+<div class="answer-block"><p>项目线程池设计：核心线程数=CPU核数（4），最大线程数200（IO密集型任务线程数可以远大于CPU核数）。任务队列用mutex+condition_variable实现。线程池复用线程避免频繁创建销毁，配合epoll实现高并发。</p></div>
+
+<a id="q1869"></a>
+<h4>12. 线程池最大值200这个数值是怎么确定的，测试得出还是经验取值？</h4>
+<div class="answer-block"><p>项目线程池设计：核心线程数=CPU核数（4），最大线程数200（IO密集型任务线程数可以远大于CPU核数）。任务队列用mutex+condition_variable实现。线程池复用线程避免频繁创建销毁，配合epoll实现高并发。</p></div>
+
+<a id="q1870"></a>
+<h4>13. 极端场景有实际测试过吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1871"></a>
+<h4>14. 服务器CPU是4核，为什么线程池设置200？</h4>
+<div class="answer-block"><p>项目线程池设计：核心线程数=CPU核数（4），最大线程数200（IO密集型任务线程数可以远大于CPU核数）。任务队列用mutex+condition_variable实现。线程池复用线程避免频繁创建销毁，配合epoll实现高并发。</p></div>
+
+<a id="q1872"></a>
+<h4>15. 多路视频画面合成是服务端做还是客户端做？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1873"></a>
+<h4>16. 客户端设备性能可以支持多少路同时编解码？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1874"></a>
+<h4>17. 7人并发测试是局域网还是公网？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1875"></a>
+<h4>18. 在同一台电脑测试会存在什么问题？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1876"></a>
+<h4>19. 服务端根据什么区分同一台机器上的不同客户端？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1877"></a>
+<h4>20. 音视频、控制消息之间如何做同步，如何处理音画不同步？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1878"></a>
+<h4>21. H264编码的FPS、分辨率设置是多少？为什么是这个</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1879"></a>
+<h4>22. 线程和进程的区别是什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1880"></a>
+<h4>23. 进程间通信的方式有哪些？</h4>
+<div class="answer-block"><p>进程间通信方式：1.管道（pipe，父子进程间）；2.命名管道（FIFO，无亲缘关系）；3.消息队列；4.共享内存（最快，需同步）；5.信号量（同步）；6.Socket（跨网络）。项目用Socket做进程间通信，大数据量用共享内存+信号量同步。</p></div>
+
+<a id="q1881"></a>
+<h4>24. C++访问修饰符的主要作用？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1882"></a>
+<h4>25. 如果第三方类有protected成员变量，有什么办法访问？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1883"></a>
+<h4>26. 虚函数和纯虚函数的区别？</h4>
+<div class="answer-block"><p>virtual关键字修饰的成员函数，实现运行期动态绑定。基类指针调用虚函数时，实际执行派生类重写的版本。每个有虚函数的类都有一个虚函数表（vtable），对象内部存有指向vtable的虚表指针（vptr）。</p></div>
+
+<a id="q1884"></a>
+<h4>27. 虚函数如何实现多态，底层过程？</h4>
+<div class="answer-block"><p>多态分为静态多态（编译期，函数重载、模板）和动态多态（运行期，虚函数+继承）。动态多态原理：基类有虚函数表（vtable），每个对象有虚表指针（vptr）指向所属类的vtable。调用虚函数时通过vptr找到vtable中对应的函数地址，实现运行期绑定。</p></div>
+
+<a id="q1885"></a>
+<h4>28. 什么场景下需要把析构函数定义为虚析构函数？</h4>
+<div class="answer-block"><p>基类析构函数加virtual关键字。作用：用基类指针delete派生类对象时，能正确调用派生类析构函数，避免资源泄漏。</p></div>
+
+<a id="q1886"></a>
+<h4>29. 编译器会生成默认拷贝构造函数，什么场景需要自己手动定义拷贝构造函数？有没有自己实现过？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1887"></a>
+<h4>30. 常用标准库容器有哪些？map和unordered_map区别？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1888"></a>
+<h4>31. map容器有哪些插入数据的方式？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1889"></a>
+<h4>32. C++代码从源码文本到二进制可执行文件要经过哪些步骤？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1890"></a>
+<h4>33. 代码题：实现N×N矩阵类：初始化、矩阵转置、矩阵输出；后续衍生问题：</h4>
+<div class="answer-block"><p>矩阵转置：N×N矩阵transpose：swap(matrix[i][j], matrix[j]) for i in range(N) for j in range(i+1, N)。只遍历上三角避免交换两次。模板支持int/double/float：template<typename T> void transpose(vector<vector<T>>& m)。swap用引用传递才能修改原变量：void swap(T& a, T& b){T t=a;a=b;b=t;}</p></div>
+
+<a id="q1891"></a>
+<h4>34. 对FPGA和EDA是否了解？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1892"></a>
+<h3>杭州慕迅 QT软件工程师</h3>
+
+<a id="q1893"></a>
+<h4>1. ffmpeg的头文件</h4>
+<div class="answer-block"><p>开源音视频处理库。项目中以库形式集成（非命令行），调用avformat和avcodec API。流程：avformat_open_input打开文件→avformat_find_stream_info获取流信息→avcodec_find_decoder找到解码器→avcodec_open2打开解码器→av_read_frame循环读包→avcodec_send_packet+avcodec_receive_frame解码→sws_scale格式转换→渲染。</p></div>
+
+<a id="q1894"></a>
+<h4>2. 项目中设计模式使用情况</h4>
+<div class="answer-block"><p>常用设计模式：创建型——单例、工厂、建造者；结构型——适配器、代理、装饰器；行为型——观察者、策略、责任链、状态机。项目中用单例（NetworkManager）、策略（编码器选择）、观察者（信号槽）、中介者（服务端消息分发）。</p></div>
+
+<a id="q1895"></a>
+<h4>3. 项目中的多线程</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1896"></a>
+<h4>4. 摄像头采集后是在采集线程直接编码还是有专门编码线程</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1897"></a>
+<h4>5. 视频的帧率和分辨率</h4>
+<div class="answer-block"><p>项目视频默认720P（1280x720）、25fps。选择720P是因为1080P对网络带宽和编码性能要求过高，720P在画质和性能之间平衡最好。25fps是PAL标准，对实时会议足够流畅，编码负载也低于30/60fps。</p></div>
+
+<a id="q1898"></a>
+<h4>6. 期望薪资和家庭情况</h4>
+<div class="answer-block"><p>期望日薪200-300元/天（实习），或月薪6000-8000元。具体可根据公司标准和面试表现调整。更看重的是平台和学习机会。</p></div>
+
+<a id="q1899"></a>
+<h3>河泊创新 初级软件工程师 20分钟 一面</h3>
+
+<a id="q1900"></a>
+<h4>1. 三个项目是个人兴趣、毕设还是课程作业？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1901"></a>
+<h4>2. 第三个AI自律打卡助手项目，通过Agent调用工具最大收获是什么？</h4>
+<div class="answer-block"><p>Agent = 大模型 + 工具调用 + 规划能力。大模型只做文本生成，Agent能理解用户意图→拆解任务→调用外部工具（搜索、计算、API）→整合结果生成最终回答。项目中Agent调用FTS5检索、embedding检索、大模型生成三个工具，按预设流程编排。</p></div>
+
+<a id="q1902"></a>
+<h4>3. Agent和大模型有什么区别？</h4>
+<div class="answer-block"><p>Agent = 大模型 + 工具调用 + 规划能力。大模型只做文本生成，Agent能理解用户意图→拆解任务→调用外部工具（搜索、计算、API）→整合结果生成最终回答。项目中Agent调用FTS5检索、embedding检索、大模型生成三个工具，按预设流程编排。</p></div>
+
+<a id="q1903"></a>
+<h4>4. 简历提到长上下文管理，上下文具体怎么做管理？用了什么工具，讲细节？</h4>
+<div class="answer-block"><p>项目上下文管理策略：1.对话历史按重要性分级（当前轮>近期>历史）；2.超过上下文窗口时自动摘要压缩历史；3.用session隔离不同用户的上下文；4.RAG检索结果只注入相关片段而非全量文档。配合DeepSeek-V3的64K上下文窗口，单轮可处理约5万字。</p></div>
+
+<a id="q1904"></a>
+<h4>5. 做上下文管理时，是否出现过遗忘历史上下文、上下文溢出的问题？</h4>
+<div class="answer-block"><p>项目上下文管理策略：1.对话历史按重要性分级（当前轮>近期>历史）；2.超过上下文窗口时自动摘要压缩历史；3.用session隔离不同用户的上下文；4.RAG检索结果只注入相关片段而非全量文档。配合DeepSeek-V3的64K上下文窗口，单轮可处理约5万字。</p></div>
+
+<a id="q1905"></a>
+<h4>6. 第三个项目仅自己试用，还是给同学测试过？项目里遇到最难解决的bug是什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1906"></a>
+<h4>7. 智能体记不住上下文的解决方法详细介绍？</h4>
+<div class="answer-block"><p>解决Agent上下文遗忘：1.RAG——将历史信息存入向量库按需检索，不依赖上下文窗口；2.摘要压缩——定期将旧对话浓缩为摘要；3.关键信息提取——将重要决策和约束存入结构化存储（如SQLite）；4.多Agent——每个Agent管短上下文，通过消息传递协作。</p></div>
+
+<a id="q1907"></a>
+<h4>8. 上下文单次支持容量是多少（30K/80K/100K/200K/兆级）？本地存储累积上下文后有没有做精简、摘要处理？调试上下文管理有哪些实操经验？</h4>
+<div class="answer-block"><p>项目上下文管理策略：1.对话历史按重要性分级（当前轮>近期>历史）；2.超过上下文窗口时自动摘要压缩历史；3.用session隔离不同用户的上下文；4.RAG检索结果只注入相关片段而非全量文档。配合DeepSeek-V3的64K上下文窗口，单轮可处理约5万字。</p></div>
+
+<a id="q1908"></a>
+<h4>9. 项目是单纯调用工具生成，还是自己完整落地、达到什么开发水准？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1909"></a>
+<h4>10. 项目调用云上Deepseek模型，个人开发高峰期每天模型消耗费用多少？</h4>
+<div class="answer-block"><p>项目接入DeepSeek-V3模型，64K上下文窗口，默认高质量模式4096 tokens输出，设置frequency_penalty=0.3防止重复内容。选择DeepSeek的原因：中文理解能力强、API价格低（比GPT-4便宜约10倍）、代码生成质量接近Claude。</p></div>
+
+<a id="q1910"></a>
+<h4>11. 项目如果给到100个普通用户使用，每日模型消耗量预估多少？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1911"></a>
+<h4>12. 假设100人高并发同时使用AI打卡项目，高并发如何处理？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1912"></a>
+<h4>13. 高并发场景下界面层、用户权限管理怎么实现？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1913"></a>
+<h4>14. 是否熟悉FFI？介绍视频编码格式？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1914"></a>
+<h4>15. H.264和H.265有什么区别？H.265如何实现更高压缩比？</h4>
+<div class="answer-block"><p>H.265（HEVC）比H.264压缩率提高约50%，同等画质下码率更低。H.265使用了更大的CTU块（64x64 vs 16x16）、更灵活的预测单元划分和SAO滤波。但H.265编码复杂度高、专利授权贵，项目选H.264是因为兼容性和实时编码性能更好。</p></div>
+
+<a id="q1915"></a>
+<h4>16. 是否用过摄像头采集视频流？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1916"></a>
+<h4>17. OpenCV采集电脑摄像头，原生输出视频格式是什么？</h4>
+<div class="answer-block"><p>OpenCV的VideoCapture可以抓取摄像头画面，但输出格式是BGR，需要转成YUV420P才能送入FFmpeg编码。项目中更推荐直接用FFmpeg的avdevice模块采集，省去BGR→YUV的格式转换和内存拷贝开销。</p></div>
+
+<a id="q1917"></a>
+<h4>18. 摄像头输出流分辨率（480P/720P/1080P）、码流是H264还是H265，是否主动管控？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1918"></a>
+<h4>19. 采集到原始视频流后，存储、拆帧、逐帧处理流程？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1919"></a>
+<h4>20. 仅调用OpenCV接口抓流存在什么工程短板，量产落地需要关注哪些指标（延迟、码流、格式）？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1920"></a>
+<h4>21. 人目前在哈尔滨，来深圳实习租房、生活成本高，怎么考虑住宿问题？亲戚在深圳具体位置？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1921"></a>
+<h3>深度寻知人工智能一面 30mins</h3>
+
+<a id="q1922"></a>
+<h4>1. 自我介绍</h4>
+<div class="answer-block"><p>面试官您好，我叫XX，哈尔滨理工大学电子信息工程专业。有两个核心项目：1.基于C++/Qt/FFmpeg的音视频直播平台，实现了epoll高并发服务端、OpenGL GPU加速渲染、自定义TCP协议和音视频同步；2.AI辅助开发项目，用Vue3+TS实现RAG知识库检索系统，支持FTS5+embedding混合检索。擅长C++和网络编程，日常深度使用AI辅助开发。</p></div>
+
+<a id="q1923"></a>
+<h4>2. 介绍一下ai项目</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1924"></a>
+<h4>3. 说一下ai项目怎么实现的</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1925"></a>
+<h4>4. 说一下RAG</h4>
+<div class="answer-block"><p>项目RAG架构：<strong>三路混合检索</strong>——FTS5全文索引（关键词精确匹配）+ embedding向量检索（语义相似度）+ 元数据过滤。用户提问后三路并行检索，结果按RRF（Reciprocal Rank Fusion）融合排序，取Top-K拼接为上下文送入大模型生成回答。解决了纯关键词检索漏召回和纯向量检索精度不足的问题。</p></div>
+
+<a id="q1926"></a>
+<h4>5. agent中有哪些工具</h4>
+<div class="answer-block"><p>Agent = 大模型 + 工具调用 + 规划能力。大模型只做文本生成，Agent能理解用户意图→拆解任务→调用外部工具（搜索、计算、API）→整合结果生成最终回答。项目中Agent调用FTS5检索、embedding检索、大模型生成三个工具，按预设流程编排。</p></div>
+
+<a id="q1927"></a>
+<h4>6. 说一下工具的格式以及里面都有什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1928"></a>
+<h4>7. 网页请求和后端命令冲突怎么解决</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1929"></a>
+<h4>8. 开发中可以完全相信ai吗</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1930"></a>
+<h4>9. 项目在高并发情况下怎么解决的</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1931"></a>
+<h4>10. 项目做过降级策略吗</h4>
+<div class="answer-block"><p>AI服务降级策略：1.模型降级——高峰期从DeepSeek-V3切到更便宜的小模型；2.检索降级——三路检索简化为单路FTS5；3.缓存——高频问题缓存答案直接返回；4.限流——超过QPS阈值返回友好提示。保证核心功能可用，牺牲部分质量。</p></div>
+
+<a id="q1932"></a>
+<h4>11. 开发中出现过什么问题，怎么解决</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1933"></a>
+<h4>12. 你认为随着ai的发展对你的影响</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1934"></a>
+<h3>顺丰 AI全栈开发 30min</h3>
+
+<a id="q1935"></a>
+<h4>1. 两分钟自我介绍（实习 +项目）主要怎么使用AI</h4>
+<div class="answer-block"><p>日常使用AI：1.代码生成——描述需求让AI写实现；2.代码审查——让AI检查潜在bug；3.文档生成——从代码生成文档；4.测试用例——让AI写单元测试；5.调试辅助——错误信息让AI分析。核心方法论：需求要具体、格式要约束、结果要验证。</p></div>
+
+<a id="q1936"></a>
+<h4>2. AI项目的技术栈</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1937"></a>
+<h4>3. 对于陌生的技术栈 调试中遇到的问题</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1938"></a>
+<h4>4. 怎么给AI描述需求？有什么方法论</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1939"></a>
+<h4>5. 实际使用哪些skill以及mcp，解决了哪些问题</h4>
+<div class="answer-block"><p>Skill是封装了特定能力提示词+工具调用的可复用模块。项目中用Skill约束AI行为：每个Skill包含SKILL.md（描述和触发条件）、工具定义、输出格式约束。例如"检索Skill"定义了何时触发检索、用什么工具、结果格式。Skill让AI行为可预测、可复现，比直接prompt更可靠。</p></div>
+
+<a id="q1940"></a>
+<h4>6. 写项目中AI有没有和你聊过中间过程的技术方案，你确认过吗</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1941"></a>
+<h4>7. 你怎么判断AI有没有骗你</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1942"></a>
+<h4>8. 前端这一块怎么测试的</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1943"></a>
+<h4>9. 通过AI这个项目学到了哪些东西</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1944"></a>
+<h4>10. 数据库相关怎么设计的</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1945"></a>
+<h4>11. 本身C++的学习知识有没有帮助你去学习陌生栈？有什么提升？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1946"></a>
+<h4>12. 面试有几轮？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1947"></a>
+<h3>得物 客户端开发一面</h3>
+
+<a id="q1948"></a>
+<h4>1. 为什么做第三个RAG项目</h4>
+<div class="answer-block"><p>项目RAG架构：<strong>三路混合检索</strong>——FTS5全文索引（关键词精确匹配）+ embedding向量检索（语义相似度）+ 元数据过滤。用户提问后三路并行检索，结果按RRF（Reciprocal Rank Fusion）融合排序，取Top-K拼接为上下文送入大模型生成回答。解决了纯关键词检索漏召回和纯向量检索精度不足的问题。</p></div>
+
+<a id="q1949"></a>
+<h4>2. 讲一下这个项目架构是怎么设计的</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1950"></a>
+<h4>3. 讲一下FTS5全文索引底层实现原理是什么</h4>
+<div class="answer-block"><p>数据库索引是加速查询的数据结构（通常是B+树）。优点：加速查询。缺点：占用空间、降低写入速度。MySQL InnoDB聚簇索引（数据和索引在一起）和二级索引（存主键指针）。</p></div>
+
+<a id="q1951"></a>
+<h4>4. 你项目中FTS5分词规则是什么</h4>
+<div class="answer-block"><p>FTS5是SQLite的全文索引扩展。底层用倒排索引（Inverted Index）：文档分词后建立 词→文档ID列表 的映射，查询时通过词直接定位文档。支持短语查询、前缀查询、布尔逻辑。项目用它做日志和文档的全文检索，比LIKE查询快几个数量级。</p></div>
+
+<a id="q1952"></a>
+<h4>5. 项目中FTS5使用的什么分词器</h4>
+<div class="answer-block"><p>FTS5是SQLite的全文索引扩展。底层用倒排索引（Inverted Index）：文档分词后建立 词→文档ID列表 的映射，查询时通过词直接定位文档。支持短语查询、前缀查询、布尔逻辑。项目用它做日志和文档的全文检索，比LIKE查询快几个数量级。</p></div>
+
+<a id="q1953"></a>
+<h4>6. 除了FTS5的检索方法，有没有考虑过别的一些全文检索方法</h4>
+<div class="answer-block"><p>FTS5是SQLite的全文索引扩展。底层用倒排索引（Inverted Index）：文档分词后建立 词→文档ID列表 的映射，查询时通过词直接定位文档。支持短语查询、前缀查询、布尔逻辑。项目用它做日志和文档的全文检索，比LIKE查询快几个数量级。</p></div>
+
+<a id="q1954"></a>
+<h4>7. 用户提供的日志怎么处理，是做结构化拆分还是直接拿整条日志做处理，有什么区别哪种更好</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1955"></a>
+<h4>8. 这个项目你觉得最后做出来效果如何</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1956"></a>
+<h4>9. 如果模型本身也能输出一个比较好的结果，还需要你这个混合RAG的架构吗</h4>
+<div class="answer-block"><p>项目RAG架构：<strong>三路混合检索</strong>——FTS5全文索引（关键词精确匹配）+ embedding向量检索（语义相似度）+ 元数据过滤。用户提问后三路并行检索，结果按RRF（Reciprocal Rank Fusion）融合排序，取Top-K拼接为上下文送入大模型生成回答。解决了纯关键词检索漏召回和纯向量检索精度不足的问题。</p></div>
+
+<a id="q1957"></a>
+<h4>10. 但是有些模型本身也有选择性阅读的能力，你认为这种情况还需要吗</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1958"></a>
+<h4>11. 用过哪些AI模型，自己vibe coding的时候用过哪些工具</h4>
+<div class="answer-block"><p>Vibe coding是凭直觉/感觉让AI写代码的方式，不足之处：1.缺乏设计——没有架构规划直接写；2.难以调试——不理解代码导致问题难定位；3.技术债——代码结构混乱难以维护；4.安全风险——不了解实现细节可能有漏洞。加入Skill约束、测试驱动、人工Review可缓解。</p></div>
+
+<a id="q1959"></a>
+<h4>12. 这些模型你会在什么场景下去用，你使用的感受是什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1960"></a>
+<h4>13. 整个项目迭代过程中，有没有遇到AI代码生成质量差或错误的问题</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1961"></a>
+<h4>14. 你觉得在这个过程中，人需要在哪些部分参与</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1962"></a>
+<h4>15. 你认为现在AI coding有哪些不足</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1963"></a>
+<h4>16. 你认为在vibe coding的过程中加入哪些步骤可以做到不经过人的介入，AI自己就可以纠正这些问题</h4>
+<div class="answer-block"><p>Vibe coding是凭直觉/感觉让AI写代码的方式，不足之处：1.缺乏设计——没有架构规划直接写；2.难以调试——不理解代码导致问题难定位；3.技术债——代码结构混乱难以维护；4.安全风险——不了解实现细节可能有漏洞。加入Skill约束、测试驱动、人工Review可缓解。</p></div>
+
+<a id="q1964"></a>
+<h4>17. superpower里的内容有哪些</h4>
+<div class="answer-block"><p>Superpower是给AI的"超能力"约束集，包含预设的Skill和行为规则。通过superpower约束AI的输入输出格式、工具调用流程、错误处理策略。强模型（如Claude）不约束也能做好，但约束后更稳定；弱模型必须约束才能保证输出质量。</p></div>
+
+<a id="q1965"></a>
+<h4>18. 有没有看过skill里面包含哪些内容</h4>
+<div class="answer-block"><p>Skill是封装了特定能力提示词+工具调用的可复用模块。项目中用Skill约束AI行为：每个Skill包含SKILL.md（描述和触发条件）、工具定义、输出格式约束。例如"检索Skill"定义了何时触发检索、用什么工具、结果格式。Skill让AI行为可预测、可复现，比直接prompt更可靠。</p></div>
+
+<a id="q1966"></a>
+<h4>19. 你认为有skill和没skill有什么区别</h4>
+<div class="answer-block"><p>Skill是封装了特定能力提示词+工具调用的可复用模块。项目中用Skill约束AI行为：每个Skill包含SKILL.md（描述和触发条件）、工具定义、输出格式约束。例如"检索Skill"定义了何时触发检索、用什么工具、结果格式。Skill让AI行为可预测、可复现，比直接prompt更可靠。</p></div>
+
+<a id="q1967"></a>
+<h4>20. 强模型和弱模型，是否都需要使用superpower里的这种skill去约束，不约束是否会更优秀</h4>
+<div class="answer-block"><p>Skill是封装了特定能力提示词+工具调用的可复用模块。项目中用Skill约束AI行为：每个Skill包含SKILL.md（描述和触发条件）、工具定义、输出格式约束。例如"检索Skill"定义了何时触发检索、用什么工具、结果格式。Skill让AI行为可预测、可复现，比直接prompt更可靠。</p></div>
+
+<a id="q1968"></a>
+<h4>21. 有没有自己写过skill</h4>
+<div class="answer-block"><p>Skill是封装了特定能力提示词+工具调用的可复用模块。项目中用Skill约束AI行为：每个Skill包含SKILL.md（描述和触发条件）、工具定义、输出格式约束。例如"检索Skill"定义了何时触发检索、用什么工具、结果格式。Skill让AI行为可预测、可复现，比直接prompt更可靠。</p></div>
+
+<a id="q1969"></a>
+<h4>22. 怎么学习这些技术</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1970"></a>
+<h4>23. 手撕：生产者消费者模型</h4>
+<div class="answer-block"><p>生产者消费者模型：共享队列+mutex+两个condition_variable（not_full和not_empty）。生产者：lock→while(queue满)not_full.wait()→入队→not_empty.notify()。消费者：lock→while(queue空)not_empty.wait()→出队→not_full.notify()。注意用while不用if防虚假唤醒。</p></div>
+
+<a id="q1971"></a>
+<h3>百度 后端一面</h3>
+
+<a id="q1972"></a>
+<h4>1. 一条日志从产生到进入上下文，这中间会经过哪些步骤</h4>
+<div class="answer-block"><p>流程：日志产生→结构化拆分（时间/级别/内容）→FTS5全文索引+embedding向量化→用户提问→三路检索（FTS5/embedding/元数据）→RRF融合→Top-K片段拼接为上下文→送入大模型生成回答。全链路延迟约200ms。</p></div>
+
+<a id="q1973"></a>
+<h4>2. 你的日志检索为什么要用FTS5做检索</h4>
+<div class="answer-block"><p>FTS5是SQLite的全文索引扩展。底层用倒排索引（Inverted Index）：文档分词后建立 词→文档ID列表 的映射，查询时通过词直接定位文档。支持短语查询、前缀查询、布尔逻辑。项目用它做日志和文档的全文检索，比LIKE查询快几个数量级。</p></div>
+
+<a id="q1974"></a>
+<h4>3. 如果FTS5和Eembding两路分别进行检索，你如何融合两路结果</h4>
+<div class="answer-block"><p>FTS5是SQLite的全文索引扩展。底层用倒排索引（Inverted Index）：文档分词后建立 词→文档ID列表 的映射，查询时通过词直接定位文档。支持短语查询、前缀查询、布尔逻辑。项目用它做日志和文档的全文检索，比LIKE查询快几个数量级。</p></div>
+
+<a id="q1975"></a>
+<h4>4. 你拼接出给模型的上下文超限，你怎么切分处理</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1976"></a>
+<h4>5. 为什么使用SQLite做存储</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1977"></a>
+<h4>6. 你的项目中SQLite会不会出现多线程竞争问题，怎么处理</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1978"></a>
+<h4>7. 讲一下项目的自定义应用层二进制协议</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1979"></a>
+<h4>8. 如果收到客户端1.5个包，能否正确切分，如何处理的</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1980"></a>
+<h4>9. 如果客户端发来的包头中的body Length字段被设置为一个非常大的值，怎么处理</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1981"></a>
+<h4>10. 如果客户端起了多个线程，每个线程都发送1.5个包，你怎么处理</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1982"></a>
+<h4>11. 服务端能够接收的最大连接数是多少(回答1万条)</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1983"></a>
+<h4>12. 那如果建立了一万条连接，每条连接都留下了0.5个包在内存里，你怎么处理</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1984"></a>
+<h4>13. C++智能指针</h4>
+<div class="answer-block"><p>C++11引入的三种智能指针：<strong>unique_ptr</strong>（独占所有权，不可拷贝可移动）、<strong>shared_ptr</strong>（共享所有权，引用计数，线程安全的计数操作但对象访问不是线程安全的）、<strong>weak_ptr</strong>（不增加引用计数，解决shared_ptr循环引用）。auto_ptr已被废弃（拷贝后原指针置空导致悬空指针）。</p></div>
+
+<a id="q1985"></a>
+<h4>14. shared_ptr是线程安全的吗</h4>
+<div class="answer-block"><p>多线程访问共享数据时结果正确。实现方式：互斥锁（mutex）、读写锁（读写分离）、自旋锁（忙等待）、原子操作（atomic）、条件变量（同步线程执行顺序）、线程局部存储（thread_local）。</p></div>
+
+<a id="q1986"></a>
+<h4>15. shared_ptr本身是线程安全的吗</h4>
+<div class="answer-block"><p>多线程访问共享数据时结果正确。实现方式：互斥锁（mutex）、读写锁（读写分离）、自旋锁（忙等待）、原子操作（atomic）、条件变量（同步线程执行顺序）、线程局部存储（thread_local）。</p></div>
+
+<a id="q1987"></a>
+<h4>16. 指针引用区别</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1988"></a>
+<h4>17. 引用真的不占内存吗</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1989"></a>
+<h4>18. std::move具体做了什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1990"></a>
+<h4>19. 被移动后的对象还能继续使用吗</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1991"></a>
+<h4>20. 对一个const对象调用move会有什么结果</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1992"></a>
+<h4>21. 算法题：HTTP 头字段规范化</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1993"></a>
+<h4>22. 问算法题代码如何优化：使用的数据结构，复杂度等等</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1994"></a>
+<h3>米哈游客户端工具开发 一面</h3>
+
+<a id="q1995"></a>
+<h4>1. STL的常用容器和底层</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1996"></a>
+<h4>2. resize和reserve区别</h4>
+<div class="answer-block"><p>resize改变size（实际元素个数），会构造或析构元素；reserve只改变capacity（预分配空间），不构造元素。vector中capacity=20：reserve(15)无变化（不缩小）；resize(15)会析构后5个元素，size变为15但capacity不变。</p></div>
+
+<a id="q1997"></a>
+<h4>3. map和unordered_map区别</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q1998"></a>
+<h4>4. 哈希冲突怎么解决</h4>
+<div class="answer-block"><p>哈希冲突解决方法：1.<strong>链地址法</strong>（拉链法）——冲突元素挂链表，unordered_map用此法；2.<strong>开放地址法</strong>——冲突后探测下一个空位（线性探测/二次探测/双重散列）；3.再哈希法——换一个哈希函数。链地址法删除简单，开放地址法删除需标记墓碑。</p></div>
+
+<a id="q1999"></a>
+<h4>5. 假如使用开放地址法，先插入A插入B再删除A，会出现什么情况</h4>
+<div class="answer-block"><p>开放地址法删除问题：先插A再插B，B哈希冲突被放到A后面。删除A后B位置不变，但查找B时途经A的位置发现空位会停止查找→找不到B。解决：删除时不真正删除，标记为"墓碑"（DELETED），查找时跳过墓碑，插入时复用墓碑位置。需定期清理墓碑。</p></div>
+
+<a id="q2000"></a>
+<h4>6. 找不到B怎么避免</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2001"></a>
+<h4>7. 指针和引用区别，引用是否必须初始化</h4>
+<div class="answer-block"><p>指针：可空、可变、多级、需要解引用。引用：不可空、不可变（初始化后不能改绑）、天生别名、不需要解引用。sizeof(指针)是指针大小，sizeof(引用)是引用对象的大小。</p></div>
+
+<a id="q2002"></a>
+<h4>8. const*和*const区别</h4>
+<div class="answer-block"><p>const int* p——指针指向const，不能通过p修改值，但p可以指向别处。int* const p——指针本身是const，不能指向别处，但可以修改*p。const int* const p——两者都const。口诀：const在*左边修饰值，在*右边修饰指针。</p></div>
+
+<a id="q2003"></a>
+<h4>9. 什么是野指针，如何避免野指针</h4>
+<div class="answer-block"><p>野指针是指向已释放或未初始化内存的指针。产生原因：1.指针未初始化；2.delete后未置空；3.指向局部变量在函数返回后使用。危害：未定义行为，可能崩溃或安全漏洞。避免：初始化为nullptr、delete后置空、用智能指针。</p></div>
+
+<a id="q2004"></a>
+<h4>10. 讲一下C++智能指针</h4>
+<div class="answer-block"><p>C++11引入的三种智能指针：<strong>unique_ptr</strong>（独占所有权，不可拷贝可移动）、<strong>shared_ptr</strong>（共享所有权，引用计数，线程安全的计数操作但对象访问不是线程安全的）、<strong>weak_ptr</strong>（不增加引用计数，解决shared_ptr循环引用）。auto_ptr已被废弃（拷贝后原指针置空导致悬空指针）。</p></div>
+
+<a id="q2005"></a>
+<h4>11. 是否了解其他语言的GC机制</h4>
+<div class="answer-block"><p>其他语言的GC（如Java/Python/C#）通过可达性分析：从GC Roots出发遍历对象引用图，不可达的对象被回收。分代GC（年轻代/老年代）减少全量扫描。C++没有GC，用RAII和智能指针管理资源，优势是确定性析构（知道何时释放），劣势是需要手动管理。</p></div>
+
+<a id="q2006"></a>
+<h4>12. C++强制类型转换有哪些</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2007"></a>
+<h4>13. static_cast转换失败会发生什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2008"></a>
+<h4>14. dynamic_cast转换失败会发生什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2009"></a>
+<h4>15. lambda表达式底层</h4>
+<div class="answer-block"><p>C++11引入的匿名函数。语法：[捕获列表](参数)->返回值{函数体}。捕获列表：[]不捕获、[=]值捕获所有局部变量、[&]引用捕获所有、[x]值捕获x、[&x]引用捕获x。底层实现为一个闭包类，编译器生成唯一类名，operator()执行函数体。应用场景：回调函数、STL算法参数、Qt信号槽。</p></div>
+
+<a id="q2010"></a>
+<h4>16. 是否可以捕获对象的成员变量</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2011"></a>
+<h4>17. 是否了解初始化捕获</h4>
+<div class="answer-block"><p>C++14初始化捕获：[x=42]（值初始化x为42）、[p=std::move(ptr)]（移动捕获）。可以给捕获的变量指定初始值和名字，比C++11的[=]/[&]更灵活。用途：移动捕获（如unique_ptr）、重命名捕获变量、计算捕获值。</p></div>
+
+<a id="q2012"></a>
+<h4>18. 内联函数是什么，一定会执行内联函数的展开吗</h4>
+<div class="answer-block"><p>inline函数在编译期展开，避免函数调用开销（栈帧创建/参数压栈/返回）。但不一定展开——编译器根据函数体大小和优化级别决定。定义在类内的成员函数隐式inline。和宏区别：inline有类型检查、作用域控制、可调试，宏是文本替换无类型安全。</p></div>
+
+<a id="q2013"></a>
+<h4>19. 内联函数和宏有什么区别</h4>
+<div class="answer-block"><p>inline函数在编译期展开，避免函数调用开销（栈帧创建/参数压栈/返回）。但不一定展开——编译器根据函数体大小和优化级别决定。定义在类内的成员函数隐式inline。和宏区别：inline有类型检查、作用域控制、可调试，宏是文本替换无类型安全。</p></div>
+
+<a id="q2014"></a>
+<h4>20. C++编译过程</h4>
+<div class="answer-block"><p>预处理（展开宏和#include）→编译（语法分析生成汇编）→汇编（生成目标文件.o）→链接（合并目标文件和库，解析符号引用，生成可执行文件）。</p></div>
+
+<a id="q2015"></a>
+<h4>21. 静态链接和动态链接有什么区别</h4>
+<div class="answer-block"><p>静态链接：将库代码直接拷贝到可执行文件中，体积大但独立运行，无依赖。动态链接：运行时加载.dll/.so，体积小、共享内存、更新方便，但有依赖和加载开销。项目FFmpeg用动态链接（.dll），减少体积且便于更新版本。</p></div>
+
+<a id="q2016"></a>
+<h4>22. 进程线程区别</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2017"></a>
+<h4>23. 进程有哪些状态</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2018"></a>
+<h4>24. 进程间通信方式</h4>
+<div class="answer-block"><p>进程间通信方式：1.管道（pipe，父子进程间）；2.命名管道（FIFO，无亲缘关系）；3.消息队列；4.共享内存（最快，需同步）；5.信号量（同步）；6.Socket（跨网络）。项目用Socket做进程间通信，大数据量用共享内存+信号量同步。</p></div>
+
+<a id="q2019"></a>
+<h4>25. 什么是死锁，如何预防</h4>
+<div class="answer-block"><p>死锁四个必要条件：互斥、占有并等待、不剥夺、循环等待。预防方法：1.破坏循环等待——资源有序申请；2.破坏占有等待——一次性申请所有资源；3.破坏不剥夺——超时释放。检测：资源分配图找环。</p></div>
+
+<a id="q2020"></a>
+<h4>26. 补码怎么表示一个整数</h4>
+<div class="answer-block"><p>补码表示整数：正数补码=原码；负数补码=原码取反加1。作用：1.统一加减法（0的表示唯一）；2.扩大表示范围（8位补码范围-128~127）。8位补码范围：-128（10000000）到+127（01111111）。检测第4位为1：val & 0x08。</p></div>
+
+<a id="q2021"></a>
+<h4>27. 补码有什么作用</h4>
+<div class="answer-block"><p>补码表示整数：正数补码=原码；负数补码=原码取反加1。作用：1.统一加减法（0的表示唯一）；2.扩大表示范围（8位补码范围-128~127）。8位补码范围：-128（10000000）到+127（01111111）。检测第4位为1：val & 0x08。</p></div>
+
+<a id="q2022"></a>
+<h4>28. 8位的补码能表示什么范围</h4>
+<div class="answer-block"><p>补码表示整数：正数补码=原码；负数补码=原码取反加1。作用：1.统一加减法（0的表示唯一）；2.扩大表示范围（8位补码范围-128~127）。8位补码范围：-128（10000000）到+127（01111111）。检测第4位为1：val & 0x08。</p></div>
+
+<a id="q2023"></a>
+<h4>29. 怎么检测8位的第四位为1</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2024"></a>
+<h4>30. 常见的设计模式有哪些</h4>
+<div class="answer-block"><p>常用设计模式：创建型——单例、工厂、建造者；结构型——适配器、代理、装饰器；行为型——观察者、策略、责任链、状态机。项目中用单例（NetworkManager）、策略（编码器选择）、观察者（信号槽）、中介者（服务端消息分发）。</p></div>
+
+<a id="q2025"></a>
+<h4>31. 讲一下观察者模式</h4>
+<div class="answer-block"><p>观察者模式：主题（Subject）维护观察者列表，状态变化时通知所有观察者。Subject提供attach/detach/notify接口，Observer提供update接口。场景：事件系统、数据绑定、Qt信号槽本质也是观察者模式。手撕时注意观察者列表的线程安全和迭代器失效问题。</p></div>
+
+<a id="q2026"></a>
+<h4>32. 手撕：带自扩容的观察者模式</h4>
+<div class="answer-block"><p>观察者模式：主题（Subject）维护观察者列表，状态变化时通知所有观察者。Subject提供attach/detach/notify接口，Observer提供update接口。场景：事件系统、数据绑定、Qt信号槽本质也是观察者模式。手撕时注意观察者列表的线程安全和迭代器失效问题。</p></div>
+
+<a id="q2027"></a>
+<h4>33. 广度优先搜索和深度优先搜索区别</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2028"></a>
+<h4>34. 树的前中后序遍历</h4>
+<div class="answer-block"><p>前序：根左右（访问根→递归左→递归右）。中序：左根右（BST中序是有序序列）。后序：左右根（删除树必须后序先删子节点）。前+中或后+中可以唯一确定树：前序/后序找根，中序分左右子树。</p></div>
+
+<a id="q2029"></a>
+<h4>35. 知道前中序怎么获得后序</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2030"></a>
+<h4>36. 快排的思路，平均和最坏时间复杂度</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2031"></a>
+<h4>37. 怎么优化快排</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2032"></a>
+<h4>38. 快排和归并排序的区别</h4>
+<div class="answer-block"><p>快排是不稳定排序（交换可能改变相等元素相对顺序），归并是稳定排序。快排平均O(nlogn)最坏O(n²)，归并始终O(nlogn)。快排原地排序空间O(1)，归并需O(n)辅助空间。实际中快排cache友好常数因子更小，通常更快。</p></div>
+
+<a id="q2033"></a>
+<h4>39. 稳定是什么概念</h4>
+<div class="answer-block"><p>稳定排序：相等元素排序后保持原相对顺序。快排不稳定（交换可能改变顺序），归并稳定。稳定的意义：多关键字排序时第一次排序结果不被第二次打乱。</p></div>
+
+<a id="q2034"></a>
+<h4>40. 讲一下你了解的AI编程</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2035"></a>
+<h4>41. AI辅助开发过程中有遇到什么问题</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2036"></a>
+<h4>42. 是否接触过游戏相关开发</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2037"></a>
+<h3>米哈游三面 1h10min</h3>
+
+<a id="q2038"></a>
+<h4>1. 短视频项目的出发点</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2039"></a>
+<h4>2. 两个项目都做了多久</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2040"></a>
+<h4>3. 算法题：现在有这些数据  [-10,5] [7,13] [14,15] [20,30],实现一个数据结构，并实现add 和 remove两个函数（要求数据是升序的）</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2041"></a>
+<h4>4. 说思路</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2042"></a>
+<h4>5. 问其中具体某几个函数是做什么的</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2043"></a>
+<h4>6. 怎么降低时间复杂度</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2044"></a>
+<h4>7. 为什么用map就降低时间复杂度了</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2045"></a>
+<h4>8. 插入的是百亿级别的数据，怎么设计</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2046"></a>
+<h4>9. 分部式中服务器怎么分片，都存什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2047"></a>
+<h4>10. 跨服务器覆盖分片了怎么解决</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2048"></a>
+<h4>11. 为后端服务器均匀分配分片会不会导致单台服务器压力过大，怎么解决</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2049"></a>
+<h4>12. 对游戏客户端工具开发的看法是什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2050"></a>
+<h4>13. 有没有接触过游戏开发</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2051"></a>
+<h4>14. 为贪吃蛇设计100个关卡，怎么设计工具</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2052"></a>
+<h4>15. 不用游戏引擎怎么实现这个游戏（说用的Qt）</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2053"></a>
+<h4>16. 用Qt去写这个工具，好的代码要注意什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2054"></a>
+<h4>17. 怎么去存储数据的，包括关卡信息，蛇的位置信息等</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2055"></a>
+<h4>18. 为什么投递这个岗位</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2056"></a>
+<h4>19. 有没有写过工具（说的脚本，面试官说算是一种工具）</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2057"></a>
+<h4>20. 有没有接触过游戏引擎</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2058"></a>
+<h4>21. 使用过哪些工具（说的PS）</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2059"></a>
+<h4>22. 对比PS和美图秀秀</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2060"></a>
+<h4>23. 平时会使用AI吗</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2061"></a>
+<h4>24. AI写代码效果怎么样</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2062"></a>
+<h4>25. 举例三款最喜欢的游戏</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2063"></a>
+<h4>26. 为cs写一个外挂，思路（后来改为写一个防外挂）</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2064"></a>
+<h4>27. 大学三年过去，你觉得自己擅长什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2065"></a>
+<h4>28. 为什么更喜欢实际开发，而不是学术研究</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2066"></a>
+<h3>米哈游二面 55min</h3>
+
+<a id="q2067"></a>
+<h4>1. 自我介绍</h4>
+<div class="answer-block"><p>面试官您好，我叫XX，哈尔滨理工大学电子信息工程专业。有两个核心项目：1.基于C++/Qt/FFmpeg的音视频直播平台，实现了epoll高并发服务端、OpenGL GPU加速渲染、自定义TCP协议和音视频同步；2.AI辅助开发项目，用Vue3+TS实现RAG知识库检索系统，支持FTS5+embedding混合检索。擅长C++和网络编程，日常深度使用AI辅助开发。</p></div>
+
+<a id="q2068"></a>
+<h4>2. 项目为什么选择C/S架构</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2069"></a>
+<h4>3. 客户端服务端通信用的是SOCKET吗</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2070"></a>
+<h4>4. 调了哪些API</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2071"></a>
+<h4>5. epoll 和 select的区别</h4>
+<div class="answer-block"><p>Linux下最高效的IO多路复用。epoll_create创建内核eventpoll（含红黑树和就绪链表），epoll_ctl注册/修改/删除fd（红黑树O(logN)），epoll_wait返回就绪链表O(1)。支持ET边缘触发（只通知一次，需非阻塞读）和LT水平触发（持续通知直到处理完）。</p></div>
+
+<a id="q2072"></a>
+<h4>6. 直播的音视频流是怎么传输的</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2073"></a>
+<h4>7. 流媒体服务器是用的现成模块还是手写的</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2074"></a>
+<h4>8. 主播开播到用户拉流观看的链路</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2075"></a>
+<h4>9. 主播网络不稳定，会有什么表现</h4>
+<div class="answer-block"><p>稳定排序：相等元素排序后保持原相对顺序。快排不稳定（交换可能改变顺序），归并稳定。稳定的意义：多关键字排序时第一次排序结果不被第二次打乱。</p></div>
+
+<a id="q2076"></a>
+<h4>10. 怎么用的缓冲队列解决</h4>
+<div class="answer-block"><p>项目为音频和视频分别设置缓冲队列。接收端将网络数据包写入队列，解码线程从队列取出处理。当队列积压超过阈值时启动丢帧策略（丢P帧保I帧），队列空时等待。缳冲队列解决了网络抖动导致的卡顿问题。</p></div>
+
+<a id="q2077"></a>
+<h4>11. RTMP的下层是基于什么协议</h4>
+<div class="answer-block"><p>RTMP基于TCP，默认端口1935。握手过程：Client C0/C1→Server S0/S1/S2→Client C2。RTMP将音视频数据封装为FLV格式的Chunk流传输。项目用RTMP做直播推流，延迟约1-3秒。</p></div>
+
+<a id="q2078"></a>
+<h4>12. RTMP握手的过程</h4>
+<div class="answer-block"><p>RTMP基于TCP，默认端口1935。握手过程：Client C0/C1→Server S0/S1/S2→Client C2。RTMP将音视频数据封装为FLV格式的Chunk流传输。项目用RTMP做直播推流，延迟约1-3秒。</p></div>
+
+<a id="q2079"></a>
+<h4>13. 介绍一下TCP粘包和分包</h4>
+<div class="answer-block"><p>TCP是字节流协议，没有消息边界，多个包可能合并成一个大包发送。解决方法：1.固定长度包头（包体长度字段）；2.特殊分隔符；3.固定长度包体。项目中用自定义二进制协议，包头含包体长度字段。</p></div>
+
+<a id="q2080"></a>
+<h4>14. 二进制结构体除了放包长，还放了什么</h4>
+<div class="answer-block"><p>项目自定义二进制协议包头除了包体长度，还包含：消息类型（2字节，区分登录/聊天/音视频数据等）、用户ID（4字节）、保留字段（2字节）。包头固定大小，方便解析。包体使用二进制序列化，直接memcpy结构体，不依赖外部序列化库。</p></div>
+
+<a id="q2081"></a>
+<h4>15. 数据段用的是二进制的序列化，用的是哪个序列化库</h4>
+<div class="answer-block"><p>项目数据段用的是自定义二进制序列化（直接memcpy结构体），没有用protobuf/json等序列化库。原因：1.音视频数据已经是二进制，不需要额外序列化；2.自定义结构体效率最高，无编解码开销；3.协议简单，不需要跨语言。如果需要跨语言/版本兼容，应该用protobuf。</p></div>
+
+<a id="q2082"></a>
+<h4>16. 了不了解时间局部性和空间局部性</h4>
+<div class="answer-block"><p>时间局部性：刚访问的数据近期可能再次访问（如循环变量）。空间局部性：访问某地址后，附近地址也可能被访问（如数组遍历）。CPU利用局部性原理做cache预取：cache line加载连续内存块，数组遍历比链表快就是因为空间局部性好。</p></div>
+
+<a id="q2083"></a>
+<h4>17. 数组和链表的区别</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2084"></a>
+<h4>18. 为什么链表遍历是O（n），操作系统空间分配还是用的链表</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2085"></a>
+<h4>19. 为什么选择游戏客户端工具开发</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2086"></a>
+<h4>20. 一个好工具的标准是什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2087"></a>
+<h4>21. 数组实现队列（包含插入（自动扩容），弹出队列头，返回队首元素，检测元素是否存在）</h4>
+<div class="answer-block"><p>数组实现队列：用循环数组+front/rear指针。push: queue[rear]=val; rear=(rear+1)%cap; 如果size==cap先扩容。pop: front=(front+1)%cap。检测元素存在：遍历或用辅助set。扩容：申请新数组，拷贝元素到新数组起始位置，重置front=0/rear=size。</p></div>
+
+<a id="q2088"></a>
+<h4>22. AI使用情况怎么样</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2089"></a>
+<h3>米哈游一面 1h</h3>
+
+<a id="q2090"></a>
+<h4>1. 自我介绍</h4>
+<div class="answer-block"><p>面试官您好，我叫XX，哈尔滨理工大学电子信息工程专业。有两个核心项目：1.基于C++/Qt/FFmpeg的音视频直播平台，实现了epoll高并发服务端、OpenGL GPU加速渲染、自定义TCP协议和音视频同步；2.AI辅助开发项目，用Vue3+TS实现RAG知识库检索系统，支持FTS5+embedding混合检索。擅长C++和网络编程，日常深度使用AI辅助开发。</p></div>
+
+<a id="q2091"></a>
+<h4>2. 游戏和工具开发哪个更感兴趣</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2092"></a>
+<h4>3. static 的作用</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2093"></a>
+<h4>4. 什么时候会用到static</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2094"></a>
+<h4>5. 静态局部变量什么时候初始化</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2095"></a>
+<h4>6. 还有没有别的用法</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2096"></a>
+<h4>7. 静态成员函数能不能通过对象直接调用</h4>
+<div class="answer-block"><p>静态成员函数属于类不属于对象，没有this指针，不能访问非静态成员。可以通过类名::func()直接调用，也可以通过对象调用（但不推荐）。只能访问静态成员变量和其他静态成员函数。</p></div>
+
+<a id="q2097"></a>
+<h4>8. 类的静态成员变量是共享的还是每个对象一份</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2098"></a>
+<h4>9. 全局静态变量和局部静态变量的区别</h4>
+<div class="answer-block"><p>全局静态变量在文件作用域内可见（限制其他文件访问），局部静态变量在函数内可见。两者都存储在全局/静态区，生命周期都是程序运行期间。区别仅在于<strong>可见域</strong>不同。</p></div>
+
+<a id="q2099"></a>
+<h4>10. 类中包含int a和static int b，sizeof(类)是多少</h4>
+<div class="answer-block"><p>类中包含int a和static int b，sizeof(类)只计算非静态成员，所以sizeof=int的大小（4字节），static成员在全局/静态区不占对象空间。如果有虚函数，额外8字节vptr（64位）。空类sizeof=1（保证不同对象地址不同）。</p></div>
+
+<a id="q2100"></a>
+<h4>11. 指针和引用的区别</h4>
+<div class="answer-block"><p>指针：可空、可变、多级、需要解引用。引用：不可空、不可变（初始化后不能改绑）、天生别名、不需要解引用。sizeof(指针)是指针大小，sizeof(引用)是引用对象的大小。</p></div>
+
+<a id="q2101"></a>
+<h4>12. 引用的底层是什么</h4>
+<div class="answer-block"><p>引用的底层实现是指针，但编译器做了封装。大多数情况下引用占内存（和指针一样大，64位8字节），但某些场景下引用可以被完全优化掉（如内联函数中的引用参数）。引用不可空、不可变（绑定后不能改绑），是更安全的指针替代品。</p></div>
+
+<a id="q2102"></a>
+<h4>13. 函数参数选择引用和指针的条件</h4>
+<div class="answer-block"><p>用引用的场景：不关心是否为空、参数不可变、性能要求高（避免拷贝）。用指针的场景：可能为空（nullptr）、需要改变指向、数组参数。默认优先用const引用，需要修改用非const引用，可能为空用指针。</p></div>
+
+<a id="q2103"></a>
+<h4>14. 指针的大小</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2104"></a>
+<h4>15. 引用大小是多少，真没有大小吗</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2105"></a>
+<h4>16. const int * 和 int * const 的区别</h4>
+<div class="answer-block"><p>const int* p：指针指向const int，不能通过p修改值，但p可指向别处。int* const p：指针本身const，不能指向别处，但可修改*p。口诀：const在*左边修饰值，在*右边修饰指针。</p></div>
+
+<a id="q2106"></a>
+<h4>17. const T& 能否修改</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2107"></a>
+<h4>18. new一个对象的过程</h4>
+<div class="answer-block"><p>new的过程：1.operator new分配原始内存（底层调malloc）；2.在分配的内存上调用构造函数（placement new）；3.返回正确类型的指针。delete相反：先调析构函数，再operator delete释放内存。</p></div>
+
+<a id="q2108"></a>
+<h4>19. malloc和new的区别</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2109"></a>
+<h4>20. placement new 的用法</h4>
+<div class="answer-block"><p>placement new在已分配的内存上构造对象，不分配新内存：new(ptr)Class(args)。常用于内存池、STL allocator、vector扩容（先allocate再placement new构造）。需要手动调用析构函数~Class()释放。new底层就是operator new分配内存+placement new构造对象。</p></div>
+
+<a id="q2110"></a>
+<h4>21. 构造函数抛出异常如何处理</h4>
+<div class="answer-block"><p>构造函数抛异常：1.对象未完全构造，不会调用析构函数；2.已分配的内存由operator delete回收（C++保证）；3.成员对象已构造的部分会逆序析构；4.抛出后对象不可用。资源泄漏风险：构造函数中new了多个资源，中间抛异常则后面的不会释放→用RAII（智能指针）管理。</p></div>
+
+<a id="q2111"></a>
+<h4>22. 构造函数抛出异常后内存是否回收</h4>
+<div class="answer-block"><p>构造函数抛异常：1.对象未完全构造，不会调用析构函数；2.已分配的内存由operator delete回收（C++保证）；3.成员对象已构造的部分会逆序析构；4.抛出后对象不可用。资源泄漏风险：构造函数中new了多个资源，中间抛异常则后面的不会释放→用RAII（智能指针）管理。</p></div>
+
+<a id="q2112"></a>
+<h4>23. 智能指针</h4>
+<div class="answer-block"><p>C++11引入的三种智能指针：<strong>unique_ptr</strong>（独占所有权，不可拷贝可移动）、<strong>shared_ptr</strong>（共享所有权，引用计数，线程安全的计数操作但对象访问不是线程安全的）、<strong>weak_ptr</strong>（不增加引用计数，解决shared_ptr循环引用）。auto_ptr已被废弃（拷贝后原指针置空导致悬空指针）。</p></div>
+
+<a id="q2113"></a>
+<h4>24. unique_ptr 的 get()、release()、reset()</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2114"></a>
+<h4>25. release() 是否返回值</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2115"></a>
+<h4>26. 左值和右值的概念</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2116"></a>
+<h4>27. 右值的细分（纯右值、将亡值）</h4>
+<div class="answer-block"><p>右值细分为纯右值（prvalue）和将亡值（xvalue）。纯右值：字面量（42）、算术表达式（a+b）、临时对象。将亡值：通过std::move或static_cast<T&&>转换的左值、即将被移动的对象。区分意义：将亡值可以被移动构造函数接管资源。</p></div>
+
+<a id="q2117"></a>
+<h4>28. std::move 的作用</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2118"></a>
+<h4>29. std::move 的实现原理</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2119"></a>
+<h4>30. 对 const 对象使用 std::move 触发拷贝还是移动</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2120"></a>
+<h4>31. std::forward 的作用</h4>
+<div class="answer-block"><p>std::forward实现完美转发，保持参数的左右值属性。底层用引用折叠+static_cast。template<typename T> T&& forward(typename remove_reference<T>::type& t) { return static_cast<T&&>(t); }。T&&在模板推导中是通用引用（可绑定左值也可绑定右值），forward根据T的类型还原左右值。</p></div>
+
+<a id="q2121"></a>
+<h4>32. std::forward 的实现原理</h4>
+<div class="answer-block"><p>std::forward实现完美转发，保持参数的左右值属性。底层用引用折叠+static_cast。template<typename T> T&& forward(typename remove_reference<T>::type& t) { return static_cast<T&&>(t); }。T&&在模板推导中是通用引用（可绑定左值也可绑定右值），forward根据T的类型还原左右值。</p></div>
+
+<a id="q2122"></a>
+<h4>33. std::forward 内部的强转是哪个强转</h4>
+<div class="answer-block"><p>std::forward实现完美转发，保持参数的左右值属性。底层用引用折叠+static_cast。template<typename T> T&& forward(typename remove_reference<T>::type& t) { return static_cast<T&&>(t); }。T&&在模板推导中是通用引用（可绑定左值也可绑定右值），forward根据T的类型还原左右值。</p></div>
+
+<a id="q2123"></a>
+<h4>34. 引用的引用是否存在</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2124"></a>
+<h4>35. 左值引用 + 右值引用的折叠结果、左值引用 + 左值引用的折叠结果</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2125"></a>
+<h4>36. C++ 异常处理（try、catch、throw）</h4>
+<div class="answer-block"><p>C++异常：try{throw E();}catch(E& e){...}。throw抛出异常对象，catch按类型匹配捕获。栈展开过程中局部对象逆序析构。catch(...)捕获任意类型。异常适合处理不可预期的错误（如内存不足），不适合常规控制流。</p></div>
+
+<a id="q2126"></a>
+<h4>37. 栈展开的过程</h4>
+<div class="answer-block"><p>栈展开（Stack Unwinding）：抛出异常后，从抛出点到catch点之间所有栈上的局部对象会逆序析构。析构过程中如果又抛异常且在析构函数中→调用std::terminate直接终止程序。所以析构函数应noexcept，不能抛异常。</p></div>
+
+<a id="q2127"></a>
+<h4>38. 栈展开中最主要的行为</h4>
+<div class="answer-block"><p>栈展开（Stack Unwinding）：抛出异常后，从抛出点到catch点之间所有栈上的局部对象会逆序析构。析构过程中如果又抛异常且在析构函数中→调用std::terminate直接终止程序。所以析构函数应noexcept，不能抛异常。</p></div>
+
+<a id="q2128"></a>
+<h4>39. 析构函数在栈展开中抛出异常的后果</h4>
+<div class="answer-block"><p>栈展开（Stack Unwinding）：抛出异常后，从抛出点到catch点之间所有栈上的局部对象会逆序析构。析构过程中如果又抛异常且在析构函数中→调用std::terminate直接终止程序。所以析构函数应noexcept，不能抛异常。</p></div>
+
+<a id="q2129"></a>
+<h4>40. throw; 和 throw e; 的区别</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2130"></a>
+<h4>41. volatile是什么</h4>
+<div class="answer-block"><p>告诉编译器不要优化对该变量的访问，每次都从内存读取而非寄存器。用于：硬件寄存器映射、多线程共享变量（不保证原子性，仍需同步机制）、信号处理函数中修改的变量。</p></div>
+
+<a id="q2131"></a>
+<h4>42. volatile 在多线程中是否有用</h4>
+<div class="answer-block"><p>告诉编译器不要优化对该变量的访问，每次都从内存读取而非寄存器。用于：硬件寄存器映射、多线程共享变量（不保证原子性，仍需同步机制）、信号处理函数中修改的变量。</p></div>
+
+<a id="q2132"></a>
+<h4>43. std::atomic 的基本用法</h4>
+<div class="answer-block"><p>std::atomic提供原子操作，底层利用CPU的原子指令（如CAS——Compare And Swap）。基本用法：atomic<int> counter{0}; counter.fetch_add(1);原子递增。比mutex轻量，适合简单计数器。注意：atomic不保证内存序，需要配合memory_order控制（默认memory_order_seq_cst最强但最慢）。</p></div>
+
+<a id="q2133"></a>
+<h4>44. 常见的 STL 容器有哪些</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2134"></a>
+<h4>45. 哪些容器有 capacity 的概念</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2135"></a>
+<h4>46. capacity 和size 的区别</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2136"></a>
+<h4>47. reserve 和 resize 的区别</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2137"></a>
+<h4>48. 场景题（多个）：</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2138"></a>
+<h4>49. （1） ：vector中capacity为20，调用reserve(15)会发生什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2139"></a>
+<h4>50. （2） ：vector中capacity为20，调用resize(15)会发生什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2140"></a>
+<h4>51. （3） ：resize(n)会调用析构和构造函数吗</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2141"></a>
+<h4>52. （4） ：resize(n)，n>capacity会发生什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2142"></a>
+<h4>53. vector扩容的流程</h4>
+<div class="answer-block"><p>vector扩容流程：1.检查size==capacity；2.申请新内存（capacity×2或1.5倍）；3.将旧元素移动/拷贝到新内存；4.释放旧内存；5.更新三个指针。扩容时优先移动（如果有移动构造函数），否则拷贝。1.5倍扩容（MSVC）比2倍（GCC）更节省内存。</p></div>
+
+<a id="q2143"></a>
+<h4>54. 扩容时是优先复制还是移动</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2144"></a>
+<h4>55. 扩容的倍数怎么决定的（1.5和2倍）</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2145"></a>
+<h4>56. 为什么按倍数扩容而不直接按固定大小扩容</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2146"></a>
+<h4>57. map 和 unordered_map 的区别</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2147"></a>
+<h4>58. 哈希冲突的常用解决方法</h4>
+<div class="answer-block"><p>哈希冲突解决方法：1.<strong>链地址法</strong>（拉链法）——冲突元素挂链表，unordered_map用此法；2.<strong>开放地址法</strong>——冲突后探测下一个空位（线性探测/二次探测/双重散列）；3.再哈希法——换一个哈希函数。链地址法删除简单，开放地址法删除需标记墓碑。</p></div>
+
+<a id="q2148"></a>
+<h4>59. unordered_map迭代器，指针，引用失效的场景</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2149"></a>
+<h4>60. list 的存储结构</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2150"></a>
+<h4>61. list 插入的时间复杂度</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2151"></a>
+<h4>62. Vector插入的时间复杂度</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2152"></a>
+<h4>63. list插入 和 vector尾插入都是O（1），操作起来哪个快</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2153"></a>
+<h4>64. list 速度慢的开销来源（除了内存对齐）</h4>
+<div class="answer-block"><p>结构体成员按自然边界对齐（int对齐4字节，double对齐8字节），减少CPU访存次数。可以用#pragma pack(n)或alignas调整对齐。对齐可能产生padding空间浪费。</p></div>
+
+<a id="q2154"></a>
+<h4>65. 快排原理</h4>
+<div class="answer-block"><p>快排：选基准pivot→ partition使左边<pivot右边>pivot→递归左右两部分。用两个指针i/j，i从左找>=pivot，j从右找<=pivot，交换。平均O(nlogn)，最坏O(n²)（有序数组选端点pivot）。优化：三路快排处理大量重复元素（<pivot/=pivot/>pivot三区），随机选pivot避免最坏。</p></div>
+
+<a id="q2155"></a>
+<h4>66. 用几个指针</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2156"></a>
+<h4>67. 快速排序最好、最差、平均的时间复杂度</h4>
+<div class="answer-block"><p>选一个pivot，小于的放左边大于的放右边，递归处理左右两部分。平均O(nlogn)，最坏O(n²)（已有序数组选首尾为pivot）。优化：随机pivot、三路快排（大量重复元素）、小数组改插入排序。不稳定排序。</p></div>
+
+<a id="q2157"></a>
+<h4>68. 大量重复元素时如何加速快排（三路快排）</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2158"></a>
+<h4>69. 快速排序是否稳定，什么是稳定</h4>
+<div class="answer-block"><p>选一个pivot，小于的放左边大于的放右边，递归处理左右两部分。平均O(nlogn)，最坏O(n²)（已有序数组选首尾为pivot）。优化：随机pivot、三路快排（大量重复元素）、小数组改插入排序。不稳定排序。</p></div>
+
+<a id="q2159"></a>
+<h4>70. Top-k问题（多个）：</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2160"></a>
+<h4>71. （1） ：怎么解决问题（小根堆）</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2161"></a>
+<h4>72. （2） ：还有吗（快速选择）</h4>
+<div class="answer-block"><p>快速选择算法找第K大：基于partition，每轮选pivot分区后判断K在左侧还是右侧，只递归一侧。平均O(n)，最坏O(n²)。比堆排序O(nlogk)更快当K接近n时。STL的nth_element就是快速选择。</p></div>
+
+<a id="q2162"></a>
+<h4>73. （3） ：k值接近数组容量大小，选哪个</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2163"></a>
+<h4>74. C++ 和 C# 的 DLL 区别</h4>
+<div class="answer-block"><p>DLL（动态链接库）在Windows上是可执行代码和资源的集合。C++ DLL中用__declspec(dllexport)导出函数。DLL比静态库优势：1.共享节省内存；2.更新不用重新编译。项目中FFmpeg用动态链接（.dll+.lib导入库），运行时加载。</p></div>
+
+<a id="q2164"></a>
+<h4>75. 知不知道DLL里有什么</h4>
+<div class="answer-block"><p>DLL（动态链接库）在Windows上是可执行代码和资源的集合。C++ DLL中用__declspec(dllexport)导出函数。DLL比静态库优势：1.共享节省内存；2.更新不用重新编译。项目中FFmpeg用动态链接（.dll+.lib导入库），运行时加载。</p></div>
+
+<a id="q2165"></a>
+<h4>76. 为什么用 OpenCV 采集再转 FFmpeg 编码</h4>
+<div class="answer-block"><p>开源音视频处理库。项目中以库形式集成（非命令行），调用avformat和avcodec API。流程：avformat_open_input打开文件→avformat_find_stream_info获取流信息→avcodec_find_decoder找到解码器→avcodec_open2打开解码器→av_read_frame循环读包→avcodec_send_packet+avcodec_receive_frame解码→sws_scale格式转换→渲染。</p></div>
+
+<a id="q2166"></a>
+<h4>77. OpenCV 采集会有格式转化和拷贝开销，效率是否会降低</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2167"></a>
+<h4>78. 如何优化</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2168"></a>
+<h4>79. FFmpeg用的编码标准</h4>
+<div class="answer-block"><p>开源音视频处理库。项目中以库形式集成（非命令行），调用avformat和avcodec API。流程：avformat_open_input打开文件→avformat_find_stream_info获取流信息→avcodec_find_decoder找到解码器→avcodec_open2打开解码器→av_read_frame循环读包→avcodec_send_packet+avcodec_receive_frame解码→sws_scale格式转换→渲染。</p></div>
+
+<a id="q2169"></a>
+<h4>80. 有没有接触过H.265</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2170"></a>
+<h4>81. 代码题：过滤0交易卖家的礼盒价格排序（原创题）</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2171"></a>
+<h3>上海交大四川研究院一面 c++系统开发实习生30min</h3>
+
+<a id="q2172"></a>
+<h4>1. 自己有什么优势去竞争实习岗位</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2173"></a>
+<h4>2. 你学的最好的课程</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2174"></a>
+<h4>3. 性格有什么特点</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2175"></a>
+<h4>4. 自己有什么爱好</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2176"></a>
+<h4>5. 自己有什么优点</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2177"></a>
+<h4>6. 讲讲C++ 析构函数与拷贝构造函数</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2178"></a>
+<h4>7. C++ 多态的实现原理</h4>
+<div class="answer-block"><p>多态分为静态多态（编译期，函数重载、模板）和动态多态（运行期，虚函数+继承）。动态多态原理：基类有虚函数表（vtable），每个对象有虚表指针（vptr）指向所属类的vtable。调用虚函数时通过vptr找到vtable中对应的函数地址，实现运行期绑定。</p></div>
+
+<a id="q2179"></a>
+<h4>8. 析构函数可以为虚函数吗</h4>
+<div class="answer-block"><p>virtual关键字修饰的成员函数，实现运行期动态绑定。基类指针调用虚函数时，实际执行派生类重写的版本。每个有虚函数的类都有一个虚函数表（vtable），对象内部存有指向vtable的虚表指针（vptr）。</p></div>
+
+<a id="q2180"></a>
+<h4>9. tcp 三次握手</h4>
+<div class="answer-block"><p>1.客户端发SYN=1,seq=x→SYN_SENT；2.服务器回SYN=1,ACK=1,seq=y,ack=x+1→SYN_RCVD；3.客户端发ACK=1,seq=x+1,ack=y+1→ESTABLISHED。三次握手确保双方都能发送和接收。</p></div>
+
+<a id="q2181"></a>
+<h4>10. qt 的信号槽机制</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2182"></a>
+<h4>11. connect 函数的第五个参数</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2183"></a>
+<h4>12. QT 里面对象属于哪个线程是由什么决定的</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2184"></a>
+<h4>13. 视频会议项目的多线程使用</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2185"></a>
+<h4>14. 采集与人脸检测的线程分配</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2186"></a>
+<h3>柠檬微趣 AI面</h3>
+
+<a id="q2187"></a>
+<h4>1. 基类析构函数为什么是虚函数</h4>
+<div class="answer-block"><p>virtual关键字修饰的成员函数，实现运行期动态绑定。基类指针调用虚函数时，实际执行派生类重写的版本。每个有虚函数的类都有一个虚函数表（vtable），对象内部存有指向vtable的虚表指针（vptr）。</p></div>
+
+<a id="q2188"></a>
+<h4>2. new malloc 区别</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2189"></a>
+<h4>3. struct和类的区别还有使用场景</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2190"></a>
+<h4>4. 死锁，怎么避免，能否构造一种场景，没有互斥锁但是两个线程死锁了</h4>
+<div class="answer-block"><p>死锁四个必要条件：互斥、占有并等待、不剥夺、循环等待。预防方法：1.破坏循环等待——资源有序申请；2.破坏占有等待——一次性申请所有资源；3.破坏不剥夺——超时释放。检测：资源分配图找环。</p></div>
+
+<a id="q2191"></a>
+<h4>5. 说一下bfs，dfs</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2192"></a>
+<h4>6. 水盆里有一个小船，小船上放着一个铁块，如果把铁块从船上丢入水中，水盆中的水面是上升还是下降?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2193"></a>
+<h4>7. 服务器会根据玩家登录的先后顺序，从小到大分配玩家D。需要支持两种查询操作:1.查找某个具体ID的玩家信息。2.范围找某段时间内注册的玩家ID信息。你会选择什么数据结构来维护玩家的ID?请说明理由。</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2194"></a>
+<h4>8. 给定一个只包含(和)的字符串，判断括号是否有效?如果字符串包含0I三种括号，如何修改算法?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2195"></a>
+<h4>9. STL中的veclor进行n次pushback，请问每次pushback的平均时间复杂度是多少?给出详细分析。注意n任意大，所以扩容会发生很多次。</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2196"></a>
+<h4>10. tcp的可靠传输</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2197"></a>
+<h3>艾灵 5G通信 后台服务端开发</h3>
+
+<a id="q2198"></a>
+<h4>1. 自我介绍（实习+项目）</h4>
+<div class="answer-block"><p>面试官您好，我叫XX，哈尔滨理工大学电子信息工程专业。有两个核心项目：1.基于C++/Qt/FFmpeg的音视频直播平台，实现了epoll高并发服务端、OpenGL GPU加速渲染、自定义TCP协议和音视频同步；2.AI辅助开发项目，用Vue3+TS实现RAG知识库检索系统，支持FTS5+embedding混合检索。擅长C++和网络编程，日常深度使用AI辅助开发。</p></div>
+
+<a id="q2199"></a>
+<h4>2. TCP和UDP区别 ，分别什么场景会使用</h4>
+<div class="answer-block"><p>TCP面向连接、可靠、有序、字节流、有流量和拥塞控制；UDP无连接、不可靠、无序、数据报文、无控制。TCP适合文件传输/网页，UDP适合实时音视频/DNS。</p></div>
+
+<a id="q2200"></a>
+<h4>3. TCP里面有什么常用的流量控制的算法</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2201"></a>
+<h4>4. 乘3 乘2转化这一块熟悉吗</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2202"></a>
+<h4>5. 服务器这边epoll 和socket建立链接的过程</h4>
+<div class="answer-block"><p>Linux下最高效的IO多路复用。epoll_create创建内核eventpoll（含红黑树和就绪链表），epoll_ctl注册/修改/删除fd（红黑树O(logN)），epoll_wait返回就绪链表O(1)。支持ET边缘触发（只通知一次，需非阻塞读）和LT水平触发（持续通知直到处理完）。</p></div>
+
+<a id="q2203"></a>
+<h4>6. 什么是用户态和内核态</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2204"></a>
+<h4>7. 怎么保证多线程安全</h4>
+<div class="answer-block"><p>多线程访问共享数据时结果正确。实现方式：互斥锁（mutex）、读写锁（读写分离）、自旋锁（忙等待）、原子操作（atomic）、条件变量（同步线程执行顺序）、线程局部存储（thread_local）。</p></div>
+
+<a id="q2205"></a>
+<h4>8. 加锁也会有瓶颈嘛，一般怎么处理</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2206"></a>
+<h4>9. 什么情况下用数组，什么情况下用链表</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2207"></a>
+<h4>10. 进程的映射？进程怎么加载到内存中</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2208"></a>
+<h4>11. 堆和栈怎么在进程排列的</h4>
+<div class="answer-block"><p>栈：编译器自动分配释放，存储局部变量，大小有限（默认1-8MB），后进先出。堆：程序员手动管理（new/delete或malloc/free），空间大但容易碎片化，需要手动管理生命周期。</p></div>
+
+<a id="q2209"></a>
+<h4>12. 一般用chatgpt和cloude做什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2210"></a>
+<h4>13. 智能指针怎么用？主要用在什么方面</h4>
+<div class="answer-block"><p>C++11引入的三种智能指针：<strong>unique_ptr</strong>（独占所有权，不可拷贝可移动）、<strong>shared_ptr</strong>（共享所有权，引用计数，线程安全的计数操作但对象访问不是线程安全的）、<strong>weak_ptr</strong>（不增加引用计数，解决shared_ptr循环引用）。auto_ptr已被废弃（拷贝后原指针置空导致悬空指针）。</p></div>
+
+<a id="q2211"></a>
+<h4>14. C++的类型转化</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2212"></a>
+<h4>15. 说一下信号槽机制</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2213"></a>
+<h4>16. QT的界面操作能在其他线程操作码？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2214"></a>
+<h4>17. 音视频怎么实现同步的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2215"></a>
+<h4>18. 从网络下载，下载的音频突然来了一段很长的音频，怎么保证不会快</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2216"></a>
+<h3>BIGO c++后端开发工程师 1h10min</h3>
+
+<a id="q2217"></a>
+<h4>1. 请简单做自我介绍、介绍你做过的项目。</h4>
+<div class="answer-block"><p>面试官您好，我叫XX，哈尔滨理工大学电子信息工程专业。有两个核心项目：1.基于C++/Qt/FFmpeg的音视频直播平台，实现了epoll高并发服务端、OpenGL GPU加速渲染、自定义TCP协议和音视频同步；2.AI辅助开发项目，用Vue3+TS实现RAG知识库检索系统，支持FTS5+embedding混合检索。擅长C++和网络编程，日常深度使用AI辅助开发。</p></div>
+
+<a id="q2218"></a>
+<h4>2. 你的视频会议项目，客户端采集完数据之后具体怎么发送？是走UDP还是TCP？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2219"></a>
+<h4>3. 你怎么告诉服务端这条连接是音频连接还是视频连接？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2220"></a>
+<h4>4. 是否每条连接都要单独登录？视频包、音频包里面是否携带用户ID？如何做UID映射？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2221"></a>
+<h4>5. 改成三条TCP连接之后卡顿问题是否完全解决？有什么弊端？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2222"></a>
+<h4>6. 项目中怎么做音视频同步？</h4>
+<div class="answer-block"><p>项目以<strong>音频时钟</strong>为同步基准。音频按20ms一帧的固定速率播放，视频帧根据音频时间戳（PTS）对齐：视频PTS超前音频则等待，落后则丢帧追帧。同步阈值设为±40ms，超出范围才调整，避免频繁跳帧。</p></div>
+
+<a id="q2223"></a>
+<h4>7. 音频端是否有缓冲区？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2224"></a>
+<h4>8. 函数内部局部变量是指针，直接把这个指针作为函数返回值返回，外部拿到返回值可以直接使用吗？为什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2225"></a>
+<h4>9. 如果返回局部的 std::string 对象，不是指针，能否正常使用？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2226"></a>
+<h4>10. 如果返回函数内部的静态局部变量，返回之后可以使用吗？直接使用静态局部变量存在什么隐患？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2227"></a>
+<h4>11. C语言 strlen 函数，在网络收发数据场景下能不能用来判断数据长度？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2228"></a>
+<h4>12. TCP是字节流没有消息边界，调用 recv 每次收到N字节，如何判断收到一条完整消息？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2229"></a>
+<h4>13. 按照「4字节长度+消息体」自定义协议，解析数据包的时候需要做哪些校验？</h4>
+<div class="answer-block"><p>项目自定义二进制应用层协议：<strong>包头</strong>（4字节包体长度+2字节消息类型+2字节保留字段）+<strong>包体</strong>（业务数据）。包头固定8字节，接收端先读包头解析出包体长度，再按长度读取完整包体，解决了TCP粘包/半包问题。</p></div>
+
+<a id="q2230"></a>
+<h4>14. 收到数据之后，完整的解析处理流程是什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2231"></a>
+<h4>15. 多线程场景下，如何保证共享变量的线程安全？（面试者提到加锁）</h4>
+<div class="answer-block"><p>多线程访问共享数据时结果正确。实现方式：互斥锁（mutex）、读写锁（读写分离）、自旋锁（忙等待）、原子操作（atomic）、条件变量（同步线程执行顺序）、线程局部存储（thread_local）。</p></div>
+
+<a id="q2232"></a>
+<h4>16. 如果不使用锁，还有哪些方式实现线程安全？</h4>
+<div class="answer-block"><p>多线程访问共享数据时结果正确。实现方式：互斥锁（mutex）、读写锁（读写分离）、自旋锁（忙等待）、原子操作（atomic）、条件变量（同步线程执行顺序）、线程局部存储（thread_local）。</p></div>
+
+<a id="q2233"></a>
+<h4>17. 如果用UDP实现音视频，如何处理丢包、乱序、重复包？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2234"></a>
+<h4>18. 使用序列号解决UDP乱序丢包，序列号具体如何处理？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2235"></a>
+<h4>19. 使用16位序列号，序列号计数溢出回环之后，如何判断两个序列号的先后顺序？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2236"></a>
+<h4>20. 编程需求：实现生产者消费者模型。多个生产者线程往共享队列投递二进制网络数据；消费者线程从队列取出数据，调用Linux的 send 接口把数据发送出去；重点处理send调用产生的各类错误码。不需要完整可运行工程，写出核心逻辑即可。</h4>
+<div class="answer-block"><p>生产者消费者模型：共享队列+mutex+两个condition_variable（not_full和not_empty）。生产者：lock→while(queue满)not_full.wait()→入队→not_empty.notify()。消费者：lock→while(queue空)not_empty.wait()→出队→not_full.notify()。注意用while不用if防虚假唤醒。</p></div>
+
+<a id="q2237"></a>
+<h4>21. 总共有多少轮面试？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2238"></a>
+<h4>22. 本次面试结果多久会通知？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2239"></a>
+<h4>23. 如果想更匹配岗位，后续需要重点学习哪些内容？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2240"></a>
+<h3>豪迈 AI面试 25min</h3>
+
+<a id="q2241"></a>
+<h4>1. 首先，请做个简单的自我介绍，说说你的姓名、年龄、学校、专业、项目、实习经验、自我评价等，谢谢。</h4>
+<div class="answer-block"><p>面试官您好，我叫XX，哈尔滨理工大学电子信息工程专业。有两个核心项目：1.基于C++/Qt/FFmpeg的音视频直播平台，实现了epoll高并发服务端、OpenGL GPU加速渲染、自定义TCP协议和音视频同步；2.AI辅助开发项目，用Vue3+TS实现RAG知识库检索系统，支持FTS5+embedding混合检索。擅长C++和网络编程，日常深度使用AI辅助开发。</p></div>
+
+<a id="q2242"></a>
+<h4>2. 请用英语正常语速朗读下文，听到滴声后即可开始。</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2243"></a>
+<h4>3. 请用英语回答以下问题。面试官读完题目后可直接开始回答。</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2244"></a>
+<h4>4. Share a time when you had to find a different way to finish something, and explain why the first way did not work.</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2245"></a>
+<h4>5. 你最近碰上过让人觉得挺死板，甚至没啥必要的规定吗？请结合亲身经历说说当时你是怎么把事情完成的，过程中有多少是按规定执行的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2246"></a>
+<h4>6. 好的，明白了。那我很好奇，你独立完成了个人财务管理 AI 全栈项目，能分享一下当时为自己设定的长期目标，以及如何一步步推进并克服关键难点的吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2247"></a>
+<h4>7. 打破了传统记账逻辑，能否分享一个具体例子，说明你如何针对原有做法效果平平的问题，设计并落地一项创新尝试，结果带来了哪些可衡量的提升？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2248"></a>
+<h4>8. 后端预聚合来提升分析准确性和系统效率。这种对交付质量的主动优化很清晰。能否分享近两年你最满意的一次高质量交付？具体做了什么？结果如何？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2249"></a>
+<h4>9. 过程中遇到了多并发、网络延迟等挑战。能否具体说说当时最难啃的部分是什么？你如何一步步突破，最终达成了什么可衡量的结果？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2250"></a>
+<h4>10. 您可接受的工作地点。</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2251"></a>
+<h3>去哪儿 AI面试</h3>
+
+<a id="q2252"></a>
+<h4>1. 自我介绍</h4>
+<div class="answer-block"><p>面试官您好，我叫XX，哈尔滨理工大学电子信息工程专业。有两个核心项目：1.基于C++/Qt/FFmpeg的音视频直播平台，实现了epoll高并发服务端、OpenGL GPU加速渲染、自定义TCP协议和音视频同步；2.AI辅助开发项目，用Vue3+TS实现RAG知识库检索系统，支持FTS5+embedding混合检索。擅长C++和网络编程，日常深度使用AI辅助开发。</p></div>
+
+<a id="q2253"></a>
+<h4>2. HTTPS访问，TCP三次握手和TLS握手过程</h4>
+<div class="answer-block"><p>1.客户端发SYN=1,seq=x→SYN_SENT；2.服务器回SYN=1,ACK=1,seq=y,ack=x+1→SYN_RCVD；3.客户端发ACK=1,seq=x+1,ack=y+1→ESTABLISHED。三次握手确保双方都能发送和接收。</p></div>
+
+<a id="q2254"></a>
+<h4>3. TLS 0RTT存在哪些风险</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2255"></a>
+<h4>4. 面向对象设计，什么场景需要使用继承</h4>
+<div class="answer-block"><p>C++继承使用场景：1.is-a关系（狗是动物）；2.代码复用（派生类复用基类实现）；3.多态基础（基类指针调用虚函数实现动态绑定）。如果只需要复用部分代码而非is-a关系，优先用<strong>组合</strong>（has-a）而非继承，避免继承不需要的成员。</p></div>
+
+<a id="q2256"></a>
+<h4>5. 仅有公共工具函数，无is‑a关系，为什么不推荐继承复用代码</h4>
+<div class="answer-block"><p>C++继承使用场景：1.is-a关系（狗是动物）；2.代码复用（派生类复用基类实现）；3.多态基础（基类指针调用虚函数实现动态绑定）。如果只需要复用部分代码而非is-a关系，优先用<strong>组合</strong>（has-a）而非继承，避免继承不需要的成员。</p></div>
+
+<a id="q2257"></a>
+<h4>6. Java NIO IO多路复用如何实现</h4>
+<div class="answer-block"><p>一个线程同时监听多个fd，哪个就绪处理哪个。避免每连接一线程的开销。模型：select（有1024限制，全量遍历）、poll（无限制但仍遍历）、epoll（红黑树+就绪链表，最高效）。</p></div>
+
+<a id="q2258"></a>
+<h4>7. 中大型RN应用状态管理选型以及各自适用规模</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2259"></a>
+<h4>8. RN高频实时共享状态（直播消息、在线状态）如何调整状态管理方案</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2260"></a>
+<h4>9. Android实现Activity生命周期埋点监控</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2261"></a>
+<h4>10. ActivityLifecycleCallbacks如何过滤第三方、系统Activity，防止埋点污染</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2262"></a>
+<h4>11. 横竖屏重建、半透明弹窗遮挡，如何正确统计Activity页面停留时长</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2263"></a>
+<h4>12. Android纯代码创建UI和XML创建UI优缺点以及如何选择</h4>
+<div class="answer-block"><p>优点：动手能力强，独立完成两个完整项目从0到1；学习能力强，电子信息专业自学C++/Qt/FFmpeg/AI开发。缺点：有时过于追求技术细节，在项目时间管理上需要更好的优先级判断。正在通过制定周计划改善。</p></div>
+
+<a id="q2264"></a>
+<h4>13. 服务端驱动的动态表单，选择哪种UI创建方式，原因</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2265"></a>
+<h4>14. 线上榜单页面展示异常，一步步定位根因</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2266"></a>
+<h4>15. 榜单异常，除前后端业务逻辑外还需要排查哪些因素</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2267"></a>
+<h4>16. 如何评估原生Qt控件不满足文件列表展示操作需求</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2268"></a>
+<h4>17. Qt项目开发中使用了哪些AI/大模型工具支撑开发流程</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2269"></a>
+<h3>CVTE—应用软件开发工程师—hr面 20mins</h3>
+
+<a id="q2270"></a>
+<h4>1. 你现在在哪里啊?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2271"></a>
+<h4>2. 你什么时候开学?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2272"></a>
+<h4>3. 那你最近自己在忙些什么呢?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2273"></a>
+<h4>4. 找工作进展怎么样?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2274"></a>
+<h4>5. 都是什么岗位?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2275"></a>
+<h4>6. 那你自己对于毕业后第一份工作有什么期望和要求?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2276"></a>
+<h4>7. 对于岗位内容、薪资待遇、工作城市有什么期望?期望薪资大概什么范围?</h4>
+<div class="answer-block"><p>期望日薪200-300元/天（实习），或月薪6000-8000元。具体可根据公司标准和面试表现调整。更看重的是平台和学习机会。</p></div>
+
+<a id="q2277"></a>
+<h4>8. 工作岗位你希望做什么?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2278"></a>
+<h4>9. 你过往有实习经验吗?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2279"></a>
+<h4>10. 你有读研或者考公的计划吗?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2280"></a>
+<h4>11. 你在学校学习成绩怎么样?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2281"></a>
+<h4>12. 你做过觉得最有挑战的技术项目是什么?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2282"></a>
+<h4>13. 那对你来说最大难点是什么?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2283"></a>
+<h4>14. 最后有找到什么解决的方法吗?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2284"></a>
+<h4>15. 做项目有和其他人一起联合开发的吗?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2285"></a>
+<h4>16. 你觉得过去压力最大的阶段在什么时候?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2286"></a>
+<h4>17. 那段时间对你有什么影响吗?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2287"></a>
+<h4>18. 你日常在学校的时间是怎么安排的?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2288"></a>
+<h4>19. 大四课还多吗?大四你自己有什么样的计划?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2289"></a>
+<h4>20. 未来10年,你比较希望的理想工作和生活是什么样?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2290"></a>
+<h4>21. 家在哪?父母对你未来有什么建议或者期望?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2291"></a>
+<h4>22. 爸妈退休了吗?他们在做什么工作?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2292"></a>
+<h4>23. 学这个技术是受谁的影响?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2293"></a>
+<h4>24. 广州距离哈尔滨很远,爸妈对此有没有什么建议?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2294"></a>
+<h4>25. 你平时有什么兴趣爱好?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2295"></a>
+<h4>26. 在学校参加过什么社团、组织?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2296"></a>
+<h4>27. 现在同学们找工作进度怎么样?大家之间会做交流吗?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2297"></a>
+<h4>28. 宿舍情况怎么样?宿舍多少人考研多少人找工作?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2298"></a>
+<h4>29. 那你自己为什么没有考虑考研?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2299"></a>
+<h4>30. 当前觉得自己哪些地方需要改善?</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2300"></a>
+<h3>希迪智驾</h3>
+
+<a id="q2301"></a>
+<h4>1. 简要介绍一下两个项目；</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2302"></a>
+<h4>2. 注册之后你这个服务端怎么就是你这个数据怎么保存呢？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2303"></a>
+<h4>3. 密码怎么保存呢？是明文吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2304"></a>
+<h4>4. 为什么加盐？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2305"></a>
+<h4>5. 彩虹表是什么？为什么可以破解？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2306"></a>
+<h4>6. MD5加盐又一定安全吗？怎么解决呢？那为什么要用呢？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2307"></a>
+<h4>7. 自定义协议怎么设计的？消息头？消息体？业务数据？</h4>
+<div class="answer-block"><p>项目自定义二进制应用层协议：<strong>包头</strong>（4字节包体长度+2字节消息类型+2字节保留字段）+<strong>包体</strong>（业务数据）。包头固定8字节，接收端先读包头解析出包体长度，再按长度读取完整包体，解决了TCP粘包/半包问题。</p></div>
+
+<a id="q2308"></a>
+<h4>8. 怎么知道粘包了？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2309"></a>
+<h4>9. 线程之间的同步方式？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2310"></a>
+<h4>10. QT信号槽的实现原理是什么？怎么绑定编译？中间有哪些步骤导致信号跟槽绑定？</h4>
+<div class="answer-block"><p>Qt信号槽底层通过<strong>MOC（Meta-Object Compiler）</strong>实现：MOC扫描含Q_OBJECT的类，生成含信号分发表的moc_xxx.cpp文件。emit信号时通过QMetaObject::activate遍历连接列表，调用槽函数。连接类型决定了是同步还是异步调用。</p></div>
+
+<a id="q2311"></a>
+<h4>11. IO多路复用？是否有针对epoll的事件触发和惊群特点进行一些特定的处理？</h4>
+<div class="answer-block"><p>Linux下最高效的IO多路复用。epoll_create创建内核eventpoll（含红黑树和就绪链表），epoll_ctl注册/修改/删除fd（红黑树O(logN)），epoll_wait返回就绪链表O(1)。支持ET边缘触发（只通知一次，需非阻塞读）和LT水平触发（持续通知直到处理完）。</p></div>
+
+<a id="q2312"></a>
+<h3>薮猫科技 客户端研发 一面30min</h3>
+
+<a id="q2313"></a>
+<h4>1. lambda的解释</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2314"></a>
+<h4>2. 常用设计模式</h4>
+<div class="answer-block"><p>常用设计模式：创建型——单例、工厂、建造者；结构型——适配器、代理、装饰器；行为型——观察者、策略、责任链、状态机。项目中用单例（NetworkManager）、策略（编码器选择）、观察者（信号槽）、中介者（服务端消息分发）。</p></div>
+
+<a id="q2315"></a>
+<h4>3. TCP 粘包、拆包</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2316"></a>
+<h4>4. 常用的抓包工具</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2317"></a>
+<h4>5. 抓包通常在客户端还是服务端</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2318"></a>
+<h4>6. 同步 vs 异步</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2319"></a>
+<h4>7. 现有情况：A执行完，开启分支跑B，当前线程直接跑C → 大概率时序 A C B，需求改成严格 A → B → C，C必须等B做完。</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2320"></a>
+<h4>8. Qt实现桌面水印</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2321"></a>
+<h4>9. 怎么保证AI生成代码不跑偏</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2322"></a>
+<h3>上海创景c++测试实习生</h3>
+
+<a id="q2323"></a>
+<h4>1. 有没有提前了解过该岗位的工作内容</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2324"></a>
+<h4>2. 你未来的职业规划是什么？</h4>
+<div class="answer-block"><p>短期（1-2年）：深入C++后端/音视频方向，积累企业级项目经验。中期（3-5年）：成为音视频/流媒体领域技术骨干，能独立设计和优化系统架构。长期：向技术专家或架构师发展。目前最想整理的方向是音视频编解码深入和分布式系统设计。</p></div>
+
+<a id="q2325"></a>
+<h4>3. 学校里有没有学过软件工程或者其他和测试相关的课程</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2326"></a>
+<h4>4. 讲一下从源代码到可执行程序过程中，编译器具体做了什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2327"></a>
+<h4>5. 结构体，联合体，枚举的区别</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2328"></a>
+<h4>6. 如果结构体中有3种类型的成员，int,char,double,它的内存分布是什么样的</h4>
+<div class="answer-block"><p>struct内存分布遵循对齐规则：int a; char c; double d; 在64位系统中，a占0-3，c占4，对齐到8的倍数，d占8-15，总大小16（8的倍数）。用#pragma pack(1)可取消对齐。对齐是为了CPU访问效率（未对齐访问可能触发异常或变慢）。</p></div>
+
+<a id="q2329"></a>
+<h4>7. static修饰局部变量有什么作用，不加又有什么区别</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2330"></a>
+<h4>8. 问一个c++的问题，如果说父类和子类的继承都已经实现好了，怎么再去用代码实现多态呢？</h4>
+<div class="answer-block"><p>多态分为静态多态（编译期，函数重载、模板）和动态多态（运行期，虚函数+继承）。动态多态原理：基类有虚函数表（vtable），每个对象有虚表指针（vptr）指向所属类的vtable。调用虚函数时通过vptr找到vtable中对应的函数地址，实现运行期绑定。</p></div>
+
+<a id="q2331"></a>
+<h4>9. 讲一下vector,list,map的底层是什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2332"></a>
+<h4>10. 对于删除元素操作，list和map时间复杂度分别是多少</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2333"></a>
+<h4>11. 开发过程中用的什么ai工具，是怎么使用的</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2334"></a>
+<h3>汉朔科技 HR面</h3>
+
+<a id="q2335"></a>
+<h4>1. 实习地点可以接受吗</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2336"></a>
+<h4>2. 能来实习多久</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2337"></a>
+<h4>3. 本科院校，成绩排名</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2338"></a>
+<h4>4. 有没有挂科</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2339"></a>
+<h4>5. 介绍一下你的优缺点</h4>
+<div class="answer-block"><p>优点：动手能力强，独立完成两个完整项目从0到1；学习能力强，电子信息专业自学C++/Qt/FFmpeg/AI开发。缺点：有时过于追求技术细节，在项目时间管理上需要更好的优先级判断。正在通过制定周计划改善。</p></div>
+
+<a id="q2340"></a>
+<h4>6. 你觉得你抗压吗</h4>
+<div class="answer-block"><p>认为自己抗压能力强。项目开发中遇到过音视频同步难题、网络粘包问题等，都是在压力下通过查阅资料、调试解决的。压力下更能集中注意力。</p></div>
+
+<a id="q2341"></a>
+<h4>7. 你是E人还是I人</h4>
+<div class="answer-block"><p>偏I人，但在工作中需要沟通时能够主动表达。技术讨论中喜欢清晰简洁地表达观点。团队协作中更倾向于"先做再说"，用结果说话。</p></div>
+
+<a id="q2342"></a>
+<h4>8. 与人的沟通能力如何</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2343"></a>
+<h4>9. 硕士论文写完了吗</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2344"></a>
+<h4>10. 为什么没有去实习</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2345"></a>
+<h4>11. 需要值夜班可以接受吗</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2346"></a>
+<h4>12. 实习薪资可以接受吗</h4>
+<div class="answer-block"><p>期望日薪200-300元/天（实习），或月薪6000-8000元。具体可根据公司标准和面试表现调整。更看重的是平台和学习机会。</p></div>
+
+<a id="q2347"></a>
+<h4>13. 去公司具体的业务安排</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2348"></a>
+<h4>14. 夜班的具体情况</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2349"></a>
+<h4>15. 实习多久可以转正</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2350"></a>
+<h3>中科星图—C++工程师—20mins</h3>
+
+<a id="q2351"></a>
+<h4>1. 简述项目整体流程</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2352"></a>
+<h4>2. TCP粘包问题如何解决？</h4>
+<div class="answer-block"><p>TCP是字节流协议，没有消息边界，多个包可能合并成一个大包发送。解决方法：1.固定长度包头（包体长度字段）；2.特殊分隔符；3.固定长度包体。项目中用自定义二进制协议，包头含包体长度字段。</p></div>
+
+<a id="q2353"></a>
+<h4>3. 数据如何进行打包？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2354"></a>
+<h4>4. debug和release的区别</h4>
+<div class="answer-block"><p>Debug版本包含调试信息，不优化，有断言和调试堆检查，运行慢但便于调试。Release版本去掉调试信息，开启O2优化，运行快体积小。项目开发时用Debug定位问题，发布用Release。注意Release下未初始化变量的行为可能不同。</p></div>
+
+<a id="q2355"></a>
+<h4>5. connect第五个参数是什么</h4>
+<div class="answer-block"><p>Qt::ConnectionType第五个参数：Qt::DirectConnection（同线程直接调用）、Qt::QueuedConnection（投递到接收线程事件队列，异步）、Qt::BlockingQueuedConnection（阻塞等待）、Qt::AutoConnection（默认，同线程Direct，跨线程Queued）、Qt::UniqueConnection（防重复连接）。</p></div>
+
+<a id="q2356"></a>
+<h4>6. 说说你知道的Qt有哪些控件？</h4>
+<div class="answer-block"><p>Qt常用控件：QPushButton（按钮）、QLabel（标签）、QLineEdit（输入框）、QTextEdit/QPlainTextEdit（文本编辑）、QComboBox（下拉框）、QListWidget（列表）、QTableWidget/QTableView（表格）、QSlider（滑块）、QProgressBar（进度条）、QGroupBox（分组框）、QTabWidget（标签页）。</p></div>
+
+<a id="q2357"></a>
+<h4>7. QMainWindow和QWidget的区别？</h4>
+<div class="answer-block"><p>QMainWindow是QWidget的子类，提供了菜单栏（menuBar）、工具栏（ToolBar）、状态栏（StatusBar）、停靠区域（DockWidget）的框架。QWidget是最基础的窗口组件。如果不需要菜单/工具栏/状态栏，直接用QWidget更轻量。</p></div>
+
+<a id="q2358"></a>
+<h4>8. Map的key可以重复吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2359"></a>
+<h4>9. Map中如果键值一样该怎么处理？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2360"></a>
+<h4>10. 信号与槽机制？</h4>
+<div class="answer-block"><p>Qt信号槽机制：对象状态变化时emit信号，连接的槽函数被调用。连接方式：connect(sender, SIGNAL(signal), receiver, SLOT(slot))或函数指针形式。底层通过MOC生成的元对象信息实现：信号→QMetaObject::activate→遍历连接列表→调用槽函数。</p></div>
+
+<a id="q2361"></a>
+<h4>11. QThread的使用？</h4>
+<div class="answer-block"><p>QThread本质是一个线程管理类。对象的线程归属由<strong>事件循环所在线程</strong>决定，即谁调用了exec()或在哪里new了对象。跨线程信号槽时，如果用QueuedConnection，槽函数在接收对象所属线程的事件循环中执行。界面操作不能在非主线程执行，会崩溃。</p></div>
+
+<a id="q2362"></a>
+<h4>12. 说一下单例模式</h4>
+<div class="answer-block"><p>保证一个类只有一个实例，提供全局访问点。实现：构造函数私有、静态实例指针、静态获取方法。懒汉式（第一次调用时创建，需要加锁或双重检查锁定保证线程安全）、饿汉式（程序启动时创建，天然线程安全）。C++11后局部静态变量是线程安全的（Meyers'单例）。</p></div>
+
+<a id="q2363"></a>
+<h4>13. 单例模式的书写规范？</h4>
+<div class="answer-block"><p>保证一个类只有一个实例，提供全局访问点。实现：构造函数私有、静态实例指针、静态获取方法。懒汉式（第一次调用时创建，需要加锁或双重检查锁定保证线程安全）、饿汉式（程序启动时创建，天然线程安全）。C++11后局部静态变量是线程安全的（Meyers'单例）。</p></div>
+
+<a id="q2364"></a>
+<h3>波克城市—客户端开发工程师—30mins</h3>
+
+<a id="q2365"></a>
+<h4>1. 讲一下项目有哪些功能，以及怎么做的</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2366"></a>
+<h4>2. 这个项目大概做多长时间</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2367"></a>
+<h4>3. 为什么要用OpenGL</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2368"></a>
+<h4>4. 为什么不用Qt原本的组件</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2369"></a>
+<h4>5. 图片为什么会占用CPU？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2370"></a>
+<h4>6. 从视频流到渲染，整个阶段是怎么实现的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2371"></a>
+<h4>7. 录制上传经过哪些流程？怎么给到服务器的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2372"></a>
+<h4>8. 如果上传过程中因网络中断了，后续该怎么处理？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2373"></a>
+<h4>9. 拿到数据块后，服务器怎么组装并存储这个数据？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2374"></a>
+<h4>10. 怎么校验用户上传的文件已经完整</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2375"></a>
+<h4>11. 服务是长连接还是短连接？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2376"></a>
+<h4>12. 为什么用EPOLL加线程池能处理高并发</h4>
+<div class="answer-block"><p>Linux下最高效的IO多路复用。epoll_create创建内核eventpoll（含红黑树和就绪链表），epoll_ctl注册/修改/删除fd（红黑树O(logN)），epoll_wait返回就绪链表O(1)。支持ET边缘触发（只通知一次，需非阻塞读）和LT水平触发（持续通知直到处理完）。</p></div>
+
+<a id="q2377"></a>
+<h4>13. 线程池和队列具体怎么处理请求，是先进队列还是先进线程池</h4>
+<div class="answer-block"><p>项目线程池设计：核心线程数=CPU核数（4），最大线程数200（IO密集型任务线程数可以远大于CPU核数）。任务队列用mutex+condition_variable实现。线程池复用线程避免频繁创建销毁，配合epoll实现高并发。</p></div>
+
+<a id="q2378"></a>
+<h4>14. 线程具体处理什么内容？包含视频上传请求吗？</h4>
+<div class="answer-block"><p>项目上传采用分块传输：视频文件→按固定大小（如1MB）切片→每片携带序号和总数→逐块TCP发送→服务端按序号组装。上传完成后计算文件MD5校验完整性。断网中断后可从断点续传。</p></div>
+
+<a id="q2379"></a>
+<h4>15. 是用一个线程处理一个上传任务吗？如果是，怎样建立一对一关系？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2380"></a>
+<h4>16. 有没有用到信号和槽做设计？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2381"></a>
+<h4>17. 如果用QT实现"合成棋盘"，你的实现思路是怎样的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2382"></a>
+<h4>18. 棋盘的数据应该怎么表示？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2383"></a>
+<h4>19. 怎么快速计算某个物品是否属于某个订单里的物品？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2384"></a>
+<h3>瑞多思医疗—C++软件工程师—20mins</h3>
+
+<a id="q2385"></a>
+<h4>1. 堆跟栈内存的区别？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2386"></a>
+<h4>2. 深拷贝和浅拷贝的区别？</h4>
+<div class="answer-block"><p>浅拷贝：逐字节复制，指针成员共享同一块内存→双重释放风险。深拷贝：复制时为新对象分配独立内存，拷贝内容而非地址。自定义拷贝构造函数和赋值运算符实现深拷贝。</p></div>
+
+<a id="q2387"></a>
+<h4>3. 虚函数和纯虚函数的区别</h4>
+<div class="answer-block"><p>virtual关键字修饰的成员函数，实现运行期动态绑定。基类指针调用虚函数时，实际执行派生类重写的版本。每个有虚函数的类都有一个虚函数表（vtable），对象内部存有指向vtable的虚表指针（vptr）。</p></div>
+
+<a id="q2388"></a>
+<h4>4. unique_ptr和shared_ptr的使用场景？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2389"></a>
+<h4>5. TCP跟UDP的区别？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2390"></a>
+<h4>6. TCP当中的三次握手以及四次挥手过程？</h4>
+<div class="answer-block"><p>1.客户端发SYN=1,seq=x→SYN_SENT；2.服务器回SYN=1,ACK=1,seq=y,ack=x+1→SYN_RCVD；3.客户端发ACK=1,seq=x+1,ack=y+1→ESTABLISHED。三次握手确保双方都能发送和接收。</p></div>
+
+<a id="q2391"></a>
+<h4>7. 这两个项目开发的目的是什么，是什么契机做这两个项目？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2392"></a>
+<h4>8. 开发时有参考哪个APP或者应用吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2393"></a>
+<h4>9. 了解参考APP后，如何拆解它的底层架构？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2394"></a>
+<h4>10. CS架构的系统，最基本的组成应该有哪些？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2395"></a>
+<h4>11. 视频数据储存有哪些难点？视频上传过程中遇到哪些难点？</h4>
+<div class="answer-block"><p>项目上传采用分块传输：视频文件→按固定大小（如1MB）切片→每片携带序号和总数→逐块TCP发送→服务端按序号组装。上传完成后计算文件MD5校验完整性。断网中断后可从断点续传。</p></div>
+
+<a id="q2396"></a>
+<h4>12. 大容量视频资源上传时，网络波动如何处理？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2397"></a>
+<h4>13. 上传过程有没有涉及资源加密解密、压缩解压过程？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2398"></a>
+<h4>14. 视频上传时如何压缩，讲具体实现？</h4>
+<div class="answer-block"><p>项目上传采用分块传输：视频文件→按固定大小（如1MB）切片→每片携带序号和总数→逐块TCP发送→服务端按序号组装。上传完成后计算文件MD5校验完整性。断网中断后可从断点续传。</p></div>
+
+<a id="q2399"></a>
+<h4>15. 客户端从服务器获取视频，如何保障播放流畅度？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2400"></a>
+<h4>16. 后台的视频资源是怎么持久化储存的，如何快速入库？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2401"></a>
+<h4>17. C++有哪些设计模式，以及对应的使用场景？</h4>
+<div class="answer-block"><p>常用设计模式：创建型——单例、工厂、建造者；结构型——适配器、代理、装饰器；行为型——观察者、策略、责任链、状态机。项目中用单例（NetworkManager）、策略（编码器选择）、观察者（信号槽）、中介者（服务端消息分发）。</p></div>
+
+<a id="q2402"></a>
+<h4>18. QT的优缺点？</h4>
+<div class="answer-block"><p>优点：动手能力强，独立完成两个完整项目从0到1；学习能力强，电子信息专业自学C++/Qt/FFmpeg/AI开发。缺点：有时过于追求技术细节，在项目时间管理上需要更好的优先级判断。正在通过制定周计划改善。</p></div>
+
+<a id="q2403"></a>
+<h4>19. 简述QT的元对象系统</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2404"></a>
+<h4>20. 给到字符串类型的类名，如何实例化这个类？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2405"></a>
+<h3>Manteia公司一面问题</h3>
+
+<a id="q2406"></a>
+<h4>1. 你在工作或者生活中有特别信赖的人吗？为什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2407"></a>
+<h4>2. 你认为自己是一个严谨的人吗？为什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2408"></a>
+<h4>3. 自己私下学习过相关知识得到实现的吗？讲一讲</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2409"></a>
+<h4>4. 讲讲多态</h4>
+<div class="answer-block"><p>多态分为静态多态（编译期，函数重载、模板）和动态多态（运行期，虚函数+继承）。动态多态原理：基类有虚函数表（vtable），每个对象有虚表指针（vptr）指向所属类的vtable。调用虚函数时通过vptr找到vtable中对应的函数地址，实现运行期绑定。</p></div>
+
+<a id="q2410"></a>
+<h4>5. 有没有帮助同学解决了什么问题？讲一讲</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2411"></a>
+<h4>6. 你觉得自己是不是一个有效率的人。</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2412"></a>
+<h4>7. 工作试用期在厦门，1个月试用期==1.5实习期</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2413"></a>
+<h3>米哈游客户端工具开发 一面</h3>
+
+<a id="q2414"></a>
+<h4>1. 你这边有接触过游戏开发的一些东西吗？比如一些游戏引擎之类的。</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2415"></a>
+<h4>2. 你有一个短视频直播项目，里面提到用 OpenGL 去实现视频的 GPU 加速渲染，这个具体是怎么做的？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2416"></a>
+<h4>3. 你了解 OpenGL 中 Shader（着色器）、双缓冲这些概念吗？</h4>
+<div class="answer-block"><p>OpenGL Shader分顶点着色器（处理顶点坐标变换）和片元着色器（处理像素颜色）。项目中片元着色器负责YUV到RGB的颜色空间转换，通过采样三个YUV纹理（Y/U/V分量）并按公式计算RGB输出。</p></div>
+
+<a id="q2417"></a>
+<h4>4. 你在设计数据结构可视化工具时，是怎么用 AI 辅助开发的？用到了 AI 的哪些功能？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2418"></a>
+<h4>5. 如果有一些数据或文档，你会怎么给这些文档构建一个 RAG 检索功能？</h4>
+<div class="answer-block"><p>项目RAG架构：<strong>三路混合检索</strong>——FTS5全文索引（关键词精确匹配）+ embedding向量检索（语义相似度）+ 元数据过滤。用户提问后三路并行检索，结果按RRF（Reciprocal Rank Fusion）融合排序，取Top-K拼接为上下文送入大模型生成回答。解决了纯关键词检索漏召回和纯向量检索精度不足的问题。</p></div>
+
+<a id="q2419"></a>
+<h4>6. C++ 的三大特性是什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2420"></a>
+<h4>7. 你刚才说的这些特性（封装、继承、多态）是属于 C++ 特有的特性，还是其他面向对象语言（如 Java）也有？</h4>
+<div class="answer-block"><p>多态分为静态多态（编译期，函数重载、模板）和动态多态（运行期，虚函数+继承）。动态多态原理：基类有虚函数表（vtable），每个对象有虚表指针（vptr）指向所属类的vtable。调用虚函数时通过vptr找到vtable中对应的函数地址，实现运行期绑定。</p></div>
+
+<a id="q2421"></a>
+<h4>8. C++ 有哪些智能指针？</h4>
+<div class="answer-block"><p>C++11引入的三种智能指针：<strong>unique_ptr</strong>（独占所有权，不可拷贝可移动）、<strong>shared_ptr</strong>（共享所有权，引用计数，线程安全的计数操作但对象访问不是线程安全的）、<strong>weak_ptr</strong>（不增加引用计数，解决shared_ptr循环引用）。auto_ptr已被废弃（拷贝后原指针置空导致悬空指针）。</p></div>
+
+<a id="q2422"></a>
+<h4>9. 智能指针的作用分别是什么？</h4>
+<div class="answer-block"><p>C++11引入的三种智能指针：<strong>unique_ptr</strong>（独占所有权，不可拷贝可移动）、<strong>shared_ptr</strong>（共享所有权，引用计数，线程安全的计数操作但对象访问不是线程安全的）、<strong>weak_ptr</strong>（不增加引用计数，解决shared_ptr循环引用）。auto_ptr已被废弃（拷贝后原指针置空导致悬空指针）。</p></div>
+
+<a id="q2423"></a>
+<h4>10. 从游戏开发或游戏设置的角度，在软件层面和硬件层面，你觉得在玩某些游戏时，什么场景或功能会对 CPU、GPU 或内存的性能消耗比较高？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2424"></a>
+<h4>11. 在画面设置、硬件条件都相同的情况下，在游戏进程中，你觉得哪些场景或功能对 CPU 或 GPU 的消耗会比较高？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2425"></a>
+<h4>12. 你有学习过 3D 数学的相关知识吗？比如向量的点乘、叉乘等运算，以及它们在游戏中的应用？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2426"></a>
+<h4>13. 你熟悉 STL 的 vector、stack、map，如果随机访问其中一个元素，时间复杂度分别是什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2427"></a>
+<h4>14. 在上述这几个容器中，在中间插入一个元素的时间复杂度分别是什么？原因是什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2428"></a>
+<h3>百度一面 后端开发</h3>
+
+<a id="q2429"></a>
+<h4>1. 自我介绍？</h4>
+<div class="answer-block"><p>面试官您好，我叫XX，哈尔滨理工大学电子信息工程专业。有两个核心项目：1.基于C++/Qt/FFmpeg的音视频直播平台，实现了epoll高并发服务端、OpenGL GPU加速渲染、自定义TCP协议和音视频同步；2.AI辅助开发项目，用Vue3+TS实现RAG知识库检索系统，支持FTS5+embedding混合检索。擅长C++和网络编程，日常深度使用AI辅助开发。</p></div>
+
+<a id="q2430"></a>
+<h4>2. 自研Agent是不是自己训练了模型？</h4>
+<div class="answer-block"><p>Agent = 大模型 + 工具调用 + 规划能力。大模型只做文本生成，Agent能理解用户意图→拆解任务→调用外部工具（搜索、计算、API）→整合结果生成最终回答。项目中Agent调用FTS5检索、embedding检索、大模型生成三个工具，按预设流程编排。</p></div>
+
+<a id="q2431"></a>
+<h4>3. C++多态怎么实现？虚函数表何时生成？</h4>
+<div class="answer-block"><p>多态分为静态多态（编译期，函数重载、模板）和动态多态（运行期，虚函数+继承）。动态多态原理：基类有虚函数表（vtable），每个对象有虚表指针（vptr）指向所属类的vtable。调用虚函数时通过vptr找到vtable中对应的函数地址，实现运行期绑定。</p></div>
+
+<a id="q2432"></a>
+<h4>4. unique_ptr和shared_ptr区别？shared_ptr线程安全吗？</h4>
+<div class="answer-block"><p>多线程访问共享数据时结果正确。实现方式：互斥锁（mutex）、读写锁（读写分离）、自旋锁（忙等待）、原子操作（atomic）、条件变量（同步线程执行顺序）、线程局部存储（thread_local）。</p></div>
+
+<a id="q2433"></a>
+<h4>5. select/poll/epoll区别？为何项目用epoll？ET和LT选了哪个？</h4>
+<div class="answer-block"><p>Linux下最高效的IO多路复用。epoll_create创建内核eventpoll（含红黑树和就绪链表），epoll_ctl注册/修改/删除fd（红黑树O(logN)），epoll_wait返回就绪链表O(1)。支持ET边缘触发（只通知一次，需非阻塞读）和LT水平触发（持续通知直到处理完）。</p></div>
+
+<a id="q2434"></a>
+<h4>6. 进程间通信方式有哪些？项目用了什么？共享内存怎么实现？</h4>
+<div class="answer-block"><p>进程间通信方式：1.管道（pipe，父子进程间）；2.命名管道（FIFO，无亲缘关系）；3.消息队列；4.共享内存（最快，需同步）；5.信号量（同步）；6.Socket（跨网络）。项目用Socket做进程间通信，大数据量用共享内存+信号量同步。</p></div>
+
+<a id="q2435"></a>
+<h4>7. Linux排查CPU/内存高用什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2436"></a>
+<h4>8. TCP和UDP区别？音视频项目为何用TCP？</h4>
+<div class="answer-block"><p>TCP面向连接、可靠、有序、字节流、有流量和拥塞控制；UDP无连接、不可靠、无序、数据报文、无控制。TCP适合文件传输/网页，UDP适合实时音视频/DNS。</p></div>
+
+<a id="q2437"></a>
+<h4>9. AI项目做完自测了吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2438"></a>
+<h4>10. 算法：不含有重复字符的 最长 子串的长度</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2439"></a>
+<h3>得物-客户端开发工程师一面-31min</h3>
+
+<a id="q2440"></a>
+<h4>1. 直播软件这个项目大概做了多久？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2441"></a>
+<h4>2. 都是自己一个人完成的吗？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2442"></a>
+<h4>3. 项目中用到哪些设计模式？</h4>
+<div class="answer-block"><p>常用设计模式：创建型——单例、工厂、建造者；结构型——适配器、代理、装饰器；行为型——观察者、策略、责任链、状态机。项目中用单例（NetworkManager）、策略（编码器选择）、观察者（信号槽）、中介者（服务端消息分发）。</p></div>
+
+<a id="q2443"></a>
+<h4>4. 策略模式大概实现了哪些接口？针对这个接口有哪些不同的策略？</h4>
+<div class="answer-block"><p>定义一系列算法封装起来，使它们可以互相替换。将算法的变化与使用算法的客户端分离。场景：不同排序策略、不同折扣策略。与工厂模式区别：工厂关注创建什么对象，策略关注使用什么算法。</p></div>
+
+<a id="q2444"></a>
+<h4>5. 用 C++ 实现单例模式，怎么实现？</h4>
+<div class="answer-block"><p>保证一个类只有一个实例，提供全局访问点。实现：构造函数私有、静态实例指针、静态获取方法。懒汉式（第一次调用时创建，需要加锁或双重检查锁定保证线程安全）、饿汉式（程序启动时创建，天然线程安全）。C++11后局部静态变量是线程安全的（Meyers'单例）。</p></div>
+
+<a id="q2445"></a>
+<h4>6. 单例模式一般有几种实现方式？</h4>
+<div class="answer-block"><p>保证一个类只有一个实例，提供全局访问点。实现：构造函数私有、静态实例指针、静态获取方法。懒汉式（第一次调用时创建，需要加锁或双重检查锁定保证线程安全）、饿汉式（程序启动时创建，天然线程安全）。C++11后局部静态变量是线程安全的（Meyers'单例）。</p></div>
+
+<a id="q2446"></a>
+<h4>7. AI 开发用什么工具？什么模型？整个开发过程遇到什么问题？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2447"></a>
+<h4>8. 你觉得是 AI 能力的问题，还是工作流的问题？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2448"></a>
+<h4>9. 开发过程中有用到哪些 Skill？</h4>
+<div class="answer-block"><p>Skill是封装了特定能力提示词+工具调用的可复用模块。项目中用Skill约束AI行为：每个Skill包含SKILL.md（描述和触发条件）、工具定义、输出格式约束。例如"检索Skill"定义了何时触发检索、用什么工具、结果格式。Skill让AI行为可预测、可复现，比直接prompt更可靠。</p></div>
+
+<a id="q2449"></a>
+<h4>10. 让 AI 写了哪些 Skill？</h4>
+<div class="answer-block"><p>Skill是封装了特定能力提示词+工具调用的可复用模块。项目中用Skill约束AI行为：每个Skill包含SKILL.md（描述和触发条件）、工具定义、输出格式约束。例如"检索Skill"定义了何时触发检索、用什么工具、结果格式。Skill让AI行为可预测、可复现，比直接prompt更可靠。</p></div>
+
+<a id="q2450"></a>
+<h4>11. 进程创建时底层到底发生了什么？</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2451"></a>
+<h4>12. 进程间通信有哪些方式？</h4>
+<div class="answer-block"><p>进程间通信方式：1.管道（pipe，父子进程间）；2.命名管道（FIFO，无亲缘关系）；3.消息队列；4.共享内存（最快，需同步）；5.信号量（同步）；6.Socket（跨网络）。项目用Socket做进程间通信，大数据量用共享内存+信号量同步。</p></div>
+
+<a id="q2452"></a>
+<h4>13. 大数据量通信（几兆到几百兆）选什么方式？</h4>
+<div class="answer-block"><p>大数据量通信（几兆到几百兆）用共享内存最快：1.shmget创建共享内存段；2.两个进程映射同一物理内存；3.用信号量或互斥锁做同步；4.读写直接操作内存，无数据拷贝。Socket和管道需要内核态拷贝两次，大数据量性能差。</p></div>
+
+<a id="q2453"></a>
+<h4>14. 共享内存怎么创建？有哪些场景？</h4>
+<div class="answer-block"><p>共享内存创建：shmget(key, size, flags)创建或获取共享段→shmat映射到进程地址空间→直接读写→shmdt脱离→shmctl删除。场景：大数据量进程通信、IPC最高效方式。项目用共享内存做服务端多进程间共享视频元数据。</p></div>
+
+<a id="q2454"></a>
+<h4>15. 手撕生产者-消费者</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2455"></a>
+<h3>Manteia数据科技有限公司 一面</h3>
+
+<a id="q2456"></a>
+<h4>1. 自我介绍</h4>
+<div class="answer-block"><p>面试官您好，我叫XX，哈尔滨理工大学电子信息工程专业。有两个核心项目：1.基于C++/Qt/FFmpeg的音视频直播平台，实现了epoll高并发服务端、OpenGL GPU加速渲染、自定义TCP协议和音视频同步；2.AI辅助开发项目，用Vue3+TS实现RAG知识库检索系统，支持FTS5+embedding混合检索。擅长C++和网络编程，日常深度使用AI辅助开发。</p></div>
+
+<a id="q2457"></a>
+<h4>2. 为什么来武汉</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2458"></a>
+<h4>3. 对我们公司了解多少</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2459"></a>
+<h4>4. 能不能接受地点厦门</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2460"></a>
+<h4>5. 你最信赖的人 为什么</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2461"></a>
+<h4>6. 你是个严谨的人吗 举例</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2462"></a>
+<h4>7. 你是个愿意倾听的人吗 举例</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2463"></a>
+<h4>8. 你是善于沟通的人吗 举例</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2464"></a>
+<h4>9. 为什么你同学没介绍你去他们公司</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2465"></a>
+<h4>10. 你现在在流程的其他公司</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2466"></a>
+<h4>11. 能接受提前实习嘛</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2467"></a>
+<h4>12. 预期薪资</h4>
+<div class="answer-block"><p>期望日薪200-300元/天（实习），或月薪6000-8000元。具体可根据公司标准和面试表现调整。更看重的是平台和学习机会。</p></div>
+
+<a id="q2468"></a>
+<h3>杭州攀峰K2 Lab 一面 18mins</h3>
+
+<a id="q2469"></a>
+<h4>1. 自我介绍</h4>
+<div class="answer-block"><p>面试官您好，我叫XX，哈尔滨理工大学电子信息工程专业。有两个核心项目：1.基于C++/Qt/FFmpeg的音视频直播平台，实现了epoll高并发服务端、OpenGL GPU加速渲染、自定义TCP协议和音视频同步；2.AI辅助开发项目，用Vue3+TS实现RAG知识库检索系统，支持FTS5+embedding混合检索。擅长C++和网络编程，日常深度使用AI辅助开发。</p></div>
+
+<a id="q2470"></a>
+<h4>2. 怎么进行AI开发的？有什么经验</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2471"></a>
+<h4>3. 提示词怎么和AI说的</h4>
+<div class="answer-block"><p>给AI描述需求的方法论：1.角色设定——"你是一个C++专家"；2.任务描述——具体做什么；3.输入输出格式——明确的数据结构；4.约束条件——代码规范、安全要求；5.示例——给出输入输出样例。遵循"具体>模糊、结构化>口语化"原则。</p></div>
+
+<a id="q2472"></a>
+<h4>4. 多agent为什么比单agent更好</h4>
+<div class="answer-block"><p>Agent = 大模型 + 工具调用 + 规划能力。大模型只做文本生成，Agent能理解用户意图→拆解任务→调用外部工具（搜索、计算、API）→整合结果生成最终回答。项目中Agent调用FTS5检索、embedding检索、大模型生成三个工具，按预设流程编排。</p></div>
+
+<a id="q2473"></a>
+<h4>5. 项目为什么用多agent，为什么多agent更智能，用了多少token</h4>
+<div class="answer-block"><p>Agent = 大模型 + 工具调用 + 规划能力。大模型只做文本生成，Agent能理解用户意图→拆解任务→调用外部工具（搜索、计算、API）→整合结果生成最终回答。项目中Agent调用FTS5检索、embedding检索、大模型生成三个工具，按预设流程编排。</p></div>
+
+<a id="q2474"></a>
+<h4>6. 为什么做AI短视频项目，视频源从哪里来</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2475"></a>
+<h4>7. 做的过程有什么问题，怎么解决的</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2476"></a>
+<h4>8. 预加载怎么做的，滑动快的话怎么办</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2477"></a>
+<h4>9. 为什么做网盘项目</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2478"></a>
+<h4>10. 除了做项目，ai还会用来做什么，用的哪个AI</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2479"></a>
+<h4>11. 对实习，工作，AI上有什么规划</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2480"></a>
+<h4>12. 了解了哪些AI方面前沿的知识，觉得哪个知识点更重要</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
+
+<a id="q2481"></a>
+<h4>13. 平时看什么社区论坛，看什么东西</h4>
+<div class="answer-block"><p style="color:#888">（此题需要结合自身项目经验回答，可点击右下角AI助手获取参考答案）</p></div>
 </div>
 </div>
 <button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
