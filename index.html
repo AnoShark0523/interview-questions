@@ -13589,14 +13589,19 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
         var id=this.getAttribute('data-id');
         var el=document.getElementById(id);
         if(el){
-          // Use scrollIntoView with scroll-padding-top offset
           el.scrollIntoView({behavior:'smooth',block:'start'});
-          // Adjust for sticky header after browser scroll settles
           setTimeout(function(){
             window.scrollBy({top:-100,behavior:'smooth'});
           },50);
           resultsDiv.classList.remove('show');
           input.blur();
+        }else{
+          // Element not found - rebuild index and retry
+          window.dispatchEvent(new CustomEvent('rebuildSearchIndex'));
+          resultsDiv.classList.remove('show');
+          input.value='';
+          input.placeholder='索引已刷新，请重新搜索';
+          input.focus();
         }
       });
       resultItems[j].addEventListener('mouseenter',function(){
@@ -14308,9 +14313,26 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   }
 
   // --- Initialize: restore from storage ---
-  if(restoreFromStorage()){
-    showStatus('已从上次编辑恢复','saved');
+  // Check if current HTML has more questions than stored data
+  var currentHTMLQuestionCount=document.querySelectorAll('a[id^="q"]').length;
+  var storedRaw=localStorage.getItem(STORAGE_KEY);
+  var storedCount=0;
+  if(storedRaw){
+    try{var d=JSON.parse(storedRaw);if(Array.isArray(d))storedCount=d.length;}catch(e){}
   }
+  if(storedCount>0 && storedCount>=currentHTMLQuestionCount){
+    // localStorage has more or equal questions → safe to restore
+    if(restoreFromStorage()){
+      showStatus('已从上次编辑恢复','saved');
+    }
+  }else if(storedCount>0 && storedCount<currentHTMLQuestionCount){
+    // HTML has more questions than localStorage → HTML is newer, skip restore
+    // Clear old storage to prevent future conflicts
+    localStorage.removeItem(STORAGE_KEY);
+    showStatus('页面已更新，新题目已加载','');
+  }
+  // Always rebuild search index after potential restore
+  rebuildSearchIndex();
 })();
 </script>
 <script>
