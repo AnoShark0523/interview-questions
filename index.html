@@ -13355,7 +13355,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
 </div>
 <script>
 (function(){
-  // Build search index from all anchors and their following content
+  // Build search index from all anchors (title only — search matches on title, not body)
   var index=[];
   var anchors=document.querySelectorAll('a[id^="q"]');
   for(var i=0;i<anchors.length;i++){
@@ -13369,21 +13369,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
       title=el.textContent.trim();
       level=parseInt(el.tagName.charAt(1));
     }
-    // Collect text content until the next anchor
-    var body='';
-    var node=a.nextElementSibling;
-    // Skip the heading itself
-    if(node && node.tagName && node.tagName.match(/^H[2-5]$/)){node=node.nextElementSibling}
-    var count=0;
-    while(node && count<20){
-      if(node.tagName==='A' && node.getAttribute('id') && node.getAttribute('id').indexOf('q')===0){break}
-      if(node.tagName==='H2' || node.tagName==='H3' || node.tagName==='H4' || node.tagName==='H5'){break}
-      var t=node.textContent.trim();
-      if(t){body+=t+' '}
-      count++;
-      node=node.nextElementSibling;
-    }
-    index.push({id:id,title:title,body:body.substring(0,300),level:level});
+    index.push({id:id,title:title,body:'',level:level});
   }
 
   var input=document.getElementById('searchInput');
@@ -13598,18 +13584,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
         title=el.textContent.trim();
         level=parseInt(el.tagName.charAt(1));
       }
-      var body='';
-      var node=el?el.nextElementSibling:null;
-      var count=0;
-      while(node && count<20){
-        if(node.tagName==='A' && node.getAttribute('id') && node.getAttribute('id').indexOf('q')===0){break}
-        if(node.tagName==='H2' || node.tagName==='H3' || node.tagName==='H4' || node.tagName==='H5'){break}
-        var t=node.textContent.trim();
-        if(t){body+=t+' '}
-        count++;
-        node=node.nextElementSibling;
-      }
-      index.push({id:id,title:title,body:body.substring(0,300),level:level});
+      index.push({id:id,title:title,body:'',level:level});
     }
     console.log('Search index rebuilt: '+index.length+' questions');
   }
@@ -13677,7 +13652,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
 // === Edit Mode ===
 (function(){
   var editMode=false;
-  var HTML_VERSION='v20260824';
+  var HTML_VERSION='v20260905';
   var STORAGE_KEY='interview_edit_data_'+HTML_VERSION;
   var OLD_KEY='interview_edit_data';
   var saveTimer=null;
@@ -14231,8 +14206,8 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     localStorage.removeItem(STORAGE_KEY);
     showStatus('页面已更新，新题目已加载','');
   }
-  // Always rebuild search index after potential restore
-  rebuildSearchIndex();
+  // Defer search index rebuild to avoid blocking page render
+  setTimeout(function(){rebuildSearchIndex();},100);
 })();
 </script>
 <script>
@@ -14444,45 +14419,29 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   var qIndex=[];
   function buildQIndex(){
     qIndex=[];
-    // Method 1: Use TOC entries for titles
+    // Use TOC entries for titles (fast — no content traversal needed)
     var tocLinks=document.querySelectorAll('.toc-list a[href^="#q"]');
-    var idToTitle={};
     for(var i=0;i<tocLinks.length;i++){
       var href=tocLinks[i].getAttribute('href');
       if(href&&href.length>2){
         var id=href.substring(1);
-        idToTitle[id]=tocLinks[i].textContent.replace(/^[⭐\s]+/,'').trim();
+        var title=tocLinks[i].textContent.replace(/^[⭐\s]+/,'').trim();
+        // Collect answer text (limited to 5 siblings for performance)
+        var anchor=document.getElementById(id);
+        var answer='';
+        if(anchor){
+          var node=anchor.nextElementSibling;
+          var safety=0;
+          while(node && safety<5){
+            if(node.tagName==='A' && node.id && node.id.startsWith('q')) break;
+            if(node.tagName==='H2' || node.tagName==='H3' || node.tagName==='H4') break;
+            answer+=node.textContent+' ';
+            node=node.nextElementSibling;
+            safety++;
+          }
+        }
+        qIndex.push({id:id,title:title,answer:answer.substring(0,200).trim()});
       }
-    }
-    // Method 2: Use content headings as fallback
-    var headings=document.querySelectorAll('.content h2,.content h3,.content h4,.content h5,.content h6');
-    for(var j=0;j<headings.length;j++){
-      // Find nearest preceding anchor
-      var prev=headings[j].previousElementSibling;
-      while(prev && prev.tagName!=='A' && !prev.id){
-        prev=prev.previousElementSibling;
-      }
-      if(prev && prev.id && prev.id.startsWith('q') && !idToTitle[prev.id]){
-        idToTitle[prev.id]=headings[j].textContent.trim();
-      }
-    }
-    // Build index with answer text
-    var keys=Object.keys(idToTitle);
-    for(var k=0;k<keys.length;k++){
-      var qid=keys[k];
-      var anchor=document.getElementById(qid);
-      if(!anchor) continue;
-      // Collect answer text from siblings until next anchor
-      var answer='';
-      var node=anchor.nextElementSibling;
-      var safety=0;
-      while(node && safety<30){
-        if(node.tagName==='A' && node.id && node.id.startsWith('q')) break;
-        answer+=node.textContent+' ';
-        node=node.nextElementSibling;
-        safety++;
-      }
-      qIndex.push({id:qid,title:idToTitle[qid],answer:answer.substring(0,500).trim()});
     }
   }
 
