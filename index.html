@@ -87,8 +87,7 @@ tr:nth-child(even){background:#f8f9ff}
 body.edit-mode h2,body.edit-mode h3,body.edit-mode h4,body.edit-mode h5{outline:2px dashed transparent;outline-offset:2px;transition:outline-color .15s;border-radius:6px}
 body.edit-mode h2:hover,body.edit-mode h3:hover,body.edit-mode h4:hover,body.edit-mode h5:hover{outline-color:#ff9800}
 body.edit-mode [contenteditable="true"]:focus{outline:2px solid #4a6fa5;background:rgba(74,111,165,.03);border-radius:4px}
-body.edit-mode p,body.edit-mode li,body.edit-mode td,body.edit-mode th,body.edit-mode blockquote,body.edit-mode pre{outline:1px dashed transparent;outline-offset:1px;transition:outline-color .15s}
-body.edit-mode p:hover,body.edit-mode li:hover,body.edit-mode td:hover,body.edit-mode th:hover,body.edit-mode blockquote:hover{outline-color:#bbb}
+body.edit-mode p:hover,body.edit-mode li:hover,body.edit-mode td:hover,body.edit-mode th:hover,body.edit-mode blockquote:hover{outline:1px dashed #bbb;outline-offset:1px}
 .block-controls{display:none;gap:6px;align-items:center;margin:4px 0;flex-wrap:wrap}
 body.edit-mode .block-controls{display:flex}
 .block-btn{padding:4px 10px;font-size:13px;border:1.5px solid var(--border);border-radius:6px;background:#fff;cursor:pointer;transition:all .15s;font-family:inherit;user-select:none}
@@ -13581,29 +13580,6 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     }
     resultsDiv.innerHTML=html;
     resultsDiv.classList.add('show');
-
-    // Bind click events
-    var resultItems=resultsDiv.querySelectorAll('.search-result');
-    for(var j=0;j<resultItems.length;j++){
-      resultItems[j].addEventListener('click',function(){
-        var id=this.getAttribute('data-id');
-        var el=document.getElementById(id);
-        if(el){
-          // Use scrollIntoView with scroll-padding-top offset
-          el.scrollIntoView({behavior:'smooth',block:'start'});
-          // Adjust for sticky header after browser scroll settles
-          setTimeout(function(){
-            window.scrollBy({top:-100,behavior:'smooth'});
-          },50);
-          resultsDiv.classList.remove('show');
-          input.blur();
-        }
-      });
-      resultItems[j].addEventListener('mouseenter',function(){
-        activeIdx=parseInt(this.getAttribute('data-idx'));
-        updateActive();
-      });
-    }
   }
 
   function updateActive(){
@@ -13616,6 +13592,28 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
       items[activeIdx].scrollIntoView({block:'nearest'});
     }
   }
+
+  // Event delegation for search results (set up once)
+  resultsDiv.addEventListener('click',function(e){
+    var item=e.target.closest('.search-result');
+    if(!item)return;
+    var id=item.getAttribute('data-id');
+    var el=document.getElementById(id);
+    if(el){
+      el.scrollIntoView({behavior:'smooth',block:'start'});
+      setTimeout(function(){
+        window.scrollBy({top:-100,behavior:'smooth'});
+      },50);
+      resultsDiv.classList.remove('show');
+      input.blur();
+    }
+  });
+  resultsDiv.addEventListener('mouseover',function(e){
+    var item=e.target.closest('.search-result');
+    if(!item)return;
+    activeIdx=parseInt(item.getAttribute('data-idx'));
+    updateActive();
+  });
 
   function doSearch(txt){
     input.value=txt;
@@ -13776,6 +13774,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   var STORAGE_KEY='interview_edit_data_'+HTML_VERSION;
   var OLD_KEY='interview_edit_data';
   var saveTimer=null;
+  var _saveRAF=null;
 
   var editToggleBtn=document.getElementById('editToggleBtn');
   var editAddBtn=document.getElementById('editAddBtn');
@@ -13825,23 +13824,8 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   // --- Add block controls ---
   var _delTimers={};
   var _delConfirming={};
+  var _controlsReady=false;
   function injectBlockControls(){
-    var existing=document.querySelectorAll('.block-controls');
-    for(var i=0;i<existing.length;i++){existing[i].parentNode.removeChild(existing[i]);}
-
-    var blocks=getBlocks();
-    for(var i=0;i<blocks.length;i++){
-      var block=blocks[i];
-      var heading=block.heading;
-      var controls=document.createElement('div');
-      controls.className='block-controls';
-      controls.setAttribute('contenteditable','false');
-      controls.innerHTML='<span style="font-size:12px;color:#999">'+block.id+'</span>'+
-        '<button class="block-btn add-after" data-id="'+block.id+'">➕ 在下方添加</button>'+
-        '<button class="block-btn del-block" data-id="'+block.id+'">🗑️ 删除此题</button>';
-      heading.parentNode.insertBefore(controls,heading);
-    }
-
     // Event delegation: only set up once
     var contentDiv=document.querySelector('.content')||document.querySelector('.container');
     if(contentDiv && !contentDiv.__blockDelegate){
@@ -13921,6 +13905,32 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
         }
       });
     }
+
+    // Only add controls that don't already exist; batch with requestAnimationFrame
+    var blocks=getBlocks();
+    var BATCH=200;
+    function addBatch(start){
+      var end=Math.min(start+BATCH,blocks.length);
+      for(var i=start;i<end;i++){
+        var block=blocks[i];
+        var heading=block.heading;
+        if(!heading.parentNode)continue;
+        var prev=heading.previousElementSibling;
+        if(prev&&prev.className==='block-controls')continue;
+        heading.insertAdjacentHTML('beforebegin',
+          '<div class="block-controls" contenteditable="false">'+
+          '<span style="font-size:12px;color:#999">'+block.id+'</span>'+
+          '<button class="block-btn add-after" data-id="'+block.id+'">➕ 在下方添加</button>'+
+          '<button class="block-btn del-block" data-id="'+block.id+'">🗑️ 删除此题</button>'+
+          '</div>');
+      }
+      if(end<blocks.length){
+        requestAnimationFrame(function(){addBatch(end);});
+      }else{
+        _controlsReady=true;
+      }
+    }
+    addBatch(0);
   }
 
   // --- Delete block ---
@@ -13941,10 +13951,8 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
       node.parentNode.removeChild(node);
       node=next;
     }
-    // Also remove the controls
     saveToStorage();
     rebuildSearchIndex();
-    injectBlockControls();
     showStatus('已删除 '+id,'saved');
   }
 
@@ -13994,7 +14002,14 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     }
     saveToStorage();
     rebuildSearchIndex();
-    injectBlockControls();
+    if(editMode){
+      h.insertAdjacentHTML('beforebegin',
+        '<div class="block-controls" contenteditable="false">'+
+        '<span style="font-size:12px;color:#999">'+newId+'</span>'+
+        '<button class="block-btn add-after" data-id="'+newId+'">➕ 在下方添加</button>'+
+        '<button class="block-btn del-block" data-id="'+newId+'">🗑️ 删除此题</button>'+
+        '</div>');
+    }
     showStatus('已添加新题目','saved');
     var newEl=document.getElementById(newId);
     if(newEl)newEl.scrollIntoView({behavior:'smooth',block:'start'});
@@ -14065,14 +14080,15 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
     var contentDiv=document.querySelector('.content')||document.querySelector('.container');
     if(contentDiv){
       contentDiv.setAttribute('contenteditable',editMode?'true':'false');
+      contentDiv.spellcheck=false;
     }
 
     if(editMode){
-      injectBlockControls();
+      if(!_controlsReady){
+        injectBlockControls();
+      }
       showStatus('编辑模式已开启','saved');
     }else{
-      var controls=document.querySelectorAll('.block-controls');
-      for(var j=0;j<controls.length;j++){controls[j].parentNode.removeChild(controls[j]);}
       saveToStorage();
       showStatus('已保存','saved');
     }
@@ -14178,6 +14194,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
           }
           saveToStorage();
           rebuildSearchIndex();
+          _controlsReady=false;
           if(editMode)injectBlockControls();
           showStatus('已导入 '+data.length+' 条题目','saved');
         }catch(err){
@@ -14199,34 +14216,45 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
   });
   function saveToStorage(){
     if(saveTimer)clearTimeout(saveTimer);
+    if(_saveRAF)cancelAnimationFrame(_saveRAF);
     showStatus('保存中...','saving');
     saveTimer=setTimeout(function(){
-      try{
-        var blocks=getBlocks();
-        var data=[];
-        for(var i=0;i<blocks.length;i++){
-          var node=blocks[i].anchor;
+      var blocks=getBlocks();
+      var data=[];
+      var idx=0;
+      var BATCH=200;
+      function serializeBatch(){
+        var end=Math.min(idx+BATCH,blocks.length);
+        for(;idx<end;idx++){
           var content=[];
-          var el=blocks[i].heading;
-          var nextBlock=blocks[i+1];
+          var el=blocks[idx].heading;
+          var nextBlock=blocks[idx+1];
           while(el){
             if(nextBlock && el===nextBlock.anchor)break;
-            if(el.tagName==='A' && el.getAttribute('id') && el.getAttribute('id').indexOf('q')===0 && el!==blocks[i].anchor)break;
+            if(el.tagName==='A' && el.getAttribute('id') && el.getAttribute('id').indexOf('q')===0 && el!==blocks[idx].anchor)break;
             if(el.tagName && el.tagName.match(/^H[2-5]$/)){
-              if(el!==blocks[i].heading)break;
+              if(el!==blocks[idx].heading)break;
             }
             content.push(el.outerHTML);
             el=el.nextSibling;
             if(!el)break;
           }
-          data.push({id:blocks[i].id,title:blocks[i].heading.textContent.trim(),level:blocks[i].level,html:content.join('\n')});
+          data.push({id:blocks[idx].id,title:blocks[idx].heading.textContent.trim(),level:blocks[idx].level,html:content.join('\n')});
         }
-        localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
-        showStatus('已自动保存 ✓','saved');
-      }catch(e){
-        showStatus('保存失败：'+e.message,'');
+        if(idx<blocks.length){
+          _saveRAF=requestAnimationFrame(serializeBatch);
+        }else{
+          _saveRAF=null;
+          try{
+            localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+            showStatus('已自动保存 ✓','saved');
+          }catch(e){
+            showStatus('保存失败：'+e.message,'');
+          }
+        }
       }
-    },500);
+      serializeBatch();
+    },1000);
   }
 
   // --- Restore from localStorage ---
@@ -14269,6 +14297,7 @@ strace -c ./program          # 统计系统调用次数和时间</code></pre>
           }
         }
       }
+      _controlsReady=false;
       return true;
     }catch(e){
       console.error('Restore failed:',e);
